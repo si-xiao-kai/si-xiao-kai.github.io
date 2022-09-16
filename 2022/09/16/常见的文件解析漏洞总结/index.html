@@ -443,7 +443,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-06-27
+                    2022-09-16
                 </div>
                 
 
@@ -464,17 +464,29 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-优惠券修改"><a href="#1-优惠券修改" class="headerlink" title="1.优惠券修改"></a>1.优惠券修改</h1><p>![截屏2022-06-27 16.42.30](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.42.30.png)</p>
-<p>![截屏2022-06-27 16.43.29](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.43.29.png)</p>
-<p>![截屏2022-06-27 16.44.55](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.44.55.png)</p>
-<p>防止扯皮，直接支付，表明确实能够利用成功。</p>
-<p>![截屏2022-06-27 16.45.30](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.45.30.png)</p>
-<h1 id="2-充值漏洞"><a href="#2-充值漏洞" class="headerlink" title="2.充值漏洞"></a>2.充值漏洞</h1><p>![截屏2022-06-27 16.50.20](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.50.20.png)</p>
-<p>![截屏2022-06-27 16.50.48](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.50.48.png)</p>
-<p>批量跑user_id</p>
-<p>![截屏2022-06-27 16.52.10](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.52.10.png)</p>
-<p>让别人为我买单。</p>
-<p>![截屏2022-06-27 16.54.24](/Users/xiaokaisi/Library/Application Support/typora-user-images/截屏2022-06-27 16.54.24.png)</p>
+                <p>@<a href="hackmap-%5B%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93%5D">TOC</a></p>
+<h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>文件解析漏洞可能导致图片木马的非法解析执行。后面发现新的解析漏洞会继续更新。</p>
+<h1 id="1-Apache解析漏洞"><a href="#1-Apache解析漏洞" class="headerlink" title="1.Apache解析漏洞"></a>1.Apache解析漏洞</h1><p>Apache 是从右往左判断后缀，直到找到它能够认识的后缀名：<br>        hack.php.xxx.xx.x<br>        test.php.x1.x2.x3 </p>
+<h1 id="2-IIS解析漏洞"><a href="#2-IIS解析漏洞" class="headerlink" title="2.IIS解析漏洞"></a>2.IIS解析漏洞</h1><h2 id="2-1-IIS6-0解析漏洞"><a href="#2-1-IIS6-0解析漏洞" class="headerlink" title="2.1 IIS6.0解析漏洞"></a>2.1 IIS6.0解析漏洞</h2><pre><code>.asp;1.jpg 图片结尾，但是以asp脚本解析执行
+1.asp/time.jpg 以.asp结尾的目录下的文件被解析为asp脚本执行。/xx.asp/xx.jpg &quot;xx.asp&quot;是文件夹名
+</code></pre>
+<h2 id="2-2-IIS7-0-7-5解析漏洞"><a href="#2-2-IIS7-0-7-5解析漏洞" class="headerlink" title="2.2 IIS7.0/7.5解析漏洞"></a>2.2 IIS7.0/7.5解析漏洞</h2><pre><code>   默认Fast-CGI 开启，直接在url 中图片地址后面输入/1.php，会把正常图片当成 php 解析。
+</code></pre>
+<h1 id="3-PHP-CGI解析漏洞"><a href="#3-PHP-CGI解析漏洞" class="headerlink" title="3.PHP CGI解析漏洞"></a>3.PHP CGI解析漏洞</h1><h2 id="3-1原理"><a href="#3-1原理" class="headerlink" title="3.1原理"></a>3.1原理</h2><p>PHP cig.fix_pathinfo参数默认为1。<br>当使用如下的URL来访问一个存在的1.jpg资源时：<br><code>http://xxx/xxx/1.jpg/1.php</code><br>Nginx认为这是一个PHP资源，于是会将该资源交给PHP来处理，而PHP此时会发现1.php不存在，通过修正路径，PHP会将存在的1.jpg作为PHP来执行。</p>
+<h2 id="3-2-利用"><a href="#3-2-利用" class="headerlink" title="3.2 利用"></a>3.2 利用</h2><pre><code>Hack.png/.php
+</code></pre>
+<p>访问的时候后面添加/.php,那么png中的恶意代码即可被解析执行</p>
+<h2 id="3-3防御"><a href="#3-3防御" class="headerlink" title="3.3防御"></a>3.3防御</h2><p>F1:CGI处理映射程序中，请求限制一栏中，勾选“映射”</p>
+<p>F2:php.ini 中 将cig.fix_pathinfo 参数 设置为 0</p>
+<p>新版本PHP的防御机制<br>    新版本的 PHP 引入了新的配置项 “security.limit_extensions” 来限制可执行的文件后缀，以此来弥补 CGI 文件后缀解析的不足。</p>
+<h1 id="4-Nginx解析漏洞"><a href="#4-Nginx解析漏洞" class="headerlink" title="4.Nginx解析漏洞"></a>4.Nginx解析漏洞</h1><h2 id="4-1-nginx-PHP-CGI-解析漏洞"><a href="#4-1-nginx-PHP-CGI-解析漏洞" class="headerlink" title="4.1 nginx PHP CGI 解析漏洞"></a>4.1 nginx PHP CGI 解析漏洞</h2><p>nginx版本小于等于 0.8.37，利用方法和 IIS 7.0/7.5 一样，Fast-CGI 关闭情况下也可利用。<br>原理:<code>同 IIS +PHP CGI 解析漏洞，是由cgi.fix_pathinfo选项引起的.</code><br>利用:<code>hack.png/.php</code></p>
+<h2 id="4-2-nginx-空字节漏洞"><a href="#4-2-nginx-空字节漏洞" class="headerlink" title="4.2 nginx 空字节漏洞"></a>4.2 nginx 空字节漏洞</h2><h3 id="4-2-1原理："><a href="#4-2-1原理：" class="headerlink" title="4.2.1原理："></a>4.2.1原理：</h3><pre><code>读取整个URL之后，发现结尾是.php，移交给PHP解释进程来解析。
+PHP解析进程从前往后看，到html为止，后面相当于null，解析执行。
+</code></pre>
+<p><img src="https://img-blog.csdnimg.cn/29e141c422e64406a12764ae4aea8fed.png" alt="在这里插入图片描述"></p>
+<h3 id="4-2-2-利用："><a href="#4-2-2-利用：" class="headerlink" title="4.2.2 利用："></a>4.2.2 利用：</h3><pre><code>Hack.html%00.php
+</code></pre>
+<h1 id="5-lighttpd解析漏洞"><a href="#5-lighttpd解析漏洞" class="headerlink" title="5.lighttpd解析漏洞"></a>5.lighttpd解析漏洞</h1><p><code>xx.jpg/xx.php</code></p>
 
                 
             </div>
@@ -501,7 +513,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/06/27/14-%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">http://0to1sec.com/2022/06/27/14-%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/</a>
+                    <a href="http://0to1sec.com/2022/09/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">http://0to1sec.com/2022/09/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -706,9 +718,48 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/09/16/%E5%B8%B8%E8%A7%81%E7%9A%84%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E%E6%80%BB%E7%BB%93/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
+                        
+                        <span class="card-title"></span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-16
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-user fa-fw"></i>
+                            John Doe
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/09/15/hello-world/">
                     <div class="card-image">
@@ -726,45 +777,8 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-15
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-user fa-fw"></i>
-                            John Doe
-                            
-                        </span>
-                    </div>
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/06/27/14-%E6%94%AF%E4%BB%98%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="">
-                        
-                        <span class="card-title"></span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            
-                        
-                    </div>
-                    <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-06-27
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-15
                             </span>
                         <span class="publish-author">
                             
@@ -774,7 +788,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
