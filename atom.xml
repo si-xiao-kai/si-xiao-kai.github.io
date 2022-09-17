@@ -6,7 +6,7 @@
   <link href="http://0to1sec.com/atom.xml" rel="self"/>
   
   <link href="http://0to1sec.com/"/>
-  <updated>2022-09-17T07:20:49.680Z</updated>
+  <updated>2022-09-17T07:21:43.166Z</updated>
   <id>http://0to1sec.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://0to1sec.com/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/"/>
     <id>http://0to1sec.com/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/</id>
     <published>2022-09-17T07:17:00.000Z</published>
-    <updated>2022-09-17T07:20:49.680Z</updated>
+    <updated>2022-09-17T07:21:43.166Z</updated>
     
     
     
@@ -29,7 +29,9 @@
     <category term="python" scheme="http://0to1sec.com/categories/python/"/>
     
     
-    <category term="-实用经验 -python" scheme="http://0to1sec.com/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C-python/"/>
+    <category term="实用经验" scheme="http://0to1sec.com/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/"/>
+    
+    <category term="python" scheme="http://0to1sec.com/tags/python/"/>
     
   </entry>
   
