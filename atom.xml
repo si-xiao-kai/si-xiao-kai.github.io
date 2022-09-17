@@ -6,7 +6,7 @@
   <link href="http://0to1sec.com/atom.xml" rel="self"/>
   
   <link href="http://0to1sec.com/"/>
-  <updated>2022-09-17T09:07:23.193Z</updated>
+  <updated>2022-09-17T09:09:15.840Z</updated>
   <id>http://0to1sec.com/</id>
   
   <author>
@@ -21,14 +21,15 @@
     <link href="http://0to1sec.com/2022/09/17/python-ji-suan-md5-zhi/"/>
     <id>http://0to1sec.com/2022/09/17/python-ji-suan-md5-zhi/</id>
     <published>2022-09-17T08:56:00.000Z</published>
-    <updated>2022-09-17T09:07:23.193Z</updated>
+    <updated>2022-09-17T09:09:15.840Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; hashlib &lt;span class=&quot;token</summary>
+    <summary type="html">&lt;p&gt;实用python计算字符串的md5值，需要用到hashlib库。&lt;/p&gt;
+&lt;pre class=&quot; language-python&quot;&gt;&lt;code class=&quot;language-python&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt;</summary>
         
       
     
