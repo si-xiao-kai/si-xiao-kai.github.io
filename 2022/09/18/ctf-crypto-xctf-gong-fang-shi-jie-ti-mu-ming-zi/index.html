@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python-base64编码与图片之间的转换, blogsite of 0to1sec">
+    <meta name="keywords" content="CTF-crypto-XCTF攻防世界-[题目名字], blogsite of 0to1sec">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>python-base64编码与图片之间的转换 | blogsite of 0to1sec</title>
+    <title>CTF-crypto-XCTF攻防世界-[题目名字] | blogsite of 0to1sec</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">python-base64编码与图片之间的转换</h1>
+                    <h1 class="description center-align post-title">CTF-crypto-XCTF攻防世界-[题目名字]</h1>
                 </div>
             </div>
         </div>
@@ -410,16 +410,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                                <span class="chip bg-color">实用经验</span>
+                            <a href="/tags/CTF/">
+                                <span class="chip bg-color">CTF</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                <span class="chip bg-color">crypto密码学</span>
                             </a>
                         
-                            <a href="/tags/%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/">
-                                <span class="chip bg-color">编码转换</span>
+                            <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">网路安全</span>
                             </a>
                         
                     </div>
@@ -430,8 +430,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/CTF-crypto/" class="post-category">
+                                CTF-crypto
                             </a>
                         
                     </div>
@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    62
+                    0
                 </div>
                 
 
@@ -484,24 +484,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-base64编码转图片"><a href="#1-base64编码转图片" class="headerlink" title="1.base64编码转图片"></a>1.base64编码转图片</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
-<span class="token keyword">import</span> base64
-
-<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"./base64code.txt"</span><span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-    imagedata<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    file<span class="token operator">=</span>open<span class="token punctuation">(</span><span class="token string">'./1.png'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>
-    file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>imagedata<span class="token punctuation">)</span>
-    file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-<h1 id="2-图片转base64编码"><a href="#2-图片转base64编码" class="headerlink" title="2.图片转base64编码"></a>2.图片转base64编码</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
-
-<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'./1.png'</span><span class="token punctuation">,</span><span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-    bcode<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    file<span class="token operator">=</span>open<span class="token punctuation">(</span><span class="token string">'./picture_b64.txt'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>
-    file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>bcode<span class="token punctuation">)</span>
-    file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
-</code></pre>
-
+                
                 
             </div>
             <hr/>
@@ -527,7 +510,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/">http://0to1sec.com/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/</a>
+                    <a href="http://0to1sec.com/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/">http://0to1sec.com/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -565,16 +548,16 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                                    <span class="chip bg-color">实用经验</span>
+                                <a href="/tags/CTF/">
+                                    <span class="chip bg-color">CTF</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                                    <span class="chip bg-color">crypto密码学</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/">
-                                    <span class="chip bg-color">编码转换</span>
+                                <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">网路安全</span>
                                 </a>
                             
                         </div>
@@ -744,9 +727,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/">
                     <div class="card-image">
@@ -764,9 +748,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -779,6 +763,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -805,24 +790,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/17/python-ji-suan-md5-zhi/">
+                <a href="/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="python-计算md5值">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="python-base64编码与图片之间的转换">
                         
-                        <span class="card-title">python-计算md5值</span>
+                        <span class="card-title">python-base64编码与图片之间的转换</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python计算字符串md5值的方法
+                            python实现base64编码与图片之间的转换
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
                             </span>
                         <span class="publish-author">
                             
@@ -845,6 +830,10 @@
                     
                     <a href="/tags/python/">
                         <span class="chip bg-color">python</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/">
+                        <span class="chip bg-color">编码转换</span>
                     </a>
                     
                 </div>

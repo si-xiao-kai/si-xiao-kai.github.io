@@ -6,7 +6,7 @@
   <link href="http://0to1sec.com/atom.xml" rel="self"/>
   
   <link href="http://0to1sec.com/"/>
-  <updated>2022-09-18T04:03:03.656Z</updated>
+  <updated>2022-09-18T04:50:04.430Z</updated>
   <id>http://0to1sec.com/</id>
   
   <author>
@@ -15,6 +15,27 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>CTF-crypto-XCTF攻防世界-[题目名字]</title>
+    <link href="http://0to1sec.com/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/"/>
+    <id>http://0to1sec.com/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/</id>
+    <published>2022-09-18T03:52:00.000Z</published>
+    <updated>2022-09-18T04:50:04.430Z</updated>
+    
+    
+    
+    
+    <category term="CTF-crypto" scheme="http://0to1sec.com/categories/CTF-crypto/"/>
+    
+    
+    <category term="CTF" scheme="http://0to1sec.com/tags/CTF/"/>
+    
+    <category term="crypto密码学" scheme="http://0to1sec.com/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="网路安全" scheme="http://0to1sec.com/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>python-base64编码与图片之间的转换</title>
