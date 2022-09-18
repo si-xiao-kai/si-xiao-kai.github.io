@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python-16进制字符串转化为ascii字符串, blogsite of 0to1sec">
+    <meta name="keywords" content="python-base64编码与图片之间的转换, blogsite of 0to1sec">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>python-16进制字符串转化为ascii字符串 | blogsite of 0to1sec</title>
+    <title>python-base64编码与图片之间的转换 | blogsite of 0to1sec</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">python-16进制字符串转化为ascii字符串</h1>
+                    <h1 class="description center-align post-title">python-base64编码与图片之间的转换</h1>
                 </div>
             </div>
         </div>
@@ -426,8 +426,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/python-%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/" class="post-category">
+                                python 编码转换
                             </a>
                         
                     </div>
@@ -439,21 +439,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-17
+                    2022-09-18
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-17
+                    2022-09-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    138
+                    62
                 </div>
                 
 
@@ -480,21 +480,22 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-一般方法"><a href="#1-一般方法" class="headerlink" title="1.一般方法"></a>1.一般方法</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> binascii
-<span class="token keyword">def</span> <span class="token function">hexStr_to_str</span><span class="token punctuation">(</span>hex_str<span class="token punctuation">)</span><span class="token punctuation">:</span> 
-    hex<span class="token operator">=</span>hex_str<span class="token punctuation">.</span>encode<span class="token punctuation">(</span> <span class="token string">'utf-8'</span> <span class="token punctuation">)</span>
-    bin_str <span class="token operator">=</span> binascii<span class="token punctuation">.</span>unhexlify<span class="token punctuation">(</span>hex<span class="token punctuation">)</span> 
-    <span class="token keyword">return</span> bin_str<span class="token punctuation">.</span>decode<span class="token punctuation">(</span> <span class="token string">'utf-8'</span> <span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#测试</span>
-<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span> <span class="token punctuation">:</span>
-    hex_str <span class="token operator">=</span> <span class="token string">'7468616e6b20796f752076657279206d75636821'</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>hexStr_to_str<span class="token punctuation">(</span>hex_str<span class="token punctuation">)</span><span class="token punctuation">)</span>
+                <h1 id="1-base64编码转图片"><a href="#1-base64编码转图片" class="headerlink" title="1.base64编码转图片"></a>1.base64编码转图片</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os
+<span class="token keyword">import</span> base64
+
+<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"./base64code.txt"</span><span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    imagedata<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    file<span class="token operator">=</span>open<span class="token punctuation">(</span><span class="token string">'./1.png'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>
+    file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>imagedata<span class="token punctuation">)</span>
+    file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
-<h1 id="2-简单方法"><a href="#2-简单方法" class="headerlink" title="2.简单方法"></a>2.简单方法</h1><p>base64库中提供了base16编码，其实就是将ascii字符用16进制表示，用[0-9a-f]16个字符来表示一个ascii字符，也就是将asciii字符转化为16进制形式，如:’a’ =&gt;base16=&gt; b’61’。所以对于十六进制字符串只需要，对其进行base16解码即可转化为可打印字符。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
-hex_str<span class="token operator">=</span><span class="token string">'7468616e6b20796f752076657279206d75636821'</span>
-result<span class="token operator">=</span>base64<span class="token punctuation">.</span>b16decode<span class="token punctuation">(</span>hex_str<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
+<h1 id="2-图片转base64编码"><a href="#2-图片转base64编码" class="headerlink" title="2.图片转base64编码"></a>2.图片转base64编码</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
+
+<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'./1.png'</span><span class="token punctuation">,</span><span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    bcode<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    file<span class="token operator">=</span>open<span class="token punctuation">(</span><span class="token string">'./picture_b64.txt'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>
+    file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>bcode<span class="token punctuation">)</span>
+    file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span>
 </code></pre>
 
                 
@@ -522,7 +523,7 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/">http://0to1sec.com/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/</a>
+                    <a href="http://0to1sec.com/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/">http://0to1sec.com/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -735,41 +736,43 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/09/17/python-ji-suan-md5-zhi/">
+                <a href="/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="python-计算md5值">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="python-base64编码与图片之间的转换">
                         
-                        <span class="card-title">python-计算md5值</span>
+                        <span class="card-title">python-base64编码与图片之间的转换</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python计算字符串md5值的方法
+                            python实现base64编码与图片之间的转换
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category">
-                                    python
+                            <a href="/categories/python-%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/" class="post-category">
+                                    python 编码转换
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -789,22 +792,22 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/">
+                <a href="/2022/09/17/python-ji-suan-md5-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="python-16进制字符串转化为ascii字符串">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="python-计算md5值">
                         
-                        <span class="card-title">python-16进制字符串转化为ascii字符串</span>
+                        <span class="card-title">python-计算md5值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            介绍了16进制字符串转换为ascii字符串的小技巧
+                            python计算字符串md5值的方法
                         
                     </div>
                     <div class="publish-info">
@@ -823,7 +826,6 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     

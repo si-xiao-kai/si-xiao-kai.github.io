@@ -4,11 +4,38 @@
   
     
     <entry>
+      <title>python-base64编码与图片之间的转换</title>
+      <link href="/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/"/>
+      <url>/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-base64编码转图片"><a href="#1-base64编码转图片" class="headerlink" title="1.base64编码转图片"></a>1.base64编码转图片</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> os<span class="token keyword">import</span> base64<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">"./base64code.txt"</span><span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>    imagedata<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64decode<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    file<span class="token operator">=</span>open<span class="token punctuation">(</span><span class="token string">'./1.png'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>    file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>imagedata<span class="token punctuation">)</span>    file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre><h1 id="2-图片转base64编码"><a href="#2-图片转base64编码" class="headerlink" title="2.图片转base64编码"></a>2.图片转base64编码</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64<span class="token keyword">with</span> open<span class="token punctuation">(</span><span class="token string">'./1.png'</span><span class="token punctuation">,</span><span class="token string">'rb'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>    bcode<span class="token operator">=</span>base64<span class="token punctuation">.</span>b64encode<span class="token punctuation">(</span>f<span class="token punctuation">.</span>read<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    file<span class="token operator">=</span>open<span class="token punctuation">(</span><span class="token string">'./picture_b64.txt'</span><span class="token punctuation">,</span><span class="token string">'wb'</span><span class="token punctuation">)</span>    file<span class="token punctuation">.</span>write<span class="token punctuation">(</span>bcode<span class="token punctuation">)</span>    file<span class="token punctuation">.</span>close<span class="token punctuation">(</span><span class="token punctuation">)</span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> python 编码转换 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 实用经验 </tag>
+            
+            <tag> python </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>python-计算md5值</title>
       <link href="/2022/09/17/python-ji-suan-md5-zhi/"/>
       <url>/2022/09/17/python-ji-suan-md5-zhi/</url>
       
-        <content type="html"><![CDATA[<p>实用python计算字符串的md5值，需要用到hashlib库。</p><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> hashlib <span class="token keyword">import</span> md5<span class="token keyword">def</span> <span class="token function">Cal_md5</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>    md5_obj<span class="token operator">=</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>    md5_obj<span class="token punctuation">.</span>update<span class="token punctuation">(</span>s<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> md5_obj<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>md5ofa<span class="token operator">=</span>Cal_md5<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>md5ofa<span class="token punctuation">)</span></code></pre><p><img src="/picture/1.png" alt="结果演示"></p>]]></content>
+        <content type="html"><![CDATA[<p>使用python计算字符串的md5值，需要用到hashlib库。</p><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> hashlib <span class="token keyword">import</span> md5<span class="token keyword">def</span> <span class="token function">Cal_md5</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">:</span>    md5_obj<span class="token operator">=</span>md5<span class="token punctuation">(</span><span class="token punctuation">)</span>    md5_obj<span class="token punctuation">.</span>update<span class="token punctuation">(</span>s<span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token string">'utf-8'</span><span class="token punctuation">)</span><span class="token punctuation">)</span>    <span class="token keyword">return</span> md5_obj<span class="token punctuation">.</span>hexdigest<span class="token punctuation">(</span><span class="token punctuation">)</span>md5ofa<span class="token operator">=</span>Cal_md5<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>md5ofa<span class="token punctuation">)</span></code></pre><p><img src="/picture/1.png" alt="结果演示"></p>]]></content>
       
       
       <categories>
