@@ -15,8 +15,6 @@
           
           <category> python </category>
           
-          <category> 编码转换 </category>
-          
       </categories>
       
       
@@ -25,6 +23,8 @@
             <tag> 实用经验 </tag>
             
             <tag> python </tag>
+            
+            <tag> 编码转换 </tag>
             
         </tags>
       
