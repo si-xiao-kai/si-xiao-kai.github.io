@@ -6,7 +6,7 @@
   <link href="http://0to1sec.com/atom.xml" rel="self"/>
   
   <link href="http://0to1sec.com/"/>
-  <updated>2022-09-18T03:56:45.303Z</updated>
+  <updated>2022-09-18T03:59:00.368Z</updated>
   <id>http://0to1sec.com/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://0to1sec.com/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/"/>
     <id>http://0to1sec.com/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/</id>
     <published>2022-09-18T03:52:00.000Z</published>
-    <updated>2022-09-18T03:56:45.303Z</updated>
+    <updated>2022-09-18T03:59:00.368Z</updated>
     
     
       
@@ -34,7 +34,9 @@
     
     
     
-    <category term="python 编码转换" scheme="http://0to1sec.com/categories/python-%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/"/>
+    <category term="python" scheme="http://0to1sec.com/categories/python/"/>
+    
+    <category term="编码转换" scheme="http://0to1sec.com/categories/python/%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/"/>
     
     
     <category term="实用经验" scheme="http://0to1sec.com/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/"/>
