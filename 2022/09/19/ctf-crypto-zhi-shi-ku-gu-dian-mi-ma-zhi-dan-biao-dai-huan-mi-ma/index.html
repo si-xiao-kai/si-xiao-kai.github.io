@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    612
+                    654
                 </div>
                 
 
@@ -510,7 +510,7 @@
 </ul>
 </li>
 </ul>
-<h2 id="0-3-攻击类型-假设攻击者已知待破解的密码体制"><a href="#0-3-攻击类型-假设攻击者已知待破解的密码体制" class="headerlink" title="0.3 攻击类型( 假设攻击者已知待破解的密码体制 )"></a>0.3 攻击类型( 假设攻击者已知待破解的密码体制 )</h2><ol>
+<h2 id="0-3-攻击类型（假设攻击者已知待破解的密码体制）"><a href="#0-3-攻击类型（假设攻击者已知待破解的密码体制）" class="headerlink" title="0.3 攻击类型（假设攻击者已知待破解的密码体制）"></a>0.3 攻击类型（假设攻击者已知待破解的密码体制）</h2><ol>
 <li>唯密文攻击：只拥有密文</li>
 <li>已知明文攻击：拥有密文与对应的明文</li>
 <li>选择密文攻击（控制解密机）：拥有解密权限，能够对密文解密后获得相应明文</li>
@@ -518,8 +518,8 @@
 </ol>
 <h1 id="1-单表代换密码的特点和破解思路"><a href="#1-单表代换密码的特点和破解思路" class="headerlink" title="1.单表代换密码的特点和破解思路"></a>1.单表代换密码的特点和破解思路</h1><h2 id="1-1-特点"><a href="#1-1-特点" class="headerlink" title="1.1 特点"></a>1.1 特点</h2><p>明文和密文一一对应</p>
 <h2 id="1-2-破解思路"><a href="#1-2-破解思路" class="headerlink" title="1.2 破解思路"></a>1.2 破解思路</h2><ul>
-<li>暴力破解(密钥空间较小)</li>
-<li>词频分析(密文长度足够长) <a target="_blank" rel="noopener" href="http://quipqiup.com/">http://quipqiup.com/</a></li>
+<li>暴力破解【密钥空间较小】</li>
+<li>词频分析【密文长度足够长】 <a target="_blank" rel="noopener" href="http://quipqiup.com/">http://quipqiup.com/</a></li>
 </ul>
 <p>当密钥空间足够大，而密文长度足够短的情况下，破解困难。</p>
 <h1 id="2-凯撒密码"><a href="#2-凯撒密码" class="headerlink" title="2.凯撒密码"></a>2.凯撒密码</h1><h2 id="2-1-原理"><a href="#2-1-原理" class="headerlink" title="2.1 原理"></a>2.1 原理</h2><p>将明文中的每个字母都按照其在字母表中的顺序向后（或向前）移动固定数目（循环移动）作为密文，这里的移动的固定数目即为密钥。</p>
@@ -542,7 +542,10 @@
 <p>密钥：guangtou </p>
 <p>偏移：6,20,0,13,6,19,14,20 </p>
 <p>明文：y0u6u3h1y0uj1u</p>
-<h2 id="2-5-破解思路"><a href="#2-5-破解思路" class="headerlink" title="2.5 破解思路"></a>2.5 破解思路</h2><h2 id="2-6-破解工具"><a href="#2-6-破解工具" class="headerlink" title="2.6 破解工具"></a>2.6 破解工具</h2>
+<h2 id="2-5-破解思路"><a href="#2-5-破解思路" class="headerlink" title="2.5 破解思路"></a>2.5 破解思路</h2><h3 id="对于偏移量不变（不带密钥）的情况"><a href="#对于偏移量不变（不带密钥）的情况" class="headerlink" title="对于偏移量不变（不带密钥）的情况"></a>对于偏移量不变（不带密钥）的情况</h3><pre><code>遍历 26 个偏移量
+利用词频分析（密文较长的情况） 题目例子:XCTF-[safer-than-rot13]
+</code></pre>
+<h2 id="2-6-破解工具"><a href="#2-6-破解工具" class="headerlink" title="2.6 破解工具"></a>2.6 破解工具</h2>
                 
             </div>
             <hr/>
@@ -1101,7 +1104,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">855</span>&nbsp;字
+                class="white-color">897</span>&nbsp;字
             
             
             
