@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CTF-crypto-XCTF攻防世界-[题目名字], blogsite of 0to1sec">
+    <meta name="keywords" content="CTF-crypto-XCTF攻防世界-[easychallenge], blogsite of 0to1sec">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CTF-crypto-XCTF攻防世界-[题目名字] | blogsite of 0to1sec</title>
+    <title>CTF-crypto-XCTF攻防世界-[easychallenge] | blogsite of 0to1sec</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/17.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CTF-crypto-XCTF攻防世界-[题目名字]</h1>
+                    <h1 class="description center-align post-title">CTF-crypto-XCTF攻防世界-[easychallenge]</h1>
                 </div>
             </div>
         </div>
@@ -443,21 +443,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-18
+                    2022-09-19
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-18
+                    2022-09-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    0
+                    373
                 </div>
                 
 
@@ -484,7 +484,92 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h1 id="0-考点"><a href="#0-考点" class="headerlink" title="0.考点"></a>0.考点</h1><p>pyc逆向、加密算法逆向分析</p>
+<h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><img src='/picture/9.png' width='70%'>
+<img src='/picture/10.png' width='50%'>
+<center> 题目信息、一个pyc文件 </center>
+
+<h1 id="2-分析解决"><a href="#2-分析解决" class="headerlink" title="2.分析解决"></a>2.分析解决</h1><h2 id="1）反解释pyc文件"><a href="#1）反解释pyc文件" class="headerlink" title="1）反解释pyc文件"></a>1）反解释pyc文件</h2><p>方法1（在线）:<a target="_blank" rel="noopener" href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p>
+<p>方法2:uncompyle6</p>
+<pre class=" language-shell"><code class="language-shell">pip install uncompyle6
+uncompyle6 easychallenge.pyc >  uncompled.py
+</code></pre>
+<img src='/picture/11.png' width='80%'>
+<center> 题目信息、一个pyc文件 </center>
+
+<pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># uncompyle6 version 3.8.0</span>
+<span class="token comment" spellcheck="true"># Python bytecode 2.7 (62211)</span>
+<span class="token comment" spellcheck="true"># Decompiled from: Python 3.8.5 (default, Sep  4 2020, 02:22:02) </span>
+<span class="token comment" spellcheck="true"># [Clang 10.0.0 ]</span>
+<span class="token comment" spellcheck="true"># Embedded file name: ans.py</span>
+<span class="token comment" spellcheck="true"># Compiled at: 2018-08-09 11:29:44</span>
+<span class="token keyword">import</span> base64
+
+<span class="token keyword">def</span> <span class="token function">encode1</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">36</span>
+        x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">25</span>
+        s <span class="token operator">+=</span> chr<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> s
+
+
+<span class="token keyword">def</span> <span class="token function">encode2</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    s <span class="token operator">=</span> <span class="token string">''</span>
+    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>
+        x <span class="token operator">=</span> ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">36</span>
+        x <span class="token operator">=</span> x <span class="token operator">^</span> <span class="token number">36</span>
+        s <span class="token operator">+=</span> chr<span class="token punctuation">(</span>x<span class="token punctuation">)</span>
+
+    <span class="token keyword">return</span> s
+
+
+<span class="token keyword">def</span> <span class="token function">encode3</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> base64<span class="token punctuation">.</span>b32encode<span class="token punctuation">(</span>ans<span class="token punctuation">)</span>
+
+
+flag <span class="token operator">=</span> <span class="token string">' '</span>
+<span class="token keyword">print</span> <span class="token string">'Please Input your flag:'</span>
+flag <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>
+final <span class="token operator">=</span> <span class="token string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span>
+<span class="token keyword">if</span> encode3<span class="token punctuation">(</span>encode2<span class="token punctuation">(</span>encode1<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> final<span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">'correct'</span>
+<span class="token keyword">else</span><span class="token punctuation">:</span>
+    <span class="token keyword">print</span> <span class="token string">'wrong'</span>
+<span class="token comment" spellcheck="true"># okay decompiling easychallenge.pyc</span>
+
+</code></pre>
+<p>python2格式。</p>
+<h2 id="2）逆向分析加密算法"><a href="#2）逆向分析加密算法" class="headerlink" title="2）逆向分析加密算法"></a>2）逆向分析加密算法</h2><p>通过分析代码，只需要对final字符串进行三层解密即可。</p>
+<ol>
+<li>base32解密</li>
+<li>逆向encode2算法，对上一步的结果的每个字符做异或36的操作，然后减36，转化为ascii字符</li>
+<li>逆向encode1算法，对上一步的结果的每个字符的ascii码值减25，然后异或36，转化为字符</li>
+</ol>
+<h2 id="3）完整exp代码"><a href="#3）完整exp代码" class="headerlink" title="3）完整exp代码"></a>3）完整exp代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
+<span class="token keyword">from</span> email<span class="token punctuation">.</span>mime <span class="token keyword">import</span> base
+
+final<span class="token operator">=</span><span class="token string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span>
+
+b32decode<span class="token operator">=</span>base64<span class="token punctuation">.</span>b32decode<span class="token punctuation">(</span>final<span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>b32decode<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#b'\xa0\xbe\xa7Z\xb7\xb5Z\xa6\xa0Z\xb8\xae\xa3\xa9Z\xb7Z\xb0\xa9\xae\xa3\xa4\xad\xad\xad\xad\xad\xb2'</span>
+
+res1<span class="token operator">=</span><span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> b32decode<span class="token punctuation">:</span>
+    res1<span class="token operator">+=</span>chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>chr<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">36</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res1<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true"># `v_ZomZ^`ZxfciZoZpifc\eeeeer</span>
+res2<span class="token operator">=</span><span class="token string">''</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> res1<span class="token punctuation">:</span>
+    res2<span class="token operator">+=</span> chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">36</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span>res2<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">#cyberpeace&amp;#123;interestinghhhhh&amp;#125;</span>
+</code></pre>
+<img src='/picture/12.png' width='80%'>
+<center> 执行结果 </center>
+flag:cyberpeace{interestinghhhhh}
                 
             </div>
             <hr/>
@@ -510,7 +595,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/">http://0to1sec.com/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/</a>
+                    <a href="http://0to1sec.com/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/">http://0to1sec.com/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -727,9 +812,68 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="CTF-crypto-XCTF攻防世界-[easychallenge]">
+                        
+                        <span class="card-title">CTF-crypto-XCTF攻防世界-[easychallenge]</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            考点——pyc逆向、加密算法逆向分析
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/CTF-crypto/" class="post-category">
+                                    CTF-crypto
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/CTF/">
+                        <span class="chip bg-color">CTF</span>
+                    </a>
+                    
+                    <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
+                        <span class="chip bg-color">crypto密码学</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">网路安全</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
             <div class="card">
                 <a href="/2022/09/19/ctf-crypto-zhi-shi-ku-gu-dian-mi-ma-zhi-dan-biao-dai-huan-mi-ma/">
                     <div class="card-image">
@@ -747,9 +891,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -775,63 +919,6 @@
                     
                     <a href="/tags/%E7%9F%A5%E8%AF%86%E5%BA%93/">
                         <span class="chip bg-color">知识库</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/09/18/python-base64-bian-ma-yu-tu-pian-zhi-jian-de-zhuan-huan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="python-base64编码与图片之间的转换">
-                        
-                        <span class="card-title">python-base64编码与图片之间的转换</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            python实现base64编码与图片之间的转换
-                        
-                    </div>
-                    <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-18
-                            </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                        <span class="chip bg-color">实用经验</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                    <a href="/tags/%E7%BC%96%E7%A0%81%E8%BD%AC%E6%8D%A2/">
-                        <span class="chip bg-color">编码转换</span>
                     </a>
                     
                 </div>
@@ -1034,7 +1121,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.9k</span>&nbsp;字
+                class="white-color">2.3k</span>&nbsp;字
             
             
             

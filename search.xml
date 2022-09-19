@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>CTF-crypto-XCTF攻防世界-[easychallenge]</title>
+      <link href="/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/"/>
+      <url>/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/</url>
+      
+        <content type="html"><![CDATA[<h1 id="0-考点"><a href="#0-考点" class="headerlink" title="0.考点"></a>0.考点</h1><p>pyc逆向、加密算法逆向分析</p><h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><img src='/picture/9.png' width='70%'><img src='/picture/10.png' width='50%'><center> 题目信息、一个pyc文件 </center><h1 id="2-分析解决"><a href="#2-分析解决" class="headerlink" title="2.分析解决"></a>2.分析解决</h1><h2 id="1）反解释pyc文件"><a href="#1）反解释pyc文件" class="headerlink" title="1）反解释pyc文件"></a>1）反解释pyc文件</h2><p>方法1（在线）:<a href="https://tool.lu/pyc/">https://tool.lu/pyc/</a></p><p>方法2:uncompyle6</p><pre class=" language-shell"><code class="language-shell">pip install uncompyle6uncompyle6 easychallenge.pyc >  uncompled.py</code></pre><img src='/picture/11.png' width='80%'><center> 题目信息、一个pyc文件 </center><pre class=" language-python"><code class="language-python"><span class="token comment" spellcheck="true"># uncompyle6 version 3.8.0</span><span class="token comment" spellcheck="true"># Python bytecode 2.7 (62211)</span><span class="token comment" spellcheck="true"># Decompiled from: Python 3.8.5 (default, Sep  4 2020, 02:22:02) </span><span class="token comment" spellcheck="true"># [Clang 10.0.0 ]</span><span class="token comment" spellcheck="true"># Embedded file name: ans.py</span><span class="token comment" spellcheck="true"># Compiled at: 2018-08-09 11:29:44</span><span class="token keyword">import</span> base64<span class="token keyword">def</span> <span class="token function">encode1</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>    s <span class="token operator">=</span> <span class="token string">''</span>    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>        x <span class="token operator">=</span> ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token number">36</span>        x <span class="token operator">=</span> x <span class="token operator">+</span> <span class="token number">25</span>        s <span class="token operator">+=</span> chr<span class="token punctuation">(</span>x<span class="token punctuation">)</span>    <span class="token keyword">return</span> s<span class="token keyword">def</span> <span class="token function">encode2</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>    s <span class="token operator">=</span> <span class="token string">''</span>    <span class="token keyword">for</span> i <span class="token keyword">in</span> ans<span class="token punctuation">:</span>        x <span class="token operator">=</span> ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">36</span>        x <span class="token operator">=</span> x <span class="token operator">^</span> <span class="token number">36</span>        s <span class="token operator">+=</span> chr<span class="token punctuation">(</span>x<span class="token punctuation">)</span>    <span class="token keyword">return</span> s<span class="token keyword">def</span> <span class="token function">encode3</span><span class="token punctuation">(</span>ans<span class="token punctuation">)</span><span class="token punctuation">:</span>    <span class="token keyword">return</span> base64<span class="token punctuation">.</span>b32encode<span class="token punctuation">(</span>ans<span class="token punctuation">)</span>flag <span class="token operator">=</span> <span class="token string">' '</span><span class="token keyword">print</span> <span class="token string">'Please Input your flag:'</span>flag <span class="token operator">=</span> raw_input<span class="token punctuation">(</span><span class="token punctuation">)</span>final <span class="token operator">=</span> <span class="token string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span><span class="token keyword">if</span> encode3<span class="token punctuation">(</span>encode2<span class="token punctuation">(</span>encode1<span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">==</span> final<span class="token punctuation">:</span>    <span class="token keyword">print</span> <span class="token string">'correct'</span><span class="token keyword">else</span><span class="token punctuation">:</span>    <span class="token keyword">print</span> <span class="token string">'wrong'</span><span class="token comment" spellcheck="true"># okay decompiling easychallenge.pyc</span></code></pre><p>python2格式。</p><h2 id="2）逆向分析加密算法"><a href="#2）逆向分析加密算法" class="headerlink" title="2）逆向分析加密算法"></a>2）逆向分析加密算法</h2><p>通过分析代码，只需要对final字符串进行三层解密即可。</p><ol><li>base32解密</li><li>逆向encode2算法，对上一步的结果的每个字符做异或36的操作，然后减36，转化为ascii字符</li><li>逆向encode1算法，对上一步的结果的每个字符的ascii码值减25，然后异或36，转化为字符</li></ol><h2 id="3）完整exp代码"><a href="#3）完整exp代码" class="headerlink" title="3）完整exp代码"></a>3）完整exp代码</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64<span class="token keyword">from</span> email<span class="token punctuation">.</span>mime <span class="token keyword">import</span> basefinal<span class="token operator">=</span><span class="token string">'UC7KOWVXWVNKNIC2XCXKHKK2W5NLBKNOUOSK3LNNVWW3E==='</span>b32decode<span class="token operator">=</span>base64<span class="token punctuation">.</span>b32decode<span class="token punctuation">(</span>final<span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>b32decode<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#b'\xa0\xbe\xa7Z\xb7\xb5Z\xa6\xa0Z\xb8\xae\xa3\xa9Z\xb7Z\xb0\xa9\xae\xa3\xa4\xad\xad\xad\xad\xad\xb2'</span>res1<span class="token operator">=</span><span class="token string">''</span><span class="token keyword">for</span> i <span class="token keyword">in</span> b32decode<span class="token punctuation">:</span>    res1<span class="token operator">+=</span>chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>chr<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>res1<span class="token punctuation">)</span><span class="token comment" spellcheck="true"># `v_ZomZ^`ZxfciZoZpifc\eeeeer</span>res2<span class="token operator">=</span><span class="token string">''</span><span class="token keyword">for</span> i <span class="token keyword">in</span> res1<span class="token punctuation">:</span>    res2<span class="token operator">+=</span> chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">36</span><span class="token punctuation">)</span><span class="token keyword">print</span><span class="token punctuation">(</span>res2<span class="token punctuation">)</span><span class="token comment" spellcheck="true">#cyberpeace&amp;#123;interestinghhhhh&amp;#125;</span></code></pre><img src='/picture/12.png' width='80%'><center> 执行结果 </center>flag:cyberpeace{interestinghhhhh}]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF-crypto </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+            <tag> crypto密码学 </tag>
+            
+            <tag> 网路安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CTF-crypto-知识库-古典密码之单表代换密码</title>
       <link href="/2022/09/19/ctf-crypto-zhi-shi-ku-gu-dian-mi-ma-zhi-dan-biao-dai-huan-mi-ma/"/>
       <url>/2022/09/19/ctf-crypto-zhi-shi-ku-gu-dian-mi-ma-zhi-dan-biao-dai-huan-mi-ma/</url>
@@ -25,35 +54,6 @@
             <tag> crypto密码学 </tag>
             
             <tag> 知识库 </tag>
-            
-        </tags>
-      
-    </entry>
-    
-    
-    
-    <entry>
-      <title>CTF-crypto-XCTF攻防世界-[题目名字]</title>
-      <link href="/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/"/>
-      <url>/2022/09/18/ctf-crypto-xctf-gong-fang-shi-jie-ti-mu-ming-zi/</url>
-      
-        <content type="html"><![CDATA[]]></content>
-      
-      
-      <categories>
-          
-          <category> CTF-crypto </category>
-          
-      </categories>
-      
-      
-        <tags>
-            
-            <tag> CTF </tag>
-            
-            <tag> crypto密码学 </tag>
-            
-            <tag> 网路安全 </tag>
             
         </tags>
       
