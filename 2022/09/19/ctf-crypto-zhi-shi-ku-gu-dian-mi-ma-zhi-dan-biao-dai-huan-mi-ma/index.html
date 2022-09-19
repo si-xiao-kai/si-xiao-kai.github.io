@@ -585,14 +585,9 @@
 
 <h1 id="4-简单替换密码"><a href="#4-简单替换密码" class="headerlink" title="4. 简单替换密码"></a>4. 简单替换密码</h1><h2 id="4-1-原理"><a href="#4-1-原理" class="headerlink" title="4.1 原理"></a>4.1 原理</h2><p>简单替换密码（Simple Substitution Cipher）加密时，将每个明文字母替换为与之唯一对应且不同的字母。它与恺撒密码之间的区别是其密码字母表的字母不是简单的移位，而是完全是混乱的，这也使得其破解难度要高于凯撒密码。</p>
 <p>可以理解为带密钥的凯撒密码，密钥未知。</p>
-<h2 id="4-2-码表例子"><a href="#4-2-码表例子" class="headerlink" title="4.2 码表例子"></a>4.2 码表例子</h2><pre><code>明文字母 : abcdefghijklmnopqrstuvwxyz
-密文字母 : phqgiumeaylnofdxjkrcvstzwb
-
-明文密文的对应关系虽然没规律性，但是仍然满足明文密文一一对应的特点。
-</code></pre>
-<h2 id="4-3-解密例子"><a href="#4-3-解密例子" class="headerlink" title="4.3 解密例子"></a>4.3 解密例子</h2><pre><code>明文：the quick brown fox jumps over the lazy dog
-密文：cei jvaql hkdtf udz yvoxr dsik cei npbw gdm
-</code></pre>
+<h2 id="4-2-码表例子"><a href="#4-2-码表例子" class="headerlink" title="4.2 码表例子"></a>4.2 码表例子</h2><p>明文字母 : abcdefghijklmnopqrstuvwxyz<br>密文字母 : phqgiumeaylnofdxjkrcvstzwb</p>
+<p>明文密文的对应关系虽然没规律性，但是仍然满足明文密文一一对应的特点。</p>
+<h2 id="4-3-解密例子"><a href="#4-3-解密例子" class="headerlink" title="4.3 解密例子"></a>4.3 解密例子</h2><p>明文：the quick brown fox jumps over the lazy dog<br>密文：cei jvaql hkdtf udz yvoxr dsik cei npbw gdm</p>
 <h2 id="4-4-破解思路"><a href="#4-4-破解思路" class="headerlink" title="4.4 破解思路"></a>4.4 破解思路</h2><p>密钥空间为26! </p>
 <p>密钥空间非常大，不能采用暴力破解的方法，一般采用词频分析</p>
 <h2 id="4-5-破解工具"><a href="#4-5-破解工具" class="headerlink" title="4.5 破解工具"></a>4.5 破解工具</h2><p>频率分析<br><a target="_blank" rel="noopener" href="http://quipqiup.com/">http://quipqiup.com/</a></p>
@@ -605,7 +600,7 @@
 <p>b的可能取值范围为26</p>
 <p>密钥空间=26*12=312</p>
 <p>a、b参数知道任意一个那么暴力破解的代价将会大大减少</p>
-<h3 id="5-2-3-已知明文攻击"><a href="#5-2-3-已知明文攻击" class="headerlink" title="5.2.3 已知明文攻击"></a>5.2.3 已知明文攻击</h3><p>知道两对及以上的密文明文对$y_1和x_1$、$y_2和x_2$，且字母集为26个英文字母<br>$$<br>\begin{array}{l}<br>y_1=\left(a x_1+b\right) \quad(\bmod 26) \<br>y_2=\left(a x_2+b\right) \quad(\bmod 26)<br>\end{array}<br>$$</p>
+<h3 id="5-2-3-已知明文攻击"><a href="#5-2-3-已知明文攻击" class="headerlink" title="5.2.3 已知明文攻击"></a>5.2.3 已知明文攻击</h3><p>知道两对及以上的密文明文对$y_1和x_1$、$y_2和x_2$，且字母集为26个英文字母<br>$$<br>y_1=\left(a x_1+b\right) \quad(\bmod 26) \<br>y_2=\left(a x_2+b\right) \quad(\bmod 26)<br>$$</p>
 <p>$$<br>y_1-y_2=a\left(x_1-x_2\right) \quad(\bmod 26)<br>$$</p>
 <p>$a$可以计算出来、进而$b$也可以计算出来。<br>然后对于任意密文我们都可以进行解密了。</p>
 
