@@ -457,14 +457,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    829
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    5 分
                 </div>
                 
 
@@ -569,7 +569,35 @@
 <img src='/picture/7.png' width='70%'>
 <center> 解密 </center>
 
+<h1 id="2-移位密码"><a href="#2-移位密码" class="headerlink" title="2.移位密码"></a>2.移位密码</h1><pre><code>与凯撒密码类似，区别在于移位密码不仅会处理字母，还会处理数字和特殊字符，利用 ASCII 码表进行移位。其破解的一般方法也是遍历所有的可能性来得到可能的结果。
+</code></pre>
+<h1 id="3-Atbash密码"><a href="#3-Atbash密码" class="headerlink" title="3.Atbash密码"></a>3.Atbash密码</h1><h2 id="3-1-原理"><a href="#3-1-原理" class="headerlink" title="3.1 原理"></a>3.1 原理</h2><p>直接上码表</p>
+<ul>
+<li>明文：A B C D E F G H I J K L M N O P Q R S T U V W X Y Z</li>
+<li>密文：Z Y X W V U T S R Q P O N M L K J I H G F E D C B A</li>
+</ul>
+<p>A移动25、B移动23、C移动21、D移动19、依次类推，可以看到偏移量有变化，所以可以理解为带密钥的凯撒密码</p>
+<h2 id="3-2-例子"><a href="#3-2-例子" class="headerlink" title="3.2 例子"></a>3.2 例子</h2><p>明文：the quick brown fox jumps over the lazy dog</p>
+<p>密文：gsv jfrxp yildm ulc qfnkh levi gsv ozab wlt</p>
+<h2 id="3-3-破解思路"><a href="#3-3-破解思路" class="headerlink" title="3.3 破解思路"></a>3.3 破解思路</h2><p>可以看出其密钥空间足够短，可以进行爆破，同时当密文足够长时，仍然可以采用词频分析的方法解决。</p>
+<h2 id="3-4-破解工具"><a href="#3-4-破解工具" class="headerlink" title="3.4 破解工具"></a>3.4 破解工具</h2><p><a target="_blank" rel="noopener" href="http://www.practicalcryptography.com/ciphers/classical-era/atbash-cipher/">http://www.practicalcryptography.com/ciphers/classical-era/atbash-cipher/</a></p>
+<img src='/picture/8.png' width='70%'>
+<center> 例子 </center>
 
+<h1 id="4-简单替换密码"><a href="#4-简单替换密码" class="headerlink" title="4. 简单替换密码"></a>4. 简单替换密码</h1><h2 id="4-1-原理"><a href="#4-1-原理" class="headerlink" title="4.1 原理"></a>4.1 原理</h2><p>简单替换密码（Simple Substitution Cipher）加密时，将每个明文字母替换为与之唯一对应且不同的字母。它与恺撒密码之间的区别是其密码字母表的字母不是简单的移位，而是完全是混乱的，这也使得其破解难度要高于凯撒密码。</p>
+<p>可以理解为带密钥的凯撒密码，密钥未知。</p>
+<h2 id="4-2-码表例子"><a href="#4-2-码表例子" class="headerlink" title="4.2 码表例子"></a>4.2 码表例子</h2><pre><code>明文字母 : abcdefghijklmnopqrstuvwxyz
+密文字母 : phqgiumeaylnofdxjkrcvstzwb
+
+明文密文的对应关系虽然没规律性，但是仍然满足明文密文一一对应的特点。
+</code></pre>
+<h2 id="4-3-解密例子"><a href="#4-3-解密例子" class="headerlink" title="4.3 解密例子"></a>4.3 解密例子</h2><pre><code>明文：the quick brown fox jumps over the lazy dog
+密文：cei jvaql hkdtf udz yvoxr dsik cei npbw gdm
+</code></pre>
+<h2 id="4-4-破解思路"><a href="#4-4-破解思路" class="headerlink" title="4.4 破解思路"></a>4.4 破解思路</h2><p>密钥空间为26! </p>
+<p>密钥空间非常大，不能采用暴力破解的方法，一般采用词频分析</p>
+<h2 id="4-5-破解工具"><a href="#4-5-破解工具" class="headerlink" title="4.5 破解工具"></a>4.5 破解工具</h2><p>频率分析<br><a target="_blank" rel="noopener" href="http://quipqiup.com/">http://quipqiup.com/</a></p>
+<h1 id="5-仿射密码"><a href="#5-仿射密码" class="headerlink" title="5. 仿射密码"></a>5. 仿射密码</h1>
                 
             </div>
             <hr/>
@@ -1128,7 +1156,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">1.1k</span>&nbsp;字
+                class="white-color">1.6k</span>&nbsp;字
             
             
             
