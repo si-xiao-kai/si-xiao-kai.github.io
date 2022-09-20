@@ -4,6 +4,37 @@
   
     
     <entry>
+      <title>CTF-crypto-XCTF攻防世界-[Decrypt-the-Message]</title>
+      <link href="/2022/09/20/ctf-crypto-xctf-gong-fang-shi-jie-decrypt-the-message/"/>
+      <url>/2022/09/20/ctf-crypto-xctf-gong-fang-shi-jie-decrypt-the-message/</url>
+      
+        <content type="html"><![CDATA[<h1 id="0-考点"><a href="#0-考点" class="headerlink" title="0.考点"></a>0.考点</h1><p>诗歌密码</p><h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><img src='/picture/0920-1.png' width='70%'><img src='/picture/0920-2.png' width='50%'><center> 一个诗歌和密文txt文件 </center><h1 id="2-诗歌密码"><a href="#2-诗歌密码" class="headerlink" title="2.诗歌密码"></a>2.诗歌密码</h1><p>诗歌密码的显著特点就是“诗歌”+“密文”。</p><p>下面简要讲解加密步骤</p><ol><li>从诗歌中提取关键字作为密钥</li></ol><p>for my purpose holds to sail beyond the sunset, and the baths of all the western stars until I die.</p><p>从中选择五个词作为关键字：比如“ for”，“ sail”，“ all”，“ stars”，“ die”。</p><p>将它们串在一起，然后给字母编号，编号的规则为:</p><p>以“ a”开头为1，第二个“ a”开头为2，依此类推；如果没有第二个“ a”，则“ b”的编号为2；或者 如果没有“ b”，则“ c”被标记为2，依此类推，直到为所有字母编号。</p><img src='/picture/0920-1.png' width='70%'><p>关于诗歌密码的更多内容参考<a href="http://www.wmbriggs.com/post/1001/">诗歌密码</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF-crypto </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+            <tag> crypto密码学 </tag>
+            
+            <tag> 网路安全 </tag>
+            
+            <tag> 诗歌密码 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CTF-crypto-XCTF攻防世界-[easychallenge]</title>
       <link href="/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/"/>
       <url>/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/</url>
@@ -25,6 +56,8 @@
             <tag> crypto密码学 </tag>
             
             <tag> 网路安全 </tag>
+            
+            <tag> pyc逆向 </tag>
             
         </tags>
       
