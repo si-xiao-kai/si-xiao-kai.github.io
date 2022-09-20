@@ -461,14 +461,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    6 分
                 </div>
                 
 
@@ -514,13 +514,14 @@ emzcf sebt yuwi ytrr ortl rbon aluo konf ihye cyog rowh prhj feom ihos perp twnb
 <p>关于诗歌密码的更多内容参考<a target="_blank" rel="noopener" href="http://www.wmbriggs.com/post/1001/">诗歌密码</a></p>
 <h1 id="3-如何破解诗歌密码"><a href="#3-如何破解诗歌密码" class="headerlink" title="3.如何破解诗歌密码"></a>3.如何破解诗歌密码</h1><h2 id="3-1-破解工具"><a href="#3-1-破解工具" class="headerlink" title="3.1 破解工具"></a>3.1 破解工具</h2><p><a target="_blank" rel="noopener" href="https://github.com/abpolym/crypto-tools/tree/master/poemcode/">获取解密诗歌密码的工具戳这里</a></p>
 <p>直接运行脚本的话请用python2，当然也可以自己修改为python3格式的。</p>
-<p>如果系统是macos、且没有安装python2可以用如下的方法安装python2环境:</p>
+<p>如果系统是macos比较新的版本且没有安装python2可以用如下的方法安装python2环境:</p>
 <pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> pyenv
 pyenv <span class="token function">install</span> 2.7.18
 <span class="token function">vi</span> ~/.zshrc 
 <span class="token comment" spellcheck="true">#最后一行添加下面的别名</span>
 <span class="token function">alias</span> python2<span class="token operator">=</span><span class="token string">'/usr/local/var/pyenv/versions/2.7.18/bin/python'</span> <span class="token comment" spellcheck="true"># 注意换成你安装的路径</span>
 </code></pre>
+<p>下面是完整的脚本：</p>
 <pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> sys
 <span class="token keyword">import</span> itertools
 <span class="token keyword">from</span> os <span class="token keyword">import</span> listdir
@@ -639,8 +640,33 @@ decrypt<span class="token punctuation">(</span>sys<span class="token punctuation
 </code></pre>
 <ul>
 <li>第一个参数放诗歌文件、第二个参数放密文文件</li>
-<li></li>
+<li>诗歌和密文中的”.”等特殊符号去掉，否则会报如下错误：IndexError: list assignment index out of range</li>
 </ul>
+<p>poem.txt</p>
+<pre class=" language-text"><code class="language-text">The life that I have
+Is all that I have
+And the life that I have
+Is yours
+
+The love that I have
+Of the life that I have
+Is yours and yours and yours
+
+A sleep I shall have
+A rest I shall have
+Yet death will be but a pause
+
+For the peace of my years
+In the long green grass
+Will be yours and yours and yours
+</code></pre>
+<p>result.txt</p>
+<pre class=" language-text"><code class="language-text">emzcf sebt yuwi ytrr ortl rbon aluo konf ihye cyog rowh prhj feom ihos perp twnb tpak heoc yaui usoa irtd tnlu ntke onds goym hmpq
+</code></pre>
+<p>爆破之后会有很多结果：找到英文表达最通顺的一个即为flag。</p>
+<pre class=" language-text"><code class="language-text">ifyouthinkcryptographyistheanswertoyourproblemthenyoudonotknowwhatyourproblemisabcdefghijklmnopqrstu
+</code></pre>
+<p>WellDone</p>
 
                 
             </div>
@@ -1205,7 +1231,7 @@ decrypt<span class="token punctuation">(</span>sys<span class="token punctuation
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">3.3k</span>&nbsp;字
+                class="white-color">3.5k</span>&nbsp;字
             
             
             
