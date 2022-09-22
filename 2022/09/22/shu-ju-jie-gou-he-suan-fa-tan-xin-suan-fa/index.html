@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CTF-reverse-XCTF攻防世界-[666], hacker进化论-0to1sec">
+    <meta name="keywords" content="数据结构和算法-贪心算法, hacker进化论-0to1sec">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CTF-reverse-XCTF攻防世界-[666] | hacker进化论-0to1sec</title>
+    <title>数据结构和算法-贪心算法 | hacker进化论-0to1sec</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CTF-reverse-XCTF攻防世界-[666]</h1>
+                    <h1 class="description center-align post-title">数据结构和算法-贪心算法</h1>
                 </div>
             </div>
         </div>
@@ -410,16 +410,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CTF/">
-                                <span class="chip bg-color">CTF</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
-                            <a href="/tags/reverse-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/">
-                                <span class="chip bg-color">reverse(逆向分析)</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
-                                <span class="chip bg-color">网路安全</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
                     </div>
@@ -430,8 +430,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF-reverse/" class="post-category">
-                                CTF-reverse
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据结构和算法
                             </a>
                         
                     </div>
@@ -443,21 +443,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-09-22
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    750
+                    864
                 </div>
                 
 
@@ -484,108 +484,50 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="0-前言"><a href="#0-前言" class="headerlink" title="0.前言"></a>0.前言</h1><p>挺难得的吧就是说，入门逆向的第一个题目在没借助外力的情况下独立完成了，算是逆向之路的一个良好开端。</p>
-<h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><img src='/picture/0920-5.png' width='80%'>
-<img src='/picture/0920-6.png' width='60%'>
-<center> 题目信息 </center>
+                <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>1)贪心算法是最符合自然智慧的算法。</p>
+<p>2)贪心算法用一种局部最功利的标准，总是做出在当前看来是最好的选择。</p>
+<p>3)难点在于证明局部最功利的标准可以得到全局最优解，【怎么证明贪心策略是否有效】。</p>
+<p>4)有些问题用贪心策略能够获得最优解，有些则不然。</p>
+<p>5)对于贪心算法的学习主要以增加阅历和经验为主。</p>
+<h1 id="2-能用贪心策略求解的例子"><a href="#2-能用贪心策略求解的例子" class="headerlink" title="2.能用贪心策略求解的例子"></a>2.能用贪心策略求解的例子</h1><p>假设一个数组中$N$个正数</p>
+<p>定义：分数score=第一个挑出来的数*1+第二个挑出来的数*2+第三个挑出来的数*3+….</p>
+<p>目标获得最大分数。</p>
+<p>有效贪心策略：数组中小样本✖️小系数，然后累加</p>
+<p>基本想法：从小到大排序，从前往后逐个挑出来。</p>
+<p>很显然，这是一个有效的贪心策略。</p>
+<h1 id="3-贪心策略求不出最优解的例子"><a href="#3-贪心策略求不出最优解的例子" class="headerlink" title="3.贪心策略求不出最优解的例子"></a>3.贪心策略求不出最优解的例子</h1><p>如下图所示的矩阵，假设一个人从左上角到右下角（每一步只能向右或者向下移动），然后再从右下角回到左上角（每一步只能向左或者向上移动），要求来回的途中拿到最多的1。<br><img src='/picture/0922-01.jpeg' width='70%'></p>
+<center> 题面 </center>
 
-<h1 id="2-程序初步分析工作"><a href="#2-程序初步分析工作" class="headerlink" title="2.程序初步分析工作"></a>2.程序初步分析工作</h1><h2 id="2-1-file分析"><a href="#2-1-file分析" class="headerlink" title="2.1 file分析"></a>2.1 file分析</h2><p>64位ELF文件、动态链接</p>
-<pre class=" language-text"><code class="language-text">666: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, for GNU/Linux 3.2.0, BuildID[sha1]=eaed290e5801a19d53e8597ac1a0499ec8bef798, not stripped
-</code></pre>
-<h2 id="2-2-执行程序"><a href="#2-2-执行程序" class="headerlink" title="2.2 执行程序"></a>2.2 执行程序</h2><p>linux下运行(ELF文件在mac下不能运行，win、linux、macos都有自己特定的程序解析格式)<br><img src='/picture/0920-7.png' width='70%'></p>
-<center> 运行程序 </center>
+<h2 id="3-1-贪心策略求解"><a href="#3-1-贪心策略求解" class="headerlink" title="3.1 贪心策略求解"></a>3.1 贪心策略求解</h2><p>采用贪心策略求解，从左上到右下的过程中，走紫色路径，这样一来，返回的过程中是不可能拿到剩下的两个1的，拿到其中一个，另外一个就无法拿到。<br><img src='/picture/0922-02.jpeg' width='70%'></p>
+<center> 贪心策略求解 </center>
 
-<h2 id="2-3-checksec检查安全措施"><a href="#2-3-checksec检查安全措施" class="headerlink" title="2.3 checksec检查安全措施"></a>2.3 checksec检查安全措施</h2><pre class=" language-text"><code class="language-text">[*] You have the latest version of Pwntools (4.8.0)
-[*] '/root/Desktop/XCTF/reverse/666/666'
-    Arch:     amd64-64-little
-    RELRO:    Partial RELRO
-    Stack:    No canary found
-    NX:       NX enabled
-    PIE:      PIE enabled
-</code></pre>
-<h1 id="3-IDA分析"><a href="#3-IDA分析" class="headerlink" title="3. IDA分析"></a>3. IDA分析</h1><p>F5反编译,分析关键的两个函数即可,遇到变量双击跳转到相应的地方查看对应的值。</p>
-<h2 id="3-1-main函数"><a href="#3-1-main函数" class="headerlink" title="3.1 main函数"></a>3.1 main函数</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  <span class="token keyword">char</span> s<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+0h] [rbp-1E0h]</span>
-  <span class="token keyword">char</span> v5<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+F0h] [rbp-F0h]</span>
+<h2 id="3-2-最优解（动态规划）"><a href="#3-2-最优解（动态规划）" class="headerlink" title="3.2 最优解（动态规划）"></a>3.2 最优解（动态规划）</h2><p>使用动态规划是可以拿到所有的1，获得最优解的。<br><img src='/picture/0922-03.jpeg' width='70%'></p>
+<center> 最优解(拿到了所有的1) </center>
 
-  <span class="token function">memset</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0x1EuLL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">printf</span><span class="token punctuation">(</span><span class="token string">"Please Input Key: "</span><span class="token punctuation">,</span> <span class="token number">0LL</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">__isoc99_scanf</span><span class="token punctuation">(</span><span class="token string">"%s"</span><span class="token punctuation">,</span> <span class="token operator">&amp;</span>v5<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token function">encode</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>v5<span class="token punctuation">,</span> <span class="token punctuation">(</span>__int64<span class="token punctuation">)</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token comment" spellcheck="true">//输入的字符长度==key的值==18即可绕过第一层</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>v5<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    <span class="token comment" spellcheck="true">//encode编码v5字符串，然后放回到s中，只要s中的字符串==enflag=='izwhroz""w"v.K".Ni'即可</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span><span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> enflag<span class="token punctuation">)</span> <span class="token punctuation">)</span>
-      <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"You are Right"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">else</span>
-      <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"flag&amp;#123;This_1s_f4cker_flag&amp;#125;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="3-2-encode函数"><a href="#3-2-encode函数" class="headerlink" title="3.2 encode函数"></a>3.2 encode函数</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> __fastcall <span class="token function">encode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>a1<span class="token punctuation">,</span> __int64 a2<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-  <span class="token keyword">char</span> v3<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+10h] [rbp-70h]</span>
-  <span class="token keyword">char</span> v4<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+30h] [rbp-50h]</span>
-  <span class="token keyword">char</span> v5<span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+50h] [rbp-30h]</span>
-  <span class="token keyword">int</span> v6<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+78h] [rbp-8h]</span>
-  <span class="token keyword">int</span> i<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+7Ch] [rbp-4h]</span>
+<h1 id="4-贪心算法经典例子-拼接字典序最小的字符串"><a href="#4-贪心算法经典例子-拼接字典序最小的字符串" class="headerlink" title="4.贪心算法经典例子(拼接字典序最小的字符串)"></a>4.贪心算法经典例子(拼接字典序最小的字符串)</h1><p>给定一个由字符串组成的数组strs,必须把所有的字符串拼接起来,返回所有可能的拼接结果中，字典序最小的结果</p>
+<h2 id="4-1-字典序"><a href="#4-1-字典序" class="headerlink" title="4.1 字典序"></a>4.1 字典序</h2><p>（1）如果两个字符串长度一样，直接按照k进制的数进行比较(k取决于字符集大小，例如全是英文字母，可以视作26进制数)。</p>
+<p>（2）如果两个字符串长度不一样，先补“0”到长度一致，然后按照（1）比较，这里的0代指k进制数的最小的数字。</p>
+<p>例如:ba 与 b，b &lt; ba</p>
+<p>例如:mk 与 ts , mk &lt; ts</p>
+<p>注：Java中的字符串比较方法就是在比较字典序</p>
+<h2 id="4-2-直观-错误-想法"><a href="#4-2-直观-错误-想法" class="headerlink" title="4.2 直观(错误)想法"></a>4.2 直观(错误)想法</h2><p>将数组中的字符串，按照字典序排序，然后逐个拼接。</p>
+<p>反例:</p>
+<p>字符数组: [“ba”,”b”]</p>
+<p>排序: “b” “ba”</p>
+<p>拼接: “bba”</p>
+<p>但是还有字典序更小的结果</p>
+<p>“bab”=”ba”.”b” &lt; “bba”</p>
+<p>上面的反例表明上述排序方案构造的贪心策略得不到正确的最优解。</p>
+<h2 id="4-3-定义新的排序方案"><a href="#4-3-定义新的排序方案" class="headerlink" title="4.3 定义新的排序方案"></a>4.3 定义新的排序方案</h2><img src='/picture/0922-04.jpeg' width='70%'>
+<center> 两种排序策略 </center>
 
-  i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  v6 <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">strlen</span><span class="token punctuation">(</span>a1<span class="token punctuation">)</span> <span class="token operator">!=</span> key <span class="token punctuation">)</span>
-    <span class="token keyword">return</span> <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Your Length is Wrong"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token keyword">for</span> <span class="token punctuation">(</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> key<span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">3</span> <span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
-    v5<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> key <span class="token operator">^</span> <span class="token punctuation">(</span>a1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    v4<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>a1<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">^</span> key<span class="token punctuation">;</span>
-    v3<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> a1<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">^</span> <span class="token number">6</span> <span class="token operator">^</span> key<span class="token punctuation">;</span>
-    <span class="token operator">*</span><span class="token punctuation">(</span>_BYTE <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>a2 <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">=</span> v5<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token operator">*</span><span class="token punctuation">(</span>_BYTE <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>a2 <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token number">1LL</span><span class="token punctuation">)</span> <span class="token operator">=</span> v4<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-    <span class="token operator">*</span><span class="token punctuation">(</span>_BYTE <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>a2 <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token number">2LL</span><span class="token punctuation">)</span> <span class="token operator">=</span> v3<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-  <span class="token keyword">return</span> a2<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
-</code></pre>
-<h2 id="3-3-分析逻辑"><a href="#3-3-分析逻辑" class="headerlink" title="3.3 分析逻辑"></a>3.3 分析逻辑</h2><p>输入的字符长度==key的值==18即可绕过第一层</p>
-<img src='/picture/0920-8.png' width='70%'>
-<center> key的值为18 </center>
-
-<img src='/picture/0920-9.png' width='70%'>
-<center> 输入length=18的字符即可绕过第一层判断 </center>
-
-
-<p>encode编码v5字符串，然后放回到s中，只要s中的字符串==enflag==’izwhroz””w”v.K”.Ni’即可</p>
-<p>逆向encode函数解码enflag，然后输入即可。</p>
-<h1 id="4-利用代码编写"><a href="#4-利用代码编写" class="headerlink" title="4.利用代码编写"></a>4.利用代码编写</h1><p>特别注意，^(异或)优先级低于+ - ，所以一定要给^先加括号。</p>
-<pre class=" language-python"><code class="language-python"><span class="token triple-quoted-string string">'''
-for ( i = 0; i &lt; key; i += 3 )
-  &amp;#123;
-    v5[i] = key ^ (a1[i] + 6); //0 ,3 ,6 ,9 ...处的字符+6再异或18
-    v4[i + 1] = (a1[i + 1] - 6) ^ key; //1,4,7,10...处的字符-6再异或18
-    v3[i + 2] = a1[i + 2] ^ 6 ^ key;
-    *(_BYTE *)(a2 + i) = v5[i]; //0 ,3 ,6 ,9 ...处的字符 赋值给a2[0] a2[3] a2[6] ...
-    *(_BYTE *)(a2 + i + 1LL) = v4[i + 1]; 
-    *(_BYTE *)(a2 + i + 2LL) = v3[i + 2];
-  &amp;#125;
-'''</span>
-
-enflag<span class="token operator">=</span><span class="token string">'izwhroz""w"v.K".Ni'</span>
-flag<span class="token operator">=</span><span class="token string">""</span> 
-<span class="token keyword">for</span> i <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">18</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    flag<span class="token operator">+=</span>chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>enflag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">6</span><span class="token punctuation">)</span>
-    flag<span class="token operator">+=</span>chr<span class="token punctuation">(</span><span class="token punctuation">(</span>ord<span class="token punctuation">(</span>enflag<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">18</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">6</span><span class="token punctuation">)</span>
-    flag<span class="token operator">+=</span>chr<span class="token punctuation">(</span>ord<span class="token punctuation">(</span>enflag<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token operator">^</span><span class="token number">18</span><span class="token operator">^</span><span class="token number">6</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">#特别注意，^优先级低于+ - ，所以一定要给^先加括号。</span>
-</code></pre>
-<p>flag:unctf{b66_6b6_66b}</p>
-<img src='/picture/0920-10.png' width='70%'>
-<center> 输入程序验证 </center>
-
+<h3 id="证明排序方案2能够获得最优解"><a href="#证明排序方案2能够获得最优解" class="headerlink" title="证明排序方案2能够获得最优解"></a>证明排序方案2能够获得最优解</h3><ol>
+<li>证明排序方案2的排序策略具有传递性</li>
+</ol>
+<p>有些自定义的排序策略不一定具有传递性，a ≤ b,b ≤ c，推不出 a ≤ c 则不具备传递性，没有传递性的排序策略是没有意义的。</p>
+<p>字符串拼接理解为加法运算:</p>
+<img src='/picture/0922-05.jpeg' width='70%'>
+<center> 证明排序方案2的排序策略具有传递性 </center>
 
 
 
@@ -620,7 +562,7 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/20/ctf-reverse-xctf-gong-fang-shi-jie-666/">http://0to1sec.com/2022/09/20/ctf-reverse-xctf-gong-fang-shi-jie-666/</a>
+                    <a href="http://0to1sec.com/2022/09/22/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa/">http://0to1sec.com/2022/09/22/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -658,16 +600,16 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CTF/">
-                                    <span class="chip bg-color">CTF</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
-                                <a href="/tags/reverse-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/">
-                                    <span class="chip bg-color">reverse(逆向分析)</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
-                                    <span class="chip bg-color">网路安全</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
                         </div>
@@ -837,9 +779,10 @@ flag<span class="token operator">=</span><span class="token string">""</span>
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/09/22/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa/">
                     <div class="card-image">
@@ -857,9 +800,9 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -872,6 +815,7 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -898,19 +842,19 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/20/ctf-crypto-xctf-gong-fang-shi-jie-decrypt-the-message/">
+                <a href="/2022/09/20/ctf-reverse-xctf-gong-fang-shi-jie-666/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CTF-crypto-XCTF攻防世界-[Decrypt-the-Message]">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CTF-reverse-XCTF攻防世界-[666]">
                         
-                        <span class="card-title">CTF-crypto-XCTF攻防世界-[Decrypt-the-Message]</span>
+                        <span class="card-title">CTF-reverse-XCTF攻防世界-[666]</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            考点——诗歌密码
+                            考点——逆向分析Linux 64位程序
                         
                     </div>
                     <div class="publish-info">
@@ -921,8 +865,8 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF-crypto/" class="post-category">
-                                    CTF-crypto
+                            <a href="/categories/CTF-reverse/" class="post-category">
+                                    CTF-reverse
                                 </a>
                             
                             
@@ -936,16 +880,12 @@ flag<span class="token operator">=</span><span class="token string">""</span>
                         <span class="chip bg-color">CTF</span>
                     </a>
                     
-                    <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
-                        <span class="chip bg-color">crypto密码学</span>
+                    <a href="/tags/reverse-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/">
+                        <span class="chip bg-color">reverse(逆向分析)</span>
                     </a>
                     
                     <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
                         <span class="chip bg-color">网路安全</span>
-                    </a>
-                    
-                    <a href="/tags/%E8%AF%97%E6%AD%8C%E5%AF%86%E7%A0%81/">
-                        <span class="chip bg-color">诗歌密码</span>
                     </a>
                     
                 </div>
@@ -1076,6 +1016,13 @@ flag<span class="token operator">=</span><span class="token string">""</span>
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
