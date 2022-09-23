@@ -457,7 +457,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    750
+                    726
                 </div>
                 
 
@@ -505,7 +505,7 @@
 </code></pre>
 <h1 id="3-IDA分析"><a href="#3-IDA分析" class="headerlink" title="3. IDA分析"></a>3. IDA分析</h1><p>F5反编译,分析关键的两个函数即可,遇到变量双击跳转到相应的地方查看对应的值。</p>
 <h2 id="3-1-main函数"><a href="#3-1-main函数" class="headerlink" title="3.1 main函数"></a>3.1 main函数</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> __cdecl <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>argv<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span><span class="token operator">*</span>envp<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
   <span class="token keyword">char</span> s<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+0h] [rbp-1E0h]</span>
   <span class="token keyword">char</span> v5<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+F0h] [rbp-F0h]</span>
 
@@ -515,18 +515,18 @@
   <span class="token function">encode</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>v5<span class="token punctuation">,</span> <span class="token punctuation">(</span>__int64<span class="token punctuation">)</span><span class="token operator">&amp;</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token comment" spellcheck="true">//输入的字符长度==key的值==18即可绕过第一层</span>
   <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">strlen</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>v5<span class="token punctuation">)</span> <span class="token operator">==</span> key <span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token punctuation">{</span>
     <span class="token comment" spellcheck="true">//encode编码v5字符串，然后放回到s中，只要s中的字符串==enflag=='izwhroz""w"v.K".Ni'即可</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token operator">!</span><span class="token function">strcmp</span><span class="token punctuation">(</span><span class="token operator">&amp;</span>s<span class="token punctuation">,</span> enflag<span class="token punctuation">)</span> <span class="token punctuation">)</span>
       <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"You are Right"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">else</span>
-      <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"flag&amp;#123;This_1s_f4cker_flag&amp;#125;"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+      <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"flag{This_1s_f4cker_flag}"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
   <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="3-2-encode函数"><a href="#3-2-encode函数" class="headerlink" title="3.2 encode函数"></a>3.2 encode函数</h2><pre class=" language-c"><code class="language-c"><span class="token keyword">int</span> __fastcall <span class="token function">encode</span><span class="token punctuation">(</span><span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>a1<span class="token punctuation">,</span> __int64 a2<span class="token punctuation">)</span>
-<span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+<span class="token punctuation">{</span>
   <span class="token keyword">char</span> v3<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+10h] [rbp-70h]</span>
   <span class="token keyword">char</span> v4<span class="token punctuation">[</span><span class="token number">32</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+30h] [rbp-50h]</span>
   <span class="token keyword">char</span> v5<span class="token punctuation">[</span><span class="token number">40</span><span class="token punctuation">]</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// [rsp+50h] [rbp-30h]</span>
@@ -538,16 +538,16 @@
   <span class="token keyword">if</span> <span class="token punctuation">(</span> <span class="token function">strlen</span><span class="token punctuation">(</span>a1<span class="token punctuation">)</span> <span class="token operator">!=</span> key <span class="token punctuation">)</span>
     <span class="token keyword">return</span> <span class="token function">puts</span><span class="token punctuation">(</span><span class="token string">"Your Length is Wrong"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
   <span class="token keyword">for</span> <span class="token punctuation">(</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> key<span class="token punctuation">;</span> i <span class="token operator">+</span><span class="token operator">=</span> <span class="token number">3</span> <span class="token punctuation">)</span>
-  <span class="token operator">&amp;</span>#<span class="token number">123</span><span class="token punctuation">;</span>
+  <span class="token punctuation">{</span>
     v5<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> key <span class="token operator">^</span> <span class="token punctuation">(</span>a1<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">+</span> <span class="token number">6</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     v4<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token punctuation">(</span>a1<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> <span class="token number">6</span><span class="token punctuation">)</span> <span class="token operator">^</span> key<span class="token punctuation">;</span>
     v3<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">=</span> a1<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span> <span class="token operator">^</span> <span class="token number">6</span> <span class="token operator">^</span> key<span class="token punctuation">;</span>
     <span class="token operator">*</span><span class="token punctuation">(</span>_BYTE <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>a2 <span class="token operator">+</span> i<span class="token punctuation">)</span> <span class="token operator">=</span> v5<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token operator">*</span><span class="token punctuation">(</span>_BYTE <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>a2 <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token number">1LL</span><span class="token punctuation">)</span> <span class="token operator">=</span> v4<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
     <span class="token operator">*</span><span class="token punctuation">(</span>_BYTE <span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span>a2 <span class="token operator">+</span> i <span class="token operator">+</span> <span class="token number">2LL</span><span class="token punctuation">)</span> <span class="token operator">=</span> v3<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-  <span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
   <span class="token keyword">return</span> a2<span class="token punctuation">;</span>
-<span class="token operator">&amp;</span>#<span class="token number">125</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
 </code></pre>
 <h2 id="3-3-分析逻辑"><a href="#3-3-分析逻辑" class="headerlink" title="3.3 分析逻辑"></a>3.3 分析逻辑</h2><p>输入的字符长度==key的值==18即可绕过第一层</p>
 <img src='/picture/0920-8.png' width='70%'>
@@ -562,14 +562,14 @@
 <h1 id="4-利用代码编写"><a href="#4-利用代码编写" class="headerlink" title="4.利用代码编写"></a>4.利用代码编写</h1><p>特别注意，^(异或)优先级低于+ - ，所以一定要给^先加括号。</p>
 <pre class=" language-python"><code class="language-python"><span class="token triple-quoted-string string">'''
 for ( i = 0; i &lt; key; i += 3 )
-  &amp;#123;
+  {
     v5[i] = key ^ (a1[i] + 6); //0 ,3 ,6 ,9 ...处的字符+6再异或18
     v4[i + 1] = (a1[i + 1] - 6) ^ key; //1,4,7,10...处的字符-6再异或18
     v3[i + 2] = a1[i + 2] ^ 6 ^ key;
     *(_BYTE *)(a2 + i) = v5[i]; //0 ,3 ,6 ,9 ...处的字符 赋值给a2[0] a2[3] a2[6] ...
     *(_BYTE *)(a2 + i + 1LL) = v4[i + 1]; 
     *(_BYTE *)(a2 + i + 2LL) = v3[i + 2];
-  &amp;#125;
+  }
 '''</span>
 
 enflag<span class="token operator">=</span><span class="token string">'izwhroz""w"v.K".Ni'</span>
@@ -1148,7 +1148,7 @@ flag<span class="token operator">=</span><span class="token string">""</span>
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.7k</span>&nbsp;字
+                class="white-color">5.6k</span>&nbsp;字
             
             
             
