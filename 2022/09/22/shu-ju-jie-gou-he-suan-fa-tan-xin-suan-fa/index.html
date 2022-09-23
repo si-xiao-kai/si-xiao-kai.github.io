@@ -457,14 +457,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.4k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    9 分
                 </div>
                 
 
@@ -547,42 +547,202 @@
 <p>输出结果:</p>
 <p><code>strTreeSet:[a, cd, mty, xy]</code></p>
 <h3 id="4-5-2-暴力方法（作为对数器方法检验主方法的正确性）"><a href="#4-5-2-暴力方法（作为对数器方法检验主方法的正确性）" class="headerlink" title="4.5.2 暴力方法（作为对数器方法检验主方法的正确性）"></a>4.5.2 暴力方法（作为对数器方法检验主方法的正确性）</h3><p>暴力枚举字符串数组中字符串拼接的排列组合，返回字典序最小的拼接结果</p>
-<p>主方法：LowestLexicographyString01（）返回字典序最小的字符串拼接结果</p>
-<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">LowestLexicographyString01</span> <span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>strs<span class="token operator">==</span>null<span class="token operator">||</span>strs<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
-        <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+<ol>
+<li><p>主方法：LowestLexicographyString01（）返回字典序最小的字符串拼接结果</p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">LowestLexicographyString01</span> <span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span>strs<span class="token operator">==</span>null<span class="token operator">||</span>strs<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span>
+     <span class="token punctuation">{</span>
+         <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token comment" spellcheck="true">//需要重新定义一个TreeSet然后返回，</span>
+     <span class="token keyword">return</span> <span class="token function">strsFullPermutation</span><span class="token punctuation">(</span>strs<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+     <span class="token comment" spellcheck="true">//TreeSet&lt;String> ans=strsFullPermutation(strs);</span>
+     <span class="token comment" spellcheck="true">//return ans.size()==0? "":ans.first();</span>
+     
+ <span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>strsFullPermutation（）方法返回字符串数组中字符串拼接的全排列（full permutation）（递归）<br>```java<br> public static TreeSet<String> strsFullPermutation(String[] strs) {</p>
+<pre><code> TreeSet&lt;String&gt; resSet=new TreeSet&lt;&gt;();
+ //如果传入空数组，返回空字符串的resSet TreeSet;
+ if(strs.length==0) &#123;
+     resSet.add(&quot;&quot;);
+     return resSet;
+ &#125;
+ //如果传入的字符串数组不为空，那么递归返回全排列
+ //
+ for(int i=0;i&lt;strs.length;i++) &#123;
+     String first=strs[i];
+     //返回除去first之后剩余的字符串数组
+     String[] restStrs=removeIndexstrFromStrs(strs, i);
+     TreeSet&lt;String&gt; next=strsFullPermutation(restStrs);//剩余字符串数组的全排列
+     for(String s:next) &#123;
+         resSet.add(first+s);
+     &#125;
+ &#125;
+ return resSet;
+</code></pre>
+<p> }</p>
+</li>
+</ol>
+<pre><code>3. removeIndexstrFromStrs（）方法从字符串数组中删除一个字符串返回剩下的字符串数组
+```java
+    //功能函数，removeIndexstrFromStrs从字符串数组中删除一个字符串返回剩下的字符串数组。*
+    public static String[] removeIndexstrFromStrs(String[] strs,int index) &#123;
+        String[] tmp=new String[strs.length-1];
+        int j=0;//关键再给一个变量记录新数组的下标变化
+//        for(int i=0;i&lt;strs.length;i++) &#123;
+//            if(i==index)
+//            &#123;
+//                continue;
+//            &#125;
+//            tmp[j++]=strs[i];    
+//        &#125;
+        //简化
+        for(int i=0;i&lt;strs.length;i++) &#123;
+            if(i!=index) &#123;
+                tmp[j++]=strs[i];    
+            &#125;
+                
+        &#125;
+        return tmp;
+    &#125;
+</code></pre>
+<h3 id="4-5-2-自定义贪心策略实现返回字符串数组拼接最小字典序的方法"><a href="#4-5-2-自定义贪心策略实现返回字符串数组拼接最小字典序的方法" class="headerlink" title="4.5.2 自定义贪心策略实现返回字符串数组拼接最小字典序的方法"></a>4.5.2 自定义贪心策略实现返回字符串数组拼接最小字典序的方法</h3><ol>
+<li>自定义比较器</li>
+</ol>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">MyComparator</span> <span class="token keyword">implements</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>String<span class="token operator">></span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>String s1<span class="token punctuation">,</span>String s2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token punctuation">(</span>s1<span class="token operator">+</span>s2<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>s2<span class="token operator">+</span>s1<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//需要重新定义一个TreeSet然后返回，</span>
-        <span class="token keyword">return</span> <span class="token function">strsFullPermutation</span><span class="token punctuation">(</span>strs<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">first</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
-        <span class="token comment" spellcheck="true">//TreeSet&lt;String> ans=strsFullPermutation(strs);</span>
-        <span class="token comment" spellcheck="true">//return ans.size()==0? "":ans.first();</span>
+    <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//s1和s2,如果s1拼接s2的字典序小于等于s2拼接s1的字典序，则s1排在s2的前面</span>
+</code></pre>
+<ol start="2">
+<li><p>通过自定义的排序策略对字符串数组进行排序，获得最点序最小的拼接字符串</p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">LowestLexicographyString02</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     <span class="token keyword">if</span><span class="token punctuation">(</span>strs<span class="token operator">==</span>null<span class="token operator">||</span>strs<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         <span class="token keyword">return</span> <span class="token string">""</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>strs<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">MyComparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+     String ans<span class="token operator">=</span><span class="token string">""</span><span class="token punctuation">;</span>
+     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>strs<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         ans<span class="token operator">+=</span>strs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="4-5-3-编写对数器测试方法的正确性"><a href="#4-5-3-编写对数器测试方法的正确性" class="headerlink" title="4.5.3 编写对数器测试方法的正确性"></a>4.5.3 编写对数器测试方法的正确性</h3></li>
+<li><p>随机生成字符串数组生成函数</p>
+<pre class=" language-java"><code class="language-java"> <span class="token keyword">public</span> <span class="token keyword">static</span> String<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">generateRandomStringArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> arrlength<span class="token punctuation">,</span><span class="token keyword">int</span> strlength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+     String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>arrlength<span class="token operator">*</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[1,arrlength]随机长度</span>
+     <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>strs<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+         strs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token function">generateRandomString</span><span class="token punctuation">(</span>strlength<span class="token punctuation">)</span><span class="token punctuation">;</span>
+     <span class="token punctuation">}</span>
+     <span class="token keyword">return</span> strs<span class="token punctuation">;</span>
+ <span class="token punctuation">}</span>
+</code></pre>
+</li>
+<li><p>随机字符串生成函数<br>```java<br> public static String generateRandomString(int strlen) {</p>
+<pre><code> char[] res=new char[(int)(Math.random()*strlen+1)];//[1,strlen]随机长度的字符数组
+ String s=&quot;&quot;;
+ for(int i=0;i&lt;res.length;i++) &#123;
+     res[i]=(char)(Math.random()*25+97); //97-a 122-z //[97,122]中的随机数
+     s+=res[i];
+ &#125;
+ return s;
+</code></pre>
+<p> }</p>
+</li>
+</ol>
+<pre><code>
+3. 字符串数组拷贝函数
+```java
+    public static String[] copyStringArray(String[] strs) &#123;
+        String[] newstrStrings=new String[strs.length];
+        for(int i=0;i&lt;strs.length;i++) &#123;
+            newstrStrings[i]=strs[i];
+        &#125;
+        return newstrStrings;
+    &#125;
+</code></pre>
+<h3 id="4-5-4-主函数main"><a href="#4-5-4-主函数main" class="headerlink" title="4.5.4 主函数main"></a>4.5.4 主函数main</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"TreeSet的使用:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">TreeSet_useage_stu</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//按照字典序排序字符串 </span>
+        <span class="token comment" spellcheck="true">//out:</span>
+        <span class="token comment" spellcheck="true">//strTreeSet:[a, cd, mty, xy]</span>
         
-    <span class="token punctuation">}</span>
-</code></pre>
-<p>strsFullPermutation（）方法返回字符串数组中字符串拼接的全排列（full permutation）（递归）</p>
-<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> TreeSet<span class="token operator">&lt;</span>String<span class="token operator">></span> <span class="token function">strsFullPermutation</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        TreeSet<span class="token operator">&lt;</span>String<span class="token operator">></span> resSet<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">TreeSet</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//如果传入空数组，返回空字符串的resSet TreeSet;</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>strs<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            resSet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">return</span> resSet<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"测试removeIndexstrFromStrs 功能:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//测试removeIndexstrFromStrs 功能</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> teststrs<span class="token operator">=</span> <span class="token punctuation">{</span><span class="token string">"a"</span><span class="token punctuation">,</span><span class="token string">"ab"</span><span class="token punctuation">,</span><span class="token string">"bc"</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs<span class="token operator">=</span><span class="token function">removeIndexstrFromStrs</span><span class="token punctuation">(</span>teststrs<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>strs<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span>
+        <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>strs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//如果传入的字符串数组不为空，那么递归返回全排列</span>
-        <span class="token comment" spellcheck="true">//</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>strs<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            String first<span class="token operator">=</span>strs<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//返回除去first之后剩余的字符串数组</span>
-            String<span class="token punctuation">[</span><span class="token punctuation">]</span> restStrs<span class="token operator">=</span><span class="token function">removeIndexstrFromStrs</span><span class="token punctuation">(</span>strs<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            TreeSet<span class="token operator">&lt;</span>String<span class="token operator">></span> next<span class="token operator">=</span><span class="token function">strsFullPermutation</span><span class="token punctuation">(</span>restStrs<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//剩余字符串数组的全排列</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span>String s<span class="token operator">:</span>next<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                resSet<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>first<span class="token operator">+</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//out:</span>
+        <span class="token comment" spellcheck="true">//ab</span>
+        <span class="token comment" spellcheck="true">//bc</span>
+        
+        
+        <span class="token comment" spellcheck="true">//测试全排列方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"测试全排列方法:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        TreeSet<span class="token operator">&lt;</span>String<span class="token operator">></span> fullresult <span class="token operator">=</span><span class="token function">strsFullPermutation</span><span class="token punctuation">(</span>teststrs<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>fullresult<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//out:</span>
+        <span class="token comment" spellcheck="true">//[aabbc, ababc, abbca, abcab, bcaab, bcaba]</span>
+        
+        <span class="token comment" spellcheck="true">//测试暴力方法(对数器)</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">LowestLexicographyString01</span><span class="token punctuation">(</span>teststrs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//out:</span>
+        <span class="token comment" spellcheck="true">//aabbc</span>
+        
+        <span class="token comment" spellcheck="true">//测试贪心算法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">LowestLexicographyString02</span><span class="token punctuation">(</span>teststrs<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//out:</span>
+        <span class="token comment" spellcheck="true">//aabbc</span>
+        
+        <span class="token comment" spellcheck="true">//测试随机生成字符串的函数</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token operator">*</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//[1,10]中的随机数</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">26</span><span class="token operator">+</span><span class="token number">97</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[97,122]中的随机数</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">generateRandomString</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//测试随机生成字符串数组的函数</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"测试随机生成字符串数组的函数:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        String<span class="token punctuation">[</span><span class="token punctuation">]</span> strstest <span class="token operator">=</span> <span class="token function">generateRandomStringArray</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//数组长度[1,10]、字符串长度[1,10]</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>strstest<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>strstest<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment" spellcheck="true">//使用对数器验证贪心算法的正确性</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"使用对数器验证贪心算法的正确性:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> testTimes<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> arrlen<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> strlen<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">&lt;</span>testTimes<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs1<span class="token operator">=</span><span class="token function">generateRandomStringArray</span><span class="token punctuation">(</span>arrlen<span class="token punctuation">,</span> strlen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String<span class="token punctuation">[</span><span class="token punctuation">]</span> strs2<span class="token operator">=</span><span class="token function">copyStringArray</span><span class="token punctuation">(</span>strs1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String res1<span class="token operator">=</span><span class="token function">LowestLexicographyString01</span><span class="token punctuation">(</span>strs1<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            String res2<span class="token operator">=</span><span class="token function">LowestLexicographyString02</span><span class="token punctuation">(</span>strs2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>res1<span class="token punctuation">.</span><span class="token function">equals</span><span class="token punctuation">(</span>res2<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Somthing Wrong!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
+<span class="token comment" spellcheck="true">//            if(res1!=res2) {</span>
+<span class="token comment" spellcheck="true">//                System.out.println("Somthing Wrong!");</span>
+<span class="token comment" spellcheck="true">//                break;//res1 res2 是字符串对象，不要用 != == 判断，用equals才能去判断值是否一样。</span>
+<span class="token comment" spellcheck="true">//            }</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> resSet<span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Good Job!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//out：</span>
+        <span class="token comment" spellcheck="true">//测试使用对数器验证贪心算法的正确性:</span>
+        <span class="token comment" spellcheck="true">//Good Job!</span>
     <span class="token punctuation">}</span>
 </code></pre>
-<p>removeIndexstrFromStrs()方法从字符串数组中删除一个字符串返回剩下的字符串数组</p>
+<p>运行结果：<br><img src='/source/picture/0922-07.png' width='70%'></p>
+<center> 代码运行结果 </center>
+
+<p><a target="_blank" rel="noopener" href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/blob/main/base_greedy_algorithm/LowestLexicography.java">完整代码见我的github</a></p>
 
                 
             </div>
@@ -1142,7 +1302,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">5.6k</span>&nbsp;字
+                class="white-color">6.5k</span>&nbsp;字
             
             
             
