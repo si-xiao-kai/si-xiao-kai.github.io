@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>数据结构和算法-贪心算法-最优会议安排问题</title>
+      <link href="/2022/09/23/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-you-hui-yi-an-pai-wen-ti/"/>
+      <url>/2022/09/23/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-you-hui-yi-an-pai-wen-ti/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-使用贪心算法求解问题的标准思路"><a href="#1-使用贪心算法求解问题的标准思路" class="headerlink" title="1.使用贪心算法求解问题的标准思路"></a>1.使用贪心算法求解问题的标准思路</h1><p>1）分析业务需求</p><p>2）根据业务逻辑找到不同的贪心策略</p><p>3）对于能举出反例的策略直接跳过，不能举出反例的策略要证明有效性这往往是特别困难的，要求数学能力很高且不具有统一的技巧性</p><h1 id="2-使用贪心算法求解问题的实际套路"><a href="#2-使用贪心算法求解问题的实际套路" class="headerlink" title="2.使用贪心算法求解问题的实际套路"></a>2.使用贪心算法求解问题的实际套路</h1><p>&emsp;&emsp;对于贪心算法求解问题的标准思路来讲，最困难的一步莫过于证明贪心策略的正确性，对于不同的问题证明方法可能是迥异的，而且证明方法本身也具有较大的困难性，（比如最小字典序拼接的问题），所以标准思路对于解决实际问题来讲，可用性和效率不是很高。</p><p>为了绕过繁琐的证明，可以采用下面的一般套路来简化求解过程</p><p>1)实现一个不依靠贪心策略的解法X，可以用最暴力的尝试【对数器】</p><p>2)脑补出贪心策略A、贪心策略B、贪心策略C…</p><p>3)用解法X和对数器，用实验的方式得知哪个贪心策略正确</p><p>4)不要去纠结贪心策略的证明</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构和算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> java </tag>
+            
+            <tag> 贪心算法 </tag>
+            
+            <tag> 最优会议安排问题 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构和算法-贪心算法-最小字典序拼接问题</title>
       <link href="/2022/09/22/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-xiao-zi-dian-xu-pin-jie-wen-ti/"/>
       <url>/2022/09/22/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-xiao-zi-dian-xu-pin-jie-wen-ti/</url>

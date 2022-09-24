@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="python-16进制字符串转化为ascii字符串, hacker进化论-sixiaokai">
+    <meta name="keywords" content="数据结构和算法-贪心算法-最优会议安排问题, hacker进化论-sixiaokai">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>python-16进制字符串转化为ascii字符串 | hacker进化论-sixiaokai</title>
+    <title>数据结构和算法-贪心算法-最优会议安排问题 | hacker进化论-sixiaokai</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">python-16进制字符串转化为ascii字符串</h1>
+                    <h1 class="description center-align post-title">数据结构和算法-贪心算法-最优会议安排问题</h1>
                 </div>
             </div>
         </div>
@@ -410,12 +410,24 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                                <span class="chip bg-color">实用经验</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
-                            <a href="/tags/python/">
-                                <span class="chip bg-color">python</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
+                            </a>
+                        
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">贪心算法</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%9C%80%E4%BC%98%E4%BC%9A%E8%AE%AE%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98/">
+                                <span class="chip bg-color">最优会议安排问题</span>
                             </a>
                         
                     </div>
@@ -426,8 +438,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/python/" class="post-category">
-                                python
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据结构和算法
                             </a>
                         
                     </div>
@@ -439,21 +451,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-17
+                    2022-09-23
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-17
+                    2022-09-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    138
+                    334
                 </div>
                 
 
@@ -480,22 +492,15 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-一般方法"><a href="#1-一般方法" class="headerlink" title="1.一般方法"></a>1.一般方法</h1><pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> binascii
-<span class="token keyword">def</span> <span class="token function">hexStr_to_str</span><span class="token punctuation">(</span>hex_str<span class="token punctuation">)</span><span class="token punctuation">:</span> 
-    hex<span class="token operator">=</span>hex_str<span class="token punctuation">.</span>encode<span class="token punctuation">(</span> <span class="token string">'utf-8'</span> <span class="token punctuation">)</span>
-    bin_str <span class="token operator">=</span> binascii<span class="token punctuation">.</span>unhexlify<span class="token punctuation">(</span>hex<span class="token punctuation">)</span> 
-    <span class="token keyword">return</span> bin_str<span class="token punctuation">.</span>decode<span class="token punctuation">(</span> <span class="token string">'utf-8'</span> <span class="token punctuation">)</span>
-<span class="token comment" spellcheck="true">#测试</span>
-<span class="token keyword">if</span> __name__<span class="token operator">==</span><span class="token string">"__main__"</span> <span class="token punctuation">:</span>
-    hex_str <span class="token operator">=</span> <span class="token string">'7468616e6b20796f752076657279206d75636821'</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span>hexStr_to_str<span class="token punctuation">(</span>hex_str<span class="token punctuation">)</span><span class="token punctuation">)</span>
-</code></pre>
-<h1 id="2-简单方法"><a href="#2-简单方法" class="headerlink" title="2.简单方法"></a>2.简单方法</h1><p>base64库中提供了base16编码，其实就是将ascii字符用16进制表示，用[0-9a-f]16个字符来表示一个ascii字符，也就是将asciii字符转化为16进制形式，如:’a’ =&gt;base16=&gt; b’61’。所以对于十六进制字符串只需要，对其进行base16解码即可转化为可打印字符。</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> base64
-hex_str<span class="token operator">=</span><span class="token string">'7468616e6b20796f752076657279206d75636821'</span>
-result<span class="token operator">=</span>base64<span class="token punctuation">.</span>b16decode<span class="token punctuation">(</span>hex_str<span class="token punctuation">.</span>upper<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span>result<span class="token punctuation">)</span>
-</code></pre>
+                <h1 id="1-使用贪心算法求解问题的标准思路"><a href="#1-使用贪心算法求解问题的标准思路" class="headerlink" title="1.使用贪心算法求解问题的标准思路"></a>1.使用贪心算法求解问题的标准思路</h1><p>1）分析业务需求</p>
+<p>2）根据业务逻辑找到不同的贪心策略</p>
+<p>3）对于能举出反例的策略直接跳过，不能举出反例的策略要证明有效性这往往是特别困难的，要求数学能力很高且不具有统一的技巧性</p>
+<h1 id="2-使用贪心算法求解问题的实际套路"><a href="#2-使用贪心算法求解问题的实际套路" class="headerlink" title="2.使用贪心算法求解问题的实际套路"></a>2.使用贪心算法求解问题的实际套路</h1><p>&emsp;&emsp;对于贪心算法求解问题的标准思路来讲，最困难的一步莫过于证明贪心策略的正确性，对于不同的问题证明方法可能是迥异的，而且证明方法本身也具有较大的困难性，（比如最小字典序拼接的问题），所以标准思路对于解决实际问题来讲，可用性和效率不是很高。</p>
+<p>为了绕过繁琐的证明，可以采用下面的一般套路来简化求解过程</p>
+<p>1)实现一个不依靠贪心策略的解法X，可以用最暴力的尝试【对数器】</p>
+<p>2)脑补出贪心策略A、贪心策略B、贪心策略C…</p>
+<p>3)用解法X和对数器，用实验的方式得知哪个贪心策略正确</p>
+<p>4)不要去纠结贪心策略的证明</p>
 
                 
             </div>
@@ -522,7 +527,7 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/">http://0to1sec.com/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/</a>
+                    <a href="http://0to1sec.com/2022/09/23/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-you-hui-yi-an-pai-wen-ti/">http://0to1sec.com/2022/09/23/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-you-hui-yi-an-pai-wen-ti/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -560,12 +565,24 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                                    <span class="chip bg-color">实用经验</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
-                                <a href="/tags/python/">
-                                    <span class="chip bg-color">python</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
+                                </a>
+                            
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">贪心算法</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%9C%80%E4%BC%98%E4%BC%9A%E8%AE%AE%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98/">
+                                    <span class="chip bg-color">最优会议安排问题</span>
                                 </a>
                             
                         </div>
@@ -735,88 +752,36 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/09/17/python-ji-suan-md5-zhi/">
+                <a href="/2022/09/23/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-you-hui-yi-an-pai-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="python-计算md5值">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="数据结构和算法-贪心算法-最优会议安排问题">
                         
-                        <span class="card-title">python-计算md5值</span>
+                        <span class="card-title">数据结构和算法-贪心算法-最优会议安排问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            python计算字符串md5值的方法
-                        
-                    </div>
-                    <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
-                        </span>
-                        <span class="publish-author">
-                            
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/python/" class="post-category">
-                                    python
-                                </a>
-                            
-                            
-                        </span>
-                    </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                        <span class="chip bg-color">实用经验</span>
-                    </a>
-                    
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
-                    </a>
-                    
-                </div>
-                
-            </div>
-        </div>
-        
-        
-        <div class="article col s12 m6" data-aos="fade-up">
-            <div class="article-badge right-badge text-color">
-                本篇&nbsp;<i class="far fa-dot-circle"></i>
-            </div>
-            <div class="card">
-                <a href="/2022/09/17/python-16-jin-zhi-zi-fu-chuan-zhuan-ascii-zi-fu-chuan/">
-                    <div class="card-image">
-                        
-                        
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="python-16进制字符串转化为ascii字符串">
-                        
-                        <span class="card-title">python-16进制字符串转化为ascii字符串</span>
-                    </div>
-                </a>
-                <div class="card-content article-content">
-                    <div class="summary block-with-text">
-                        
-                            介绍了16进制字符串转换为ascii字符串的小技巧
+                            本文讲解贪心算法的常规求解套路（使用对数器验证贪心策略的正确性），解决最优会议安排问题。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-17
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-23
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/python/" class="post-category">
-                                    python
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构和算法
                                 </a>
                             
                             
@@ -827,12 +792,89 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AE%9E%E7%94%A8%E7%BB%8F%E9%AA%8C/">
-                        <span class="chip bg-color">实用经验</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/python/">
-                        <span class="chip bg-color">python</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">贪心算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%80%E4%BC%98%E4%BC%9A%E8%AE%AE%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">最优会议安排问题</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/09/22/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-xiao-zi-dian-xu-pin-jie-wen-ti/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="数据结构和算法-贪心算法-最小字典序拼接问题">
+                        
+                        <span class="card-title">数据结构和算法-贪心算法-最小字典序拼接问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文围绕贪心算法展开，介绍贪心算法的思维逻辑。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-22
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构和算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">贪心算法</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%9C%80%E5%B0%8F%E5%AD%97%E5%85%B8%E5%BA%8F%E6%8B%BC%E6%8E%A5%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">最小字典序拼接问题</span>
                     </a>
                     
                 </div>
@@ -963,6 +1005,13 @@ result<span class="token operator">=</span>base64<span class="token punctuation"
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
