@@ -465,14 +465,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    334
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    8 分
                 </div>
                 
 
@@ -496,11 +496,238 @@
 <p>2）根据业务逻辑找到不同的贪心策略</p>
 <p>3）对于能举出反例的策略直接跳过，不能举出反例的策略要证明有效性这往往是特别困难的，要求数学能力很高且不具有统一的技巧性</p>
 <h1 id="2-使用贪心算法求解问题的实际套路"><a href="#2-使用贪心算法求解问题的实际套路" class="headerlink" title="2.使用贪心算法求解问题的实际套路"></a>2.使用贪心算法求解问题的实际套路</h1><p>&emsp;&emsp;对于贪心算法求解问题的标准思路来讲，最困难的一步莫过于证明贪心策略的正确性，对于不同的问题证明方法可能是迥异的，而且证明方法本身也具有较大的困难性，（比如最小字典序拼接的问题），所以标准思路对于解决实际问题来讲，可用性和效率不是很高。</p>
-<p>为了绕过繁琐的证明，可以采用下面的一般套路来简化求解过程</p>
-<p>1)实现一个不依靠贪心策略的解法X，可以用最暴力的尝试【对数器】</p>
-<p>2)脑补出贪心策略A、贪心策略B、贪心策略C…</p>
-<p>3)用解法X和对数器，用实验的方式得知哪个贪心策略正确</p>
-<p>4)不要去纠结贪心策略的证明</p>
+<p>&emsp;&emsp;为了绕过繁琐的证明，可以采用下面的一般套路来简化求解过程：</p>
+<ol>
+<li><p>实现一个不依靠贪心策略的解法X，可以用最暴力的尝试【对数器】</p>
+</li>
+<li><p>脑补出贪心策略A、贪心策略B、贪心策略C…</p>
+</li>
+<li><p>用解法X和对数器，用实验的方式得知哪个贪心策略正确</p>
+</li>
+<li><p>不要去纠结贪心策略的证明</p>
+</li>
+</ol>
+<h1 id="3-实战例子：最优会议安排问题"><a href="#3-实战例子：最优会议安排问题" class="headerlink" title="3.实战例子：最优会议安排问题"></a>3.实战例子：最优会议安排问题</h1><h2 id="3-1-题目"><a href="#3-1-题目" class="headerlink" title="3.1 题目"></a>3.1 题目</h2><p>&emsp;&emsp;一些项目要占用一个会议室宣讲，会议室不能同时容纳两个项目的宣讲。给你每一个项目开始的时间和结束的时间，你来安排宣讲的日程，要求会议室进行的宣讲的场次最多。返回最多的宣讲场次。</p>
+<h2 id="3-2-贪心策略"><a href="#3-2-贪心策略" class="headerlink" title="3.2 贪心策略"></a>3.2 贪心策略</h2><p>1.按照会议的开始时间安排，谁早谁安排前面❌</p>
+<p>&emsp;&emsp;举反例即可</p>
+<p>2.按照会议持续的时间安排，谁短谁先安排❌</p>
+<p>&emsp;&emsp;举反例即可</p>
+<p>3.按照会议结束时间，谁早谁安排✅</p>
+<p>&emsp;&emsp;可以证但是没必要，可以先写暴力方法的对数器获得标准答案</p>
+<h2 id="3-3-代码实现"><a href="#3-3-代码实现" class="headerlink" title="3.3 代码实现"></a>3.3 代码实现</h2><h3 id="3-3-0-定义会议类，有两个属性，开始时间和结束时间"><a href="#3-3-0-定义会议类，有两个属性，开始时间和结束时间" class="headerlink" title="3.3.0 定义会议类，有两个属性，开始时间和结束时间"></a>3.3.0 定义会议类，有两个属性，开始时间和结束时间</h3><pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Conference</span><span class="token punctuation">{</span>
+        <span class="token keyword">int</span> start<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//会议开始时间</span>
+        <span class="token keyword">int</span> end<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//会议结束时间</span>
+        
+        <span class="token keyword">public</span> <span class="token function">Conference</span><span class="token punctuation">(</span><span class="token keyword">int</span> start<span class="token punctuation">,</span><span class="token keyword">int</span> end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>start<span class="token operator">=</span>start<span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>end<span class="token operator">=</span>end<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-3-1-暴力方法，枚举所有可以安排的会议序列-返回可以安排的最大会议数"><a href="#3-3-1-暴力方法，枚举所有可以安排的会议序列-返回可以安排的最大会议数" class="headerlink" title="3.3.1 暴力方法，枚举所有可以安排的会议序列,返回可以安排的最大会议数"></a>3.3.1 暴力方法，枚举所有可以安排的会议序列,返回可以安排的最大会议数</h3><p>1）主方法</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">conferenceArrange1</span><span class="token punctuation">(</span>Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> conferences<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>conferences<span class="token operator">==</span>null<span class="token operator">||</span>conferences<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+         
+        <span class="token keyword">return</span> <span class="token function">recursiveProcessFunc</span><span class="token punctuation">(</span>conferences<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<ol start="2">
+<li>recursiveProcessFunc（）返回某一时间状态下可以安排的最大会议数量</li>
+</ol>
+<pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">//参数restConferences表示剩余的没有安排的会议，done_num表示已经安排的会议的数量，time_now表示现在的时间点</span>
+    <span class="token comment" spellcheck="true">//在time_now时间点，已经安排了done_num个会议，剩下的没有安排的会议，在restConferences列表中</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">recursiveProcessFunc</span><span class="token punctuation">(</span>Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> restConferences<span class="token punctuation">,</span> <span class="token keyword">int</span> done_num<span class="token punctuation">,</span><span class="token keyword">int</span> time_now<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>restConferences<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> done_num<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> max<span class="token operator">=</span>done_num<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>restConferences<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>restConferences<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>start<span class="token operator">></span>time_now<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> nexts<span class="token operator">=</span><span class="token function">deleteIndexConference</span><span class="token punctuation">(</span>restConferences<span class="token punctuation">,</span> i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                max<span class="token operator">=</span>Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>max<span class="token punctuation">,</span> <span class="token function">recursiveProcessFunc</span><span class="token punctuation">(</span>nexts<span class="token punctuation">,</span> done_num<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> restConferences<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+            <span class="token punctuation">}</span>    
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> max<span class="token punctuation">;</span>  
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>3）deleteIndexConference（） 功能函数，剔除一个会议</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">deleteIndexConference</span><span class="token punctuation">(</span>Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> conferences<span class="token punctuation">,</span><span class="token keyword">int</span> index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span> j<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> tmp<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">[</span>conferences<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>conferences<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">!=</span>index<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                tmp<span class="token punctuation">[</span>j<span class="token operator">++</span><span class="token punctuation">]</span><span class="token operator">=</span>conferences<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>    
+        <span class="token keyword">return</span> tmp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-3-2-最优先安排结束时间早的会议的贪心算法"><a href="#3-3-2-最优先安排结束时间早的会议的贪心算法" class="headerlink" title="3.3.2 最优先安排结束时间早的会议的贪心算法"></a>3.3.2 最优先安排结束时间早的会议的贪心算法</h3><p>1）定义比较器</p>
+<p>&emsp;&emsp;结束时间早的会议排在前面。</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">MyComparator</span> <span class="token keyword">implements</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Conference<span class="token operator">></span><span class="token punctuation">{</span>
+        <span class="token annotation punctuation">@Override</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Conference c1<span class="token punctuation">,</span>Conference c2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> c1<span class="token punctuation">.</span>end<span class="token operator">-</span>c2<span class="token punctuation">.</span>end<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>2）实现最优先安排结束时间早的会议的贪心算法</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">conferenceArrange2</span><span class="token punctuation">(</span>Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> conferences<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//按照自定义的比较器排序，结束时间早的会议排在前面</span>
+        Arrays<span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>conferences<span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">MyComparator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> count<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> time_now<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>conferences<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>conferences<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>start<span class="token operator">></span>time_now<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                count<span class="token operator">++</span><span class="token punctuation">;</span>
+                time_now<span class="token operator">=</span>conferences<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">.</span>end<span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> count<span class="token punctuation">;</span>
+        
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-3-3-编写对数器，用大量样本验证上述贪心算法的有效性"><a href="#3-3-3-编写对数器，用大量样本验证上述贪心算法的有效性" class="headerlink" title="3.3.3 编写对数器，用大量样本验证上述贪心算法的有效性"></a>3.3.3 编写对数器，用大量样本验证上述贪心算法的有效性</h3><p>generateRandomConferenceArrays（）生成随机长度随机会议的会议列表</p>
+<pre class=" language-java"><code class="language-java">    <span class="token keyword">public</span> <span class="token keyword">static</span> Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">generateRandomConferenceArrays</span><span class="token punctuation">(</span><span class="token keyword">int</span> maxarrlen<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> tmp<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span>maxarrlen<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//[0,1) [0,maxarrlen),[1,maxarrlen]</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>tmp<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> start<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> end<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>start<span class="token operator">==</span>end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                tmp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> start<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                tmp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span>end<span class="token punctuation">)</span><span class="token punctuation">,</span>Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> tmp<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<h3 id="3-3-4-main-方法"><a href="#3-3-4-main-方法" class="headerlink" title="3.3.4 main()方法"></a>3.3.4 main()方法</h3><pre class=" language-java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        
+        <span class="token comment" spellcheck="true">//1.产生一个用于测试Conferences数组test</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=================生成测试会议列表test================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> test<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>test<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span> start<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//[0,24]</span>
+            <span class="token keyword">int</span> end<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//System.out.println("start="+start+",end="+end);</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>start<span class="token operator">==</span>end<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                end<span class="token operator">=</span>start<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>
+                test<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//System.out.println("相同随机值处理！");</span>
+            <span class="token punctuation">}</span>
+            <span class="token keyword">else</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//System.out.println("不相同随机值处理！");</span>
+                
+                <span class="token comment" spellcheck="true">//逻辑错误:</span>
+                <span class="token comment" spellcheck="true">//start=Math.min(start, end);</span>
+                <span class="token comment" spellcheck="true">//end=Math.max(start, end);</span>
+                <span class="token comment" spellcheck="true">//千万注意，上面这样赋值会导致逻辑错误start已经被覆盖了</span>
+                <span class="token comment" spellcheck="true">//导致如果一大，一小的话 15,12，</span>
+                <span class="token comment" spellcheck="true">//执行start=Math.min(start, end);之后 start=12,</span>
+                <span class="token comment" spellcheck="true">//end=Math.max(start, end);等价于end=Math.max(12, 12);</span>
+                <span class="token comment" spellcheck="true">//两句之后 start=end=12</span>
+                test<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Conference</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">,</span> Math<span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>start<span class="token punctuation">,</span> end<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//error:</span>
+            <span class="token comment" spellcheck="true">//test[i].start=Math.min(start, end);//不能这样赋值 Cannot assign field "start" because "test[i]" is null</span>
+            <span class="token comment" spellcheck="true">//test[i].end=Math.max(start, end);//不能这样赋值 Cannot assign field "start" because "test[i]" is null</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"生成的会议列表如下:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Conference c<span class="token operator">:</span>test<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"start:"</span><span class="token operator">+</span> c<span class="token punctuation">.</span>start<span class="token operator">+</span><span class="token string">"  end:"</span><span class="token operator">+</span>c<span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token comment" spellcheck="true">//简洁的遍历方法</span>
+<span class="token comment" spellcheck="true">//        for(int i=0;i&lt;test.length;i++) {</span>
+<span class="token comment" spellcheck="true">//            System.out.println("Start:"+test[i].start+",end:"+test[i].end);</span>
+<span class="token comment" spellcheck="true">//        }</span>
+        
+        <span class="token comment" spellcheck="true">//2.测试剔除会议的方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=================测试剔除会议的方法================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> res<span class="token operator">=</span><span class="token function">deleteIndexConference</span><span class="token punctuation">(</span>test<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Conference c <span class="token operator">:</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"start:"</span><span class="token operator">+</span> c<span class="token punctuation">.</span>start<span class="token operator">+</span><span class="token string">"  end:"</span><span class="token operator">+</span>c<span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment" spellcheck="true">//3.测试暴力尝试所有可能结果的方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=================测试暴力尝试所有可能结果的方法================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"会议列表:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Conference c<span class="token operator">:</span>test<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"start:"</span><span class="token operator">+</span> c<span class="token punctuation">.</span>start<span class="token operator">+</span><span class="token string">"  end:"</span><span class="token operator">+</span>c<span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"能安排的最多会议的数量:"</span><span class="token operator">+</span><span class="token function">conferenceArrange1</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//4.最优先安排结束时间早的会议的贪心算法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=================测试最优先安排结束时间早的会议的贪心算法================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"会议列表:"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Conference c<span class="token operator">:</span>test<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"start:"</span><span class="token operator">+</span> c<span class="token punctuation">.</span>start<span class="token operator">+</span><span class="token string">"  end:"</span><span class="token operator">+</span>c<span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"能安排的最多会议的数量:"</span><span class="token operator">+</span><span class="token function">conferenceArrange2</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//5.测试生成随机长度随机会议的会议列表的方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=================测试生成随机长度随机会议的会议列表的方法================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> t1<span class="token operator">=</span><span class="token function">generateRandomConferenceArrays</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Conference c<span class="token operator">:</span>t1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"start:"</span><span class="token operator">+</span> c<span class="token punctuation">.</span>start<span class="token operator">+</span><span class="token string">"  end:"</span><span class="token operator">+</span>c<span class="token punctuation">.</span>end<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment" spellcheck="true">//6.使用对数器思想测试贪心算法的正确性</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=================使用对数器校验贪心算法================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> testtime<span class="token operator">=</span><span class="token number">1000</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxarrlen<span class="token operator">=</span><span class="token number">20</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>testtime<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            Conference<span class="token punctuation">[</span><span class="token punctuation">]</span> testarr<span class="token operator">=</span><span class="token function">generateRandomConferenceArrays</span><span class="token punctuation">(</span>maxarrlen<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">conferenceArrange1</span><span class="token punctuation">(</span>testarr<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token function">conferenceArrange2</span><span class="token punctuation">(</span>testarr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Something Wrong!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">break</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Good Job!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+</code></pre>
+<p>运行结果：</p>
+<pre class=" language-text"><code class="language-text">=================生成测试会议列表test=================
+生成的会议列表如下:
+start:2  end:22
+start:10  end:11
+start:9  end:10
+start:2  end:11
+start:11  end:14
+=================测试剔除会议的方法=================
+start:10  end:11
+start:9  end:10
+start:2  end:11
+start:11  end:14
+=================测试暴力尝试所有可能结果的方法=================
+会议列表:
+start:2  end:22
+start:10  end:11
+start:9  end:10
+start:2  end:11
+start:11  end:14
+能安排的最多会议的数量:2
+=================测试最优先安排结束时间早的会议的贪心算法=================
+会议列表:
+start:2  end:22
+start:10  end:11
+start:9  end:10
+start:2  end:11
+start:11  end:14
+能安排的最多会议的数量:2
+=================测试生成随机长度随机会议的会议列表的方法=================
+start:16  end:22
+start:13  end:24
+=================使用对数器校验贪心算法=================
+Good Job!
+
+</code></pre>
+<h1 id="4-小结"><a href="#4-小结" class="headerlink" title="4.小结"></a>4.小结</h1><p>&emsp;&emsp;本文介绍了常规的使用贪心算法求解问题的套路，即使用比较器的思想验证贪心策略的正确性，比较直观的错误的贪心策略可以通过举反例来提前排除。根据这个套路解决了最优会议安排问题。</p>
 
                 
             </div>
@@ -1084,7 +1311,7 @@
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">6.8k</span>&nbsp;字
+                class="white-color">8.5k</span>&nbsp;字
             
             
             
