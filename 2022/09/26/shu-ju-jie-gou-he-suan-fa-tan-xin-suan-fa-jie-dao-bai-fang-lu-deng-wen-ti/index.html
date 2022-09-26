@@ -465,7 +465,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    989
+                    991
                 </div>
                 
 
@@ -492,14 +492,14 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><p>给定一个字符串str，只由’X’和’.’两种字符构成。’X’表示墙，不能放灯，也不需要点亮，’.’表示居民点， 可以放灯,需要点亮，如果灯放在i位置，可以让i-1， i和i+1三个位置被点亮，返回如果点亮str中所有需要点亮的位置，至少需要几盏灯。</p>
+                <h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><p>&emsp;&emsp;给定一个字符串str，只由’X’和’.’两种字符构成。’X’表示墙，不能放灯，也不需要点亮，’.’表示居民点， 可以放灯,需要点亮，如果灯放在i位置，可以让i-1， i和i+1三个位置被点亮，返回如果点亮str中所有需要点亮的位置，至少需要几盏灯。</p>
 <h1 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h1><p>1)暴力方法</p>
 <p>&emsp;&emsp;对于每个可以放灯的位置，有两种情况，放和不放，排列组合所有的情况序列，排除那些没有将所有需要点亮的位置点亮的序列，从剩下的序列中找到最少的路灯数的序列。</p>
 <p>2)贪心方法<br><img src='/picture/0926-01.jpeg' width='80%'></p>
 <center> 贪心策略求解 </center>
 
 
-<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><pre class=" language-java"><code class="language-java"><span class="token comment" spellcheck="true">/*题目描述: 
+<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*题目描述: 
      * 给定一个字符串str，只由’X’和’.’两种字符构成。'X'表示墙，不能放灯，也不需要点亮，
      * ’.’表示居民点， 可以放灯,需要点亮，如果灯放在i位置，可以让i-1， i和i+1三个位置被点亮，
      * 返回如果点亮str中所有需要点亮的位置，至少需要几盏灯。
