@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构和算法-贪心算法-街道摆放路灯问题, hacker进化论-sixiaokai">
+    <meta name="keywords" content="数据结构和算法-贪心算法-金条划分问题（哈夫曼树）, hacker进化论-sixiaokai">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构和算法-贪心算法-街道摆放路灯问题 | hacker进化论-sixiaokai</title>
+    <title>数据结构和算法-贪心算法-金条划分问题（哈夫曼树） | hacker进化论-sixiaokai</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构和算法-贪心算法-街道摆放路灯问题</h1>
+                    <h1 class="description center-align post-title">数据结构和算法-贪心算法-金条划分问题（哈夫曼树）</h1>
                 </div>
             </div>
         </div>
@@ -426,8 +426,8 @@
                                 <span class="chip bg-color">贪心算法</span>
                             </a>
                         
-                            <a href="/tags/%E8%A1%97%E9%81%93%E6%91%86%E6%94%BE%E8%B7%AF%E7%81%AF%E9%97%AE%E9%A2%98/">
-                                <span class="chip bg-color">街道摆放路灯问题</span>
+                            <a href="/tags/%E9%87%91%E6%9D%A1%E5%88%92%E5%88%86%E9%97%AE%E9%A2%98%EF%BC%88%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%EF%BC%89/">
+                                <span class="chip bg-color">金条划分问题（哈夫曼树）</span>
                             </a>
                         
                     </div>
@@ -451,28 +451,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-26
+                    2022-09-28
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-26
+                    2022-09-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1k
+                    1.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    5 分
                 </div>
                 
 
@@ -492,147 +492,159 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><p>&emsp;&emsp;给定一个字符串str，只由’X’和’.’两种字符构成。’X’表示墙，不能放灯，也不需要点亮，’.’表示居民点， 可以放灯,需要点亮，如果灯放在i位置，可以让i-1， i和i+1三个位置被点亮，返回如果点亮str中所有需要点亮的位置，至少需要几盏灯。</p>
-<h1 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h1><h2 id="2-1-暴力方法"><a href="#2-1-暴力方法" class="headerlink" title="2.1 暴力方法"></a>2.1 暴力方法</h2><p>&emsp;&emsp;对于每个可以放灯的位置，有两种情况，放和不放，排列组合所有的情况序列，排除那些没有将所有需要点亮的位置点亮的序列，从剩下的序列中找到最少的路灯数的序列。</p>
-<h2 id="2-2-贪心方法"><a href="#2-2-贪心方法" class="headerlink" title="2.2 贪心方法"></a>2.2 贪心方法</h2><img src='/picture/0926-01.jpeg' width='80%'>
-<center> 贪心策略求解 </center>
+                <h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>&emsp;&emsp;一块金条切成两半，是需要花费和长度数值一样的铜板的。比如长度为20的金条，不管怎么切，都要花费20个铜板。一群人想整分整块金条，怎么分最省铜板?</p>
+<p>&emsp;&emsp;例如，给定数组{10,20,30}，代表一共三个人，整块金条长度为60，金条要分成10， 20， 30三个部分。如果先把长度60的金条分成10和50，花费60;再把长度50的金条分成20和30,花费50;一 共花费110铜板。但如果先把长度60的金条分成30和30，花费60;再把长度30金条分成10和20，花 费30;一共花费90铜板。输入一个数组，返回分割的最小代价。</p>
+<h1 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h1><p>&emsp;&emsp;反向思考：合并⇔划分的逆过程，将两个小块金条合并需要花费两个金条的和的代价，怎么样能花费最少的代价拼接起来一个完整的金条。即合并的代价==划分的代价。</p>
+<p>&emsp;&emsp;暴力方法思路:每次合并任意合并，遍历所有的情况，返回最少的代价。</p>
+<p>&emsp;&emsp;贪心算法思路:从小到大排序，每次拿出最小的两个数合并，合并后的结果放回去，重新参加排序，然后依次类推，知道最后只剩下一个数（也就是总数）。</p>
+<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><pre class=" language-java"><code class="language-java">    <span class="token keyword">package</span> base_greedy_algorithm<span class="token punctuation">;</span>
 
+    <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>PriorityQueue<span class="token punctuation">;</span>
 
-<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><pre class=" language-java"><code class="language-java">    <span class="token comment" spellcheck="true">/*题目描述: 
-     * 给定一个字符串str，只由’X’和’.’两种字符构成。'X'表示墙，不能放灯，也不需要点亮，
-     * ’.’表示居民点， 可以放灯,需要点亮，如果灯放在i位置，可以让i-1， i和i+1三个位置被点亮，
-     * 返回如果点亮str中所有需要点亮的位置，至少需要几盏灯。
+    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">UseLeastMoneySplitGlod</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">/*
+       一块金条切成两半，是需要花费和长度数值一样的铜板的。比如长度为20的金条，不
+       管怎么切，都要花费20个铜板。一群人想整分整块金条，怎么分最省铜板?
+       
+       例如，给定数组{10,20,30}，代表一共三个人，整块金条长度为60，金条要分成10， 20， 30三个部分。
+       如果先把长度60的金条分成10和50，花费60;再把长度50的金条分成20和30,花费50;一 共花费110铜板。
+       但如果先把长度60的金条分成30和30，花费60;再把长度30金条分成10和20，花 费30;一共花费90铜板。
+       输入一个数组，返回分割的最小代价。
+       
+       反向思考：合并⇔划分的逆过程，将两个小块金条合并需要花费两个金条的和的代价，怎么样能花费最少的代价拼接起来一个完整的金条。
+       合并的代价==划分的代价。
      */</span>
-    <span class="token comment" spellcheck="true">//1.暴力方法</span>
-    <span class="token comment" spellcheck="true">//对于每个可以放灯的位置，有两种情况，放和不放，排列组合所有的情况序列，</span>
-    <span class="token comment" spellcheck="true">//排除那些没有将所有需要点亮的位置点亮的序列，从剩下的序列中找到最少的路灯数的序列。</span>
-    
-    <span class="token comment" spellcheck="true">//1）主方法 接受一个由"X"和"."组成的字符串</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">lightStreet1</span><span class="token punctuation">(</span>String street<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>street<span class="token operator">==</span>null<span class="token operator">||</span>street<span class="token operator">==</span><span class="token string">""</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">//1.暴力方法（对数器）</span>
+    <span class="token comment" spellcheck="true">//思路:每次合并任意合并，遍历所有的情况，返回最少的代价。</span>
+    <span class="token comment" spellcheck="true">//1）主方法</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">SplitGold1</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token operator">==</span>null <span class="token operator">||</span> arr<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
             <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> <span class="token function">recursiveFunc</span><span class="token punctuation">(</span>street<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token operator">&lt;</span>Integer<span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token keyword">return</span> <span class="token function">recursiveFunc</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>    
+    <span class="token comment" spellcheck="true">//2）暴力递归</span>
+    <span class="token comment" spellcheck="true">//参数：arr是当前的数组的状态，pre 表示之前合并操作花费的代价</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">recursiveFunc</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span><span class="token keyword">int</span> pre<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>arr<span class="token punctuation">.</span>length<span class="token operator">==</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//base case 当数组中只有一个元素时，表示完成了合并的整个过程</span>
+            <span class="token keyword">return</span> pre<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">int</span> ans<span class="token operator">=</span>Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//元素个数大于1的时候，遍历每个元素</span>
+            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> j<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>j<span class="token operator">&lt;</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>j<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//遍历i元素后面的每个元素，用于同i合并</span>
+                ans<span class="token operator">=</span>Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>ans<span class="token punctuation">,</span><span class="token function">recursiveFunc</span><span class="token punctuation">(</span><span class="token function">merge2elements</span><span class="token punctuation">(</span>arr<span class="token punctuation">,</span> i<span class="token punctuation">,</span> j<span class="token punctuation">)</span> <span class="token punctuation">,</span> pre<span class="token operator">+</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     
-    <span class="token comment" spellcheck="true">//2）递归方法</span>
-    <span class="token comment" spellcheck="true">//参数:street--街道字符串、index 当前要做决定是否放灯的位置、lights 记录哪些位置放了灯</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">recursiveFunc</span><span class="token punctuation">(</span><span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> street<span class="token punctuation">,</span><span class="token keyword">int</span> index<span class="token punctuation">,</span>HashSet<span class="token operator">&lt;</span>Integer<span class="token operator">></span> lights<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">if</span><span class="token punctuation">(</span>index<span class="token operator">==</span>street<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>street<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>street<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">!=</span><span class="token string">'X'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>lights<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>i<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token operator">!</span>lights<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token operator">!</span>lights<span class="token punctuation">.</span><span class="token function">contains</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                        <span class="token keyword">return</span> Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
+    <span class="token comment" spellcheck="true">//3）功能函数，合并一个数组中的两个元素，返回新数组</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">merge2elements</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span><span class="token keyword">int</span> i<span class="token punctuation">,</span><span class="token keyword">int</span> j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> newarr<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span>arr<span class="token punctuation">.</span>length<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> indexj<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> indexi<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>indexi<span class="token operator">&lt;</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>indexi<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span>indexi<span class="token operator">!=</span>i<span class="token operator">&amp;&amp;</span>indexi<span class="token operator">!=</span>j<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                newarr<span class="token punctuation">[</span>indexj<span class="token operator">++</span><span class="token punctuation">]</span><span class="token operator">=</span>arr<span class="token punctuation">[</span>indexi<span class="token punctuation">]</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> lights<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">else</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> no_num<span class="token operator">=</span><span class="token function">recursiveFunc</span><span class="token punctuation">(</span>street<span class="token punctuation">,</span> index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> lights<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">int</span> yes_num<span class="token operator">=</span>Integer<span class="token punctuation">.</span>MAX_VALUE<span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>street<span class="token punctuation">[</span>index<span class="token punctuation">]</span><span class="token operator">!=</span><span class="token string">'X'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                lights<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                yes_num<span class="token operator">=</span><span class="token function">recursiveFunc</span><span class="token punctuation">(</span>street<span class="token punctuation">,</span> index<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">,</span> lights<span class="token punctuation">)</span><span class="token punctuation">;</span>
-                lights<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>index<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">return</span> Math<span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>no_num<span class="token punctuation">,</span>yes_num<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
+        newarr<span class="token punctuation">[</span>indexj<span class="token punctuation">]</span><span class="token operator">=</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">+</span>arr<span class="token punctuation">[</span>j<span class="token punctuation">]</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> newarr<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    
     
     <span class="token comment" spellcheck="true">//2.贪心算法</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">lightStreet2</span><span class="token punctuation">(</span>String street<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> streetArr<span class="token operator">=</span>street<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> lights_num<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>i<span class="token operator">&lt;</span>streetArr<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>streetArr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'X'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                i<span class="token operator">++</span><span class="token punctuation">;</span>
-            <span class="token punctuation">}</span>
-            <span class="token keyword">else</span> <span class="token punctuation">{</span> <span class="token comment" spellcheck="true">//当i位置是'.'的时候，一定会放一个灯将'.'点亮</span>
-                lights_num<span class="token operator">++</span><span class="token punctuation">;</span>
-                <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token operator">==</span>streetArr<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">break</span><span class="token punctuation">;</span>
-                <span class="token punctuation">}</span>
-                <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                    <span class="token keyword">if</span><span class="token punctuation">(</span>streetArr<span class="token punctuation">[</span>i<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">==</span><span class="token string">'X'</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                        i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">2</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                    <span class="token keyword">else</span> <span class="token punctuation">{</span>
-                        i<span class="token operator">=</span>i<span class="token operator">+</span><span class="token number">3</span><span class="token punctuation">;</span>
-                    <span class="token punctuation">}</span>
-                <span class="token punctuation">}</span>
-                
-            <span class="token punctuation">}</span>    
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">splitGold2</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        PriorityQueue<span class="token operator">&lt;</span>Integer<span class="token operator">></span> littleheap<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//小根堆</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//将数组中的数据添加到小根堆里面</span>
+            littleheap<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> lights_num<span class="token punctuation">;</span>
+        <span class="token keyword">int</span> ans<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> tmp<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
+        <span class="token keyword">while</span><span class="token punctuation">(</span>littleheap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            tmp<span class="token operator">=</span>littleheap<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">+</span>littleheap<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//把最小的两个数拿出来给tmp</span>
+            ans<span class="token operator">+=</span>tmp<span class="token punctuation">;</span>
+            littleheap<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>tmp<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//将合并两个最小值后的结果放回小根堆</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token keyword">return</span> ans<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
     
-    <span class="token comment" spellcheck="true">//3.编写对数器对比验证贪心算法的正确性</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> String <span class="token function">generateRandomStreet</span><span class="token punctuation">(</span><span class="token keyword">int</span> maxlength<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token keyword">int</span> len<span class="token operator">=</span> <span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span>maxlength<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[1,maxlength]</span>
-        <span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> strchar<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">char</span><span class="token punctuation">[</span>len<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>len<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            strchar<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">></span><span class="token number">0.5</span> <span class="token operator">?</span> <span class="token string">'X'</span><span class="token operator">:</span><span class="token string">'.'</span><span class="token punctuation">;</span>
+    <span class="token comment" spellcheck="true">//3.编写对数器</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token function">generateRandomIntArray</span><span class="token punctuation">(</span><span class="token keyword">int</span> maxlen<span class="token punctuation">,</span><span class="token keyword">int</span> maxvalue<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> tmp<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">int</span><span class="token punctuation">[</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span>maxlen<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[1,maxlen];</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>tmp<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            tmp<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span>maxvalue<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[1,maxvalue]</span>
         <span class="token punctuation">}</span>
-        <span class="token comment" spellcheck="true">//return strchar.toString();//这样返回之后无法直接打印String类型，打印的是地址</span>
-        <span class="token keyword">return</span> String<span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>strchar<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//通过valueOf方法，将char数组构造成String</span>
+        <span class="token keyword">return</span> tmp<span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
-    
     
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">// 1.测试字符串</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=============两个street字符串============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String test1<span class="token operator">=</span><span class="token string">"X...XX.X..X....XXXX..........X"</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"test1:"</span><span class="token operator">+</span>test1<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String test2<span class="token operator">=</span><span class="token string">"X...XX.X..X....XXXX..X"</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"test2:"</span><span class="token operator">+</span>test2<span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//2.测试暴力方法</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=============测试暴力方法============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">lightStreet1</span><span class="token punctuation">(</span>test1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">lightStreet1</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//3.测试贪心方法</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=============测试贪心方法============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">lightStreet2</span><span class="token punctuation">(</span>test1<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">lightStreet2</span><span class="token punctuation">(</span>test2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment" spellcheck="true">//4.测试随机字符串生成函数</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=============测试随机字符串生成函数============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String str1 <span class="token operator">=</span> <span class="token function">generateRandomStreet</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        String str2 <span class="token operator">=</span> <span class="token function">generateRandomStreet</span><span class="token punctuation">(</span><span class="token number">40</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str1<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>str2<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//</span>
-        <span class="token comment" spellcheck="true">//5.编写对数器对比验证贪心算法的正确性</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"=============编写对数器对比验证贪心算法的正确性============="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> testTime<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
-        <span class="token keyword">int</span> maxlen<span class="token operator">=</span><span class="token number">50</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>testTime<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            String teststreet<span class="token operator">=</span><span class="token function">generateRandomStreet</span><span class="token punctuation">(</span>maxlen<span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">lightStreet1</span><span class="token punctuation">(</span>teststreet<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token function">lightStreet2</span><span class="token punctuation">(</span>teststreet<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">// TODO Auto-generated method stub</span>
+        <span class="token comment" spellcheck="true">//1.测试数组</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========测试数组========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> test<span class="token operator">=</span> <span class="token punctuation">{</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">10</span><span class="token punctuation">,</span><span class="token number">45</span><span class="token punctuation">,</span><span class="token number">20</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">:</span>test<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//2.测试merge2elements()方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========测试merge2elements()方法========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> newtest<span class="token operator">=</span><span class="token function">merge2elements</span><span class="token punctuation">(</span>test<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">:</span>newtest<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//3.测试暴力方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========测试暴力方法========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">SplitGold1</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+        <span class="token comment" spellcheck="true">//4.测试贪心算法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========测试贪心方法========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">splitGold2</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//4.测试随机数组生成方法</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========测试随机数组生成方法========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr1<span class="token operator">=</span><span class="token function">generateRandomIntArray</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">:</span> arr1<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment" spellcheck="true">//5.对数器验证贪心算法的正确性</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========对数器验证贪心算法的正确性========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxtime<span class="token operator">=</span><span class="token number">5</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxlen<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">int</span> maxvalue<span class="token operator">=</span><span class="token number">10</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>maxtime<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> testarr<span class="token operator">=</span><span class="token function">generateRandomIntArray</span><span class="token punctuation">(</span>maxlen<span class="token punctuation">,</span> maxvalue<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">SplitGold1</span><span class="token punctuation">(</span>testarr<span class="token punctuation">)</span><span class="token operator">!=</span><span class="token function">SplitGold1</span><span class="token punctuation">(</span>testarr<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
                 System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Wrong!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
                 <span class="token keyword">break</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
         System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"Good Job!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
 </code></pre>
 <p>运行结果:</p>
-<pre class=" language-text"><code class="language-text">=============两个street字符串=============
-test1:X...XX.X..X....XXXX..........X
-test2:X...XX.X..X....XXXX..X
-=============测试暴力方法=============
-9
-6
-=============测试贪心方法=============
-9
-6
-=============测试随机字符串生成函数=============
-..X..X.X...XX.XX.X..
-XX...XX.XX.XX.X.X..XX...XX..X.XX..X
-=============编写对数器对比验证贪心算法的正确性=============
+<pre class=" language-text"><code class="language-text">========测试数组========
+3 5 10 45 20 
+========测试merge2elements()方法========
+10 45 20 8 
+========测试暴力方法========
+147
+========测试贪心方法========
+147
+========测试随机数组生成方法========
+9 2 23 26 72 97 75 35 
+========对数器验证贪心算法的正确性========
 Good Job!
 </code></pre>
-<p><a target="_blank" rel="noopener" href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/blob/main/base_greedy_algorithm/LightTheStreet.java">完整代码见我的github</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/blob/main/base_greedy_algorithm/UseLeastMoneySplitGlod.java">完整代码见我的github</a></p>
 
                 
             </div>
@@ -659,7 +671,7 @@ Good Job!
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/26/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jie-dao-bai-fang-lu-deng-wen-ti/">http://0to1sec.com/2022/09/26/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jie-dao-bai-fang-lu-deng-wen-ti/</a>
+                    <a href="http://0to1sec.com/2022/09/28/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jin-tiao-hua-fen-wen-ti-ha-fu-man-shu/">http://0to1sec.com/2022/09/28/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jin-tiao-hua-fen-wen-ti-ha-fu-man-shu/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -713,8 +725,8 @@ Good Job!
                                     <span class="chip bg-color">贪心算法</span>
                                 </a>
                             
-                                <a href="/tags/%E8%A1%97%E9%81%93%E6%91%86%E6%94%BE%E8%B7%AF%E7%81%AF%E9%97%AE%E9%A2%98/">
-                                    <span class="chip bg-color">街道摆放路灯问题</span>
+                                <a href="/tags/%E9%87%91%E6%9D%A1%E5%88%92%E5%88%86%E9%97%AE%E9%A2%98%EF%BC%88%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%EF%BC%89/">
+                                    <span class="chip bg-color">金条划分问题（哈夫曼树）</span>
                                 </a>
                             
                         </div>
@@ -884,9 +896,10 @@ Good Job!
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/09/28/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jin-tiao-hua-fen-wen-ti-ha-fu-man-shu/">
                     <div class="card-image">
@@ -904,9 +917,9 @@ Good Job!
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-28
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-28
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -919,6 +932,7 @@ Good Job!
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -953,24 +967,24 @@ Good Job!
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/23/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-you-hui-yi-an-pai-wen-ti/">
+                <a href="/2022/09/26/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jie-dao-bai-fang-lu-deng-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="数据结构和算法-贪心算法-最优会议安排问题">
+                        <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="数据结构和算法-贪心算法-街道摆放路灯问题">
                         
-                        <span class="card-title">数据结构和算法-贪心算法-最优会议安排问题</span>
+                        <span class="card-title">数据结构和算法-贪心算法-街道摆放路灯问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文讲解贪心算法的常规求解套路（使用对数器验证贪心策略的正确性），解决最优会议安排问题。
+                            利用贪心算法的求解套路解决街道摆放路灯问题。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-23
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-26
                             </span>
                         <span class="publish-author">
                             
@@ -1003,8 +1017,8 @@ Good Job!
                         <span class="chip bg-color">贪心算法</span>
                     </a>
                     
-                    <a href="/tags/%E6%9C%80%E4%BC%98%E4%BC%9A%E8%AE%AE%E5%AE%89%E6%8E%92%E9%97%AE%E9%A2%98/">
-                        <span class="chip bg-color">最优会议安排问题</span>
+                    <a href="/tags/%E8%A1%97%E9%81%93%E6%91%86%E6%94%BE%E8%B7%AF%E7%81%AF%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">街道摆放路灯问题</span>
                     </a>
                     
                 </div>
