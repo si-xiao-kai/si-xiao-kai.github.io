@@ -458,14 +458,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-28
+                    2022-09-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1.4k
                 </div>
                 
 
@@ -497,6 +497,10 @@
 <h1 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h1><p>&emsp;&emsp;反向思考：合并⇔划分的逆过程，将两个小块金条合并需要花费两个金条的和的代价，怎么样能花费最少的代价拼接起来一个完整的金条。即合并的代价==划分的代价。</p>
 <p>&emsp;&emsp;暴力方法思路:每次合并任意合并，遍历所有的情况，返回最少的代价。</p>
 <p>&emsp;&emsp;贪心算法思路:从小到大排序，每次拿出最小的两个数合并，合并后的结果放回去，重新参加排序，然后依次类推，知道最后只剩下一个数（也就是总数）。</p>
+<img src='/picture/0929-01.png' width='80%'>
+<center> 贪心策略求解思路演示 </center>
+
+
 <h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><pre class=" language-java"><code class="language-java">    <span class="token keyword">package</span> base_greedy_algorithm<span class="token punctuation">;</span>
 
     <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>PriorityQueue<span class="token punctuation">;</span>
