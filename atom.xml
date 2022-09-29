@@ -6,7 +6,7 @@
   <link href="http://0to1sec.com/atom.xml" rel="self"/>
   
   <link href="http://0to1sec.com/"/>
-  <updated>2022-09-29T01:44:11.719Z</updated>
+  <updated>2022-09-29T10:28:09.451Z</updated>
   <id>http://0to1sec.com/</id>
   
   <author>
@@ -15,6 +15,39 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>数据结构和算法-贪心算法-最大化项目收益问题</title>
+    <link href="http://0to1sec.com/2022/09/29/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-da-hua-xiang-mu-shou-yi-wen-ti/"/>
+    <id>http://0to1sec.com/2022/09/29/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-da-hua-xiang-mu-shou-yi-wen-ti/</id>
+    <published>2022-09-29T10:18:00.000Z</published>
+    <updated>2022-09-29T10:28:09.451Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-题目描述&quot;&gt;&lt;a href=&quot;#1-题目描述&quot; class=&quot;headerlink&quot; title=&quot;1.题目描述&quot;&gt;&lt;/a&gt;1.题目描述&lt;/h1&gt;&lt;p&gt;输入:正数数组costs、正数数组profits、正数K、正数M</summary>
+        
+      
+    
+    
+    
+    <category term="数据结构和算法" scheme="http://0to1sec.com/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数据结构" scheme="http://0to1sec.com/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://0to1sec.com/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="java" scheme="http://0to1sec.com/tags/java/"/>
+    
+    <category term="贪心算法" scheme="http://0to1sec.com/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="最大化项目收益问题" scheme="http://0to1sec.com/tags/%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%94%B6%E7%9B%8A%E9%97%AE%E9%A2%98/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构和算法-贪心算法-金条划分问题（哈夫曼树）</title>
@@ -172,9 +205,9 @@
     
     <category term="CTF" scheme="http://0to1sec.com/tags/CTF/"/>
     
-    <category term="reverse(逆向分析)" scheme="http://0to1sec.com/tags/reverse-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
-    
     <category term="网路安全" scheme="http://0to1sec.com/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="reverse(逆向分析)" scheme="http://0to1sec.com/tags/reverse-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/"/>
     
   </entry>
   
@@ -202,9 +235,9 @@
     
     <category term="CTF" scheme="http://0to1sec.com/tags/CTF/"/>
     
-    <category term="网路安全" scheme="http://0to1sec.com/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/"/>
-    
     <category term="crypto密码学" scheme="http://0to1sec.com/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="网路安全" scheme="http://0to1sec.com/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/"/>
     
     <category term="诗歌密码" scheme="http://0to1sec.com/tags/%E8%AF%97%E6%AD%8C%E5%AF%86%E7%A0%81/"/>
     
@@ -234,9 +267,9 @@
     
     <category term="CTF" scheme="http://0to1sec.com/tags/CTF/"/>
     
-    <category term="网路安全" scheme="http://0to1sec.com/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/"/>
-    
     <category term="crypto密码学" scheme="http://0to1sec.com/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/"/>
+    
+    <category term="网路安全" scheme="http://0to1sec.com/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/"/>
     
     <category term="pyc逆向" scheme="http://0to1sec.com/tags/pyc%E9%80%86%E5%90%91/"/>
     
