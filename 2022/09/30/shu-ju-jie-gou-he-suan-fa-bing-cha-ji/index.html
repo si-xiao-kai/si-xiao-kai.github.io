@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="数据结构和算法-贪心算法-最大化项目收益问题, hacker进化论-sixiaokai">
+    <meta name="keywords" content="数据结构和算法-并查集, hacker进化论-sixiaokai">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>数据结构和算法-贪心算法-最大化项目收益问题 | hacker进化论-sixiaokai</title>
+    <title>数据结构和算法-并查集 | hacker进化论-sixiaokai</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">数据结构和算法-贪心算法-最大化项目收益问题</h1>
+                    <h1 class="description center-align post-title">数据结构和算法-并查集</h1>
                 </div>
             </div>
         </div>
@@ -422,12 +422,8 @@
                                 <span class="chip bg-color">java</span>
                             </a>
                         
-                            <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">贪心算法</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%94%B6%E7%9B%8A%E9%97%AE%E9%A2%98/">
-                                <span class="chip bg-color">最大化项目收益问题</span>
+                            <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+                                <span class="chip bg-color">并查集</span>
                             </a>
                         
                     </div>
@@ -451,28 +447,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2022-09-30
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-29
+                    2022-09-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.3k
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    5 分
+                    4 分
                 </div>
                 
 
@@ -492,160 +488,177 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-题目描述"><a href="#1-题目描述" class="headerlink" title="1.题目描述"></a>1.题目描述</h1><p>输入:正数数组costs、正数数组profits、正数K、正数M </p>
-<p>costs[i]表示i号项目的花费</p>
-<p>profits[i]表示i号项目在扣除花费之后还能挣到的钱(利润)</p>
-<p>K表示你只能串行的最多做k个项目</p>
-<p>M表示你初始的资金</p>
-<p>说明:每做完一个项目，马上获得的收益，可以支持你去做下一个项目。不能并行的做项目。</p>
-<p>输出:你最后获得的最大钱数。</p>
-<h1 id="2-思路分析"><a href="#2-思路分析" class="headerlink" title="2.思路分析"></a>2.思路分析</h1><p>&emsp;&emsp;最自然的一种贪心之一，不需要对数器来验证了。</p>
-<p>&emsp;&emsp;思路：【当前手里的启动资金M能够做哪些项目，挑能做的中利润最大的做，周而复始，直到最后做满K个，或者如果做不下去了也就是启动资金不够了；如果没做满K个，手里的资金还够做一些小项目，那就挑收益最大的小项目做了。】</p>
-<img src='/picture/0930-01.png' width='80%'>
-<center> 贪心策略分析 </center>
-    
-<h1 id="3-代码实现"><a href="#3-代码实现" class="headerlink" title="3.代码实现"></a>3.代码实现</h1><pre class=" language-java"><code class="language-java">    <span class="token keyword">package</span> base_greedy_algorithm<span class="token punctuation">;</span>
+                <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>1)有若干个样本a、b、c、d-类型假设是V</p>
+<p>2)在并查集中一开始认为每个样本都在单独的集合里</p>
+<p>3)用户可以在任何时候调用如下两个方法:</p>
+<p>&emsp;&emsp;boolean isSameSet(V x, V y) :查询样本x和样本y是否属于一个集合</p>
+<p>&emsp;&emsp;void union(V x, V y) :把x和y各自所在集合的所有样本合并成一个集合</p>
+<p>4)isSameSet和union方 法的代价越低越好【最好O(1)】</p>
+<h1 id="2-代码实现及测试"><a href="#2-代码实现及测试" class="headerlink" title="2.代码实现及测试"></a>2.代码实现及测试</h1><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> base_union_find_set<span class="token punctuation">;</span>
 
-    <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Comparator<span class="token punctuation">;</span>
-    <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>PriorityQueue<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>HashMap<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span>
+<span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Stack<span class="token punctuation">;</span>
 
-    <span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MaximizeTheProfits</span> <span class="token punctuation">{</span>
-    <span class="token comment" spellcheck="true">/*
-        输入:正数数组costs、正数数组profits、正数K、正数M 
-        costs[i]表示i号项目的花费
-        profits[i]表示i号项目在扣除花费之后还能挣到的钱(利润)
-        K表示你只能串行的最多做k个项目
-        M表示你初始的资金
-        说明:每做完一个项目，马上获得的收益，可以支持你去做下一个项目。不能并行的做项目。
-        输出:你最后获得的最大钱数。
-        
-     */</span>
-    
-    <span class="token comment" spellcheck="true">//最自然的一种贪心之一，不需要对数器来验证了。</span>
-    <span class="token comment" spellcheck="true">//思路：【当前手里的启动资金M能够做哪些项目，挑能做的中利润最大的做，周而复始，直到最后做满K个，</span>
-    <span class="token comment" spellcheck="true">//或者做不下去了也就是启动资金不够了，如果没做满K个，手里的资金还够做一些小项目，那就挑收益最大的小项目做了。】</span>
-    
-    
-    <span class="token comment" spellcheck="true">//1.定义项目Project类</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Project</span><span class="token punctuation">{</span>
-        <span class="token keyword">int</span> cost<span class="token punctuation">;</span>
-        <span class="token keyword">int</span> profit<span class="token punctuation">;</span>
-        <span class="token keyword">public</span> <span class="token function">Project</span><span class="token punctuation">(</span><span class="token keyword">int</span> c<span class="token punctuation">,</span><span class="token keyword">int</span> p<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            cost<span class="token operator">=</span>c<span class="token punctuation">;</span>
-            profit<span class="token operator">=</span>p<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-        
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">MyUnionFindSet</span> <span class="token punctuation">{</span>
+
+    <span class="token comment" spellcheck="true">// 1. 将V 类型的数据包裹一层，打包成一个对象</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>V<span class="token operator">></span><span class="token punctuation">{</span>
+        V value<span class="token punctuation">;</span>
+        <span class="token keyword">public</span> <span class="token function">Node</span><span class="token punctuation">(</span>V v<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            value<span class="token operator">=</span>v<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>    
     <span class="token punctuation">}</span>
     
-    <span class="token comment" spellcheck="true">//2.贪心算法实现最大化项目收益</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">maximizeProfits</span><span class="token punctuation">(</span>Project<span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">,</span><span class="token keyword">int</span> K<span class="token punctuation">,</span><span class="token keyword">int</span> M<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-        <span class="token comment" spellcheck="true">//1)将项目按照花费从小到达排序，（借助小根堆）</span>
-        PriorityQueue<span class="token operator">&lt;</span>Project<span class="token operator">></span> lockedProjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">litteHeapCompare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>arr<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            lockedProjects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>arr<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//这里添加Project的时候注意，构造新的对象，不能引用传递,改成下面的这样之后还是不行，根本不是这个问题，而是代码逻辑的问题。</span>
-            <span class="token comment" spellcheck="true">//Cannot read field "cost" because the return value of "java.util.PriorityQueue.peek()" is null</span>
-            <span class="token comment" spellcheck="true">//lockedProjects.add(new Project(arr[i].cost, arr[i].profit));//</span>
+    <span class="token comment" spellcheck="true">// 2. 定义并查集类：用户可以给处一系列数据（引用类型），然后用我们的并查集去注册这些数据。在并查集中完成查询、归并集合的操作。</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">UnionFindSet</span><span class="token operator">&lt;</span>V<span class="token operator">></span><span class="token punctuation">{</span>
+        <span class="token comment" spellcheck="true">//定义三张表</span>
+        HashMap<span class="token operator">&lt;</span>V<span class="token punctuation">,</span> Node<span class="token operator">&lt;</span>V<span class="token operator">>></span> nodes<span class="token punctuation">;</span> <span class="token comment" spellcheck="true">//登记节点</span>
+        HashMap<span class="token operator">&lt;</span>Node<span class="token operator">&lt;</span>V<span class="token operator">></span><span class="token punctuation">,</span> Node<span class="token operator">&lt;</span>V<span class="token operator">>></span> parents<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录父节点</span>
+        HashMap<span class="token operator">&lt;</span>Node<span class="token operator">&lt;</span>V<span class="token operator">></span><span class="token punctuation">,</span> Integer<span class="token operator">></span> sizeMap<span class="token punctuation">;</span><span class="token comment" spellcheck="true">//记录每个集合（由代表点表示）的大小</span>
+        
+        <span class="token comment" spellcheck="true">//构造函数</span>
+        <span class="token keyword">public</span> <span class="token function">UnionFindSet</span><span class="token punctuation">(</span>List<span class="token operator">&lt;</span>V<span class="token operator">></span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//初始化三张表</span>
+            nodes<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            parents<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sizeMap<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            <span class="token keyword">for</span><span class="token punctuation">(</span>V i<span class="token operator">:</span> list<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token comment" spellcheck="true">//对V变量进行包装</span>
+                Node<span class="token operator">&lt;</span>V<span class="token operator">></span> node<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token operator">&lt;</span>V<span class="token operator">></span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//登记节点</span>
+                nodes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//标记父节点就是自己</span>
+                parents<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> node<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token comment" spellcheck="true">//初始化sizemap,每个集合都是一个元素</span>
+                sizeMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>node<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
         <span class="token punctuation">}</span>
         
-        <span class="token comment" spellcheck="true">//2)如果资金能够解锁项目，就把项目扔到大根堆里面，按照利润从大到小排序</span>
-        PriorityQueue<span class="token operator">&lt;</span>Project<span class="token operator">></span> unlockedProjects <span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">PriorityQueue</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">bigHeapCompare</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token comment" spellcheck="true">//能穿行做最多K个项目</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>K<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token comment" spellcheck="true">//根据当前的资金，解锁能做的项目放入到大根堆</span>
-            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>lockedProjects<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span> lockedProjects<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>cost<span class="token operator">&lt;=</span>M <span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//注意两个条件的顺序，如果先peek()会空指针异常</span>
-                unlockedProjects<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>lockedProjects<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    
+        <span class="token comment" spellcheck="true">//提供找代表方法，从一个节点出发，向上跳直到跳不动为止</span>
+        <span class="token keyword">public</span>  Node<span class="token operator">&lt;</span>V<span class="token operator">></span> <span class="token function">findRepresentative</span><span class="token punctuation">(</span>Node<span class="token operator">&lt;</span>V<span class="token operator">></span> v<span class="token punctuation">)</span><span class="token punctuation">{</span>
+            
+            Stack<span class="token operator">&lt;</span>Node<span class="token operator">&lt;</span>V<span class="token operator">>></span> path<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Stack</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span>v<span class="token operator">!=</span>parents<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                path<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                v<span class="token operator">=</span>parents<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>v<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
             
-            <span class="token comment" spellcheck="true">//如果没做够k个项目，大根堆空了，也解锁不出来新项目了，返回当前的资金。</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>unlockedProjects<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-                <span class="token keyword">return</span> M<span class="token punctuation">;</span>
+            <span class="token comment" spellcheck="true">//优化：把查询父节点的链打扁平，既然找到了集合的代表点是v，那么直接将所有的代表点下挂的节点都（直接）挂在代表点下。</span>
+            <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>path<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                parents<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>path<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> v<span class="token punctuation">)</span><span class="token punctuation">;</span>
             <span class="token punctuation">}</span>
             
-            <span class="token comment" spellcheck="true">//挑利润最大的项目做了，更新当前资金，然后继续拿新的资金去解锁项目，继续挑最大利润的项目做</span>
-            <span class="token comment" spellcheck="true">//考虑解锁失败的情况，没解锁成功的话，继续做大根堆里面的项目，直到K个项目做完</span>
-            M<span class="token operator">+=</span>unlockedProjects<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>profit<span class="token punctuation">;</span>
-            <span class="token comment" spellcheck="true">//这里碰到一个错误，之前写成lockedProjects.poll().profit了，所以导致lockedProjects变成了空【过程中学习了debug的方法】</span>
-            <span class="token comment" spellcheck="true">//然后就报错了：Cannot read field "cost" because the return value of "java.util.PriorityQueue.peek()" is null</span>
-            <span class="token comment" spellcheck="true">//处理完上面的bug之后，运行的时候，有时候报错有时候不报错，还是同样的错错误。</span>
-            <span class="token comment" spellcheck="true">//经过分析随机生成的数据，发现了一个逻辑判断的小bug，</span>
-            <span class="token comment" spellcheck="true">//!lockedProjects.isEmpty() &amp;&amp; lockedProjects.peek().cost&lt;=M 注意两个条件的顺序，如果先peek()会空指针异常</span>
+            <span class="token keyword">return</span> v<span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment" spellcheck="true">//提供isSameSet方法，判断两个V 变量是否在一个集合中</span>
+        <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">isSameSet</span><span class="token punctuation">(</span>V a<span class="token punctuation">,</span>V b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//判断要找的节点v有没有登记过，没登记过不找,直接返回false</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>nodes<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token operator">||</span><span class="token operator">!</span>nodes<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//如果两个代表点不同则a，b不在一个集合</span>
+            <span class="token keyword">return</span> <span class="token function">findRepresentative</span><span class="token punctuation">(</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">==</span><span class="token function">findRepresentative</span><span class="token punctuation">(</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment" spellcheck="true">//提供union方法，合并 a，b所在的两个集合</span>
+        <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">union</span><span class="token punctuation">(</span>V a<span class="token punctuation">,</span>V b<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token comment" spellcheck="true">//判断要找的节点v有没有登记过，没登记过不做合并操作</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>nodes<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token operator">||</span><span class="token operator">!</span>nodes<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token keyword">return</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+            <span class="token comment" spellcheck="true">//找到两个节点的代表点</span>
+            Node<span class="token operator">&lt;</span>V<span class="token operator">></span> aHeadNode <span class="token operator">=</span> <span class="token function">findRepresentative</span><span class="token punctuation">(</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            Node<span class="token operator">&lt;</span>V<span class="token operator">></span> bHeadNode <span class="token operator">=</span> <span class="token function">findRepresentative</span><span class="token punctuation">(</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
             
+            <span class="token comment" spellcheck="true">//那个集合小，小挂大</span>
+            <span class="token keyword">int</span> aSize<span class="token operator">=</span>sizeMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>aHeadNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">int</span> bSize<span class="token operator">=</span>sizeMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>bHeadNode<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            
+            Node<span class="token operator">&lt;</span>V<span class="token operator">></span> big <span class="token operator">=</span> aSize <span class="token operator">></span> bSize<span class="token operator">?</span>aHeadNode<span class="token operator">:</span>bHeadNode<span class="token punctuation">;</span>
+            Node<span class="token operator">&lt;</span>V<span class="token operator">></span> small <span class="token operator">=</span> big<span class="token operator">==</span>aHeadNode<span class="token operator">?</span>bHeadNode<span class="token operator">:</span> aHeadNode<span class="token punctuation">;</span>
+            
+            <span class="token comment" spellcheck="true">//小集合的头节点直接挂在大集合的头上，更新sizemap</span>
+            parents<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>small<span class="token punctuation">,</span> big<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sizeMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>big<span class="token punctuation">,</span> aSize<span class="token operator">+</span>bSize<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            sizeMap<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>small<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
         <span class="token punctuation">}</span>
-        <span class="token keyword">return</span> M <span class="token punctuation">;</span>
-    <span class="token punctuation">}</span>
-    
-    <span class="token comment" spellcheck="true">//小根堆的比较器 花费少的项目放前面</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">litteHeapCompare</span> <span class="token keyword">implements</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Project<span class="token operator">></span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Project p1<span class="token punctuation">,</span>Project p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> p1<span class="token punctuation">.</span>cost<span class="token operator">-</span>p2<span class="token punctuation">.</span>cost<span class="token punctuation">;</span>
-        <span class="token punctuation">}</span>
-    <span class="token punctuation">}</span>
-    
-    <span class="token comment" spellcheck="true">//大根堆比较器 利润高的放前面</span>
-    
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">class</span> <span class="token class-name">bigHeapCompare</span> <span class="token keyword">implements</span> <span class="token class-name">Comparator</span><span class="token operator">&lt;</span>Project<span class="token operator">></span><span class="token punctuation">{</span>
-        <span class="token annotation punctuation">@Override</span>
-        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span>Project p1<span class="token punctuation">,</span>Project p2<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">return</span> p2<span class="token punctuation">.</span>profit<span class="token operator">-</span>p1<span class="token punctuation">.</span>profit<span class="token punctuation">;</span>
+        
+        
+        <span class="token comment" spellcheck="true">//提供返回集合个数的方法</span>
+        <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">numofSets</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token keyword">return</span> sizeMap<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
     <span class="token punctuation">}</span>
     
     
     
     <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-
-        <span class="token comment" spellcheck="true">//1.生成测试项目</span>
-        Project<span class="token punctuation">[</span><span class="token punctuation">]</span> test<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Project</span><span class="token punctuation">[</span><span class="token number">5</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>test<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            <span class="token keyword">int</span> c<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">100</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[1,100]</span>
-            <span class="token keyword">int</span> p<span class="token operator">=</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token number">50</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//[1,50]</span>
-            test<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Project</span><span class="token punctuation">(</span>c<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment" spellcheck="true">//测试并查集</span>
+        List<span class="token operator">&lt;</span>Integer<span class="token operator">></span> testList<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        testList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        testList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">13</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        testList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        testList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        testList<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========测试数据(V=Integer)=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">for</span><span class="token punctuation">(</span>Integer i<span class="token operator">:</span> testList<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i<span class="token operator">+</span><span class="token string">" "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========生成测试项目========"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token keyword">for</span><span class="token punctuation">(</span>Project p<span class="token operator">:</span>test<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"cost:"</span><span class="token operator">+</span>p<span class="token punctuation">.</span>cost<span class="token operator">+</span><span class="token string">",profit:"</span><span class="token operator">+</span>p<span class="token punctuation">.</span>profit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========测试并查集(V=Integer)=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        UnionFindSet<span class="token operator">&lt;</span>Integer<span class="token operator">></span> myfindset<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">UnionFindSet</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span>testList<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========初始集合个数=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>myfindset<span class="token punctuation">.</span><span class="token function">numofSets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========13和9 在一个集合吗？=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>myfindset<span class="token punctuation">.</span><span class="token function">isSameSet</span><span class="token punctuation">(</span>testList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"在一个集合"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"不在一个集合"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========== 合并 13和9 =========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        myfindset<span class="token punctuation">.</span><span class="token function">union</span><span class="token punctuation">(</span>testList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========13和9 在一个集合吗？=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span>myfindset<span class="token punctuation">.</span><span class="token function">isSameSet</span><span class="token punctuation">(</span>testList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> testList<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"在一个集合"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"不在一个集合"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========当前集合个数=========="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span>myfindset<span class="token punctuation">.</span><span class="token function">numofSets</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
         
-    
-        
-        <span class="token comment" spellcheck="true">//2.测试贪心算法的结果</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"========测试贪心算法的结果======="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token function">maximizeProfits</span><span class="token punctuation">(</span>test<span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">,</span> <span class="token number">50</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        
-        <span class="token comment" spellcheck="true">/*
-         * 
-         * ========生成测试项目========
-            cost:68,profit:39
-            cost:10,profit:47
-            cost:51,profit:32
-            cost:99,profit:28
-            cost:53,profit:22
-            ========测试贪心算法的结果=======
-            168
-         */</span>
-        <span class="token comment" spellcheck="true">//人工分析</span>
-        <span class="token comment" spellcheck="true">/*
-         * 50+47+39+32=136+32=168 结果正确 
-         * 
-         */</span>
     <span class="token punctuation">}</span>
 
 <span class="token punctuation">}</span>
+
 </code></pre>
-<p>运行结果:</p>
-<pre class=" language-text"><code class="language-text">========生成测试项目========
-    cost:68,profit:39
-    cost:10,profit:47
-    cost:51,profit:32
-    cost:99,profit:28
-    cost:53,profit:22
-========测试贪心算法的结果=======
-    168
+<p>运行结果：</p>
+<pre class=" language-text"><code class="language-text">==========测试数据(V=Integer)==========
+10 13 9 100 25 
+==========测试并查集(V=Integer)==========
+
+==========初始集合个数==========
+5
+==========13和9 在一个集合吗？==========
+不在一个集合
+========== 合并 13和9 ==========
+==========13和9 在一个集合吗？==========
+在一个集合
+==========当前集合个数==========
+4
 </code></pre>
-<p><a target="_blank" rel="noopener" href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/blob/main/base_greedy_algorithm/MaximizeTheProfits.java">完整代码见我的github</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/blob/main/base_union_find_set/MyUnionFindSet.java">完整代码见我的github</a></p>
 
                 
             </div>
@@ -672,7 +685,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/29/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-da-hua-xiang-mu-shou-yi-wen-ti/">http://0to1sec.com/2022/09/29/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-da-hua-xiang-mu-shou-yi-wen-ti/</a>
+                    <a href="http://0to1sec.com/2022/09/30/shu-ju-jie-gou-he-suan-fa-bing-cha-ji/">http://0to1sec.com/2022/09/30/shu-ju-jie-gou-he-suan-fa-bing-cha-ji/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -722,12 +735,8 @@
                                     <span class="chip bg-color">java</span>
                                 </a>
                             
-                                <a href="/tags/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">贪心算法</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%94%B6%E7%9B%8A%E9%97%AE%E9%A2%98/">
-                                    <span class="chip bg-color">最大化项目收益问题</span>
+                                <a href="/tags/%E5%B9%B6%E6%9F%A5%E9%9B%86/">
+                                    <span class="chip bg-color">并查集</span>
                                 </a>
                             
                         </div>
@@ -897,9 +906,10 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2022/09/30/shu-ju-jie-gou-he-suan-fa-bing-cha-ji/">
                     <div class="card-image">
@@ -917,9 +927,9 @@
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-30
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -932,6 +942,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -962,24 +973,24 @@
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/28/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-jin-tiao-hua-fen-wen-ti-ha-fu-man-shu/">
+                <a href="/2022/09/29/shu-ju-jie-gou-he-suan-fa-tan-xin-suan-fa-zui-da-hua-xiang-mu-shou-yi-wen-ti/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="数据结构和算法-贪心算法-金条划分问题（哈夫曼树）">
+                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="数据结构和算法-贪心算法-最大化项目收益问题">
                         
-                        <span class="card-title">数据结构和算法-贪心算法-金条划分问题（哈夫曼树）</span>
+                        <span class="card-title">数据结构和算法-贪心算法-最大化项目收益问题</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            利用贪心算法的求解套路解决金条划分问题（哈夫曼树）。
+                            利用贪心算法的求解最大化项目收益问题。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-28
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-29
                             </span>
                         <span class="publish-author">
                             
@@ -1012,8 +1023,8 @@
                         <span class="chip bg-color">贪心算法</span>
                     </a>
                     
-                    <a href="/tags/%E9%87%91%E6%9D%A1%E5%88%92%E5%88%86%E9%97%AE%E9%A2%98%EF%BC%88%E5%93%88%E5%A4%AB%E6%9B%BC%E6%A0%91%EF%BC%89/">
-                        <span class="chip bg-color">金条划分问题（哈夫曼树）</span>
+                    <a href="/tags/%E6%9C%80%E5%A4%A7%E5%8C%96%E9%A1%B9%E7%9B%AE%E6%94%B6%E7%9B%8A%E9%97%AE%E9%A2%98/">
+                        <span class="chip bg-color">最大化项目收益问题</span>
                     </a>
                     
                 </div>
