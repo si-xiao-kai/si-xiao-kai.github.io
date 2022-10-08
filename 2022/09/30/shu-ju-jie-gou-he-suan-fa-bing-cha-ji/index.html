@@ -454,7 +454,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-30
+                    2022-10-08
                 </div>
                 
 
@@ -491,9 +491,9 @@
                 <h1 id="1-概述"><a href="#1-概述" class="headerlink" title="1.概述"></a>1.概述</h1><p>1)有若干个样本a、b、c、d-类型假设是V</p>
 <p>2)在并查集中一开始认为每个样本都在单独的集合里</p>
 <p>3)用户可以在任何时候调用如下两个方法:</p>
-<p>&emsp;&emsp;boolean isSameSet(V x, V y) :查询样本x和样本y是否属于一个集合</p>
-<p>&emsp;&emsp;void union(V x, V y) :把x和y各自所在集合的所有样本合并成一个集合</p>
-<p>4)isSameSet和union方 法的代价越低越好【最好O(1)】</p>
+<p>&emsp;&emsp;boolean isSameSet（V x, V y） :查询样本x和样本y是否属于一个集合</p>
+<p>&emsp;&emsp;void union（V x, V y） :把x和y各自所在集合的所有样本合并成一个集合</p>
+<p>4)isSameSet和union方 法的代价越低越好【最好O（1）】</p>
 <h1 id="2-代码实现及测试"><a href="#2-代码实现及测试" class="headerlink" title="2.代码实现及测试"></a>2.代码实现及测试</h1><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> base_union_find_set<span class="token punctuation">;</span>
 
 <span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span>
