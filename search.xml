@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>数据结构和算法-图-拓扑排序</title>
+      <link href="/2022/10/10/shu-ju-jie-gou-he-suan-fa-tu-tuo-bu-pai-xu/"/>
+      <url>/2022/10/10/shu-ju-jie-gou-he-suan-fa-tu-tuo-bu-pai-xu/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-拓扑排序概述"><a href="#1-拓扑排序概述" class="headerlink" title="1.拓扑排序概述"></a>1.拓扑排序概述</h1><p>前提要求:</p><p>&emsp;&emsp;有向图且其中没有环（无向图自然就是有环图）</p><p>应用:</p><p>&emsp;&emsp;事件安排、编译顺序【事务之间存在一定的依赖关系，需要确定先后执行的顺序的时候，用拓扑排序】</p><p>算法描述：</p><p>&emsp;&emsp;1)在图中找到所有入度为0的点输出</p><p>&emsp;&emsp;3)图的所有点都被删除后，依次输出的顺序就是拓扑排序</p><p>&emsp;&emsp;2)把所有入度为0的点在图中删掉，继续找入度为0的点输出，周而复始</p><h1 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h1><pre class=" language-java"><code class="language-java"><span class="token keyword">package</span> base_graph<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>ArrayList<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>HashMap<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>LinkedList<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>List<span class="token punctuation">;</span><span class="token keyword">import</span> java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>Queue<span class="token punctuation">;</span><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">TopologicalSort</span> <span class="token punctuation">{</span>    <span class="token keyword">public</span> <span class="token keyword">static</span> List<span class="token operator">&lt;</span>Node<span class="token operator">></span> <span class="token function">topologicalSort</span><span class="token punctuation">(</span>Graph g<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">//g必须是有向无环图</span>        List<span class="token operator">&lt;</span>Node<span class="token operator">></span> result<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存储结果</span>        HashMap<span class="token operator">&lt;</span>Node<span class="token punctuation">,</span>Integer<span class="token operator">></span> inMap<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//存储节点及其度的个数</span>        Queue<span class="token operator">&lt;</span>Node<span class="token operator">></span> queue<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">LinkedList</span><span class="token operator">&lt;</span><span class="token operator">></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//队列，用于处理数据</span>                <span class="token comment" spellcheck="true">//利用g初始化 inMap</span>        <span class="token keyword">for</span><span class="token punctuation">(</span>Node i<span class="token operator">:</span>g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">values</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//values()取到g的所有节点</span>            inMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span>i<span class="token punctuation">.</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token keyword">if</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>in<span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                queue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//度为0的节点直接入队</span>            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>                <span class="token comment" spellcheck="true">//如果队列非空开始处理队列</span>        <span class="token keyword">while</span><span class="token punctuation">(</span><span class="token operator">!</span>queue<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            Node cur <span class="token operator">=</span> queue<span class="token punctuation">.</span><span class="token function">poll</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            result<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>cur<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//度为0的节点先处理，放进result中</span>            <span class="token comment" spellcheck="true">//将cur节点的直接邻居的入度减1</span>            <span class="token keyword">for</span><span class="token punctuation">(</span>Node i<span class="token operator">:</span>cur<span class="token punctuation">.</span>nexts<span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment" spellcheck="true">//                i.in--;</span><span class="token comment" spellcheck="true">//                if(i.in==0) {//如果减完1之后入度为0，则入队</span><span class="token comment" spellcheck="true">//                    queue.add(i);</span><span class="token comment" spellcheck="true">//                }</span>                <span class="token comment" spellcheck="true">//上面这么干的话用户传入的图就给破坏掉了。</span>                <span class="token comment" spellcheck="true">//正确的做法</span>                inMap<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>i<span class="token punctuation">,</span> inMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment" spellcheck="true">//在入度表里面更新入度</span>                <span class="token keyword">if</span><span class="token punctuation">(</span>inMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token operator">==</span><span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                    queue<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>                <span class="token punctuation">}</span>                            <span class="token punctuation">}</span>        <span class="token punctuation">}</span>                        <span class="token keyword">return</span> result<span class="token punctuation">;</span>    <span class="token punctuation">}</span>            <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span>String<span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>        <span class="token comment" spellcheck="true">// TODO Auto-generated method stub</span>        <span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> test<span class="token operator">=</span> <span class="token punctuation">{</span>                <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">}</span><span class="token punctuation">,</span>                <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span>                <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">,</span><span class="token number">4</span><span class="token punctuation">}</span><span class="token punctuation">,</span>                <span class="token punctuation">{</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span>        <span class="token punctuation">}</span><span class="token punctuation">;</span>                <span class="token comment" spellcheck="true">//将矩阵转化为图</span>        Graph graph<span class="token operator">=</span>GenerateGraphFromMatrix<span class="token punctuation">.</span><span class="token function">createGraphFromMatrix</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>        List<span class="token operator">&lt;</span>Node<span class="token operator">></span> res<span class="token operator">=</span> <span class="token function">topologicalSort</span><span class="token punctuation">(</span>graph<span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token keyword">for</span><span class="token punctuation">(</span>Node i<span class="token operator">:</span>res<span class="token punctuation">)</span> <span class="token punctuation">{</span>            System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">print</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>value<span class="token operator">+</span><span class="token string">","</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span>        System<span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span><span class="token punctuation">}</span></code></pre><img src='/picture/1010-01.jpeg' width='40%'><center> 测试图例 </center><p>运行结果:</p><pre class=" language-text"><code class="language-text">1,5,2,3,4,</code></pre><p><a href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/tree/main/base_graph">完整代码见我的github</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构和算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> java </tag>
+            
+            <tag> 图 </tag>
+            
+            <tag> 拓扑排序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构和算法-图-宽度优先遍历BFS和深度优先遍历DFS</title>
       <link href="/2022/10/09/shu-ju-jie-gou-he-suan-fa-tu-kuan-du-you-xian-bian-li-bfs-he-shen-du-you-xian-bian-li-dfs/"/>
       <url>/2022/10/09/shu-ju-jie-gou-he-suan-fa-tu-kuan-du-you-xian-bian-li-bfs-he-shen-du-you-xian-bian-li-dfs/</url>
@@ -400,11 +433,11 @@
       
         <tags>
             
-            <tag> 实用经验 </tag>
+            <tag> 编码转换 </tag>
             
             <tag> python </tag>
             
-            <tag> 编码转换 </tag>
+            <tag> 实用经验 </tag>
             
         </tags>
       
@@ -429,9 +462,9 @@
       
         <tags>
             
-            <tag> 实用经验 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 实用经验 </tag>
             
         </tags>
       
@@ -456,9 +489,9 @@
       
         <tags>
             
-            <tag> 实用经验 </tag>
-            
             <tag> python </tag>
+            
+            <tag> 实用经验 </tag>
             
         </tags>
       
