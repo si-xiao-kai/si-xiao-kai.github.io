@@ -4,6 +4,39 @@
   
     
     <entry>
+      <title>数据结构和算法-图-最小生成树算法-Prim</title>
+      <link href="/2022/10/13/shu-ju-jie-gou-he-suan-fa-tu-prim-zui-xiao-sheng-cheng-shu-suan-fa/"/>
+      <url>/2022/10/13/shu-ju-jie-gou-he-suan-fa-tu-prim-zui-xiao-sheng-cheng-shu-suan-fa/</url>
+      
+        <content type="html"><![CDATA[<h1 id="1-最小生成树算法Prim算法描述"><a href="#1-最小生成树算法Prim算法描述" class="headerlink" title="1.最小生成树算法Prim算法描述"></a>1.最小生成树算法Prim算法描述</h1><p>&emsp;&emsp;最小生成树算法其实就是在保证连通性的情况下，在一张联通图中找出一棵代价最小的树。</p><p>&emsp;&emsp;算法描述：</p><ol><li><p>可以从任意节点出发来寻找最小生成树</p></li><li><p>某个点加入到被选取的点中后，解锁这个点出发的所有新的边</p></li><li><p>在所有解锁的边中选最小的边，然后看看这个边会不会形成环</p></li><li><p>如果会，不要当前边，继续考察剩下解锁的边中最小的边，重复3)</p></li><li><p>如果不会，要当前边，将该边的指向点加入到被选取的点中，重复2)</p></li><li><p>当所有点都被选取，最小生成树就得到了</p></li></ol><h1 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h1><p>&emsp;&emsp;Prim算法的实现不需要应用并查集，因为并不存在两个集合合并的问题，每次都是解锁一个节点，并吸收之。</p><p>&emsp;&emsp;【随机选择一个起始点，解锁之，然后解锁他的所有邻边，选最小代价的边，如果对端的节点没有连通，那么就将它解锁（连通），然后解锁该节点的邻边，周而复始。】</p><pre class=" language-java"><code class="language-java"></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> 数据结构和算法 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 数据结构 </tag>
+            
+            <tag> 算法 </tag>
+            
+            <tag> java </tag>
+            
+            <tag> 图 </tag>
+            
+            <tag> Prim </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>数据结构和算法-图-最小生成树算法Kruskal</title>
       <link href="/2022/10/11/shu-ju-jie-gou-he-suan-fa-tu-kruskal-zui-xiao-sheng-cheng-shu-suan-fa/"/>
       <url>/2022/10/11/shu-ju-jie-gou-he-suan-fa-tu-kruskal-zui-xiao-sheng-cheng-shu-suan-fa/</url>

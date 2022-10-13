@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CTF-crypto-XCTF攻防世界-[Decrypt-the-Message], hacker进化论-sixiaokai">
+    <meta name="keywords" content="数据结构和算法-图-最小生成树算法-Prim, hacker进化论-sixiaokai">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CTF-crypto-XCTF攻防世界-[Decrypt-the-Message] | hacker进化论-sixiaokai</title>
+    <title>数据结构和算法-图-最小生成树算法-Prim | hacker进化论-sixiaokai</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -289,12 +289,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/13.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CTF-crypto-XCTF攻防世界-[Decrypt-the-Message]</h1>
+                    <h1 class="description center-align post-title">数据结构和算法-图-最小生成树算法-Prim</h1>
                 </div>
             </div>
         </div>
@@ -410,20 +410,24 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/CTF/">
-                                <span class="chip bg-color">CTF</span>
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
                             </a>
                         
-                            <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
-                                <span class="chip bg-color">crypto密码学</span>
+                            <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                <span class="chip bg-color">算法</span>
                             </a>
                         
-                            <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
-                                <span class="chip bg-color">网路安全</span>
+                            <a href="/tags/java/">
+                                <span class="chip bg-color">java</span>
                             </a>
                         
-                            <a href="/tags/%E8%AF%97%E6%AD%8C%E5%AF%86%E7%A0%81/">
-                                <span class="chip bg-color">诗歌密码</span>
+                            <a href="/tags/%E5%9B%BE/">
+                                <span class="chip bg-color">图</span>
+                            </a>
+                        
+                            <a href="/tags/Prim/">
+                                <span class="chip bg-color">Prim</span>
                             </a>
                         
                     </div>
@@ -434,8 +438,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/CTF-crypto/" class="post-category">
-                                CTF-crypto
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据结构和算法
                             </a>
                         
                     </div>
@@ -447,28 +451,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-10-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-09-20
+                    2022-10-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.2k
+                    311
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    1 分
                 </div>
                 
 
@@ -488,185 +492,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="0-考点"><a href="#0-考点" class="headerlink" title="0.考点"></a>0.考点</h1><p>诗歌密码</p>
-<h1 id="1-题目信息"><a href="#1-题目信息" class="headerlink" title="1.题目信息"></a>1.题目信息</h1><img src='/picture/0920-1.png' width='80%'>
-<img src='/picture/0920-2.png' width='80%'>
-<center> 一个诗歌和密文txt文件 </center>
-【密文】:
-emzcf sebt yuwi ytrr ortl rbon aluo konf ihye cyog rowh prhj feom ihos perp twnb tpak heoc yaui usoa irtd tnlu ntke onds goym hmpq 
-
-<h1 id="2-诗歌密码"><a href="#2-诗歌密码" class="headerlink" title="2.诗歌密码"></a>2.诗歌密码</h1><p>诗歌密码的显著特点就是“诗歌”+“密文”。</p>
-<p>下面简要讲解加密步骤</p>
-<h2 id="2-1从诗歌中提取关键字作为密钥"><a href="#2-1从诗歌中提取关键字作为密钥" class="headerlink" title="2.1从诗歌中提取关键字作为密钥"></a>2.1从诗歌中提取关键字作为密钥</h2><p>for my purpose holds to sail beyond the sunset, and the baths of all the western stars until I die.</p>
-<p>从中选择五个词作为关键字：比如“ for”，“ sail”，“ all”，“ stars”，“ die”。</p>
-<p>将它们串在一起，然后给字母编号，编号的规则为:</p>
-<p>以“ a”开头为1，第二个“ a”开头为2，依此类推；如果没有第二个“ a”，则“ b”的编号为2；或者 如果没有“ b”，则“ c”被标记为2，依此类推，直到为所有字母编号。</p>
-<img src='/picture/0920-3.png' width='80%'>
-<center> 密钥编码 </center>
-
-<h2 id="2-2-用密钥加密明文"><a href="#2-2-用密钥加密明文" class="headerlink" title="2.2 用密钥加密明文"></a>2.2 用密钥加密明文</h2><p>【明文】:We have run out of cigars, situation desperate.<br>因为密钥长度为18，所以我们18个一组排列明文，如下:</p>
-<img src='/picture/0920-4.png' width='80%'>
-<center> 用密钥加密明文 </center>
-
-<p>生成密文的时候按照密钥的顺序输出， f o r s …</p>
-<p>eudtdkoekcpmwrt…</p>
-<h2 id="2-3-传递密钥"><a href="#2-3-传递密钥" class="headerlink" title="2.3 传递密钥"></a>2.3 传递密钥</h2><p>密钥传递即告知接收方我们选择了哪些词作为密钥，在这里分别是第1个，第6个，第14个，第17个和第20个词，那么最简单的方法就是用密钥标识这几个字符，因此：“a-1、f-6、n-14、q-17、t-20”，然后将“afnqt”,附加到加密的消息上。然后，接收者可以（大致）遵循加密的逆过程来解密消息。</p>
-<p>关于诗歌密码的更多内容参考<a target="_blank" rel="noopener" href="http://www.wmbriggs.com/post/1001/">诗歌密码</a></p>
-<h1 id="3-如何破解诗歌密码"><a href="#3-如何破解诗歌密码" class="headerlink" title="3.如何破解诗歌密码"></a>3.如何破解诗歌密码</h1><h2 id="3-1-破解工具"><a href="#3-1-破解工具" class="headerlink" title="3.1 破解工具"></a>3.1 破解工具</h2><p><a target="_blank" rel="noopener" href="https://github.com/abpolym/crypto-tools/tree/master/poemcode/">获取解密诗歌密码的工具戳这里</a></p>
-<p>直接运行脚本的话请用python2，当然也可以自己修改为python3格式的。</p>
-<p>如果系统是macos比较新的版本且没有安装python2可以用如下的方法安装python2环境:</p>
-<pre class=" language-bash"><code class="language-bash">brew <span class="token function">install</span> pyenv
-pyenv <span class="token function">install</span> 2.7.18
-<span class="token function">vi</span> ~/.zshrc 
-<span class="token comment" spellcheck="true">#最后一行添加下面的别名</span>
-<span class="token function">alias</span> python2<span class="token operator">=</span><span class="token string">'/usr/local/var/pyenv/versions/2.7.18/bin/python'</span> <span class="token comment" spellcheck="true"># 注意换成你安装的路径</span>
+                <h1 id="1-最小生成树算法Prim算法描述"><a href="#1-最小生成树算法Prim算法描述" class="headerlink" title="1.最小生成树算法Prim算法描述"></a>1.最小生成树算法Prim算法描述</h1><p>&emsp;&emsp;最小生成树算法其实就是在保证连通性的情况下，在一张联通图中找出一棵代价最小的树。</p>
+<p>&emsp;&emsp;算法描述：</p>
+<ol>
+<li><p>可以从任意节点出发来寻找最小生成树</p>
+</li>
+<li><p>某个点加入到被选取的点中后，解锁这个点出发的所有新的边</p>
+</li>
+<li><p>在所有解锁的边中选最小的边，然后看看这个边会不会形成环</p>
+</li>
+<li><p>如果会，不要当前边，继续考察剩下解锁的边中最小的边，重复3)</p>
+</li>
+<li><p>如果不会，要当前边，将该边的指向点加入到被选取的点中，重复2)</p>
+</li>
+<li><p>当所有点都被选取，最小生成树就得到了</p>
+</li>
+</ol>
+<h1 id="2-实现"><a href="#2-实现" class="headerlink" title="2.实现"></a>2.实现</h1><p>&emsp;&emsp;Prim算法的实现不需要应用并查集，因为并不存在两个集合合并的问题，每次都是解锁一个节点，并吸收之。</p>
+<p>&emsp;&emsp;【随机选择一个起始点，解锁之，然后解锁他的所有邻边，选最小代价的边，如果对端的节点没有连通，那么就将它解锁（连通），然后解锁该节点的邻边，周而复始。】</p>
+<pre class=" language-java"><code class="language-java">
 </code></pre>
-<p>下面是完整的脚本：</p>
-<pre class=" language-python"><code class="language-python"><span class="token keyword">import</span> sys
-<span class="token keyword">import</span> itertools
-<span class="token keyword">from</span> os <span class="token keyword">import</span> listdir
-<span class="token keyword">from</span> os<span class="token punctuation">.</span>path <span class="token keyword">import</span> isfile<span class="token punctuation">,</span> join
-
-abc<span class="token operator">=</span><span class="token string">'abcdefghijklmnopqrstuvwxyz'</span>
-
-<span class="token keyword">def</span> <span class="token function">loadlist</span><span class="token punctuation">(</span>infile<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    tlist <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> line <span class="token keyword">in</span> open<span class="token punctuation">(</span>infile<span class="token punctuation">,</span><span class="token string">'r'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> w <span class="token keyword">in</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> tlist<span class="token punctuation">.</span>append<span class="token punctuation">(</span>w<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    <span class="token keyword">return</span> tlist
-
-<span class="token keyword">def</span> <span class="token function">encrypt</span><span class="token punctuation">(</span>code<span class="token punctuation">,</span> poem<span class="token punctuation">,</span> msg<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true"># Load all words of the poem into a temporary list</span>
-    twords <span class="token operator">=</span> loadlist<span class="token punctuation">(</span>poem<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># Select only those words specified in the code in a new list</span>
-    pwords <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> c <span class="token keyword">in</span> code<span class="token punctuation">:</span> pwords <span class="token operator">+=</span> twords<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    plen <span class="token operator">=</span> len<span class="token punctuation">(</span>pwords<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># We can only support encoding all alphabetical letters, a key length greater len(abc) is not reasonable here</span>
-    <span class="token keyword">if</span> plen <span class="token operator">></span> len<span class="token punctuation">(</span>abc<span class="token punctuation">)</span><span class="token punctuation">:</span> sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># Assign an index for each letter in the key based on the alphabet</span>
-    pcode <span class="token operator">=</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span> <span class="token operator">*</span> plen
-    count <span class="token operator">=</span> <span class="token number">0</span>
-    <span class="token keyword">while</span><span class="token punctuation">(</span>count<span class="token operator">&lt;</span>plen<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> al <span class="token keyword">in</span> abc<span class="token punctuation">:</span>
-            <span class="token keyword">for</span> pc<span class="token punctuation">,</span> pl <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>pwords<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                <span class="token keyword">if</span> al<span class="token operator">!=</span>pl<span class="token punctuation">:</span> <span class="token keyword">continue</span>
-                pcode<span class="token punctuation">[</span>pc<span class="token punctuation">]</span><span class="token operator">=</span>count
-                count<span class="token operator">+=</span><span class="token number">1</span>
-
-    <span class="token comment" spellcheck="true"># Load all words of the message into a string</span>
-    mwords <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> line <span class="token keyword">in</span> open<span class="token punctuation">(</span>msg<span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        <span class="token keyword">for</span> w <span class="token keyword">in</span> line<span class="token punctuation">.</span>split<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span> mwords<span class="token operator">+=</span>w<span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    mlen <span class="token operator">=</span> len<span class="token punctuation">(</span>mwords<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># Split message into chunks of size plen, append random (here alphabet) characters to fill the last chunk, if necessary</span>
-    cpairs <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    curlen <span class="token operator">=</span> plen
-    <span class="token keyword">while</span><span class="token punctuation">(</span>curlen<span class="token operator">&lt;</span>mlen<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        cpairs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>mwords<span class="token punctuation">[</span>curlen<span class="token operator">-</span>plen<span class="token punctuation">:</span>curlen<span class="token punctuation">]</span><span class="token punctuation">)</span>
-        curlen<span class="token operator">+=</span>plen
-    rword <span class="token operator">=</span> mwords<span class="token punctuation">[</span>curlen<span class="token operator">-</span>plen<span class="token punctuation">:</span>curlen<span class="token punctuation">]</span>
-    rlen <span class="token operator">=</span> len<span class="token punctuation">(</span>rword<span class="token punctuation">)</span>
-    <span class="token keyword">if</span> rlen <span class="token operator">&lt;</span> plen<span class="token punctuation">:</span> rword <span class="token operator">+=</span> abc<span class="token punctuation">[</span><span class="token punctuation">:</span>plen<span class="token operator">-</span>rlen<span class="token punctuation">]</span>
-    cpairs<span class="token punctuation">.</span>append<span class="token punctuation">(</span>rword<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># Encrypt the message according to the key</span>
-    cip <span class="token operator">=</span> <span class="token string">''</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> code<span class="token punctuation">:</span> cip<span class="token operator">+=</span>abc<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-    cip<span class="token operator">+=</span><span class="token string">' '</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> pcode<span class="token punctuation">:</span>
-        <span class="token keyword">for</span> pair <span class="token keyword">in</span> cpairs<span class="token punctuation">:</span>
-            cip <span class="token operator">+=</span> pair<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-        cip<span class="token operator">+=</span><span class="token string">' '</span>
-    <span class="token keyword">return</span> cip
-
-<span class="token keyword">def</span> <span class="token function">decrypt</span><span class="token punctuation">(</span>poem<span class="token punctuation">,</span> cip<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment" spellcheck="true"># Load all words of the poem into a temporary list</span>
-    twords <span class="token operator">=</span> loadlist<span class="token punctuation">(</span>poem<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># Load all cipher chunks of the ciphertext into a list</span>
-    cwords <span class="token operator">=</span> loadlist<span class="token punctuation">(</span>cip<span class="token punctuation">)</span>
-
-    <span class="token comment" spellcheck="true"># Get the code rom the first chunk and remove it from the ciphertext list</span>
-    code <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> i <span class="token keyword">in</span> cwords<span class="token punctuation">.</span>pop<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-        code<span class="token punctuation">.</span>append<span class="token punctuation">(</span>abc<span class="token punctuation">.</span>index<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span>
-    
-    <span class="token comment" spellcheck="true"># Select only those words specified in the code in a new multi-arrayed list</span>
-    xwords <span class="token operator">=</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token punctuation">]</span> <span class="token keyword">for</span> x <span class="token keyword">in</span> range<span class="token punctuation">(</span>len<span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-    <span class="token keyword">for</span> xcount<span class="token punctuation">,</span> c <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>code<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        tlen <span class="token operator">=</span> c
-        <span class="token keyword">while</span><span class="token punctuation">(</span>c<span class="token operator">&lt;</span>len<span class="token punctuation">(</span>twords<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-            xwords<span class="token punctuation">[</span>xcount<span class="token punctuation">]</span><span class="token punctuation">.</span>append<span class="token punctuation">(</span>twords<span class="token punctuation">[</span>c<span class="token punctuation">]</span><span class="token punctuation">.</span>lower<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-            c<span class="token operator">+=</span><span class="token number">26</span>
-
-    <span class="token comment" spellcheck="true"># Get all possible combinations</span>
-    <span class="token keyword">for</span> comb <span class="token keyword">in</span> itertools<span class="token punctuation">.</span>product<span class="token punctuation">(</span><span class="token operator">*</span>xwords<span class="token punctuation">)</span><span class="token punctuation">:</span>
-        pwords <span class="token operator">=</span> <span class="token string">''</span>
-        <span class="token keyword">for</span> c <span class="token keyword">in</span> comb<span class="token punctuation">:</span> pwords<span class="token operator">+=</span>c
-        plen <span class="token operator">=</span> len<span class="token punctuation">(</span>pwords<span class="token punctuation">)</span>
-
-        <span class="token comment" spellcheck="true"># Rearrange the chunks according to the key</span>
-        pcode <span class="token operator">=</span> <span class="token punctuation">[</span>None<span class="token punctuation">]</span> <span class="token operator">*</span> plen
-        count <span class="token operator">=</span> <span class="token number">0</span>
-        <span class="token keyword">while</span><span class="token punctuation">(</span>count<span class="token operator">&lt;</span>plen<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">for</span> al <span class="token keyword">in</span> abc<span class="token punctuation">:</span>
-                <span class="token keyword">for</span> pc<span class="token punctuation">,</span> pl <span class="token keyword">in</span> enumerate<span class="token punctuation">(</span>pwords<span class="token punctuation">)</span><span class="token punctuation">:</span>
-                    <span class="token keyword">if</span> al<span class="token operator">!=</span>pl<span class="token punctuation">:</span> <span class="token keyword">continue</span>
-                    pcode<span class="token punctuation">[</span>count<span class="token punctuation">]</span><span class="token operator">=</span>cwords<span class="token punctuation">[</span>pc<span class="token punctuation">]</span>
-                    count<span class="token operator">+=</span><span class="token number">1</span>
-
-        <span class="token comment" spellcheck="true"># Decrypt the ciphertext</span>
-        msg <span class="token operator">=</span> <span class="token string">''</span>
-        wlen <span class="token operator">=</span> len<span class="token punctuation">(</span>pcode<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-        <span class="token keyword">for</span> c <span class="token keyword">in</span> range<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> wlen<span class="token punctuation">)</span><span class="token punctuation">:</span>
-            <span class="token keyword">for</span> word <span class="token keyword">in</span> pcode<span class="token punctuation">:</span>
-                msg<span class="token operator">+=</span>word<span class="token punctuation">[</span>c<span class="token punctuation">]</span>
-        <span class="token keyword">print</span> msg
-
-<span class="token comment" spellcheck="true"># first argument = poem</span>
-<span class="token comment" spellcheck="true"># second argument = ciphertxt or msg</span>
-<span class="token keyword">if</span> len<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token number">3</span><span class="token punctuation">:</span> sys<span class="token punctuation">.</span>exit<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">#print encrypt([0, 5, 13, 16, 19], sys.argv[1], sys.argv[2])</span>
-decrypt<span class="token punctuation">(</span>sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> sys<span class="token punctuation">.</span>argv<span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-</code></pre>
-<h2 id="3-2-使用方法"><a href="#3-2-使用方法" class="headerlink" title="3.2 使用方法"></a>3.2 使用方法</h2><pre class=" language-bash"><code class="language-bash">python2 诗歌密码py2.py poem.txt result.txt
-</code></pre>
-<ul>
-<li>第一个参数放诗歌文件、第二个参数放密文文件</li>
-<li>诗歌和密文中的”.”等特殊符号去掉，否则会报如下错误：IndexError: list assignment index out of range</li>
-</ul>
-<p>poem.txt</p>
-<pre class=" language-text"><code class="language-text">The life that I have
-Is all that I have
-And the life that I have
-Is yours
-
-The love that I have
-Of the life that I have
-Is yours and yours and yours
-
-A sleep I shall have
-A rest I shall have
-Yet death will be but a pause
-
-For the peace of my years
-In the long green grass
-Will be yours and yours and yours
-</code></pre>
-<p>result.txt</p>
-<pre class=" language-text"><code class="language-text">emzcf sebt yuwi ytrr ortl rbon aluo konf ihye cyog rowh prhj feom ihos perp twnb tpak heoc yaui usoa irtd tnlu ntke onds goym hmpq
-</code></pre>
-<p>爆破之后会有很多结果：找到英文表达最通顺的一个即为flag。</p>
-<pre class=" language-text"><code class="language-text">ifyouthinkcryptographyistheanswertoyourproblemthenyoudonotknowwhatyourproblemisabcdefghijklmnopqrstu
-</code></pre>
-<p>WellDone！</p>
 
                 
             </div>
@@ -693,7 +538,7 @@ Will be yours and yours and yours
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://0to1sec.com/2022/09/20/ctf-crypto-xctf-gong-fang-shi-jie-decrypt-the-message/">http://0to1sec.com/2022/09/20/ctf-crypto-xctf-gong-fang-shi-jie-decrypt-the-message/</a>
+                    <a href="http://0to1sec.com/2022/10/13/shu-ju-jie-gou-he-suan-fa-tu-prim-zui-xiao-sheng-cheng-shu-suan-fa/">http://0to1sec.com/2022/10/13/shu-ju-jie-gou-he-suan-fa-tu-prim-zui-xiao-sheng-cheng-shu-suan-fa/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -731,20 +576,24 @@ Will be yours and yours and yours
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/CTF/">
-                                    <span class="chip bg-color">CTF</span>
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
                                 </a>
                             
-                                <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
-                                    <span class="chip bg-color">crypto密码学</span>
+                                <a href="/tags/%E7%AE%97%E6%B3%95/">
+                                    <span class="chip bg-color">算法</span>
                                 </a>
                             
-                                <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
-                                    <span class="chip bg-color">网路安全</span>
+                                <a href="/tags/java/">
+                                    <span class="chip bg-color">java</span>
                                 </a>
                             
-                                <a href="/tags/%E8%AF%97%E6%AD%8C%E5%AF%86%E7%A0%81/">
-                                    <span class="chip bg-color">诗歌密码</span>
+                                <a href="/tags/%E5%9B%BE/">
+                                    <span class="chip bg-color">图</span>
+                                </a>
+                            
+                                <a href="/tags/Prim/">
+                                    <span class="chip bg-color">Prim</span>
                                 </a>
                             
                         </div>
@@ -914,54 +763,64 @@ Will be yours and yours and yours
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2022/09/20/ctf-reverse-xctf-gong-fang-shi-jie-666/">
+                <a href="/2022/10/13/shu-ju-jie-gou-he-suan-fa-tu-prim-zui-xiao-sheng-cheng-shu-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="CTF-reverse-XCTF攻防世界-[666]">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="数据结构和算法-图-最小生成树算法-Prim">
                         
-                        <span class="card-title">CTF-reverse-XCTF攻防世界-[666]</span>
+                        <span class="card-title">数据结构和算法-图-最小生成树算法-Prim</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            考点——逆向分析Linux 64位程序
+                            本文介绍了图的最小生成树算法Prim算法的实现。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF-reverse/" class="post-category">
-                                    CTF-reverse
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构和算法
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CTF/">
-                        <span class="chip bg-color">CTF</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">网路安全</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/reverse-%E9%80%86%E5%90%91%E5%88%86%E6%9E%90/">
-                        <span class="chip bg-color">reverse(逆向分析)</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%9B%BE/">
+                        <span class="chip bg-color">图</span>
+                    </a>
+                    
+                    <a href="/tags/Prim/">
+                        <span class="chip bg-color">Prim</span>
                     </a>
                     
                 </div>
@@ -975,31 +834,31 @@ Will be yours and yours and yours
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/09/19/ctf-crypto-xctf-gong-fang-shi-jie-easychallenge/">
+                <a href="/2022/10/11/shu-ju-jie-gou-he-suan-fa-tu-kruskal-zui-xiao-sheng-cheng-shu-suan-fa/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="CTF-crypto-XCTF攻防世界-[easychallenge]">
+                        <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="数据结构和算法-图-最小生成树算法Kruskal">
                         
-                        <span class="card-title">CTF-crypto-XCTF攻防世界-[easychallenge]</span>
+                        <span class="card-title">数据结构和算法-图-最小生成树算法Kruskal</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            考点——pyc逆向、加密算法逆向分析
+                            本文介绍了图的最小生成树算法Kruskal算法的实现。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-19
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-11
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/CTF-crypto/" class="post-category">
-                                    CTF-crypto
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E5%92%8C%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据结构和算法
                                 </a>
                             
                             
@@ -1009,20 +868,24 @@ Will be yours and yours and yours
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/CTF/">
-                        <span class="chip bg-color">CTF</span>
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
                     </a>
                     
-                    <a href="/tags/crypto%E5%AF%86%E7%A0%81%E5%AD%A6/">
-                        <span class="chip bg-color">crypto密码学</span>
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
                     </a>
                     
-                    <a href="/tags/%E7%BD%91%E8%B7%AF%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">网路安全</span>
+                    <a href="/tags/java/">
+                        <span class="chip bg-color">java</span>
                     </a>
                     
-                    <a href="/tags/pyc%E9%80%86%E5%90%91/">
-                        <span class="chip bg-color">pyc逆向</span>
+                    <a href="/tags/%E5%9B%BE/">
+                        <span class="chip bg-color">图</span>
+                    </a>
+                    
+                    <a href="/tags/Kruskal/">
+                        <span class="chip bg-color">Kruskal</span>
                     </a>
                     
                 </div>
@@ -1153,6 +1016,13 @@ Will be yours and yours and yours
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
