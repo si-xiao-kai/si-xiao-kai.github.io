@@ -6,7 +6,7 @@
   <link href="http://0to1sec.com/atom.xml" rel="self"/>
   
   <link href="http://0to1sec.com/"/>
-  <updated>2022-10-13T09:34:34.046Z</updated>
+  <updated>2022-10-27T02:37:56.946Z</updated>
   <id>http://0to1sec.com/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>python开发经验积累</title>
+    <link href="http://0to1sec.com/2022/10/27/python-kai-fa-jing-yan-ji-lei/"/>
+    <id>http://0to1sec.com/2022/10/27/python-kai-fa-jing-yan-ji-lei/</id>
+    <published>2022-10-27T04:00:00.000Z</published>
+    <updated>2022-10-27T02:37:56.946Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-时间处理&quot;&gt;&lt;a href=&quot;#1-时间处理&quot; class=&quot;headerlink&quot; title=&quot;1.时间处理&quot;&gt;&lt;/a&gt;1.时间处理&lt;/h1&gt;&lt;pre class=&quot; language-python&quot;&gt;&lt;code</summary>
+        
+      
+    
+    
+    
+    <category term="python" scheme="http://0to1sec.com/categories/python/"/>
+    
+    
+    <category term="python" scheme="http://0to1sec.com/tags/python/"/>
+    
+    <category term="经验积累" scheme="http://0to1sec.com/tags/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"/>
+    
+  </entry>
   
   <entry>
     <title>数据结构和算法-图-最小生成树算法-Prim</title>
