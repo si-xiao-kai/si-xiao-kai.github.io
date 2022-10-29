@@ -446,21 +446,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2022-10-27
+                    2022-10-29
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    756
+                    1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    4 分
                 </div>
                 
 
@@ -507,6 +507,46 @@
 
 <span class="token keyword">for</span> i <span class="token keyword">in</span> itertools<span class="token punctuation">.</span>cycle<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token comment" spellcheck="true"># 1,2,3,1,2,3 .... 所以加不加iter也行</span>
     <span class="token keyword">print</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span>
+
+<span class="token keyword">import</span> itertools
+
+testlist<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token punctuation">[</span><span class="token string">'a'</span><span class="token punctuation">,</span><span class="token string">'b'</span><span class="token punctuation">,</span><span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">]</span>
+
+iter<span class="token operator">=</span>itertools<span class="token punctuation">.</span>cycle<span class="token punctuation">(</span>testlist<span class="token punctuation">)</span>
+
+<span class="token comment" spellcheck="true"># for i in iter:</span>
+<span class="token comment" spellcheck="true">#     print(i)</span>
+
+<span class="token comment" spellcheck="true"># out:</span>
+<span class="token comment" spellcheck="true"># ['a', 'b']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b', 'c']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b', 'c']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b', 'c']</span>
+<span class="token comment" spellcheck="true"># .....</span>
+<span class="token comment" spellcheck="true">#</span>
+<span class="token comment" spellcheck="true"># print(next(iter))</span>
+<span class="token comment" spellcheck="true"># print(next(iter))</span>
+<span class="token comment" spellcheck="true"># print(next(iter))</span>
+<span class="token comment" spellcheck="true"># print(next(iter))</span>
+<span class="token comment" spellcheck="true"># out:</span>
+<span class="token comment" spellcheck="true"># ['a', 'b']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b', 'c']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b']</span>
+<span class="token comment" spellcheck="true"># ['a', 'b', 'c']</span>
+
+<span class="token comment" spellcheck="true"># iter2=itertools.cycle(next(iter))</span>
+<span class="token comment" spellcheck="true"># print(next(iter2))</span>
+<span class="token comment" spellcheck="true"># print(next(iter2))</span>
+<span class="token comment" spellcheck="true"># print(next(iter2))</span>
+<span class="token comment" spellcheck="true"># print(next(iter2))</span>
+
+<span class="token comment" spellcheck="true">#out:</span>
+<span class="token comment" spellcheck="true">#a</span>
+<span class="token comment" spellcheck="true">#b</span>
+<span class="token comment" spellcheck="true">#a</span>
+<span class="token comment" spellcheck="true">#b</span>
 </code></pre>
 <h1 id="3-subprocess模块使用经验"><a href="#3-subprocess模块使用经验" class="headerlink" title="3.subprocess模块使用经验"></a>3.subprocess模块使用经验</h1><pre class=" language-python"><code class="language-python">cmd<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'ls'</span><span class="token punctuation">,</span><span class="token string">'-l'</span><span class="token punctuation">]</span>
 subprocess<span class="token punctuation">.</span>call<span class="token punctuation">(</span>cmd<span class="token punctuation">)</span>
@@ -542,6 +582,34 @@ subprocess<span class="token punctuation">.</span>check_call<span class="token p
 </code></pre>
 <h1 id="7-字符串函数"><a href="#7-字符串函数" class="headerlink" title="7.字符串函数"></a>7.字符串函数</h1><p> rstrip() </p>
 <p> 删除 string 字符串末尾的指定字符，默认为空白符，包括空格、换行符、回车符、制表符。</p>
+<h1 id="8-rich模块"><a href="#8-rich模块" class="headerlink" title="8.rich模块"></a>8.rich模块</h1><h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>&emsp;&emsp;rich可以将纯文本美化成富文本， 它可以设置字体、字号、颜色等等各种各样的元素， 还能够自动进行语法高亮，打印表格，打印markdown文本以及实现一些其他功能</p>
+<h2 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h2><pre><code>pip install rich
+</code></pre>
+<h2 id="简单使用"><a href="#简单使用" class="headerlink" title="简单使用"></a>简单使用</h2><pre class=" language-python"><code class="language-python"><span class="token keyword">from</span> rich <span class="token keyword">import</span> <span class="token keyword">print</span> <span class="token keyword">as</span> rprint
+<span class="token keyword">from</span> rich<span class="token punctuation">.</span>traceback <span class="token keyword">import</span> install
+install<span class="token punctuation">(</span>show_locals<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+rprint<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token number">1.00</span><span class="token punctuation">,</span>rprint<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token number">1.00</span><span class="token punctuation">,</span>rprint<span class="token punctuation">)</span>
+
+rprint<span class="token punctuation">(</span><span class="token string">":smiley:"</span><span class="token punctuation">)</span>
+
+<span class="token keyword">from</span> rich <span class="token keyword">import</span> <span class="token keyword">print</span> <span class="token keyword">as</span> rprint
+<span class="token keyword">from</span> rich<span class="token punctuation">.</span>traceback <span class="token keyword">import</span> install
+install<span class="token punctuation">(</span>show_locals<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+rprint<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token number">1.00</span><span class="token punctuation">,</span>rprint<span class="token punctuation">)</span>
+
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">]</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token boolean">True</span><span class="token punctuation">,</span><span class="token boolean">False</span><span class="token punctuation">,</span><span class="token number">1.00</span><span class="token punctuation">,</span>rprint<span class="token punctuation">)</span> <span class="token comment" spellcheck="true">#不同的print</span>
+
+rprint<span class="token punctuation">(</span><span class="token string">":smiley:"</span><span class="token punctuation">)</span>
+
+rprint<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+rprint<span class="token punctuation">(</span><span class="token string">"[u]富[/u][i]文[b red]本[/b red]标记[/i]"</span><span class="token punctuation">)</span>
+
+rprint<span class="token punctuation">(</span><span class="token number">1</span><span class="token operator">/</span><span class="token number">0</span><span class="token punctuation">)</span>
+
+</code></pre>
 
                 
             </div>
@@ -1101,7 +1169,7 @@ subprocess<span class="token punctuation">.</span>check_call<span class="token p
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">17.5k</span>&nbsp;字
+                class="white-color">17.8k</span>&nbsp;字
             
             
             
