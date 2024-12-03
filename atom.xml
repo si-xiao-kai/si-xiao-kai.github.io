@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>Hexo</title>
+  <title>Hacker进化论</title>
   
-  
+  <subtitle>The Studio of SiXiaokai</subtitle>
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
@@ -10,7 +10,7 @@
   <id>http://sxksec.cn/</id>
   
   <author>
-    <name>John Doe</name>
+    <name>Si Xiaokai</name>
     
   </author>
   
