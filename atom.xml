@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-02T06:22:14.462Z</updated>
+  <updated>2024-11-29T07:34:16.427Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,27 +15,6 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
-  
-  <entry>
-    <title>Hello World</title>
-    <link href="http://sxksec.cn/2024/12/02/hello-world/"/>
-    <id>http://sxksec.cn/2024/12/02/hello-world/</id>
-    <published>2024-12-02T06:22:14.462Z</published>
-    <updated>2024-12-02T06:22:14.462Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot;&gt;documentation&lt;/a&gt;</summary>
-        
-      
-    
-    
-    
-    
-  </entry>
   
   <entry>
     <title>padding oracle攻击</title>
@@ -92,6 +71,37 @@
     <category term="哈希长度扩展攻击" scheme="http://sxksec.cn/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
     
     <category term="md5哈希长度扩展攻击" scheme="http://sxksec.cn/tags/md5%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>图-图的通用结构表达的建立</title>
+    <link href="http://sxksec.cn/2022/10/09/shu-ju-jie-gou-yu-suan-fa/tu-tu-de-tong-yong-jie-gou-biao-da-de-jian-li/"/>
+    <id>http://sxksec.cn/2022/10/09/shu-ju-jie-gou-yu-suan-fa/tu-tu-de-tong-yong-jie-gou-biao-da-de-jian-li/</id>
+    <published>2022-10-09T03:15:00.000Z</published>
+    <updated>2024-12-03T08:52:32.580Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;1-引言&quot;&gt;&lt;a href=&quot;#1-引言&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="数据结构与算法" scheme="http://sxksec.cn/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/"/>
+    
+    
+    <category term="数据结构" scheme="http://sxksec.cn/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+    
+    <category term="算法" scheme="http://sxksec.cn/tags/%E7%AE%97%E6%B3%95/"/>
+    
+    <category term="java" scheme="http://sxksec.cn/tags/java/"/>
+    
+    <category term="图" scheme="http://sxksec.cn/tags/%E5%9B%BE/"/>
     
   </entry>
   
