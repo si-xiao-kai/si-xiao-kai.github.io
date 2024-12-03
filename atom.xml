@@ -66,4 +66,33 @@
     
   </entry>
   
+  <entry>
+    <title>哈希长度扩展攻击</title>
+    <link href="http://sxksec.cn/2024/11/29/mi-ma-xue-suan-fa-an-quan/ha-xi-chang-du-kuo-zhan-gong-ji/"/>
+    <id>http://sxksec.cn/2024/11/29/mi-ma-xue-suan-fa-an-quan/ha-xi-chang-du-kuo-zhan-gong-ji/</id>
+    <published>2024-11-29T01:56:10.000Z</published>
+    <updated>2024-11-29T07:41:08.226Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、MD5哈希算法&quot;&gt;&lt;a href=&quot;#一、MD5哈希算法&quot; class=&quot;headerlink&quot; title=&quot;一、MD5哈希算法&quot;&gt;&lt;/a&gt;一、MD5哈希算法&lt;/h1&gt;&lt;h2 id=&quot;1-1-MD5简介&quot;&gt;&lt;a href=&quot;#1-1-MD5简介&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="密码学算法安全" scheme="http://sxksec.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="密码学算法安全" scheme="http://sxksec.cn/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="哈希长度扩展攻击" scheme="http://sxksec.cn/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="md5哈希长度扩展攻击" scheme="http://sxksec.cn/tags/md5%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
 </feed>
