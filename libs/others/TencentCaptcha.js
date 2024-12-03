@@ -1,1 +1,1 @@
-onIsOff=true;window.callback=function(t){if(t.ret===0){window.clearInterval(t2)}if(t.ret===2){onIsOff=true}};var t2=window.setInterval(function(){if(onIsOff==true){act=document.activeElement.id;if(act=="veditor"){document.getElementById("TencentCaptcha").click();onIsOff=false}}},1e3);
+onIsOff=!0,window.callback=function(n){0===n.ret&&window.clearInterval(t2),2===n.ret&&(onIsOff=!0)};var t2=window.setInterval(function(){1==onIsOff&&"veditor"==(act=document.activeElement.id)&&(document.getElementById("TencentCaptcha").click(),onIsOff=!1)},1e3);
