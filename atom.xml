@@ -37,4 +37,33 @@
     
   </entry>
   
+  <entry>
+    <title>padding oracle攻击</title>
+    <link href="http://sxksec.cn/2024/11/29/mi-ma-xue-suan-fa-an-quan/padding-oracle-gong-ji/"/>
+    <id>http://sxksec.cn/2024/11/29/mi-ma-xue-suan-fa-an-quan/padding-oracle-gong-ji/</id>
+    <published>2024-11-29T01:57:15.000Z</published>
+    <updated>2024-11-29T07:34:16.427Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、CBC模式简介&quot;&gt;&lt;a href=&quot;#一、CBC模式简介&quot; class=&quot;headerlink&quot; title=&quot;一、CBC模式简介&quot;&gt;&lt;/a&gt;一、CBC模式简介&lt;/h1&gt;&lt;p&gt;CBC（Cipher Block</summary>
+        
+      
+    
+    
+    
+    <category term="密码学算法安全" scheme="http://sxksec.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="padding oracle攻击" scheme="http://sxksec.cn/tags/padding-oracle%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="web安全中的密码学攻击" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8%E4%B8%AD%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="密码学算法安全" scheme="http://sxksec.cn/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
 </feed>
