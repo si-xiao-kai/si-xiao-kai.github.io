@@ -4,6 +4,62 @@
   
     
     <entry>
+      <title>sql注入</title>
+      <link href="/2024/12/04/web-an-quan/sql-zhu-ru/"/>
+      <url>/2024/12/04/web-an-quan/sql-zhu-ru/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> web安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> sql注入 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Flask框架</title>
+      <link href="/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/"/>
+      <url>/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      <categories>
+          
+          <category> 前后端开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 前后端开发 </tag>
+            
+            <tag> python </tag>
+            
+            <tag> Flask </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>随机数安全</title>
       <link href="/2024/12/04/mi-ma-xue-suan-fa-an-quan/sui-ji-shu-an-quan/"/>
       <url>/2024/12/04/mi-ma-xue-suan-fa-an-quan/sui-ji-shu-an-quan/</url>

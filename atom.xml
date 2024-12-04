@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-04T03:24:08.521Z</updated>
+  <updated>2024-12-04T08:20:36.951Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,46 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>sql注入</title>
+    <link href="http://sxksec.cn/2024/12/04/web-an-quan/sql-zhu-ru/"/>
+    <id>http://sxksec.cn/2024/12/04/web-an-quan/sql-zhu-ru/</id>
+    <published>2024-12-04T08:19:26.000Z</published>
+    <updated>2024-12-04T08:20:36.951Z</updated>
+    
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="sql注入" scheme="http://sxksec.cn/tags/sql%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Flask框架</title>
+    <link href="http://sxksec.cn/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/"/>
+    <id>http://sxksec.cn/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/</id>
+    <published>2024-12-04T07:39:05.000Z</published>
+    <updated>2024-12-04T07:46:34.023Z</updated>
+    
+    
+    
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="python" scheme="http://sxksec.cn/tags/python/"/>
+    
+    <category term="Flask" scheme="http://sxksec.cn/tags/Flask/"/>
+    
+  </entry>
   
   <entry>
     <title>随机数安全</title>
