@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-11-29T07:34:16.427Z</updated>
+  <updated>2024-12-04T03:20:03.255Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>随机数安全</title>
+    <link href="http://sxksec.cn/2024/12/04/mi-ma-xue-suan-fa-an-quan/sui-ji-shu-an-quan/"/>
+    <id>http://sxksec.cn/2024/12/04/mi-ma-xue-suan-fa-an-quan/sui-ji-shu-an-quan/</id>
+    <published>2024-12-04T01:10:35.000Z</published>
+    <updated>2024-12-04T03:20:03.255Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、伪随机数&quot;&gt;&lt;a href=&quot;#一、伪随机数&quot; class=&quot;headerlink&quot; title=&quot;一、伪随机数&quot;&gt;&lt;/a&gt;一、伪随机数&lt;/h1&gt;&lt;h2 id=&quot;1-1-伪随机数的概念&quot;&gt;&lt;a href=&quot;#1-1-伪随机数的概念&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="密码学算法安全" scheme="http://sxksec.cn/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="密码学算法安全" scheme="http://sxksec.cn/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="随机数安全" scheme="http://sxksec.cn/tags/%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
   
   <entry>
     <title>padding oracle攻击</title>
