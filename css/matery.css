@@ -597,10 +597,10 @@ header .go-back i {
 
     0%,
     100% {
-        background: rgba(156, 39, 176, 0.75);
-        background: linear-gradient(45deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
-        background: -moz-linear-gradient(135deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
-        background: -webkit-linear-gradient(135deg, rgba(156, 39, 176, 0.75) 0%, rgba(156, 39, 176, 0.65) 100%);
+        background: rgba(46, 169, 178, 0.75);
+        background: linear-gradient(45deg, rgba(79, 121, 167, 0.75) 0%, rgba(79, 121, 167, 0.75) 100%);
+        background: -moz-linear-gradient(135deg, rgba(79, 121, 167, 0.75) 0%, rgba(79, 121, 167, 0.75) 100%);
+        background: -webkit-linear-gradient(135deg, rgba(79, 121, 167, 0.75) 0%, rgba(79, 121, 167, 0.75) 100%);
     }
 
     16% {
