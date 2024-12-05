@@ -44,33 +44,6 @@
   </entry>
   
   <entry>
-    <title>sql注入基础</title>
-    <link href="http://sxksec.cn/2024/12/04/web-an-quan/sql-zhu-ru/"/>
-    <id>http://sxksec.cn/2024/12/04/web-an-quan/sql-zhu-ru/</id>
-    <published>2024-12-04T08:19:26.000Z</published>
-    <updated>2024-12-05T10:04:00.010Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、-SQL注入简介&quot;&gt;&lt;a href=&quot;#一、-SQL注入简介&quot; class=&quot;headerlink&quot; title=&quot;一、 SQL注入简介&quot;&gt;&lt;/a&gt;一、 SQL注入简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-SQL简介&quot;&gt;&lt;a href=&quot;#1-1-SQL简介&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="sql注入" scheme="http://sxksec.cn/tags/sql%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Flask框架</title>
     <link href="http://sxksec.cn/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/"/>
     <id>http://sxksec.cn/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/</id>
@@ -212,6 +185,33 @@
     <category term="java" scheme="http://sxksec.cn/tags/java/"/>
     
     <category term="图" scheme="http://sxksec.cn/tags/%E5%9B%BE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>sql注入基础</title>
+    <link href="http://sxksec.cn/2022/10/04/web-an-quan/sql-zhu-ru/"/>
+    <id>http://sxksec.cn/2022/10/04/web-an-quan/sql-zhu-ru/</id>
+    <published>2022-10-04T08:19:26.000Z</published>
+    <updated>2024-12-05T10:08:39.178Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、-SQL注入简介&quot;&gt;&lt;a href=&quot;#一、-SQL注入简介&quot; class=&quot;headerlink&quot; title=&quot;一、 SQL注入简介&quot;&gt;&lt;/a&gt;一、 SQL注入简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-SQL简介&quot;&gt;&lt;a href=&quot;#1-1-SQL简介&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="sql注入" scheme="http://sxksec.cn/tags/sql%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
