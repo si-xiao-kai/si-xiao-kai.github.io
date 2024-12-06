@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-04
+                    2024-12-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    911
+                    2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    7 分
                 </div>
                 
 
@@ -531,7 +531,154 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
     app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h1 id="三、Flask常用模块"><a href="#三、Flask常用模块" class="headerlink" title="三、Flask常用模块"></a>三、Flask常用模块</h1><h2 id="3-1-Flask"><a href="#3-1-Flask" class="headerlink" title="3.1 Flask"></a>3.1 Flask</h2><h3 id="3-1-1-Flask类的基本使用"><a href="#3-1-1-Flask类的基本使用" class="headerlink" title="3.1.1 Flask类的基本使用"></a>3.1.1 Flask类的基本使用</h3><p><strong>用途</strong>：核心模块，用于创建和管理 Flask 应用程序。</p>
+<p><strong>示例</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> Flask
 
+app <span class="token operator">=</span> Flask<span class="token punctuation">(</span>__name__<span class="token punctuation">)</span>
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">home</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"Hello, Flask!"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p><code>app = Flask(__name__)</code> 是 Flask 应用的基础代码，它用于创建一个 Flask 应用实例。</p>
+<h3 id="1-Flask-类"><a href="#1-Flask-类" class="headerlink" title="1. Flask 类"></a><strong>1. <code>Flask</code> 类</strong></h3><ul>
+<li><code>Flask</code> 是 Flask 框架提供的核心类，负责处理 HTTP 请求、管理路由、加载配置等功能。</li>
+<li>通过实例化 <code>Flask</code> 类，可以生成一个应用对象，用于组织和运行整个 Web 应用。</li>
+</ul>
+<h3 id="2-name-参数"><a href="#2-name-参数" class="headerlink" title="2. __name__ 参数"></a><strong>2. <code>__name__</code> 参数</strong></h3><ul>
+<li><code>__name__</code>是 Python 的特殊变量，用于标识当前模块的名字。<ul>
+<li>如果该模块是直接运行的脚本，<code>__name__</code> 的值为 <code>'__main__'</code>。</li>
+<li>如果该模块是被导入的，<code>__name__</code> 的值为模块的名称。</li>
+</ul>
+</li>
+<li>在 Flask 中，<code>__name__</code>的作用<ul>
+<li><strong>确定应用的根路径</strong>：Flask 使用它定位应用所在的目录，这对加载静态文件（如 CSS、JS）和模板文件（如 HTML）至关重要。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-app-变量"><a href="#3-app-变量" class="headerlink" title="3. app 变量"></a><strong>3. <code>app</code> 变量</strong></h3><ul>
+<li><p><code>app</code> 是通过 <code>Flask</code> 类实例化得到的对象，它代表了整个 Flask 应用实例。</p>
+</li>
+<li><p>它是 Web 应用的核心，用于注册路由、处理请求、配置应用、管理扩展等。</p>
+</li>
+<li><p>常见用法：</p>
+<p><strong>定义路由</strong>：</p>
+</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">home</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> <span class="token string">"Hello, Flask!"</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>​       <strong>运行应用：</strong></p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<blockquote>
+<p>总结：<code>app = Flask(__name__)</code> 是 Flask 应用开发的起点，用来初始化一个 Web 应用对象。<code>Flask</code> 类负责提供应用的功能，而 <code>__name__</code> 帮助框架定位资源路径和运行环境。</p>
+</blockquote>
+<h3 id="3-1-2-监听0-0-0-0和127-0-0-1的区别"><a href="#3-1-2-监听0-0-0-0和127-0-0-1的区别" class="headerlink" title="3.1.2 监听0.0.0.0和127.0.0.1的区别"></a>3.1.2 监听0.0.0.0和127.0.0.1的区别</h3><p>app.run(host=‘0.0.0.0’,port=5001) 和app.run(host=‘127.0.0.1’,port=5001) </p>
+<blockquote>
+<p><code>app.run(host='0.0.0.0', port=5001)</code> 和 <code>app.run(host='127.0.0.1', port=5001)</code> 都是启动 Flask 应用的方法，但它们在 <strong>监听地址</strong> 和 <strong>访问方式</strong> 上存在差异。以下是详细解释：</p>
+<h3 id="1-共同点"><a href="#1-共同点" class="headerlink" title="1. 共同点"></a>1. <strong>共同点</strong></h3><ul>
+<li><strong>功能</strong>：两者都用于启动 Flask 开发服务器，监听指定的主机地址和端口。</li>
+<li><strong>端口号</strong>：两者都监听 <code>5001</code> 端口，可以通过浏览器或 HTTP 客户端访问。</li>
+</ul>
+<h3 id="2-差异：监听地址（host-参数）"><a href="#2-差异：监听地址（host-参数）" class="headerlink" title="2. 差异：监听地址（host 参数）"></a>2. <strong>差异：监听地址（<code>host</code> 参数）</strong></h3><h4 id="host-0-0-0-0"><a href="#host-0-0-0-0" class="headerlink" title="host='0.0.0.0'"></a><strong><code>host='0.0.0.0'</code></strong></h4><ul>
+<li>含义：<ul>
+<li><code>0.0.0.0</code> 是一个特殊的 IP 地址，表示<strong>监听所有网络接口</strong>（包括本地接口和外部接口）。</li>
+</ul>
+</li>
+<li><strong>结果</strong>：<ul>
+<li>应用可以被<strong>本机（localhost）和同一局域网中的其他设备</strong>访问。</li>
+<li>示例：<ul>
+<li>本地访问：<code>http://127.0.0.1:5001</code></li>
+<li>局域网访问：<code>http://&lt;你的局域网 IP&gt;:5001</code>（如 <code>http://192.168.1.100:5001</code>）</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h4 id="host-127-0-0-1"><a href="#host-127-0-0-1" class="headerlink" title="host='127.0.0.1'"></a><strong><code>host='127.0.0.1'</code></strong></h4><ul>
+<li>含义：<ul>
+<li><code>127.0.0.1</code> 是本地回环地址（localhost），只监听本地接口。</li>
+</ul>
+</li>
+<li>结果：<ul>
+<li>应用<strong>只能被本机访问</strong>，无法被其他设备访问。</li>
+<li>示例：<ul>
+<li>本地访问：<code>http://127.0.0.1:5001</code></li>
+<li>局域网设备无法访问。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-实际用途"><a href="#3-实际用途" class="headerlink" title="3.实际用途"></a>3.<strong>实际用途</strong></h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/%E6%88%AA%E5%B1%8F2024-12-06%2010.41.55.png" alt="截屏2024-12-06 10.41.55" style="zoom:50%;">
+
+<h3 id="4-安全性注意事项"><a href="#4-安全性注意事项" class="headerlink" title="4. 安全性注意事项"></a>4. <strong>安全性注意事项</strong></h3><ul>
+<li>开发环境：<ul>
+<li>Flask 自带的开发服务器不适合生产环境，<code>host='0.0.0.0'</code> 时需特别小心，避免暴露到公网。</li>
+</ul>
+</li>
+<li>生产环境：<ul>
+<li>使用专业的 WSGI 服务器（如 <strong>gunicorn</strong> 或 <strong>uWSGI</strong>）配合反向代理服务器（如 Nginx）运行应用，提供更高的性能和安全性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h3><ul>
+<li>**<code>host='127.0.0.1'</code>**：仅限本机访问，适合安全性要求较高的开发场景。</li>
+<li>**<code>host='0.0.0.0'</code>**：允许外部设备访问，适合局域网测试或需要共享的场景，但需注意潜在的安全风险。</li>
+</ul>
+</blockquote>
+<h2 id="3-2-jsonify"><a href="#3-2-jsonify" class="headerlink" title="3.2 jsonify"></a>3.2 jsonify</h2><p><strong>用途</strong>：将 Python 数据结构（如字典、列表等）转换为 JSON 格式并返回 HTTP 响应。</p>
+<p><strong>特点</strong>：自动设置响应的 <code>Content-Type</code> 为 <code>application/json</code>。</p>
+<p><strong>示例</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> jsonify
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/data'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">data</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> jsonify<span class="token punctuation">(</span><span class="token punctuation">{</span><span class="token string">'name'</span><span class="token punctuation">:</span> <span class="token string">'Alice'</span><span class="token punctuation">,</span> <span class="token string">'age'</span><span class="token punctuation">:</span> <span class="token number">30</span><span class="token punctuation">}</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-3-request"><a href="#3-3-request" class="headerlink" title="3.3 request"></a>3.3 request</h2><p><strong>用途</strong>：获取客户端发送的 HTTP 请求信息，包括数据、头部、方法等。</p>
+<p><strong>常用方法</strong>：</p>
+<ul>
+<li><code>request.args</code>：获取查询参数（GET 请求）。</li>
+<li><code>request.form</code>：获取表单数据（POST 请求）。</li>
+<li><code>request.json</code>：获取 JSON 格式的数据。</li>
+</ul>
+<p><strong>示例</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> request
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/form'</span><span class="token punctuation">,</span> methods<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'POST'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">form</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    name <span class="token operator">=</span> request<span class="token punctuation">.</span>form<span class="token punctuation">[</span><span class="token string">'name'</span><span class="token punctuation">]</span>
+    <span class="token keyword">return</span> <span class="token string-interpolation"><span class="token string">f"Hello, </span><span class="token interpolation"><span class="token punctuation">{</span>name<span class="token punctuation">}</span></span><span class="token string">!"</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-4-redirect"><a href="#3-4-redirect" class="headerlink" title="3.4 redirect"></a>3.4 redirect</h2><p><strong>用途</strong>：重定向到指定的 URL。</p>
+<p><strong>特点</strong>：通常与 HTTP 状态码 302 或 301 一起使用。</p>
+<p><strong>示例</strong>：</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> redirect
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/old'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">old</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> redirect<span class="token punctuation">(</span><span class="token string">'/new'</span><span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-5-render-template"><a href="#3-5-render-template" class="headerlink" title="3.5 render_template"></a>3.5 <strong>render_template</strong></h2><ul>
+<li><strong>用途</strong>：渲染模板文件（如 HTML），动态生成网页内容。</li>
+<li><strong>特点</strong>：使用 Jinja2 模板引擎，支持变量替换和逻辑控制。</li>
+<li><strong>示例</strong>：</li>
+</ul>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> flask <span class="token keyword">import</span> render_template
+
+<span class="token decorator annotation punctuation">@app<span class="token punctuation">.</span>route</span><span class="token punctuation">(</span><span class="token string">'/profile/&lt;name&gt;'</span><span class="token punctuation">)</span>
+<span class="token keyword">def</span> <span class="token function">profile</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">return</span> render_template<span class="token punctuation">(</span><span class="token string">'profile.html'</span><span class="token punctuation">,</span> username<span class="token operator">=</span>name<span class="token punctuation">)</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -927,7 +1074,7 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">16k</span>
+                        class="white-color">18.2k</span>
             
             
             
