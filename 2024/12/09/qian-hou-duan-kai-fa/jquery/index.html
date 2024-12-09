@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="图-图的通用结构表达的建立, Hacker进化论">
-    <meta name="description" content="本文介绍了一个非常有用的图结构的表达方法，方便在上面实现图的各种算法，并且可以很方便的将其他形式的图的表示如邻接表、邻接矩阵等转化过来，进而避免了在不同结构上重新实现图算法的繁琐操作。">
+    <meta name="keywords" content="jQuery, Hacker进化论">
+    <meta name="description" content="本文对jQuery进行简要介绍。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>图-图的通用结构表达的建立 | Hacker进化论</title>
+    <title>jQuery | Hacker进化论</title>
     <link rel="icon" type="image/png" href="/hacker1.png">
     
 
@@ -337,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">图-图的通用结构表达的建立</h1>
+                    <h1 class="description center-align post-title">jQuery</h1>
                 </div>
             </div>
         </div>
@@ -366,20 +366,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                <span class="chip bg-color">数据结构</span>
+                            <a href="/tags/jQuery/">
+                                <span class="chip bg-color">jQuery</span>
                             </a>
                         
-                            <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                <span class="chip bg-color">算法</span>
-                            </a>
-                        
-                            <a href="/tags/java/">
-                                <span class="chip bg-color">java</span>
-                            </a>
-                        
-                            <a href="/tags/%E5%9B%BE/">
-                                <span class="chip bg-color">图</span>
+                            <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
+                                <span class="chip bg-color">前端开发</span>
                             </a>
                         
                     </div>
@@ -390,8 +382,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                数据结构与算法
+                            <a href="/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/" class="post-category">
+                                前后端开发
                             </a>
                         
                     </div>
@@ -403,21 +395,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-10-09
+                    2024-12-09
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-03
+                    2024-12-09
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    697
+                    820
                 </div>
                 
 
@@ -447,126 +439,66 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1-引言"><a href="#1-引言" class="headerlink" title="1.引言"></a>1.引言</h1><p>  图的表达方法千千万，平时选一个自己最喜欢的结构，把所有算法都在这个结构上玩通，以后遇到陌生的图结构表达，转化为自己喜欢的那个结构，然后用自己实现的算法即可。重点就是实现一个接口将陌生的图表达数据结构转化为自己熟悉的图结构表达。</p>
-<h1 id="2-Node类"><a href="#2-Node类" class="headerlink" title="2.Node类"></a>2.Node类</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">base_graph</span><span class="token punctuation">;</span>
+                <h1 id="一、jQuery简介"><a href="#一、jQuery简介" class="headerlink" title="一、jQuery简介"></a>一、jQuery简介</h1><p>jQuery 是一个快速、简洁、跨平台的 JavaScript 库，专为简化 HTML 文档操作、事件处理、动画制作以及与服务器端的交互（Ajax）而设计。它由 John Resig 于 2006 年创建，现已成为前端开发中最广泛使用的工具之一。</p>
+<p>虽然 jQuery 曾在前端开发中占据主导地位，但随着现代框架（如 React、Vue、Angular）的崛起，它的使用有所减少。然而，由于其简单性和广泛支持，jQuery 在许多项目中仍然有一席之地，尤其是在需要快速开发或维护旧项目时。</p>
+<h1 id="二、-jQuery-核心特点"><a href="#二、-jQuery-核心特点" class="headerlink" title="二、 jQuery 核心特点"></a>二、 jQuery 核心特点</h1><h3 id="1-跨浏览器兼容性"><a href="#1-跨浏览器兼容性" class="headerlink" title="1. 跨浏览器兼容性"></a>1. <strong>跨浏览器兼容性</strong></h3><p>jQuery 解决了不同浏览器对 JavaScript 的实现差异，提供统一的接口，使开发者能更轻松地编写跨浏览器的代码。</p>
+<h3 id="2-简化-DOM-操作"><a href="#2-简化-DOM-操作" class="headerlink" title="2. 简化 DOM 操作"></a>2. <strong>简化 DOM 操作</strong></h3><p>通过 jQuery，开发者可以用简单、直观的语法轻松地选择、操作 HTML 元素。例如：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 使用 jQuery 修改元素内容</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"新的内容"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span></span><span class="token punctuation">;</span>
+<h3 id="3-事件处理"><a href="#3-事件处理" class="headerlink" title="3. 事件处理"></a>3. <strong>事件处理</strong></h3><p>jQuery 提供了简便的事件绑定和解绑方法，例如：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 为按钮绑定点击事件</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myButton"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"按钮被点击！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Node</span> <span class="token punctuation">{</span>
-	<span class="token keyword">public</span> <span class="token keyword">int</span> value<span class="token punctuation">;</span><span class="token comment">//节点值</span>
-	<span class="token keyword">public</span> <span class="token keyword">int</span> in<span class="token punctuation">;</span><span class="token comment">//入度</span>
-	<span class="token keyword">public</span> <span class="token keyword">int</span> out<span class="token punctuation">;</span><span class="token comment">//出度</span>
-	
-	<span class="token keyword">public</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Node</span><span class="token punctuation">&gt;</span></span> nexts<span class="token punctuation">;</span><span class="token comment">//下行的邻居节点</span>
-	<span class="token keyword">public</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Edge</span><span class="token punctuation">&gt;</span></span> edges<span class="token punctuation">;</span><span class="token comment">//下行边</span>
-	
-	<span class="token keyword">public</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token keyword">int</span> value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>value<span class="token operator">=</span>value<span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>in<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>out<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>nexts<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>edges<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4-动画与效果"><a href="#4-动画与效果" class="headerlink" title="4. 动画与效果"></a>4. <strong>动画与效果</strong></h3><p>jQuery 内置多种动画效果，可以快速实现页面动态效果：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 淡入元素</span>
+<span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h1 id="3-Edge类"><a href="#3-Edge类" class="headerlink" title="3.Edge类"></a>3.Edge类</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">base_graph</span><span class="token punctuation">;</span>
+<h3 id="5-Ajax-支持"><a href="#5-Ajax-支持" class="headerlink" title="5. Ajax 支持"></a>5. <strong>Ajax 支持</strong></h3><p>jQuery 提供了方便的 Ajax 方法，可以轻松与服务器交互：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 通过 jQuery 发起 GET 请求</span>
+$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"example.com/api"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Edge</span> <span class="token punctuation">{</span>
-	<span class="token keyword">public</span> <span class="token keyword">int</span> weight<span class="token punctuation">;</span><span class="token comment">//边权</span>
-	<span class="token keyword">public</span> <span class="token class-name">Node</span> from<span class="token punctuation">;</span><span class="token comment">//始边</span>
-	<span class="token keyword">public</span> <span class="token class-name">Node</span> <span class="token keyword">to</span><span class="token punctuation">;</span><span class="token comment">//终边</span>
-	
-	<span class="token keyword">public</span> <span class="token class-name">Edge</span><span class="token punctuation">(</span><span class="token keyword">int</span> weight<span class="token punctuation">,</span><span class="token class-name">Node</span> from<span class="token punctuation">,</span><span class="token class-name">Node</span> <span class="token keyword">to</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//根据提供的三元素构建一个边</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>weight<span class="token operator">=</span>weight<span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span>from<span class="token operator">=</span>from<span class="token punctuation">;</span>
-		<span class="token keyword">this</span><span class="token punctuation">.</span><span class="token keyword">to</span><span class="token operator">=</span><span class="token keyword">to</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>	
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="6-丰富的插件生态"><a href="#6-丰富的插件生态" class="headerlink" title="6. 丰富的插件生态"></a>6. <strong>丰富的插件生态</strong></h3><p>jQuery 拥有大量第三方插件，可以扩展其功能，满足特定需求。</p>
+<h3 id="7-链式调用"><a href="#7-链式调用" class="headerlink" title="7. 链式调用"></a>7. <strong>链式调用</strong></h3><p>jQuery 的链式调用特性允许在一条语句中连续调用多个方法，从而使代码更加简洁：</p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"highlight"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"更新内容"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="4-Graph类"><a href="#4-Graph类" class="headerlink" title="4.Graph类"></a>4.Graph类</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">base_graph</span><span class="token punctuation">;</span>
+<h3 id="8-轻量级"><a href="#8-轻量级" class="headerlink" title="8. 轻量级"></a>8. <strong>轻量级</strong></h3><p>尽管功能强大，jQuery 的核心库大小较小，加载速度快。</p>
+<h1 id="三、示例"><a href="#三、示例" class="headerlink" title="三、示例"></a>三、示例</h1><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token constant">DOCTYPE</span> html<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>html<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"&lt;url id="</span><span class="token string">" type="</span>url<span class="token string">" status="</span><span class="token string">" title="</span><span class="token string">" wc="</span><span class="token string">"&gt;https://code.jquery.com/jquery-3.6.0.min.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">&gt;</span> 
+    <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>
+        <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#toggleButton"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+                <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#message"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">"toggleButton"</span><span class="token operator">&gt;</span>切换显示<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>p id<span class="token operator">=</span><span class="token string">"message"</span><span class="token operator">&gt;</span>这是一个可切换的段落。<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashMap</span></span><span class="token punctuation">;</span>
-<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">HashSet</span></span><span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Graph</span> <span class="token punctuation">{</span>
-	<span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">,</span> <span class="token class-name">Node</span><span class="token punctuation">&gt;</span></span> nodes<span class="token punctuation">;</span>
-	<span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Edge</span><span class="token punctuation">&gt;</span></span> edges<span class="token punctuation">;</span>
-	
-	<span class="token keyword">public</span> <span class="token class-name">Graph</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		nodes<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		edges<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">HashSet</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h1 id="5-将二维矩阵表示的图转化为Graph形式的图"><a href="#5-将二维矩阵表示的图转化为Graph形式的图" class="headerlink" title="5.将二维矩阵表示的图转化为Graph形式的图"></a>5.将二维矩阵表示的图转化为Graph形式的图</h1><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">package</span> <span class="token namespace">base_graph</span><span class="token punctuation">;</span>
-
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GenerateGraphFromMatrix</span> <span class="token punctuation">{</span>
-	<span class="token comment">//matrix </span>
-	<span class="token comment">//weight from to</span>
-	<span class="token comment">/*
-	 * [4,1,3]
-	 * [5,2,6]
-	 * [1,2,3]
-	 */</span>
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token class-name">Graph</span> <span class="token function">createGraphFromMatrix</span><span class="token punctuation">(</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> matrix<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token class-name">Graph</span> g<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Graph</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token keyword">for</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">;</span>i<span class="token operator">&lt;</span>matrix<span class="token punctuation">.</span>length<span class="token punctuation">;</span>i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-			<span class="token keyword">int</span> weight<span class="token operator">=</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-			<span class="token keyword">int</span> from<span class="token operator">=</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-			<span class="token keyword">int</span> <span class="token keyword">to</span><span class="token operator">=</span>matrix<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-			
-			<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>from<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token comment">//如果没有节点编号就去创建节点</span>
-				g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>from<span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span>from<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-				
-			<span class="token punctuation">}</span>
-			<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span>g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span><span class="token keyword">to</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-				g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span><span class="token keyword">to</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">Node</span><span class="token punctuation">(</span><span class="token keyword">to</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-			<span class="token punctuation">}</span>
-			
-			<span class="token class-name">Node</span> fromNode <span class="token operator">=</span> g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>from<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取from节点</span>
-			<span class="token class-name">Node</span> toNode<span class="token operator">=</span>g<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token keyword">to</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//获取to节点</span>
-			
-			<span class="token class-name">Edge</span> edge<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">Edge</span><span class="token punctuation">(</span>weight<span class="token punctuation">,</span> fromNode<span class="token punctuation">,</span> toNode<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//建立一条边</span>
-			g<span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>edge<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//放到g的边集合中</span>
-			
-			fromNode<span class="token punctuation">.</span>nexts<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>toNode<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//from节点添加下行节点</span>
-			fromNode<span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>edge<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//from 节点添加下行边</span>
-			fromNode<span class="token punctuation">.</span>out<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment">//from节点出度++</span>
-			toNode<span class="token punctuation">.</span>in<span class="token operator">++</span><span class="token punctuation">;</span><span class="token comment">//to节点入度++</span>
-		<span class="token punctuation">}</span>
-		<span class="token keyword">return</span> g<span class="token punctuation">;</span>	
-		
-	<span class="token punctuation">}</span>
-	
-	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-		<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token punctuation">]</span> test <span class="token operator">=</span> <span class="token punctuation">{</span>
-					<span class="token punctuation">{</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-					<span class="token punctuation">{</span><span class="token number">5</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">6</span><span class="token punctuation">}</span><span class="token punctuation">,</span>
-					<span class="token punctuation">{</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">}</span>
-				  <span class="token punctuation">}</span><span class="token punctuation">;</span>
-		<span class="token class-name">Graph</span> graph <span class="token operator">=</span> <span class="token function">createGraphFromMatrix</span><span class="token punctuation">(</span>test<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"节点数:"</span><span class="token operator">+</span>graph<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"边数:"</span><span class="token operator">+</span>graph<span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1的入度:"</span><span class="token operator">+</span>graph<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>in<span class="token operator">+</span><span class="token string">",1的出度:"</span><span class="token operator">+</span>graph<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>out<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"1到3的代价:"</span><span class="token operator">+</span>graph<span class="token punctuation">.</span>nodes<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">.</span>edges<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">.</span>weight<span class="token punctuation">)</span><span class="token punctuation">;</span>
-		<span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"done!"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-	<span class="token punctuation">}</span>
-<span class="token punctuation">}</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/10/09/shu-ju-jie-gou-yu-suan-fa/tu-tu-de-tong-yong-jie-gou-biao-da-de-jian-li/1009-01.jpeg" alt="测试图例" style="zoom:50%;">
-
-<p>运行结果</p>
-<pre class="line-numbers language-text" data-language="text"><code class="language-text">节点数:4
-边数:3
-1的入度:0,1的出度:1
-1到3的代价:4
-done!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<p><a target="_blank" rel="noopener" href="https://github.com/si-xiao-kai/AlgorithmDataStructure_stu/tree/main/base_graph">完整代码见我的github</a></p>
-<h1 id="6-小结"><a href="#6-小结" class="headerlink" title="6.小结"></a>6.小结</h1><p>本文介绍了一个非常有用的图结构的表达方法，方便在上面实现图的各种算法，并且可以很方便的将其他形式的图的表示如邻接表、邻接矩阵等转化过来，进而避免了在不同结构上重新实现图算法的繁琐操作。后续会陆续讲解基于本文定义的图结构实现的各种图算法。</p>
+<blockquote>
+<p>这是一个完整且简单的 jQuery 示例代码。它展示了如何使用 jQuery 实现事件处理和元素的显示/隐藏效果。</p>
+<h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><ol>
+<li><strong>加载 jQuery</strong><br>在 <code>&lt;head&gt;</code> 部分通过 <code>&lt;script&gt;</code> 标签加载了 jQuery 的官方库（版本 3.6.0）。</li>
+<li><strong>DOM 准备就绪处理</strong><br>使用 <code>$(document).ready()</code> 确保在 DOM 加载完成后再执行代码。</li>
+<li><strong>按钮点击事件</strong><br>当用户点击按钮（ID 为 <code>toggleButton</code>）时，会触发绑定的事件处理器。</li>
+<li><strong>切换显示/隐藏</strong><br><code>$("#message").toggle();</code> 方法会在每次点击按钮时切换段落（ID 为 <code>message</code>）的显示状态。</li>
+</ol>
+<h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><p>初始状态下，页面上显示一个按钮和一段文字。</p>
+<p>点击按钮后，文字会消失。</p>
+<p>再次点击按钮，文字重新出现。</p>
+<h3 id="扩展功能"><a href="#扩展功能" class="headerlink" title="扩展功能"></a>扩展功能</h3><p>如果你想增加一些效果，比如使用动画，可以替换 <code>toggle</code> 为 <code>fadeToggle</code> 或 <code>slideToggle</code></p>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#message"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用淡入淡出效果切换</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</blockquote>
 
                 
             </div>
@@ -593,7 +525,7 @@ done!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://sxksec.cn/2022/10/09/shu-ju-jie-gou-yu-suan-fa/tu-tu-de-tong-yong-jie-gou-biao-da-de-jian-li/">http://sxksec.cn/2022/10/09/shu-ju-jie-gou-yu-suan-fa/tu-tu-de-tong-yong-jie-gou-biao-da-de-jian-li/</a>
+                    <a href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/jquery/">http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/jquery/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -631,20 +563,12 @@ done!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                                    <span class="chip bg-color">数据结构</span>
+                                <a href="/tags/jQuery/">
+                                    <span class="chip bg-color">jQuery</span>
                                 </a>
                             
-                                <a href="/tags/%E7%AE%97%E6%B3%95/">
-                                    <span class="chip bg-color">算法</span>
-                                </a>
-                            
-                                <a href="/tags/java/">
-                                    <span class="chip bg-color">java</span>
-                                </a>
-                            
-                                <a href="/tags/%E5%9B%BE/">
-                                    <span class="chip bg-color">图</span>
+                                <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
+                                    <span class="chip bg-color">前端开发</span>
                                 </a>
                             
                         </div>
@@ -727,52 +651,32 @@ done!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/">
+                <a href="/2024/12/09/qian-hou-duan-kai-fa/bootstrap/">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/10.jpg" class="responsive-img" alt="文件上传漏洞基础">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/16.jpg" class="responsive-img" alt="post">
                         
-                        <span class="card-title">文件上传漏洞基础</span>
+                        <span class="card-title">post</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文介绍文件上传漏洞基础原理、利用技巧和防御方法。
+                            
                         
                     </div>
                     <div class="publish-info">
                         <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2022-12-06
+                            <i class="far fa-clock fa-fw icon-date"></i>2024-12-09
                         </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-bookmark fa-fw icon-category"></i>
-                            
-                            <a href="/categories/web%E5%AE%89%E5%85%A8/" class="post-category">
-                                    web安全
-                                </a>
-                            
+                            <i class="fas fa-user fa-fw"></i>
+                            司晓凯
                             
                         </span>
                     </div>
-                </div>
-                
-                <div class="card-action article-tags">
-                    
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
-                    </a>
-                    
-                    <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">
-                        <span class="chip bg-color">文件上传漏洞</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/">
-                        <span class="chip bg-color">基础知识库</span>
-                    </a>
-                    
                 </div>
                 
             </div>
@@ -784,31 +688,31 @@ done!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/04/web-an-quan/sql-zhu-ru/">
+                <a href="/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="sql注入基础">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="Grafana表达式远程代码执行(CVE-2024-9264)">
                         
-                        <span class="card-title">sql注入基础</span>
+                        <span class="card-title">Grafana表达式远程代码执行(CVE-2024-9264)</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文主要介绍sql注入的基础，包括联合查询注入、报错注入、布尔盲注和时间盲注。
+                            本文主要讲解Grafana基础，CVE-2024-9264的原理、利用方法和防御方法。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-04
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-06
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/web%E5%AE%89%E5%85%A8/" class="post-category">
-                                    web安全
+                            <a href="/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/" class="post-category">
+                                    漏洞知识库
                                 </a>
                             
                             
@@ -818,12 +722,12 @@ done!<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/">
+                        <span class="chip bg-color">漏洞知识库</span>
                     </a>
                     
-                    <a href="/tags/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">sql注入基础</span>
+                    <a href="/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/">
+                        <span class="chip bg-color">Grafana表达式远程代码执行(CVE-2024-9264)</span>
                     </a>
                     
                 </div>

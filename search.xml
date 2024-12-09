@@ -4,6 +4,46 @@
   
     
     <entry>
+      <title>post</title>
+      <link href="/2024/12/09/qian-hou-duan-kai-fa/bootstrap/"/>
+      <url>/2024/12/09/qian-hou-duan-kai-fa/bootstrap/</url>
+      
+        <content type="html"><![CDATA[]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>jQuery</title>
+      <link href="/2024/12/09/qian-hou-duan-kai-fa/jquery/"/>
+      <url>/2024/12/09/qian-hou-duan-kai-fa/jquery/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、jQuery简介"><a href="#一、jQuery简介" class="headerlink" title="一、jQuery简介"></a>一、jQuery简介</h1><p>jQuery 是一个快速、简洁、跨平台的 JavaScript 库，专为简化 HTML 文档操作、事件处理、动画制作以及与服务器端的交互（Ajax）而设计。它由 John Resig 于 2006 年创建，现已成为前端开发中最广泛使用的工具之一。</p><p>虽然 jQuery 曾在前端开发中占据主导地位，但随着现代框架（如 React、Vue、Angular）的崛起，它的使用有所减少。然而，由于其简单性和广泛支持，jQuery 在许多项目中仍然有一席之地，尤其是在需要快速开发或维护旧项目时。</p><h1 id="二、-jQuery-核心特点"><a href="#二、-jQuery-核心特点" class="headerlink" title="二、 jQuery 核心特点"></a>二、 jQuery 核心特点</h1><h3 id="1-跨浏览器兼容性"><a href="#1-跨浏览器兼容性" class="headerlink" title="1. 跨浏览器兼容性"></a>1. <strong>跨浏览器兼容性</strong></h3><p>jQuery 解决了不同浏览器对 JavaScript 的实现差异，提供统一的接口，使开发者能更轻松地编写跨浏览器的代码。</p><h3 id="2-简化-DOM-操作"><a href="#2-简化-DOM-操作" class="headerlink" title="2. 简化 DOM 操作"></a>2. <strong>简化 DOM 操作</strong></h3><p>通过 jQuery，开发者可以用简单、直观的语法轻松地选择、操作 HTML 元素。例如：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 使用 jQuery 修改元素内容</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"新的内容"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="3-事件处理"><a href="#3-事件处理" class="headerlink" title="3. 事件处理"></a>3. <strong>事件处理</strong></h3><p>jQuery 提供了简便的事件绑定和解绑方法，例如：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 为按钮绑定点击事件</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myButton"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    <span class="token function">alert</span><span class="token punctuation">(</span><span class="token string">"按钮被点击！"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="4-动画与效果"><a href="#4-动画与效果" class="headerlink" title="4. 动画与效果"></a>4. <strong>动画与效果</strong></h3><p>jQuery 内置多种动画效果，可以快速实现页面动态效果：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 淡入元素</span><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><h3 id="5-Ajax-支持"><a href="#5-Ajax-支持" class="headerlink" title="5. Ajax 支持"></a>5. <strong>Ajax 支持</strong></h3><p>jQuery 提供了方便的 Ajax 方法，可以轻松与服务器交互：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// 通过 jQuery 发起 GET 请求</span>$<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span><span class="token string">"example.com/api"</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>    console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre><h3 id="6-丰富的插件生态"><a href="#6-丰富的插件生态" class="headerlink" title="6. 丰富的插件生态"></a>6. <strong>丰富的插件生态</strong></h3><p>jQuery 拥有大量第三方插件，可以扩展其功能，满足特定需求。</p><h3 id="7-链式调用"><a href="#7-链式调用" class="headerlink" title="7. 链式调用"></a>7. <strong>链式调用</strong></h3><p>jQuery 的链式调用特性允许在一条语句中连续调用多个方法，从而使代码更加简洁：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#myElement"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">addClass</span><span class="token punctuation">(</span><span class="token string">"highlight"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeIn</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">text</span><span class="token punctuation">(</span><span class="token string">"更新内容"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h3 id="8-轻量级"><a href="#8-轻量级" class="headerlink" title="8. 轻量级"></a>8. <strong>轻量级</strong></h3><p>尽管功能强大，jQuery 的核心库大小较小，加载速度快。</p><h1 id="三、示例"><a href="#三、示例" class="headerlink" title="三、示例"></a>三、示例</h1><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span><span class="token operator">!</span><span class="token constant">DOCTYPE</span> html<span class="token operator">&gt;</span><span class="token operator">&lt;</span>html<span class="token operator">&gt;</span><span class="token operator">&lt;</span>head<span class="token operator">&gt;</span>    <span class="token operator">&lt;</span>script src<span class="token operator">=</span><span class="token string">"&lt;url id="</span><span class="token string">" type="</span>url<span class="token string">" status="</span><span class="token string">" title="</span><span class="token string">" wc="</span><span class="token string">"&gt;https://code.jquery.com/jquery-3.6.0.min.js"</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>url<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>script<span class="token operator">&gt;</span>        <span class="token function">$</span><span class="token punctuation">(</span>document<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">ready</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>            <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#toggleButton"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">click</span><span class="token punctuation">(</span><span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>                <span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#message"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">toggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>            <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>        <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>head<span class="token operator">&gt;</span><span class="token operator">&lt;</span>body<span class="token operator">&gt;</span>    <span class="token operator">&lt;</span>button id<span class="token operator">=</span><span class="token string">"toggleButton"</span><span class="token operator">&gt;</span>切换显示<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>    <span class="token operator">&lt;</span>p id<span class="token operator">=</span><span class="token string">"message"</span><span class="token operator">&gt;</span>这是一个可切换的段落。<span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>body<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">/</span>html<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>这是一个完整且简单的 jQuery 示例代码。它展示了如何使用 jQuery 实现事件处理和元素的显示/隐藏效果。</p><h3 id="功能说明"><a href="#功能说明" class="headerlink" title="功能说明"></a>功能说明</h3><ol><li><strong>加载 jQuery</strong><br>在 <code>&lt;head&gt;</code> 部分通过 <code>&lt;script&gt;</code> 标签加载了 jQuery 的官方库（版本 3.6.0）。</li><li><strong>DOM 准备就绪处理</strong><br>使用 <code>$(document).ready()</code> 确保在 DOM 加载完成后再执行代码。</li><li><strong>按钮点击事件</strong><br>当用户点击按钮（ID 为 <code>toggleButton</code>）时，会触发绑定的事件处理器。</li><li><strong>切换显示/隐藏</strong><br><code>$("#message").toggle();</code> 方法会在每次点击按钮时切换段落（ID 为 <code>message</code>）的显示状态。</li></ol><h3 id="运行效果"><a href="#运行效果" class="headerlink" title="运行效果"></a>运行效果</h3><p>初始状态下，页面上显示一个按钮和一段文字。</p><p>点击按钮后，文字会消失。</p><p>再次点击按钮，文字重新出现。</p><h3 id="扩展功能"><a href="#扩展功能" class="headerlink" title="扩展功能"></a>扩展功能</h3><p>如果你想增加一些效果，比如使用动画，可以替换 <code>toggle</code> 为 <code>fadeToggle</code> 或 <code>slideToggle</code></p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token function">$</span><span class="token punctuation">(</span><span class="token string">"#message"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">fadeToggle</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 使用淡入淡出效果切换</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></blockquote>]]></content>
+      
+      
+      <categories>
+          
+          <category> 前后端开发 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jQuery </tag>
+            
+            <tag> 前端开发 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Grafana表达式远程代码执行(CVE-2024-9264)</title>
       <link href="/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/"/>
       <url>/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/</url>
@@ -20,9 +60,9 @@
       
         <tags>
             
-            <tag> Grafana表达式远程代码执行(CVE-2024-9264) </tag>
-            
             <tag> 漏洞知识库 </tag>
+            
+            <tag> Grafana表达式远程代码执行(CVE-2024-9264) </tag>
             
         </tags>
       
@@ -188,9 +228,9 @@
       
         <tags>
             
-            <tag> 文件上传漏洞 </tag>
-            
             <tag> web安全 </tag>
+            
+            <tag> 文件上传漏洞 </tag>
             
             <tag> 基础知识库 </tag>
             
