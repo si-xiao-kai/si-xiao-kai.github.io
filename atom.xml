@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-10T02:57:20.492Z</updated>
+  <updated>2024-12-10T06:29:38.087Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>React+Flask后端分离开发</title>
+    <title>React+Flask前后端分离开发</title>
     <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-flask-hou-duan-fen-chi-kai-fa/"/>
     <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-flask-hou-duan-fen-chi-kai-fa/</id>
     <published>2024-12-09T09:14:07.000Z</published>
-    <updated>2024-12-10T02:57:20.492Z</updated>
+    <updated>2024-12-10T06:29:38.087Z</updated>
     
     
       
@@ -37,9 +37,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="React和Flask" scheme="http://sxksec.cn/tags/React%E5%92%8CFlask/"/>
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -48,14 +48,14 @@
     <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/"/>
     <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/</id>
     <published>2024-12-09T08:51:35.000Z</published>
-    <updated>2024-12-09T09:15:48.159Z</updated>
+    <updated>2024-12-10T10:13:51.817Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;一、React简介&quot;&gt;&lt;a href=&quot;#一、React简介&quot; class=&quot;headerlink&quot; title=&quot;一、React简介&quot;&gt;&lt;/a&gt;一、React简介&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;React&lt;/strong&gt; 是由 &lt;strong&gt;Meta（前</summary>
+    <summary type="html">&lt;h1 id=&quot;一、React介绍&quot;&gt;&lt;a href=&quot;#一、React介绍&quot; class=&quot;headerlink&quot; title=&quot;一、React介绍&quot;&gt;&lt;/a&gt;一、React介绍&lt;/h1&gt;&lt;h2 id=&quot;1-1-简介&quot;&gt;&lt;a href=&quot;#1-1-简介&quot;</summary>
         
       
     
@@ -64,9 +64,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="React" scheme="http://sxksec.cn/tags/React/"/>
+    
+    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -91,9 +91,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
-    
     <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
     
   </entry>
   
@@ -145,9 +145,9 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="Grafana表达式远程代码执行(CVE-2024-9264)" scheme="http://sxksec.cn/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
