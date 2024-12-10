@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-09T09:12:56.855Z</updated>
+  <updated>2024-12-10T02:40:27.760Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>React+Flask后端分离开发</title>
+    <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-flask-hou-duan-fen-chi-kai-fa/"/>
+    <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-flask-hou-duan-fen-chi-kai-fa/</id>
+    <published>2024-12-09T09:14:07.000Z</published>
+    <updated>2024-12-10T02:40:27.760Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、动机&quot;&gt;&lt;a href=&quot;#一、动机&quot; class=&quot;headerlink&quot; title=&quot;一、动机&quot;&gt;&lt;/a&gt;一、动机&lt;/h1&gt;&lt;p&gt;通过 &lt;strong&gt;React&lt;/strong&gt;（前端框架）和</summary>
+        
+      
+    
+    
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="React和Flask" scheme="http://sxksec.cn/tags/React%E5%92%8CFlask/"/>
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+  </entry>
+  
+  <entry>
     <title>React前端框架</title>
     <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/"/>
     <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/</id>
     <published>2024-12-09T08:51:35.000Z</published>
-    <updated>2024-12-09T09:12:56.855Z</updated>
+    <updated>2024-12-09T09:15:48.159Z</updated>
     
     
       
@@ -286,9 +313,9 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
-    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="基础知识库" scheme="http://sxksec.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
