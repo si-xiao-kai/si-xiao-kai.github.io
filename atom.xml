@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-12T09:15:17.777Z</updated>
+  <updated>2024-12-13T08:22:44.354Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>SOCKS5代理协议</title>
+    <link href="http://sxksec.cn/2024/12/13/nei-wang-gong-fang/socks5-dai-li-xie-yi/"/>
+    <id>http://sxksec.cn/2024/12/13/nei-wang-gong-fang/socks5-dai-li-xie-yi/</id>
+    <published>2024-12-13T07:16:45.000Z</published>
+    <updated>2024-12-13T08:22:44.354Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、SOCKS5协议简介&quot;&gt;&lt;a href=&quot;#一、SOCKS5协议简介&quot; class=&quot;headerlink&quot; title=&quot;一、SOCKS5协议简介&quot;&gt;&lt;/a&gt;一、SOCKS5协议简介&lt;/h1&gt;&lt;p&gt;SOCKS5（Socket secure</summary>
+        
+      
+    
+    
+    
+    <category term="内网攻防" scheme="http://sxksec.cn/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
+    
+    
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
+    
+    <category term="SOCKS5" scheme="http://sxksec.cn/tags/SOCKS5/"/>
+    
+    <category term="代理协议" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%90%86%E5%8D%8F%E8%AE%AE/"/>
+    
+  </entry>
+  
+  <entry>
     <title>centos虚拟机安装及问题解决</title>
     <link href="http://sxksec.cn/2024/12/12/xu-ni-hua-ji-zhu/centos-xu-ni-ji-an-zhuang-ji-wen-ti-jie-jue/"/>
     <id>http://sxksec.cn/2024/12/12/xu-ni-hua-ji-zhu/centos-xu-ni-ji-an-zhuang-ji-wen-ti-jie-jue/</id>
     <published>2024-12-12T08:42:28.000Z</published>
-    <updated>2024-12-12T09:15:17.777Z</updated>
+    <updated>2024-12-13T01:01:49.084Z</updated>
     
     
       
@@ -50,7 +79,7 @@
     <link href="http://sxksec.cn/2024/12/12/xu-ni-hua-ji-zhu/docker-ru-men-dao-jin-jie/"/>
     <id>http://sxksec.cn/2024/12/12/xu-ni-hua-ji-zhu/docker-ru-men-dao-jin-jie/</id>
     <published>2024-12-12T01:36:11.000Z</published>
-    <updated>2024-12-12T09:32:47.140Z</updated>
+    <updated>2024-12-13T08:39:13.551Z</updated>
     
     
       
@@ -232,9 +261,9 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="Grafana表达式远程代码执行(CVE-2024-9264)" scheme="http://sxksec.cn/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
