@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="文件上传漏洞基础, Hacker进化论">
-    <meta name="description" content="本文介绍文件上传漏洞基础原理、利用技巧和防御方法。">
+    <meta name="keywords" content="FRP内网穿透, Hacker进化论">
+    <meta name="description" content="本文介绍FRP内网穿透的原理和使用方法。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>文件上传漏洞基础 | Hacker进化论</title>
+    <title>FRP内网穿透 | Hacker进化论</title>
     <link rel="icon" type="image/png" href="/hacker1.png">
     
 
@@ -337,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/10.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/0.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">文件上传漏洞基础</h1>
+                    <h1 class="description center-align post-title">FRP内网穿透</h1>
                 </div>
             </div>
         </div>
@@ -366,16 +366,16 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                                <span class="chip bg-color">web安全</span>
+                            <a href="/tags/FRP/">
+                                <span class="chip bg-color">FRP</span>
                             </a>
                         
-                            <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">
-                                <span class="chip bg-color">文件上传漏洞</span>
+                            <a href="/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+                                <span class="chip bg-color">FRP内网穿透</span>
                             </a>
                         
-                            <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/">
-                                <span class="chip bg-color">基础知识库</span>
+                            <a href="/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/">
+                                <span class="chip bg-color">内网攻防</span>
                             </a>
                         
                     </div>
@@ -386,8 +386,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/web%E5%AE%89%E5%85%A8/" class="post-category">
-                                web安全
+                            <a href="/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/" class="post-category">
+                                内网攻防
                             </a>
                         
                     </div>
@@ -399,28 +399,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2022-12-06
+                    2024-12-13
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-06
+                    2024-12-16
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    3.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    12 分
                 </div>
                 
 
@@ -443,141 +443,226 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、漏洞描述"><a href="#一、漏洞描述" class="headerlink" title="一、漏洞描述"></a>一、漏洞描述</h1><p>网站提供文件上传功能，但是对用户上传的内容过滤不严格，导致用户上传任意文件甚至恶意文件， 包括恶意脚本文件、exe程序等——&gt;文件上传漏洞。</p>
-<h1 id="二、漏洞成因"><a href="#二、漏洞成因" class="headerlink" title="二、漏洞成因"></a>二、漏洞成因</h1><ul>
-<li>1、服务器配置不当</li>
-<li>2、开放了文件上传功能，但是对上传的内容没有做限制</li>
-<li>3、限制不严格导致被绕过</li>
+                <h1 id="一、什么是FRP"><a href="#一、什么是FRP" class="headerlink" title="一、什么是FRP"></a>一、什么是FRP</h1><h2 id="1-1-FRP简介"><a href="#1-1-FRP简介" class="headerlink" title="1.1 FRP简介"></a>1.1 FRP简介</h2><p>FRP（Fast Reverse Proxy）是一个开源、高性能的内网穿透和反向代理应用，它支持TCP、UDP、HTTP、HTTPS等多种协议。FRP可以帮助用户将内网服务以安全、便捷的方式通过具有公网IP节点的中转暴露到公网。</p>
+<p>FRP由客户端（frpc）和服务端（frps）组成，服务端通常部署在具有公网IP的机器上，而客户端部署在需要穿透的内网服务所在的机器上。通过这种方式，FRP实现了内网服务的公网访问，同时提供了安全性和便利性。</p>
+<p>FRP的一些应用场景：</p>
+<ul>
+<li><strong>远程访问内网服务</strong>：例如，通过FRP访问家里或公司的服务器，而不需要配置复杂的端口映射。</li>
+<li><strong>开发环境共享</strong>：开发者可以通过FRP共享自己本地的开发环境，外部团队可以直接访问内网的应用和API。</li>
+<li><strong>穿透防火墙/NAT</strong>：即使内网服务器处于NAT后面或防火墙后面，仍然可以通过FRP将服务暴露到公网。</li>
 </ul>
-<h1 id="三、漏洞危害"><a href="#三、漏洞危害" class="headerlink" title="三、漏洞危害"></a>三、漏洞危害</h1><ul>
-<li><p>任意文件上传：恶意脚本、程序等。</p>
-</li>
-<li><p>上传的可写目录也具有可执行权限，上传webshell导致网站沦陷。</p>
-</li>
-<li><p>通过其他漏洞提权，导致服务器沦陷，波及旁站。</p>
-</li>
-</ul>
-<h1 id="四、webshell"><a href="#四、webshell" class="headerlink" title="四、webshell"></a>四、webshell</h1><h2 id="4-1-概念"><a href="#4-1-概念" class="headerlink" title="4.1 概念"></a>4.1 概念</h2><p>通过上传漏洞获得的网站后门，webshell也是一个命令解释器，继承web用户权限。本质上是一个可以在服务端运行的脚本文件。</p>
-<h2 id="4-2-大马"><a href="#4-2-大马" class="headerlink" title="4.2 大马"></a>4.2 大马</h2><p>代码复杂，功能强大：文件管理、执行系统命令</p>
-<p>⚠️：密码一般写在文件中</p>
-<h2 id="4-3-小马"><a href="#4-3-小马" class="headerlink" title="4.3 小马"></a>4.3 小马</h2><h3 id="4-3-1-一句话木马"><a href="#4-3-1-一句话木马" class="headerlink" title="4.3.1 一句话木马"></a>4.3.1 一句话木马</h3><ul>
-<li>asp</li>
-</ul>
-<pre class="line-numbers language-asp" data-language="asp"><code class="language-asp">&lt;%eval&nbsp;request("x")%&gt;&nbsp;
-&lt;%execute&nbsp;request("x")%&gt;&nbsp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="1-2-FRP工作原理"><a href="#1-2-FRP工作原理" class="headerlink" title="1.2 FRP工作原理"></a>1.2 FRP工作原理</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/13/nei-wang-gong-fang/frp-nei-wang-chuan-tou/%E6%88%AA%E5%B1%8F2024-12-16%2010.09.24.png" style="zoom:50%;">
 
 <ul>
-<li>aspx（ASP.NET）</li>
+<li>服务端（frps）运行，监听一个主端口，等待客户端（frpc）的连接；</li>
+<li>客户端（frpc）连接到服务端（frps）的主端口，同时告诉服务端要监听的端口和转发类型；</li>
+<li>服务端fork新的进程监听客户端指定的监听端口；</li>
+<li>外网用户连接到上一步服务端fork的进程所监听的端口，服务端（frps）通过和客户端（frpc）的连接将数据转发到客户端（frpc）；</li>
+<li>客户端（frpc）进程再将数据转发到本地服务</li>
+<li>后续流量从内网本地服务转发给frpc，frpc转发给frps，frps转发给外网用户，从而实现内网对外暴露服务的能力。</li>
 </ul>
-<pre class="line-numbers language-asp" data-language="asp"><code class="language-asp">&lt;%@&nbsp;Page&nbsp;Language="Jscript"%&gt;
-&lt;%eval(Request.Item["x"],"unsafe");%&gt;&nbsp;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/13/nei-wang-gong-fang/frp-nei-wang-chuan-tou/%E6%88%AA%E5%B1%8F2024-12-16%2010.14.00.png" style="zoom:50%;">
 
-<pre class="line-numbers language-none"><code class="language-none">&lt;%@ Page Language="Jscript"%&gt;：
-这行代码是一个指令，告诉ASP.NET页面，页面中的脚本应该使用JScript（也就是微软的JavaScript实现）来编写。这允许你在ASP.NET页面中使用JavaScript代码。
+<blockquote>
+<p>图中，内网本地的127.0.0.1:80端口的web服务通过客户端配置，映射到VPS上的47.97.177.130:30001端口。后续流量从本地80端口转发到frpc，frpc通过vps的7000端口转发给vps，vps在把流量转发到30001端口，如此便实现了内网服务在外网的暴露，外网用户可以从外网访问到内网的80端口的服务。</p>
+</blockquote>
+<h1 id="二、实现FRP内网穿透的前提条件"><a href="#二、实现FRP内网穿透的前提条件" class="headerlink" title="二、实现FRP内网穿透的前提条件"></a>二、实现FRP内网穿透的前提条件</h1><ol>
+<li>VPS一台（也可以是具有公网IP的实体机），因为frp的原理是利用服务端VPS来进行流量转发，因而VPS的性能直接决定了后续连接的质量。</li>
+<li>访问目标设备（就是你最终要访问的内网设备）</li>
+<li>简单的Linux命令基础</li>
+</ol>
+<h1 id="三、实现方法"><a href="#三、实现方法" class="headerlink" title="三、实现方法"></a>三、实现方法</h1><h2 id="3-1-服务端（frps）"><a href="#3-1-服务端（frps）" class="headerlink" title="3.1 服务端（frps）"></a>3.1 服务端（frps）</h2><p>1）通过SSH与VPS建立连接，然后执行<code>arch</code>命令查看硬件架构的类型。</p>
+<blockquote>
+<p><code>arch</code>命令是一个用于显示当前主机的硬件架构类型的Linux命令。这个命令在多个Linux发行版中都是可用的，包括RedHat、RHEL、Ubuntu、CentOS等。通过使用<code>arch</code>命令，你可以快速地获取当前系统的硬件架构信息，这对于跨平台编程、软件包管理和系统故障排除等场景非常有用。</p>
+</blockquote>
+<p>2）根据架构不同，选择相应版本并进行下载。</p>
+<p>如果是x86_64即可选择amd64</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> https://github.com/fatedier/frp/releases/download/v0.22.0/frp_0.22.0_linux_amd64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-&lt;%eval(Request.Item["x"],"unsafe");%&gt;：
-&lt;% ... %&gt;：这是ASP.NET中执行服务器端代码的语法。
-eval：这是一个JavaScript函数，它接受一个字符串参数，并尝试执行这个字符串作为代码。这是一个非常危险的函数，因为它可以执行任何JavaScript代码，包括恶意代码。
-Request.Item["x"]：这行代码从HTTP请求中获取名为"x"的项的值。这通常是一个查询字符串参数，例如在URL中 ?x=someValue。
-"unsafe"：这是eval函数的一个参数，指定了代码执行的上下文。在这种情况下，它允许代码在全局上下文中执行，这意味着它可以访问和修改全局变量。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<blockquote>
+<p>x86_64 和 amd64：</p>
+<p><code>x86_64</code>和<code>amd64</code>都是指64位的x86架构，它们是同一种架构的不同名称。</p>
+<ol>
+<li><strong>x86_64</strong>：<ul>
+<li>这个术语是英特尔（Intel）的64位扩展架构的官方名称。</li>
+<li>x86_64是x86架构的64位扩展，x86是英特尔最初为其8086处理器定义的32位架构。</li>
+<li>x86_64架构支持64位内存寻址，允许操作系统和应用程序访问超过4GB的内存。</li>
+</ul>
+</li>
+<li><strong>amd64</strong>：<ul>
+<li><code>amd64</code>是AMD为其64位处理器架构所使用的名称。</li>
+<li>实际上，<code>amd64</code>与<code>x86_64</code>是兼容的，因为AMD的64位处理器也是基于x86架构设计的。</li>
+<li><code>amd64</code>同样支持64位计算和更大的内存寻址空间。</li>
+</ul>
+</li>
+</ol>
+<p>尽管名称不同，但这两个术语都指的是同一种64位计算架构。在大多数情况下，它们可以互换使用，因为它们在技术上是等效的。这种架构被广泛应用于个人电脑、服务器和工作站中，因为它提供了更好的性能和更大的内存寻址能力。</p>
+<p>所以在这里，arch返回的架构如果是x86_64，那么下载frp的时候可以选择amd64的安装包。</p>
+</blockquote>
+<p>3）解压查看文件内容</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">tar</span> <span class="token parameter variable">-zxvf</span> frp_0.22.0_linux_amd64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>【asp VS aspx】</p>
-<pre class="line-numbers language-none"><code class="language-none">ASP（Active Server Pages）和ASP.NET（通常以文件扩展名.aspx表示）是微软开发的两种不同的服务器端脚本技术，用于创建动态网页。它们之间存在一些关键的区别：
-一、技术基础：
-ASP：基于VBScript或JavaScript，是一种较老的技术，运行在IIS（Internet Information Services）服务器上。
-ASP.NET：是.NET Framework的一部分，支持多种语言（如C#、VB.NET等），提供了更强大的功能和性能。
+<p>文件夹改个名，方便使用</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mv</span> frp_0.22.0_linux_amd64 frp<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-二、执行模式：
-ASP：解释执行，每次请求页面时，服务器都会解释执行ASP代码。
-ASP.NET：编译执行，.aspx页面在第一次请求时被编译成中间语言（IL），然后由.NET运行时环境执行，这提供了更好的性能。
-
-三、开发环境：
-ASP：开发环境相对简单，通常使用文本编辑器和IIS。
-ASP.NET：提供了集成开发环境（IDE），如Visual Studio，支持代码提示、调试和其他高级功能。
-
-四、状态管理：
-ASP：状态管理较为有限，通常依赖于Cookies或隐藏表单字段。
-ASP.NET：提供了更丰富的状态管理选项，如ViewState、Session State、Cache等。
-
-五、安全性：
-ASP：安全性较低，容易受到脚本注入等攻击。
-ASP.NET：提供了更高级的安全特性，如输入验证、成员资格和角色管理。
-
-六、跨平台性：
-ASP：主要运行在Windows服务器上。
-ASP.NET：虽然主要也是在Windows上运行，但随着.NET Core的发展，ASP.NET Core已经支持跨平台运行。
-
-总的来说，ASP.NET是ASP的后继者，提供了更现代、更强大的Web开发功能。随着技术的发展，ASP.NET已经演进到ASP.NET Core，这是一个更轻量级、高性能、跨平台的框架。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>查看文件夹内容：</p>
 <ul>
-<li>php</li>
+<li>frps</li>
+<li>frps.ini</li>
+<li>frpc</li>
+<li>frpc.ini</li>
 </ul>
-<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token prolog">&lt;?php @eval($_REQUEST['cmd’]);?&gt;</span>
-<span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">assert</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'x'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<p>其中frps和frps.ini是frp的服务端程序及配置文件，frpc和frpc.ini是frp的客户端程序及配置文件。首先在VPS配置服务端程序，客户端程序相关的文件可以删除。</p>
+<p>4）frps.ini</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>common<span class="token punctuation">]</span>
+bind_port <span class="token operator">=</span> <span class="token number">7000</span>
+dashboard_port <span class="token operator">=</span> <span class="token number">7500</span>
+token <span class="token operator">=</span> <span class="token number">12345678</span>
+dashboard_user <span class="token operator">=</span> admin
+dashboard_pwd <span class="token operator">=</span> admin
+vhost_http_port <span class="token operator">=</span> <span class="token number">10080</span>
+vhost_https_port <span class="token operator">=</span> <span class="token number">10443</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<blockquote>
+<ol>
+<li><code>bind_port = 7000</code>：这是<code>frp</code>服务端监听的端口，用于接收来自客户端的连接。默认情况下，客户端会将流量发送到这个端口。</li>
+<li><code>dashboard_port = 7500</code>：这是<code>frp</code>的仪表板（Dashboard）端口，用于访问<code>frp</code>的Web管理界面。通过这个端口，你可以查看连接状态、流量统计等信息。</li>
+<li><code>token = 12345678</code>：这是用于客户端和服务端之间认证的令牌。客户端在连接到服务端时需要提供这个令牌，以确保连接的安全性。</li>
+<li><code>dashboard_user = admin</code>：这是访问仪表板时使用的用户名。</li>
+<li><code>dashboard_pwd = admin</code>：这是访问仪表板时使用的密码。</li>
+<li><code>vhost_http_port = 10080</code>：这是用于虚拟主机的HTTP端口。如果你配置了<code>frp</code>的虚拟主机功能，那么通过这个端口可以访问绑定的域名。</li>
+<li><code>vhost_https_port = 10443</code>：这是用于虚拟主机的HTTPS端口。与<code>vhost_http_port</code>类似，但是用于加密的HTTPS流量。</li>
+</ol>
+</blockquote>
+<p>5）启动frps</p>
+<pre class="line-numbers language-BASH" data-language="BASH"><code class="language-BASH">./frps -c frps.ini<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>如果看到屏幕输出这样一段内容，即表示运行正常，如果出现错误提示，请检查上面的步骤。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>service.go:130<span class="token punctuation">]</span> frps tcp listen on <span class="token number">0.0</span>.0.0:7000
+<span class="token punctuation">[</span>service.go:172<span class="token punctuation">]</span> http <span class="token function">service</span> listen on <span class="token number">0.0</span>.0.0:10080
+<span class="token punctuation">[</span>service.go:193<span class="token punctuation">]</span> https <span class="token function">service</span> listen on <span class="token number">0.0</span>.0.0:10443
+<span class="token punctuation">[</span>service.go:216<span class="token punctuation">]</span> Dashboard listen on <span class="token number">0.0</span>.0.0:7500
+<span class="token punctuation">[</span>root.go:210<span class="token punctuation">]</span> Start frps success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>此时访问vpsip:7500 并使用自己设置的用户名密码登录，即可看到仪表板界面。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/13/nei-wang-gong-fang/frp-nei-wang-chuan-tou/%E6%88%AA%E5%B1%8F2024-12-16%2009.46.04.png" style="zoom:50%;">
+
+<p>6）服务端后台运行</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> ./frps <span class="token parameter variable">-c</span> frps.ini <span class="token operator">&amp;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
 <ul>
-<li>jsp</li>
-<li>jspx</li>
+<li><code>nohup</code>：nohup是一个后台程序管理工具，用于运行命令并其在你退出终端会话后仍然继续运行。<code>nohup</code>的名称来源于“no hang up”（不要挂断）。</li>
+<li><code>./frps</code>：这是<code>frp</code>服务端程序的可执行文件。<code>.</code>/<code>表示当前目录，</code>frps`是要执行的程序。</li>
+<li><code>-c frps.ini</code>：这是传递给<code>frps</code>程序的一个参数，指定使用<code>frps.ini</code>文件作为配置文件。</li>
+<li><code>&amp;</code>：这个符号将命令放到后台执行，即使终端关闭，程序也会继续运行。</li>
 </ul>
-<p>jSP和jspx的一句话木马比较复杂一些。</p>
-<p>【jsp vs jspx】</p>
-<pre class="line-numbers language-none"><code class="language-none">JSP（JavaServer Pages）和 JSPX 是 Java Web 开发中用于创建动态网页的技术。它们允许开发者在 HTML 页面中嵌入 Java 代码。以下是 JSP 和 JSPX 的主要区别：
+<p>当你执行这个命令时，<code>frps</code>服务会使用<code>frps.ini</code>配置文件中的设置启动，并在后台运行，不会占用终端。这样，你可以继续使用终端进行其他操作，而<code>frps</code>服务会在后台保持运行状态。</p>
+<p>如果你需要查看<code>frps</code>服务的输出，可以使用<code>nohup</code>命令的输出重定向功能，例如：</p>
+<p>nohup ./frps -c frps.ini &gt; frps.log 2&gt;&amp;1 &amp;</p>
+<p>这个命令会将<code>frps</code>的标准输出（<code>stdout</code>）和标准错误（<code>stderr</code>）都重定向到<code>frps.log</code>文件中，这样你就可以通过查看<code>frps.log</code>文件来获取服务的日志信息。</p>
+</blockquote>
+<p>输出如下内容即表示正常运行：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nohup: ignoring input and appending output to <span class="token string">'nohup.out'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-1、文件扩展名：
-JSP：文件通常以 .jsp 作为扩展名。
-JSPX：文件以 .jspx 作为扩展名。
-2、XML基础：
-JSP：不是基于 XML 的，这意味着在 JSP 文件中，HTML 标签不需要关闭，可以自由地混合 HTML 和 Java 代码。
-JSPX：基于 XML 的，要求页面必须符合 XML 的格式，所有的 HTML 标签都需要正确关闭，以确保文件在 XML 格式上是有效的。
-3、脚本元素：
-JSP：使用 &lt;% %&gt; 来嵌入 Java 代码，使用 &lt;%! %&gt; 来声明类级别的变量和方法，使用 &lt;%= %&gt; 来输出表达式的结果。
-JSPX：使用 &lt;jsp:scriptlet&gt; 来嵌入 Java 代码，使用 &lt;jsp:declaration&gt; 来声明方法，输出表达式的结果通常使用 JSPX 的标准动作 &lt;jsp:expression&gt;。
-4、标准动作和标签库：
-JSP：可以使用 JSP 标准标签库（JSTL）来增加功能，但需要手动添加标签库的指令。
-JSPX：天然支持 JSP 标准标签库，不需要额外的指令就可以使用 JSTL。
-5、配置和部署：
-JSP：在 web.xml 中配置 servlet 映射。
-JSPX：通常不需要在 web.xml 中进行额外的配置，因为它们是作为 JSP 的扩展。
-6、开发工具支持：
-JSP：大多数 Java IDE 和文本编辑器都支持 JSP 开发。
-JSPX：可能需要更高级的 IDE 支持，因为它是基于 XML 的。
-7、性能：
-JSP：在性能上可能略有优势，因为它们不需要遵循 XML 的严格格式。
-JSPX：由于 XML 的解析可能稍微慢一些，但这种差异通常可以忽略不计。
-8、可读性和维护性：
-JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特别是对于大型项目。
+<p>此时可先使用Ctrl+C关闭nohup，frps依然会在后台运行，使用jobs命令查看后台运行的程序<code>jobs</code>，在结果中我们可以看到frps正在后台正常运行</p>
+<pre class="line-numbers language-none"><code class="language-none">[1]+  Running                 nohup ./frps -c frps.ini &amp;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-在实际开发中，选择 JSP 还是 JSPX 通常取决于项目需求、团队偏好以及开发工具的支持。JSPX 提供了更严格的结构，有助于保持代码的整洁和一致性，而 JSP 则提供了更多的灵活性。随着 JavaServer Faces (JSF) 框架的流行，JSPX 也变得更加流行，因为 JSF 页面默认使用 .jspx 扩展名。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>此时访问 vpsip:7500 依然可以打开仪表板界面，至此，服务端即设置完成，可以关闭SSH窗口。</p>
+<h2 id="3-2-客户端（frpc）"><a href="#3-2-客户端（frpc）" class="headerlink" title="3.2 客户端（frpc）"></a>3.2 客户端（frpc）</h2><p>frp客户端部署在我们真正想访问的内网设备。</p>
+<p>1）根据内网设备类型下载相应的frp程序</p>
+<p>2）frpc.ini配置文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>common<span class="token punctuation">]</span>
+server_addr <span class="token operator">=</span> 【填vps的ip<span class="token operator">==</span>frps的ip】
+server_port <span class="token operator">=</span> <span class="token number">7000</span>
+token <span class="token operator">=</span> won517574356
+<span class="token punctuation">[</span>rdp<span class="token punctuation">]</span>
+<span class="token builtin class-name">type</span> <span class="token operator">=</span> tcp
+local_ip <span class="token operator">=</span> <span class="token number">127.0</span>.0.1           
+local_port <span class="token operator">=</span> <span class="token number">3389</span>
+remote_port <span class="token operator">=</span> <span class="token number">7001</span>  
+<span class="token punctuation">[</span>smb<span class="token punctuation">]</span>
+<span class="token builtin class-name">type</span> <span class="token operator">=</span> tcp
+local_ip <span class="token operator">=</span> <span class="token number">127.0</span>.0.1
+local_port <span class="token operator">=</span> <span class="token number">445</span>
+remote_port <span class="token operator">=</span> <span class="token number">7002</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<pre class="line-numbers language-none"><code class="language-none">在Java Web开发中，如果后端文件以JSP或JSPX结尾，这通常意味着该Web系统可能是基于以下框架开发的：
-
-1、JavaServer Pages (JSP)：JSP是一种服务器端技术，允许开发者在HTML页面中嵌入Java代码。JSP文件通常用于生成动态Web内容。如果一个Web系统的后端文件以.jsp结尾，这可能表明它是一个传统的JSP应用。
-2、JavaServer Faces (JSF)：JSF是一个基于组件的Web应用框架，它使用JSPX文件作为其视图技术。JSPX文件是JSP的XML兼容版本，它们提供了更严格的格式，并且与JSF的组件模型紧密集成。如果后端文件以.jspx结尾，这可能意味着该系统使用了JSF框架。
-3、Spring MVC：虽然Spring MVC通常与Thymeleaf或Freemarker模板引擎一起使用，但它也可以与JSP或JSPX文件一起工作。在Spring MVC应用中，控制器会处理HTTP请求并返回一个视图名称，这个视图名称可以映射到一个JSP或JSPX页面。
-4、Struts：Struts是一个MVC框架，它也支持使用JSP和JSPX文件作为其视图层。在Struts应用中，JSP和JSPX文件用于展示数据和处理用户输入。
-5、其他Java EE技术：除了上述框架，还有其他Java EE技术可能使用JSP和JSPX文件，如EJB（Enterprise JavaBeans）。
-
-   需要注意的是，JSP和JSPX文件可以与多种Java Web框架一起使用，它们本身并不局限于特定的框架。开发者可以根据自己的需求和偏好选择合适的框架和技术栈。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h3 id="4-3-2-配合菜刀、蚁剑使用"><a href="#4-3-2-配合菜刀、蚁剑使用" class="headerlink" title="4.3.2 配合菜刀、蚁剑使用"></a>4.3.2 配合菜刀、蚁剑使用</h3><p>文件管理<br>        虚拟终端<br>        数据库管理：此时需要知道连接数据库的账密</p>
-<h2 id="4-4-getshell"><a href="#4-4-getshell" class="headerlink" title="4.4 getshell"></a>4.4 getshell</h2><p>获取webshell的的过程和结果</p>
-<p>主要方式：借助文件上传漏洞。</p>
-<h1 id="五、文件上传漏洞的基础利用和防御绕过"><a href="#五、文件上传漏洞的基础利用和防御绕过" class="headerlink" title="五、文件上传漏洞的基础利用和防御绕过"></a>五、文件上传漏洞的基础利用和防御绕过</h1><h2 id="5-1-利用条件"><a href="#5-1-利用条件" class="headerlink" title="5.1 利用条件"></a>5.1 利用条件</h2><ul>
-<li>有可访问的文件上传功能</li>
-</ul>
-<p>任意文件上传漏洞，首先要有能上传文件的的地方，即——要有文件上传点。有一些网站虽然貌似没有上传点，但是其实存在上传代码的。虽然没有明确使用上传功能 ，但使用了上传有关的函数，这种情况需要通过代码审计去看。</p>
-<p>最常见的就是上传头像。</p>
+<blockquote>
+<p>这是 <code>frp</code> 客户端的配置文件，用于定义客户端如何连接到服务端以及如何转发特定的端口。下面是各配置项的详细解释：</p>
+<p>[common] 部分：</p>
 <ul>
-<li><p>写权限+执行权限</p>
+<li><code>server_addr</code>：服务端的IP地址，这里需要填写你的VPS（虚拟专用服务器）的IP地址，也就是运行 <code>frps</code> 的服务器的IP。</li>
+<li><code>server_port</code>：服务端监听的端口，这里设置为7000，与服务端配置文件中的 <code>bind_port</code> 相对应。</li>
+<li><code>token</code>：用于客户端和服务端之间认证的令牌，这里设置为 <code>won517574356</code>，需要与服务端配置文件中的 <code>token</code> 一致。</li>
+</ul>
+<p>[rdp] 部分：</p>
+<ul>
+<li><code>type</code>：代理类型，这里设置为 <code>tcp</code>，表示使用TCP协议。</li>
+<li><code>local_ip</code>：内网中需要被代理的机器的IP地址，这里设置为 <code>127.0.0.1</code>，通常用于本地机器。</li>
+<li><code>local_port</code>：内网中需要被代理的机器的端口，这里设置为3389，是Windows远程桌面（RDP）的标准端口。</li>
+<li><code>remote_port</code>：在服务端上开放的端口，用于外部访问，这里设置为7001。</li>
+</ul>
+<p>[smb] 部分：</p>
+<ul>
+<li><code>type</code>：代理类型，这里同样设置为 <code>tcp</code>。</li>
+<li><code>local_ip</code>：内网中需要被代理的机器的IP地址，这里也是 <code>127.0.0.1</code>。</li>
+<li><code>local_port</code>：内网中需要被代理的机器的端口，这里设置为445，是Windows文件共享（SMB）的标准端口。</li>
+<li><code>remote_port</code>：在服务端上开放的端口，用于外部访问，这里设置为7002。</li>
+</ul>
+</blockquote>
+<p>通过这个配置文件，你可以将内网中的RDP和SMB服务暴露给公网，使得你可以从外部通过VPS的IP地址和相应的 <code>remote_port</code> 来访问这些服务。例如，你可以通过 <code>server_addr:7001</code> 来访问RDP服务，通过 <code>server_addr:7002</code> 来访问SMB服务。</p>
+<p>3）运行客户端程序</p>
+<blockquote>
+<p>frpc程序不能直接双击运行！</p>
+</blockquote>
+<p>找到程序安装位置：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./frpc <span class="token parameter variable">-c</span> frpc.ini<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>service.go:205<span class="token punctuation">]</span> login to server success, get run <span class="token function">id</span> <span class="token punctuation">[</span>2b65b4e58a5917ac<span class="token punctuation">]</span>, server udp port <span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>proxy_manager.go:136<span class="token punctuation">]</span> <span class="token punctuation">[</span>2b65b4e58a5917ac<span class="token punctuation">]</span> proxy added: <span class="token punctuation">[</span>rdp smb<span class="token punctuation">]</span>
+<span class="token punctuation">[</span>control.go:143<span class="token punctuation">]</span> <span class="token punctuation">[</span>smb<span class="token punctuation">]</span> start proxy success
+<span class="token punctuation">[</span>control.go:143<span class="token punctuation">]</span> <span class="token punctuation">[</span>rdp<span class="token punctuation">]</span> start proxy success<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>运行frpc程序，窗口中输出如上内容表示运行正常。</p>
+<p>不关闭命令行窗口，此时可以在局域网外使用相应程序访问 vpsip:remote_port （端口为自定义的remote_port）即可访问到相应服务。</p>
+<p>4）客户端后台运行及开机自启</p>
+<p>创建fprc.bat文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">@echo off
+<span class="token keyword">if</span> <span class="token string">"%1"</span> <span class="token operator">==</span> <span class="token string">"h"</span> goto begin
+mshta vbscript:createobject<span class="token punctuation">(</span><span class="token string">"wscript.shell"</span><span class="token punctuation">)</span>.run<span class="token punctuation">(</span><span class="token string">""</span>"%~nx0<span class="token string">""</span> h",0<span class="token punctuation">)</span><span class="token punctuation">(</span>window.close<span class="token punctuation">)</span><span class="token operator">&amp;&amp;</span><span class="token builtin class-name">exit</span>
+:begin
+REM
+<span class="token builtin class-name">cd</span> C:<span class="token punctuation">\</span>frp
+frpc <span class="token parameter variable">-c</span> frpc.ini
+<span class="token builtin class-name">exit</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>这段代码是一个Windows批处理脚本（<code>.bat</code> 文件），用于以隐藏窗口的方式运行 <code>frp</code> 客户端程序 <code>frpc</code>。下面是脚本的详细解释：</p>
+<ol>
+<li><code>@echo off</code>：关闭命令的回显，使得执行时不会显示执行的命令。</li>
+<li><code>if "%1" == "h" goto begin</code>：检查传递给批处理脚本的第一个参数（<code>%1</code>），如果参数是 <code>h</code>，则跳转到标签 <code>begin</code>。</li>
+<li><code>mshta vbscript:createobject("wscript.shell").run("""%~nx0"" h",0)(window.close)&amp;&amp;exit</code>：如果第一个参数不是 <code>h</code>，则使用 <code>mshta</code> 命令（Microsoft HTML Application）执行一个VBScript脚本来运行当前脚本，并传递 <code>h</code> 作为参数，同时关闭 <code>mshta</code> 窗口。<code>%~nx0</code> 是当前批处理文件的名称和扩展名。</li>
+<li><code>:begin</code>：一个标签，用于在条件满足时跳转到这里。</li>
+<li><code>cd C:\frp</code>：将命令行的当前目录更改为 <code>C:\frp</code>，假设 <code>frpc.ini</code> 配置文件和 <code>frpc</code> 可执行文件位于这个目录。</li>
+<li><code>frpc -c frpc.ini</code>：运行 <code>frpc</code> 客户端程序，并使用 <code>frpc.ini</code> 配置文件。</li>
+<li><code>exit</code>：退出批处理脚本。</li>
+</ol>
+<p>这个脚本的目的是让用户可以通过双击批处理文件来以隐藏窗口的方式启动 <code>frpc</code> 客户端，而不需要打开命令行窗口。如果用户希望在命令行中启动 <code>frpc</code> 并看到输出，他们可以传递 <code>h</code> 作为参数，例如 <code>your_script.bat h</code>，这样就不会使用 <code>mshta</code> 来隐藏窗口。</p>
+<p>请注意，使用 <code>mshta</code> 来隐藏窗口是一种不太常见的做法，可能会被一些安全软件视为可疑行为。此外，<code>mshta</code> 命令在某些Windows版本中可能已被禁用。</p>
+</blockquote>
+<p>之后直接运行这个 .bat 文件即可启动frpc并隐藏窗口（可在任务管理器中退出）。</p>
+<p>如果想要开机启动，把这个 .bat 文件放在Windows的开机启动文件夹即可。</p>
+<p>之后如果想暴露其他服务，只需要需要在frpc.ini后追加规则即可。</p>
+<blockquote>
+<p> 建议在使用frp直接测试内网穿透前，先在局域网内测试好相关功能的正常使用，并配置好可能会影响的Windows防火墙等内容，在内网调试通过后再使用frp进行内网穿透测试。</p>
+</blockquote>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><p><a target="_blank" rel="noopener" href="https://juejin.cn/post/7042486792011907086">https://juejin.cn/post/7042486792011907086</a></p>
 </li>
-<li><p>Web容器可以解析webshell</p>
-</li>
-<li><p>能访问得到上传的文件：如果访问不到，则无法对文件进行控制，也就没有漏洞的说法</p>
-</li>
-<li><p>无视以上条件配置不当：有PUT方法（只要有PUT方法必有文件上传漏洞）</p>
+<li><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44801963/article/details/121104146">https://blog.csdn.net/weixin_44801963/article/details/121104146</a></p>
 </li>
 </ul>
-<h2 id="5-2-利用-HTTP-PUT方法上传文件"><a href="#5-2-利用-HTTP-PUT方法上传文件" class="headerlink" title="5.2 利用 HTTP PUT方法上传文件"></a>5.2 利用 HTTP PUT方法上传文件</h2><h3 id="5-2-1-Apache-如何开启-PUT方法"><a href="#5-2-1-Apache-如何开启-PUT方法" class="headerlink" title="5.2.1 Apache 如何开启 PUT方法"></a>5.2.1 Apache 如何开启 PUT方法</h3><h3 id="5-2-2-PUT方法的上传漏洞"><a href="#5-2-2-PUT方法的上传漏洞" class="headerlink" title="5.2.2 PUT方法的上传漏洞"></a>5.2.2 PUT方法的上传漏洞</h3><h2 id="5-3-防御绕过和利用"><a href="#5-3-防御绕过和利用" class="headerlink" title="5.3 防御绕过和利用"></a>5.3 防御绕过和利用</h2><h2 id="5-4-00截断"><a href="#5-4-00截断" class="headerlink" title="5.4 00截断"></a>5.4 00截断</h2>
+
                 
             </div>
             <hr/>
@@ -603,7 +688,7 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://sxksec.cn/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/">http://sxksec.cn/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/</a>
+                    <a href="http://sxksec.cn/2024/12/13/nei-wang-gong-fang/frp-nei-wang-chuan-tou/">http://sxksec.cn/2024/12/13/nei-wang-gong-fang/frp-nei-wang-chuan-tou/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -641,16 +726,16 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                                    <span class="chip bg-color">web安全</span>
+                                <a href="/tags/FRP/">
+                                    <span class="chip bg-color">FRP</span>
                                 </a>
                             
-                                <a href="/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/">
-                                    <span class="chip bg-color">文件上传漏洞</span>
+                                <a href="/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+                                    <span class="chip bg-color">FRP内网穿透</span>
                                 </a>
                             
-                                <a href="/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/">
-                                    <span class="chip bg-color">基础知识库</span>
+                                <a href="/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/">
+                                    <span class="chip bg-color">内网攻防</span>
                                 </a>
                             
                         </div>
@@ -729,54 +814,56 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
-                <a href="/2024/11/29/mi-ma-xue-suan-fa-an-quan/ha-xi-chang-du-kuo-zhan-gong-ji/">
+                <a href="/2024/12/13/nei-wang-gong-fang/frp-nei-wang-chuan-tou/">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/17.jpg" class="responsive-img" alt="哈希长度扩展攻击">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/0.jpg" class="responsive-img" alt="FRP内网穿透">
                         
-                        <span class="card-title">哈希长度扩展攻击</span>
+                        <span class="card-title">FRP内网穿透</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            一文搞懂哈希长度扩展攻击。
+                            本文介绍FRP内网穿透的原理和使用方法。
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2024-11-29
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-13
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/" class="post-category">
-                                    密码学算法安全
+                            <a href="/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/" class="post-category">
+                                    内网攻防
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">密码学算法安全</span>
+                    <a href="/tags/FRP/">
+                        <span class="chip bg-color">FRP</span>
                     </a>
                     
-                    <a href="/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
-                        <span class="chip bg-color">哈希长度扩展攻击</span>
+                    <a href="/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/">
+                        <span class="chip bg-color">FRP内网穿透</span>
                     </a>
                     
-                    <a href="/tags/md5%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
-                        <span class="chip bg-color">md5哈希长度扩展攻击</span>
+                    <a href="/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/">
+                        <span class="chip bg-color">内网攻防</span>
                     </a>
                     
                 </div>
@@ -790,31 +877,31 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2022/10/09/shu-ju-jie-gou-yu-suan-fa/tu-tu-de-tong-yong-jie-gou-biao-da-de-jian-li/">
+                <a href="/2024/12/13/nei-wang-gong-fang/socks5-dai-li-xie-yi/">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="图-图的通用结构表达的建立">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/0.jpg" class="responsive-img" alt="SOCKS5代理协议">
                         
-                        <span class="card-title">图-图的通用结构表达的建立</span>
+                        <span class="card-title">SOCKS5代理协议</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文介绍了一个非常有用的图结构的表达方法，方便在上面实现图的各种算法，并且可以很方便的将其他形式的图的表示如邻接表、邻接矩阵等转化过来，进而避免了在不同结构上重新实现图算法的繁琐操作。
+                            本文主要介绍SOCKS5代理协议的相关内容。
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2022-10-09
+                                <i class="far fa-clock fa-fw icon-date"></i>2024-12-13
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
-                                    数据结构与算法
+                            <a href="/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/" class="post-category">
+                                    内网攻防
                                 </a>
                             
                             
@@ -824,20 +911,16 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
-                        <span class="chip bg-color">数据结构</span>
+                    <a href="/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/">
+                        <span class="chip bg-color">内网攻防</span>
                     </a>
                     
-                    <a href="/tags/%E7%AE%97%E6%B3%95/">
-                        <span class="chip bg-color">算法</span>
+                    <a href="/tags/SOCKS5/">
+                        <span class="chip bg-color">SOCKS5</span>
                     </a>
                     
-                    <a href="/tags/java/">
-                        <span class="chip bg-color">java</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%9B%BE/">
-                        <span class="chip bg-color">图</span>
+                    <a href="/tags/%E4%BB%A3%E7%90%86%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">代理协议</span>
                     </a>
                     
                 </div>

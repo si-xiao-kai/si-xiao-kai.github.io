@@ -448,7 +448,8 @@
 <h2 id="1-1-镜像和容器"><a href="#1-1-镜像和容器" class="headerlink" title="1.1 镜像和容器"></a>1.1 镜像和容器</h2><p>当我们利用Docker安装应用时，Docker会自动搜索并下载应用镜像（image）。镜像不仅包含应用本身，还包含应用运行所需要的环境、配置、系统函数库。Docker会在运行镜像时创建一个隔离环境，称为容器（container）。</p>
 <p>镜像仓库：存储和管理镜像的平台，Docker官方维护了一个公共仓库：<a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub</a>。</p>
 <p>下图所示为docker、容器、镜像和镜像仓库的逻辑关系：</p>
-<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/12/xu-ni-hua-ji-zhu/docker-ru-men-dao-jin-jie/%E6%88%AA%E5%B1%8F2024-12-12%2009.49.19.png" alt="截屏2024-12-12 09.49.19"></p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/12/xu-ni-hua-ji-zhu/docker-ru-men-dao-jin-jie/%E6%88%AA%E5%B1%8F2024-12-12%2009.49.19.png" style="zoom:50%;">
+
 <ul>
 <li><p>容器（Container）是一种轻量级的、可执行的软件包，它将代码和环境打包在一起，确保应用在任何地方都能以相同的方式运行。容器是独立且隔离的，运行在宿主机上，共享操作系统内核，但与其他容器相互隔离。</p>
 </li>
@@ -1249,7 +1250,7 @@ systemctl restart <span class="token function">docker</span><span aria-hidden="t
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">41.8k</span>
+                        class="white-color">45.2k</span>
             
             
             
