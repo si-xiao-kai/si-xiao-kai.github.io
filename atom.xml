@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-16T02:19:12.824Z</updated>
+  <updated>2024-12-17T02:02:26.382Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>进程后台管理</title>
+    <link href="http://sxksec.cn/2024/12/17/xi-tong-yun-wei/jin-cheng-hou-tai-guan-li/"/>
+    <id>http://sxksec.cn/2024/12/17/xi-tong-yun-wei/jin-cheng-hou-tai-guan-li/</id>
+    <published>2024-12-17T01:38:45.000Z</published>
+    <updated>2024-12-17T02:02:26.382Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、nohup&quot;&gt;&lt;a href=&quot;#一、nohup&quot; class=&quot;headerlink&quot; title=&quot;一、nohup&quot;&gt;&lt;/a&gt;一、nohup&lt;/h1&gt;&lt;h2 id=&quot;1-1-简介&quot;&gt;&lt;a href=&quot;#1-1-简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
+    
+    <category term="后台进程" scheme="http://sxksec.cn/tags/%E5%90%8E%E5%8F%B0%E8%BF%9B%E7%A8%8B/"/>
+    
+  </entry>
   
   <entry>
     <title>FRP内网穿透</title>
@@ -37,11 +64,11 @@
     <category term="内网攻防" scheme="http://sxksec.cn/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
-    
     <category term="FRP" scheme="http://sxksec.cn/tags/FRP/"/>
     
     <category term="FRP内网穿透" scheme="http://sxksec.cn/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
   </entry>
   
@@ -193,7 +220,7 @@
     <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/"/>
     <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/</id>
     <published>2024-12-09T08:51:35.000Z</published>
-    <updated>2024-12-16T10:13:13.743Z</updated>
+    <updated>2024-12-17T01:26:54.900Z</updated>
     
     
       
@@ -209,9 +236,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="React" scheme="http://sxksec.cn/tags/React/"/>
-    
     <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="React" scheme="http://sxksec.cn/tags/React/"/>
     
   </entry>
   
@@ -236,9 +263,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
+    
+    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -290,9 +317,9 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="Grafana表达式远程代码执行(CVE-2024-9264)" scheme="http://sxksec.cn/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/"/>
-    
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="Grafana表达式远程代码执行(CVE-2024-9264)" scheme="http://sxksec.cn/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/"/>
     
   </entry>
   
