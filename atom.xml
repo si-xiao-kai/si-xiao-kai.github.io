@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-17T02:02:26.382Z</updated>
+  <updated>2024-12-23T06:21:16.247Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>ubuntu开启ssh服务</title>
+    <link href="http://sxksec.cn/2024/12/23/xi-tong-yun-wei/ubuntu-kai-qi-ssh-fu-wu/"/>
+    <id>http://sxksec.cn/2024/12/23/xi-tong-yun-wei/ubuntu-kai-qi-ssh-fu-wu/</id>
+    <published>2024-12-23T06:08:10.000Z</published>
+    <updated>2024-12-23T06:21:16.247Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、SSH简介&quot;&gt;&lt;a href=&quot;#一、SSH简介&quot; class=&quot;headerlink&quot; title=&quot;一、SSH简介&quot;&gt;&lt;/a&gt;一、SSH简介&lt;/h1&gt;&lt;p&gt;SSH（Secure</summary>
+        
+      
+    
+    
+    
+    <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
+    
+    
+    <category term="ubuntu的ssh服务" scheme="http://sxksec.cn/tags/ubuntu%E7%9A%84ssh%E6%9C%8D%E5%8A%A1/"/>
+    
+    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
+    
+  </entry>
   
   <entry>
     <title>进程后台管理</title>
@@ -64,11 +91,11 @@
     <category term="内网攻防" scheme="http://sxksec.cn/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
+    
     <category term="FRP" scheme="http://sxksec.cn/tags/FRP/"/>
     
     <category term="FRP内网穿透" scheme="http://sxksec.cn/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
   </entry>
   
@@ -220,7 +247,7 @@
     <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/"/>
     <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/</id>
     <published>2024-12-09T08:51:35.000Z</published>
-    <updated>2024-12-18T10:10:22.110Z</updated>
+    <updated>2024-12-20T01:08:15.759Z</updated>
     
     
       
@@ -236,9 +263,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="React" scheme="http://sxksec.cn/tags/React/"/>
+    
+    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -263,9 +290,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
-    
     <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
     
   </entry>
   
@@ -301,7 +328,7 @@
     <link href="http://sxksec.cn/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/"/>
     <id>http://sxksec.cn/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/</id>
     <published>2024-12-06T02:09:46.000Z</published>
-    <updated>2024-12-09T06:02:15.259Z</updated>
+    <updated>2024-12-23T06:47:46.428Z</updated>
     
     
       
