@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-23T06:21:16.247Z</updated>
+  <updated>2024-12-26T05:25:08.212Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Yakit单兵安全能力平台</title>
+    <link href="http://sxksec.cn/2024/12/24/gong-fang-gong-ju-ku/yakit-dan-bing-an-quan-neng-li-ping-tai/"/>
+    <id>http://sxksec.cn/2024/12/24/gong-fang-gong-ju-ku/yakit-dan-bing-an-quan-neng-li-ping-tai/</id>
+    <published>2024-12-24T01:06:40.000Z</published>
+    <updated>2024-12-26T05:25:08.212Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Yakit介绍&quot;&gt;&lt;a href=&quot;#一、Yakit介绍&quot; class=&quot;headerlink&quot; title=&quot;一、Yakit介绍&quot;&gt;&lt;/a&gt;一、Yakit介绍&lt;/h1&gt;&lt;h2 id=&quot;1-1-简介&quot;&gt;&lt;a href=&quot;#1-1-简介&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+    <category term="Yakit" scheme="http://sxksec.cn/tags/Yakit/"/>
+    
+  </entry>
   
   <entry>
     <title>ubuntu开启ssh服务</title>
@@ -548,33 +575,6 @@
     <category term="java" scheme="http://sxksec.cn/tags/java/"/>
     
     <category term="图" scheme="http://sxksec.cn/tags/%E5%9B%BE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sql注入基础</title>
-    <link href="http://sxksec.cn/2022/10/04/web-an-quan/sql-zhu-ru/"/>
-    <id>http://sxksec.cn/2022/10/04/web-an-quan/sql-zhu-ru/</id>
-    <published>2022-10-04T08:19:26.000Z</published>
-    <updated>2024-12-05T10:22:10.159Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、-SQL注入简介&quot;&gt;&lt;a href=&quot;#一、-SQL注入简介&quot; class=&quot;headerlink&quot; title=&quot;一、 SQL注入简介&quot;&gt;&lt;/a&gt;一、 SQL注入简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-SQL简介&quot;&gt;&lt;a href=&quot;#1-1-SQL简介&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="sql注入基础" scheme="http://sxksec.cn/tags/sql%E6%B3%A8%E5%85%A5%E5%9F%BA%E7%A1%80/"/>
     
   </entry>
   
