@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-27T02:37:21.159Z</updated>
+  <updated>2024-12-27T06:41:02.546Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,39 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>图片木马制作</title>
+    <link href="http://sxksec.cn/2024/12/27/web-an-quan/tu-pian-mu-ma-zhi-zuo/"/>
+    <id>http://sxksec.cn/2024/12/27/web-an-quan/tu-pian-mu-ma-zhi-zuo/</id>
+    <published>2024-12-27T06:33:40.000Z</published>
+    <updated>2024-12-27T06:41:02.546Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;图片木马的制作（ win系统完成）。&lt;/p&gt;
+&lt;h1 id=&quot;方法1：GIF89a&quot;&gt;&lt;a href=&quot;#方法1：GIF89a&quot; class=&quot;headerlink&quot; title=&quot;方法1：GIF89a&quot;&gt;&lt;/a&gt;方法1：GIF89a&lt;/h1&gt;&lt;p&gt;新建</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="图片木马" scheme="http://sxksec.cn/tags/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Apache-Tomcat条件竞争致远程代码执行漏洞(CVE-2024-50379)</title>
     <link href="http://sxksec.cn/2024/12/26/lou-dong-zhi-shi-ku/apache-tomcat-tiao-jian-jing-zheng-zhi-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2024-50379/"/>
     <id>http://sxksec.cn/2024/12/26/lou-dong-zhi-shi-ku/apache-tomcat-tiao-jian-jing-zheng-zhi-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2024-50379/</id>
     <published>2024-12-26T05:46:04.000Z</published>
-    <updated>2024-12-27T02:37:21.159Z</updated>
+    <updated>2024-12-27T05:25:28.485Z</updated>
     
     
       
@@ -147,11 +175,11 @@
     <category term="内网攻防" scheme="http://sxksec.cn/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
-    
     <category term="FRP" scheme="http://sxksec.cn/tags/FRP/"/>
     
     <category term="FRP内网穿透" scheme="http://sxksec.cn/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
+    
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
   </entry>
   
@@ -544,35 +572,6 @@
     <category term="哈希长度扩展攻击" scheme="http://sxksec.cn/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
     
     <category term="md5哈希长度扩展攻击" scheme="http://sxksec.cn/tags/md5%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文件上传漏洞基础</title>
-    <link href="http://sxksec.cn/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/"/>
-    <id>http://sxksec.cn/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/</id>
-    <published>2022-12-06T10:11:07.000Z</published>
-    <updated>2024-12-06T10:22:20.370Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、漏洞描述&quot;&gt;&lt;a href=&quot;#一、漏洞描述&quot; class=&quot;headerlink&quot; title=&quot;一、漏洞描述&quot;&gt;&lt;/a&gt;一、漏洞描述&lt;/h1&gt;&lt;p&gt;网站提供文件上传功能，但是对用户上传的内容过滤不严格，导致用户上传任意文件甚至恶意文件，</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="基础知识库" scheme="http://sxksec.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   

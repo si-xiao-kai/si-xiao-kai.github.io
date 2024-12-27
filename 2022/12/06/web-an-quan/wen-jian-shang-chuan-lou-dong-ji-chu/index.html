@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-06
+                    2024-12-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.4k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    8 分
+                    12 分
                 </div>
                 
 
@@ -443,11 +443,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、漏洞描述"><a href="#一、漏洞描述" class="headerlink" title="一、漏洞描述"></a>一、漏洞描述</h1><p>网站提供文件上传功能，但是对用户上传的内容过滤不严格，导致用户上传任意文件甚至恶意文件， 包括恶意脚本文件、exe程序等——&gt;文件上传漏洞。</p>
+                <h1 id="一、漏洞描述"><a href="#一、漏洞描述" class="headerlink" title="一、漏洞描述"></a>一、漏洞描述</h1><p>如果网站提供文件上传功能，但是对用户上传的内容过滤不严格，导致用户可以上传任意文件甚至恶意文件， 包括恶意脚本文件、exe程序等，那么这个网站就存在文件上传漏洞。</p>
 <h1 id="二、漏洞成因"><a href="#二、漏洞成因" class="headerlink" title="二、漏洞成因"></a>二、漏洞成因</h1><ul>
-<li>1、服务器配置不当</li>
-<li>2、开放了文件上传功能，但是对上传的内容没有做限制</li>
-<li>3、限制不严格导致被绕过</li>
+<li>1、服务器配置不当。</li>
+<li>2、开放了文件上传功能，但是对上传的内容没有做限制。</li>
+<li>3、限制不严格导致被绕过。</li>
 </ul>
 <h1 id="三、漏洞危害"><a href="#三、漏洞危害" class="headerlink" title="三、漏洞危害"></a>三、漏洞危害</h1><ul>
 <li><p>任意文件上传：恶意脚本、程序等。</p>
@@ -460,6 +460,10 @@
 <h1 id="四、webshell"><a href="#四、webshell" class="headerlink" title="四、webshell"></a>四、webshell</h1><h2 id="4-1-概念"><a href="#4-1-概念" class="headerlink" title="4.1 概念"></a>4.1 概念</h2><p>通过上传漏洞获得的网站后门，webshell也是一个命令解释器，继承web用户权限。本质上是一个可以在服务端运行的脚本文件。</p>
 <h2 id="4-2-大马"><a href="#4-2-大马" class="headerlink" title="4.2 大马"></a>4.2 大马</h2><p>代码复杂，功能强大：文件管理、执行系统命令</p>
 <p>⚠️：密码一般写在文件中</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%889.40.56.png" style="zoom:75%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%889.42.41.png" alt="PHP 大马示例" style="zoom:75%;">
+
 <h2 id="4-3-小马"><a href="#4-3-小马" class="headerlink" title="4.3 小马"></a>4.3 小马</h2><h3 id="4-3-1-一句话木马"><a href="#4-3-1-一句话木马" class="headerlink" title="4.3.1 一句话木马"></a>4.3.1 一句话木马</h3><ul>
 <li>asp</li>
 </ul>
@@ -559,9 +563,43 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
 
    需要注意的是，JSP和JSPX文件可以与多种Java Web框架一起使用，它们本身并不局限于特定的框架。开发者可以根据自己的需求和偏好选择合适的框架和技术栈。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="4-3-2-配合菜刀、蚁剑使用"><a href="#4-3-2-配合菜刀、蚁剑使用" class="headerlink" title="4.3.2 配合菜刀、蚁剑使用"></a>4.3.2 配合菜刀、蚁剑使用</h3><p>文件管理<br>        虚拟终端<br>        数据库管理：此时需要知道连接数据库的账密</p>
-<h2 id="4-4-getshell"><a href="#4-4-getshell" class="headerlink" title="4.4 getshell"></a>4.4 getshell</h2><p>获取webshell的的过程和结果</p>
-<p>主要方式：借助文件上传漏洞。</p>
+<h3 id="4-3-2-配合菜刀、蚁剑使用"><a href="#4-3-2-配合菜刀、蚁剑使用" class="headerlink" title="4.3.2 配合菜刀、蚁剑使用"></a>4.3.2 配合菜刀、蚁剑使用</h3><p>一句话木马短小精悍，功能强大，但是需要配合中国菜刀或者中国蚁剑客户端使用。它们能够实现的功能包括：</p>
+<ul>
+<li>文件管理</li>
+<li>虚拟终端</li>
+<li>数据库管理：此时需要知道连接数据库的账密</li>
+</ul>
+<h4 id="1）中国菜刀"><a href="#1）中国菜刀" class="headerlink" title="1）中国菜刀"></a>1）中国菜刀</h4><p>中国菜刀是一句话木马的管理器，也是命令操作接口。中国菜刀在连接一句话木马的时候需要填写密码(实际上就是变量名)。</p>
+<p>中国菜刀与一句话木马配合实现了三大基本功能，如下。</p>
+<p>@文件管理</p>
+<p>在中国菜刀页面继承Web用户权限可以实现文件管理，包括文件查看、上传、下载、修改、删除甚至运行exe程序等。</p>
+<p>@虚拟终端</p>
+<p>在中国菜刀下可以获得类似于cmd和bash的命令行接口，可以执行相关命令。</p>
+<p>@数据库管理</p>
+<p>我们可以使用中国菜刀进行数据库管理，此时需要知道连接数据库的账密。</p>
+<h4 id="2）蚁剑"><a href="#2）蚁剑" class="headerlink" title="2）蚁剑"></a>2）蚁剑</h4><p>php一句话木马：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%889.54.49.png" style="zoom:75%;">
+
+<p>连接蚁剑：</p>
+<ul>
+<li>文件管理</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%889.57.44.png" style="zoom:75%;">
+
+<ul>
+<li>虚拟终端</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%889.58.30.png" style="zoom:75%;">
+
+<ul>
+<li>数据库管理</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.04.30.png" style="zoom:55%;">
+
+<p>配置：密码root</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.06.28.png" style="zoom:45%;">
+
+<h2 id="4-4-getshell"><a href="#4-4-getshell" class="headerlink" title="4.4 getshell"></a>4.4 getshell</h2><p>GetShell,顾名思义，就是获取Webshell的过程和结果。当然任意文件上传是GetShell的主要方式，但并不是唯一途径。</p>
 <h1 id="五、文件上传漏洞的基础利用和防御绕过"><a href="#五、文件上传漏洞的基础利用和防御绕过" class="headerlink" title="五、文件上传漏洞的基础利用和防御绕过"></a>五、文件上传漏洞的基础利用和防御绕过</h1><h2 id="5-1-利用条件"><a href="#5-1-利用条件" class="headerlink" title="5.1 利用条件"></a>5.1 利用条件</h2><ul>
 <li>有可访问的文件上传功能</li>
 </ul>
@@ -577,7 +615,73 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
 <li><p>无视以上条件配置不当：有PUT方法（只要有PUT方法必有文件上传漏洞）</p>
 </li>
 </ul>
-<h2 id="5-2-利用-HTTP-PUT方法上传文件"><a href="#5-2-利用-HTTP-PUT方法上传文件" class="headerlink" title="5.2 利用 HTTP PUT方法上传文件"></a>5.2 利用 HTTP PUT方法上传文件</h2><h3 id="5-2-1-Apache-如何开启-PUT方法"><a href="#5-2-1-Apache-如何开启-PUT方法" class="headerlink" title="5.2.1 Apache 如何开启 PUT方法"></a>5.2.1 Apache 如何开启 PUT方法</h3><h3 id="5-2-2-PUT方法的上传漏洞"><a href="#5-2-2-PUT方法的上传漏洞" class="headerlink" title="5.2.2 PUT方法的上传漏洞"></a>5.2.2 PUT方法的上传漏洞</h3><h2 id="5-3-防御绕过和利用"><a href="#5-3-防御绕过和利用" class="headerlink" title="5.3 防御绕过和利用"></a>5.3 防御绕过和利用</h2><h2 id="5-4-00截断"><a href="#5-4-00截断" class="headerlink" title="5.4 00截断"></a>5.4 00截断</h2>
+<h2 id="5-2-利用-HTTP-PUT方法上传文件"><a href="#5-2-利用-HTTP-PUT方法上传文件" class="headerlink" title="5.2 利用 HTTP PUT方法上传文件"></a>5.2 利用 HTTP PUT方法上传文件</h2><h3 id="5-2-1-Apache-如何开启-PUT方法"><a href="#5-2-1-Apache-如何开启-PUT方法" class="headerlink" title="5.2.1 Apache 如何开启 PUT方法"></a>5.2.1 Apache 如何开启 PUT方法</h3><h4 id="1）telent-测试-web服务器开启了哪些方法"><a href="#1）telent-测试-web服务器开启了哪些方法" class="headerlink" title="1）telent 测试 web服务器开启了哪些方法"></a>1）telent 测试 web服务器开启了哪些方法</h4><p>​	用OPTIONS方法探测目标服务器开启了哪些方法。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227135124860.png" alt="image-20241227135124860" style="zoom:100%;">
+
+<p>可以看到支持的方法有五个，没有开启PUT方法。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">telnet <span class="token number">192.168</span>.33.4 <span class="token number">80</span>
+OPTIONS / HTTP/1.1
+HOST:192.168.33.4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2）开启PUT方法"><a href="#2）开启PUT方法" class="headerlink" title="2）开启PUT方法"></a>2）开启PUT方法</h4><ul>
+<li>操作配置文件httpd.conf[记得备份]， 开启dav相关模块</li>
+</ul>
+<p>ctrl +F dav搜索dav</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.49.19.png" style="zoom:75%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.50.17.png" style="zoom:75%;">
+
+<p>取消102和103行的注释，开启两个模块。</p>
+<p>启用模块：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.52.03.png" style="zoom:75%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.52.54.png" style="zoom:75%;">
+
+<p>添加DAV On</p>
+<ul>
+<li>开启文件锁【要创建dav文件夹】</li>
+</ul>
+<p>DavLockDB C:\phpstudy\WWW\DavLock 【放在httpd.conf 的第一行】</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.56.33.png" style="zoom:75%;">
+
+<p>创建C:\phpstudy\WWW\DavLock目录</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-07-02%20%E4%B8%8B%E5%8D%888.00.42.png" style="zoom:75%;">
+
+<p>重启服务。</p>
+<h4 id="3）再次用OPTIONS方法测试"><a href="#3）再次用OPTIONS方法测试" class="headerlink" title="3）再次用OPTIONS方法测试"></a>3）再次用OPTIONS方法测试</h4><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-06-29%20%E4%B8%8A%E5%8D%8810.59.19.png" style="zoom:55%;">
+
+<p>没有PUT方法，但也可以尝试上传文件并成功。</p>
+<h3 id="5-2-2-PUT方法的上传漏洞"><a href="#5-2-2-PUT方法的上传漏洞" class="headerlink" title="5.2.2 PUT方法的上传漏洞"></a>5.2.2 PUT方法的上传漏洞</h3><h4 id="1）利用put方法上传webshell"><a href="#1）利用put方法上传webshell" class="headerlink" title="1）利用put方法上传webshell"></a>1）利用put方法上传webshell</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PUT /php/infosxk.php HTTP/1.1
+HOST:192.168.33.4
+Content-Length:18
+		
+<span class="token operator">&lt;</span>?php phpinfo<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>?<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227135916449.png" style="zoom:100%;">
+
+<p>⚠️：不要太相信ctrl c ctrl v，有可能会输入其他的字符。  </p>
+<p>访问测试：   </p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-07-03%20%E4%B8%8A%E5%8D%889.22.15.png" style="zoom:75%;">
+
+<h2 id="5-3-防御绕过和利用"><a href="#5-3-防御绕过和利用" class="headerlink" title="5.3 防御绕过和利用"></a>5.3 防御绕过和利用</h2><h3 id="5-3-1-黑白名单策略"><a href="#5-3-1-黑白名单策略" class="headerlink" title="5.3.1 黑白名单策略"></a>5.3.1 黑白名单策略</h3><p>黑白名单是最常用的安全策略之一。在计算机安全中，黑白名单类似于一个列表，列表中写了一些条件或规则，如果“客体”在黑名单中，一律“禁止”，如果“客体”在白名单中，一律“允许”。类似于手机号码的黑白名单。配合使用，白名单优先级更高。</p>
+<ul>
+<li>绕过思路：找黑名单之外的可以上传的后缀，白名单的话不太好绕过。</li>
+<li>但如果是前端的限制，则无论是黑名单和白名单对攻击者来说都是失效的，只需要抓包改包就行了。</li>
+</ul>
+<h3 id="5-3-2-前端限制与绕过"><a href="#5-3-2-前端限制与绕过" class="headerlink" title="5.3.2 前端限制与绕过"></a>5.3.2 前端限制与绕过</h3><p>F1：因为JS脚本的运行环境是浏览器，我们可以修改JS代码，甚至删除表单事件。</p>
+<p>F2：使恶意文件后缀名符合白名单策略，用Burp 挂代理抓包，然后修改文件后缀名即可。</p>
+<p>对于文件上传，只从Web前端进行检测显然防护不足，那么服务器端检测就特别重要了。一般服务器端检测，采用黑白名单策略。</p>
+<h3 id="5-3-3-服务器端限制"><a href="#5-3-3-服务器端限制" class="headerlink" title="5.3.3 服务器端限制"></a>5.3.3 服务器端限制</h3><h4 id="1）MIME检测"><a href="#1）MIME检测" class="headerlink" title="1）MIME检测"></a>1）MIME检测</h4><p>MIME(Multipurpose Internet Mail Extensions)是描述消息内容类型的因特网标准。MIME消息能包含文本、图像、音频、视频以及其他应用程序专用的数据。常见的MIME类型如下：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227142915200.png" style="zoom:100%;">
+
+<p>在HTTP协议中，使用Content-Type 字段表示文件的MIME类型。当我们上传文件的时候，抓到HTTP数据包。在服务器端会检测Content-Type类型。</p>
+<p>⚠️：Content-Type 是由浏览器定义的。</p>
+<ul>
+<li>绕过方法：利用BP，修改Content-Type类型绕过，服务器对MIME类型的检测。</li>
+</ul>
+<h4 id="2）文件内容检测"><a href="#2）文件内容检测" class="headerlink" title="2）文件内容检测"></a>2）文件内容检测</h4><p>除了检测上传文件的Content-Type类型，为了保持安全性，服务器端还会检测文件内容。</p>
+<p>PHP中有一个函数getimagesize(),这个函数本意是检查图片的大小,但是在检查之前，该函数会判断目标文件是否是一张图片。 因此，可以用该函数来检测文件的内容。【upload-load 14关。】</p>
+<h2 id="5-4-00截断"><a href="#5-4-00截断" class="headerlink" title="5.4 00截断"></a>5.4 00截断</h2>
                 
             </div>
             <hr/>
@@ -981,7 +1085,7 @@ JSPX：由于其 XML 基础，可以提供更好的可读性和维护性，特�
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">77.3k</span>
+                        class="white-color">78.8k</span>
             
             
             
