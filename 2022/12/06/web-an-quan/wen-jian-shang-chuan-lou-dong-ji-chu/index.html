@@ -413,14 +413,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.5k
+                    5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    18 分
                 </div>
                 
 
@@ -681,7 +681,117 @@ Content-Length:18
 </ul>
 <h4 id="2）文件内容检测"><a href="#2）文件内容检测" class="headerlink" title="2）文件内容检测"></a>2）文件内容检测</h4><p>除了检测上传文件的Content-Type类型，为了保持安全性，服务器端还会检测文件内容。</p>
 <p>PHP中有一个函数getimagesize(),这个函数本意是检查图片的大小,但是在检查之前，该函数会判断目标文件是否是一张图片。 因此，可以用该函数来检测文件的内容。【upload-load 14关。】</p>
-<h2 id="5-4-00截断"><a href="#5-4-00截断" class="headerlink" title="5.4 00截断"></a>5.4 00截断</h2>
+<ul>
+<li>图片木马绕过内容检测（图片木马的制作）【具体方法见<code>图片木马制作</code>一文。】</li>
+</ul>
+<h4 id="3）后缀名检测"><a href="#3）后缀名检测" class="headerlink" title="3）后缀名检测"></a>3）后缀名检测</h4><ul>
+<li>黑名单</li>
+</ul>
+<p>寻找其他未被禁止上传的文件类型做尝试：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227144344869.png" style="zoom:98%;">
+
+<ul>
+<li>白名单</li>
+</ul>
+<p>只能上传白名单格式的文件。</p>
+<p>利用漏洞需要结合其他漏洞（文件解析漏洞等）。</p>
+<h3 id="绕过方法总结"><a href="#绕过方法总结" class="headerlink" title="绕过方法总结"></a>绕过方法总结</h3><ul>
+<li><p>冷门后缀</p>
+</li>
+<li><p>大小写绕过</p>
+</li>
+<li><p>双写绕过</p>
+</li>
+<li><p>改.htaccess解析 </p>
+</li>
+<li><p>GET/post型00截断 </p>
+</li>
+<li><p>Web容器解析漏洞</p>
+</li>
+<li><p>改.user.ini自动包含</p>
+</li>
+<li><p>Windows特性 空格</p>
+</li>
+<li><p>Windows特性 点. </p>
+</li>
+<li><p>条件竞争</p>
+</li>
+</ul>
+<h1 id="六、-00截断"><a href="#六、-00截断" class="headerlink" title="六、 00截断"></a>六、 00截断</h1><p>00就是Null (空)字符，URL中表现为%00，00截断会导致文件上传路径截断。</p>
+<p>【我们以upload-labs第12关为例子说明这个问题。】</p>
+<p>原理分析：php move_upload_file()函数的实现基于C语言，C语言中，字符串的结尾为\0,null。见到null，C语言会认为该字符串已经结束。利用上述特点，可以截断上传文件的路径，将文件另存为我们想要的目标文件，比如webshell等。</p>
+<h2 id="6-1-upload-labs-12关（EX）"><a href="#6-1-upload-labs-12关（EX）" class="headerlink" title="6.1 upload-labs 12关（EX）"></a>6.1 upload-labs 12关（EX）</h2><p>1、上传phpinfo.php BP抓包测试（直接跳过本地限制这一环，本地限制的绕过过于简单）</p>
+<p>   上传失败：     提示：只允许上传.jpg|.png|.gif类型文件！ </p>
+<p>2、BP抓包改后缀名为合法后缀名。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-07-05%20%E4%B8%8B%E5%8D%883.47.40.png" style="zoom:75%;">
+
+<p>​     src=”../upload//5820210705074748.jpg</p>
+<p>​    上传成功，进行了另存和重命名。</p>
+<p>​     注意到 Content-Type为php也过去了，说明服务器没有对MIME类型做检测。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-07-05%20%E4%B8%8B%E5%8D%883.50.22.png" style="zoom:75%;">
+
+<p>​     注意到内容为php脚本，也过去了，说明服务器没有对内容进行检测。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2021-07-05%20%E4%B8%8B%E5%8D%883.51.05.png" style="zoom:75%;">
+
+<p>​     综上，服务器对上传文件的后缀名做了限制并进行了另存重命名操作。</p>
+<p>3、00截断</p>
+<p>​      URL中默认传递了save_path变量，指明要保存的路径。</p>
+<p>​     /upload-labs-master/Pass-12/index.php?save_path=../upload/</p>
+<p>​    上传的文件被保存在，/upload/目录下。</p>
+<p>​    save_path=../upload/sxk.php 提示上传出错。</p>
+<p>​    根据00截断的原理，实现文件的另存。 </p>
+<p>​    save_path=../upload/sxk.php%00</p>
+<p>​    还是上传出错。 </p>
+<p>​    PHP版本 ，推荐5.2.17   ，其他版本可能会导致部分Pass无法突破。</p>
+<p>​    应该是PHP版本的问题，思路没问题，phpstudy换成5.2.17版本的还是截断不成功。</p>
+<p>【见5.4.2，路径00截断+文件名绕过后缀检测。】</p>
+<h2 id="6-2-PHP-00截断"><a href="#6-2-PHP-00截断" class="headerlink" title="6.2 PHP 00截断"></a>6.2 PHP 00截断</h2><h3 id="1）用在哪里"><a href="#1）用在哪里" class="headerlink" title="1）用在哪里"></a>1）用在哪里</h3><p>​	除了php配置的那个解析漏洞之外，正经使用%00截断绕过应该是放在上传文件路径后，而非文件名处。</p>
+<h3 id="2）原理"><a href="#2）原理" class="headerlink" title="2）原理"></a>2）原理</h3><p>0x00是字符串的结束标识符，攻击者通过手动添加字符串结束标识符的方式，将00后面内容截断。但是00后面的东西又能帮助我们绕过文件检测。</p>
+<h3 id="3）条件"><a href="#3）条件" class="headerlink" title="3）条件"></a>3）条件</h3><p>要求GPC处于关闭状态，且php版本小于5.3.29才可利用。</p>
+<h3 id="4）使用"><a href="#4）使用" class="headerlink" title="4）使用"></a>4）使用</h3><ul>
+<li>为什么00截断用在上传后文件目录?</li>
+</ul>
+<p>在文件名中构造00截断，比如1.php%001.jpg。在程序提取后缀名的时候，遇到%00就认为结束了。这个时候，他提取到的后缀名还是.php，然后.php被限制上传，所以绕过失败。</p>
+<p>文件名检测代码：</p>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$uploaded_name</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span> <span class="token string single-quoted-string">'file'</span> <span class="token punctuation">]</span><span class="token punctuation">[</span> <span class="token string single-quoted-string">'name'</span> <span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token variable">$uploaded_ext</span>  <span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span> <span class="token variable">$uploaded_name</span><span class="token punctuation">,</span> <span class="token function">strrpos</span><span class="token punctuation">(</span> <span class="token variable">$uploaded_name</span><span class="token punctuation">,</span> <span class="token string single-quoted-string">'.'</span> <span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 提取上传文件后缀</span>
+<span class="token variable">$target_name</span> <span class="token operator">=</span> <span class="token function">md5</span><span class="token punctuation">(</span> <span class="token function">uniqid</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token variable">$uploaded_name</span> <span class="token punctuation">)</span> <span class="token operator">.</span> <span class="token string single-quoted-string">'.'</span> <span class="token operator">.</span> <span class="token variable">$uploaded_ext</span><span class="token punctuation">;</span> <span class="token comment">// 对上传文件进行重命名</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span> <span class="token punctuation">(</span> <span class="token function">strtolower</span><span class="token punctuation">(</span> <span class="token variable">$uploaded_ext</span> <span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"jpg"</span> <span class="token operator">||</span> <span class="token class-name">strtolower</span><span class="token punctuation">(</span> <span class="token variable">$uploaded_ext</span> <span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"jpeg"</span> <span class="token operator">||</span> <span class="token class-name">strtolower</span><span class="token punctuation">(</span> <span class="token variable">$uploaded_ext</span> <span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"png"</span> <span class="token punctuation">)</span><span class="token punctuation">)</span> 
+<span class="token punctuation">{</span>  
+    <span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"tmp_name"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token variable">$dir</span> <span class="token operator">.</span> <span class="token variable">$target_name</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 将临时文件移动到指定目录</span>
+    <span class="token variable">$result</span> <span class="token operator">=</span> <span class="token variable">$dir</span> <span class="token operator">.</span> <span class="token variable">$target_name</span><span class="token punctuation">;</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"Stored in: <span class="token interpolation"><span class="token variable">$result</span></span>"</span><span class="token punctuation">;</span> 
+<span class="token punctuation">}</span>
+<span class="token keyword">else</span><span class="token punctuation">{</span>
+    <span class="token keyword">echo</span> <span class="token string double-quoted-string">"Invalid file"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>正确用法</li>
+</ul>
+<p>在数据包中，含有上传后文件目录的情况才可使用。比如在数据包中存在path：/uploads/</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227150039545.png" a="" style="zoom:67%;">
+
+<p>为什么修改path才可以，因为程序中检测的是文件的后缀名，如果后缀合法则拼接路径和文件名，那么攻击者修改了path以后的拼接结果为：uploads/aaa.php%00/2018051413370000.jpg，移动文件的时候会将文件保存为uploads/aaa.php，从而达到Getshell效果。</p>
+<h3 id="5）-00（urldecode）"><a href="#5）-00（urldecode）" class="headerlink" title="5）%00（urldecode）"></a>5）%00（urldecode）</h3><ul>
+<li>为什么要进行urldecode操作呢？</li>
+</ul>
+<p>原因在于上传的表单中有一个enctype的属性，并且需要enctype=”multipart/form-data” (不对表单中数据进行编码)，path大多数都是存放在表单中的，因此需要在数据包中进行urldecode操作使%00变成字符串结束符号。</p>
+<ul>
+<li>直接添加%00而不进行urldecode操作</li>
+</ul>
+<p>因为path也可以存放在URL或者Cookie中，而在提交数据的时候，浏览器会对数据做一次urldecode的操作，而到服务端，会对数据进行一次urldecode的操作，因此如果path在非enctype=multipart/form-data的表单中或URL or Cookie中的时候，就可以直接写%00不需要进行URLdecode操作，让服务端对%00进行URL解码即可。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227150530357.png" style="zoom:80%;">
+
+<p>注意⚠️：</p>
+<p>简单些说，path在url、cookie或者上传方式不是multipart/from-data的时候，就不用进行对%00进行url解码。</p>
+<h1 id="七、-htaccess文件上传"><a href="#七、-htaccess文件上传" class="headerlink" title="七、 .htaccess文件上传"></a>七、 .htaccess文件上传</h1><h2 id="7-1-htaccess文件介绍"><a href="#7-1-htaccess文件介绍" class="headerlink" title="7.1 .htaccess文件介绍"></a>7.1 .htaccess文件介绍</h2><p>.htaccess文件 (或者”分布式配置文件”）,全称是Hypertext Access(超文本入口)。 它提供了针对目录改变配置的方法， 即，在一个特定的文档目录中放置一个包含一个或多个指令的文件， 以作用于此目录及其所有子目录。作为用户，所能使用的命令受到限制。管理员可以通过Apache的AllowOverride指令来设置。 .htaccess文件是用于apache服务器下的控制文件访问的配置文件，因此Nginx下是不会生效的。</p>
+<p>.htaccess文件是Apache服务器中的一个配置文件，它负责相关目录下的网页配置。通过htaccess文件，可以帮我们实现：网页301重定向、自定义404错误页面、改变文件扩展名、允许/阻止特定的用户或者目录的访问、禁止目录列表、配置默认文档等功能。</p>
+<h2 id="7-2-htaccess-文件上传漏洞原理"><a href="#7-2-htaccess-文件上传漏洞原理" class="headerlink" title="7.2 .htaccess 文件上传漏洞原理"></a>7.2 .htaccess 文件上传漏洞原理</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2022/12/06/web-an-quan/wen-jian-shang-chuan-lou-dong-ji-chu/image-20241227150806840.png" style="zoom:80%;">
+
+<p>【上传.htaccess文件覆盖更改服务器的配置，按照攻击者目标解析执行上传的文件】</p>
+
                 
             </div>
             <hr/>
@@ -1085,7 +1195,7 @@ Content-Length:18
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">78.8k</span>
+                        class="white-color">83.2k</span>
             
             
             
