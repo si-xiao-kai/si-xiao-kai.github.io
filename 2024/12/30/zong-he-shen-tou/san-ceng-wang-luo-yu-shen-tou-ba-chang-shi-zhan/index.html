@@ -4,8 +4,8 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="三层网络域渗透靶场搭建, Hacker进化论">
-    <meta name="description" content="本文主要针对一个三层网络域渗透靶场进行搭建实战。">
+    <meta name="keywords" content="三层网络域渗透靶场（WHOAMII）搭建, Hacker进化论">
+    <meta name="description" content="本文主要针对一个三层网络域渗透靶场（WHOAMI）进行搭建实战。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <meta name="renderer" content="webkit|ie-stand|ie-comp">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>三层网络域渗透靶场搭建 | Hacker进化论</title>
+    <title>三层网络域渗透靶场（WHOAMII）搭建 | Hacker进化论</title>
     <link rel="icon" type="image/png" href="/hacker1.png">
     
 
@@ -337,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">三层网络域渗透靶场搭建</h1>
+                    <h1 class="description center-align post-title">三层网络域渗透靶场（WHOAMII）搭建</h1>
                 </div>
             </div>
         </div>
@@ -380,6 +380,10 @@
                         
                             <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
                                 <span class="chip bg-color">隧道搭建</span>
+                            </a>
+                        
+                            <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
+                                <span class="chip bg-color">WHOAMI靶场</span>
                             </a>
                         
                     </div>
@@ -448,7 +452,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h1 id="一、靶场环境简介"><a href="#一、靶场环境简介" class="headerlink" title="一、靶场环境简介"></a>一、靶场环境简介</h1><p>靶场下载地址：<a target="_blank" rel="noopener" href="https://pan.baidu.com/s/1X5UQ66sUi-UphnXWs9zFuA">https://pan.baidu.com/s/1X5UQ66sUi-UphnXWs9zFuA</a> 提取码: 6777 【27.8 GB】</p>
-<h2 id="1-1-5靶机-三层网络环境"><a href="#1-1-5靶机-三层网络环境" class="headerlink" title="1.1 5靶机+三层网络环境"></a>1.1 5靶机+三层网络环境</h2><p>1）DMZ区：IP段为192.168.1.1/24 【后续具体搭建时根据具体情况有所变动变动，跟物理机所处的环境相关。】</p>
+<h2 id="1-1-五靶机-三层网络环境"><a href="#1-1-五靶机-三层网络环境" class="headerlink" title="1.1 五靶机+三层网络环境"></a>1.1 五靶机+三层网络环境</h2><p>1）DMZ区：IP段为192.168.1.1/24 【后续具体搭建时根据具体情况有所变动变动，跟物理机所处的环境相关。】</p>
 <p>2）第二层网络环境：IP段为192.168.52.1/24 </p>
 <p>3）第三层网络环境：IP段为192.168.93.1/24</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-30%2009.45.39.png" alt="靶场网络拓扑结构" style="zoom:35%;">
@@ -705,7 +709,7 @@
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-31%2010.05.54.png" style="zoom:50%;">
 
-<h1 id="三、服务部署"><a href="#三、服务部署" class="headerlink" title="三、服务部署"></a>三、服务部署</h1><h2 id="3-1-DMZ区的-Ubuntu-需要启动nginx服务"><a href="#3-1-DMZ区的-Ubuntu-需要启动nginx服务" class="headerlink" title="3.1 DMZ区的 Ubuntu 需要启动nginx服务"></a>3.1 DMZ区的 Ubuntu 需要启动nginx服务</h2><ul>
+<h1 id="三、服务部署"><a href="#三、服务部署" class="headerlink" title="三、服务部署"></a>三、服务部署</h1><h2 id="3-1-DMZ区的-Ubuntu-启动nginx服务"><a href="#3-1-DMZ区的-Ubuntu-启动nginx服务" class="headerlink" title="3.1 DMZ区的 Ubuntu 启动nginx服务"></a>3.1 DMZ区的 Ubuntu 启动nginx服务</h2><ul>
 <li>redis-server /etc/redis.conf</li>
 <li>/usr/sbin/nginx -c /etc/nginx/nginx.conf 【nginx已经启动】</li>
 </ul>
@@ -762,13 +766,13 @@
 </blockquote>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-31%2010.23.37.png" style="zoom:50%;"></li>
 </ul>
-<h2 id="3-2-二层网络的-web2需要启动docker容器："><a href="#3-2-二层网络的-web2需要启动docker容器：" class="headerlink" title="3.2 二层网络的 web2需要启动docker容器："></a>3.2 二层网络的 web2需要启动docker容器：</h2><ul>
+<h2 id="3-2-二层网络的-web2启动docker容器"><a href="#3-2-二层网络的-web2启动docker容器" class="headerlink" title="3.2 二层网络的 web2启动docker容器"></a>3.2 二层网络的 web2启动docker容器</h2><ul>
 <li>sudo service docker start</li>
 <li>sudo docker start 8e172820ac78</li>
 </ul>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-31%2010.13.32.png" style="zoom:50%;">
 
-<h2 id="3-3-第二层网络的-PC1-需要启动通达OA"><a href="#3-3-第二层网络的-PC1-需要启动通达OA" class="headerlink" title="3.3 第二层网络的 PC1 需要启动通达OA"></a>3.3 第二层网络的 PC1 需要启动通达OA</h2><ul>
+<h2 id="3-3-第二层网络的-PC1-启动通达OA"><a href="#3-3-第二层网络的-PC1-启动通达OA" class="headerlink" title="3.3 第二层网络的 PC1 启动通达OA"></a>3.3 第二层网络的 PC1 启动通达OA</h2><ul>
 <li>C:\MYOA\bin\AutoConfig.exe</li>
 </ul>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-31%2010.18.14.png" style="zoom:50%;">
@@ -866,6 +870,10 @@
                                     <span class="chip bg-color">隧道搭建</span>
                                 </a>
                             
+                                <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
+                                    <span class="chip bg-color">WHOAMI靶场</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -951,15 +959,15 @@
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/20.jpg" class="responsive-img" alt="三层网络域渗透靶场搭建">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/21.jpg" class="responsive-img" alt="三层网络域渗透靶场（WHOAMII）搭建">
                         
-                        <span class="card-title">三层网络域渗透靶场搭建</span>
+                        <span class="card-title">三层网络域渗透靶场（WHOAMII）搭建</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文主要针对一个三层网络域渗透靶场进行搭建实战。
+                            本文主要针对一个三层网络域渗透靶场（WHOAMI）进行搭建实战。
                         
                     </div>
                     <div class="publish-info">
@@ -996,6 +1004,10 @@
                     
                     <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
                         <span class="chip bg-color">隧道搭建</span>
+                    </a>
+                    
+                    <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
+                        <span class="chip bg-color">WHOAMI靶场</span>
                     </a>
                     
                 </div>
