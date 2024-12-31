@@ -4,11 +4,44 @@
   
     
     <entry>
+      <title>Laravel RCE CVE-2021-3129</title>
+      <link href="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/"/>
+      <url>/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、RCE-CVE-2021-3129漏洞概述"><a href="#一、RCE-CVE-2021-3129漏洞概述" class="headerlink" title="一、RCE CVE-2021-3129漏洞概述"></a>一、RCE CVE-2021-3129漏洞概述</h1><h2 id="1-1-漏洞简介"><a href="#1-1-漏洞简介" class="headerlink" title="1.1 漏洞简介"></a>1.1 漏洞简介</h2><p>CVE-2021-3129 是一个影响 Laravel 框架的远程代码执行（RCE）漏洞。当 Laravel 应用程序处于调试模式（Debug mode）时，由于 Laravel 自带的 Ignition 组件对 <code>file_get_contents()</code> 和 <code>file_put_contents()</code> 函数的不安全使用，攻击者可以通过发起恶意请求，构造恶意 Log 文件等方式触发 Phar 反序列化，最终造成远程代码执行。</p><h2 id="1-2-影响范围"><a href="#1-2-影响范围" class="headerlink" title="1.2 影响范围"></a>1.2 影响范围</h2><p> Laravel 版本 &lt;= 8.4.2 以及 Ignition &lt; 2.5.2 的系统</p><h1 id="二、漏洞复现"><a href="#二、漏洞复现" class="headerlink" title="二、漏洞复现"></a>二、漏洞复现</h1><h2 id="2-1-环境部署"><a href="#2-1-环境部署" class="headerlink" title="2.1 环境部署"></a>2.1 环境部署</h2><h3 id="2-1-1-部署vulhub"><a href="#2-1-1-部署vulhub" class="headerlink" title="2.1.1 部署vulhub"></a>2.1.1 部署vulhub</h3><p>在centos7（192.168.52.3）部署vulhub漏洞环境。</p><blockquote><p>Vulhub是一个面向大众的开源漏洞靶场，无需docker知识，简单执行两条命令即可编译、运行一个完整的漏洞靶场镜像。旨在让漏洞复现变得更加简单，让安全研究者更加专注于漏洞原理本身。</p></blockquote><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> clone https://github.com/vulhub/vulhub.git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>大战bug：</p><p>fatal: unable to access ‘<a href="https://github.com/vulhub/vulhub.git/">https://github.com/vulhub/vulhub.git/</a>‘: Could not resolve host: github.com; Unknown error:</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2016.41.18.png" alt="截屏2024-12-31 16.41.18" style="zoom:50%;"><p>初步分析可能是因为之前搭建域渗透攻击环境时修改vmnet8（NAT网段）导致的，可是ping百度是可以连通的。需要修改一下。</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2016.46.16.png" alt="截屏2024-12-31 16.46.16" style="zoom:45%;"><p>DNS配置没问题。</p><p>github.com也无法ping通。</p><p>然后尝试将mac上的与github有关的hosts配置文件配置到/etc/hosts文件中，还是不行。</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2016.50.18.png" style="zoom:50%;"><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2016.53.07.png" style="zoom:40%;"><p>配置hosts：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">140.82</span>.112.3  github.com      <span class="token number">199.232</span>.5.194  github.global.ssl.fastly.net<span class="token number">54.231</span>.114.219  github-cloud.s3.amazonaws.com<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2016.56.35.png" style="zoom:50%;"><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2016.57.02.png" style="zoom:50%;"><p>github.com可以ping通了。</p><p>但是仍然无法git clone。</p><p>reboot之后重试：</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.01.54.png" style="zoom:40%;"><p>fatal: unable to access ‘<a href="https://github.com/vulhub/vulhub.git/">https://github.com/vulhub/vulhub.git/</a>‘: Encountered end of file</p><p>将https改成http之后居然可以了。</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.03.25.png" style="zoom:40%;"></blockquote><p>克隆完成后一级目录内的内容如下：</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.14.53.png" alt="vulhub一级目录" style="zoom:50%;"><h3 id="2-1-2-启动Laravel"><a href="#2-1-2-启动Laravel" class="headerlink" title="2.1.2 启动Laravel"></a>2.1.2 启动Laravel</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> laravel/CVE-2021-3129/<span class="token function">docker</span> compose up <span class="token parameter variable">-d</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><blockquote><p>大战bug：</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.19.33.png" style="zoom:50%;"><p>分析可能是reboot重启之后，没有启动docker服务。</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.20.46.png" alt="截屏2024-12-31 17.20.46" style="zoom:50%;"></blockquote><p>重新执行<code>docker compose up -d</code></p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.21.43.png" style="zoom:50%;"><p>查看容器运行状态</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.26.05.png" style="zoom:50%;"><p>访问测试：</p><img src="/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%E6%88%AA%E5%B1%8F2024-12-31%2017.27.21.png" style="zoom:30%;"><h2 id="2-2-漏洞复现"><a href="#2-2-漏洞复现" class="headerlink" title="2.2 漏洞复现"></a>2.2 漏洞复现</h2><p>【Laravel 远程代码执行漏洞(CVE-2021-3129)复现 -  CSDN App】<a href="https://blog.csdn.net/oiadkt/article/details/130343975?sharetype=blogdetail&amp;shareId=130343975&amp;sharerefer=APP&amp;sharesource=m0_43405474&amp;sharefrom=link">https://blog.csdn.net/oiadkt/article/details/130343975?sharetype=blogdetail&amp;shareId=130343975&amp;sharerefer=APP&amp;sharesource=m0_43405474&amp;sharefrom=link</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 漏洞知识库 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 漏洞知识库 </tag>
+            
+            <tag> 远程代码执行 </tag>
+            
+            <tag> 反序列化漏洞 </tag>
+            
+            <tag> CVE-2021-3129 </tag>
+            
+            <tag> Laravel RCE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>三层网络靶场(WHOAMI)从打点到拿下域控</title>
       <link href="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/"/>
       <url>/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/</url>
       
-        <content type="html"><![CDATA[<h1 id="一、信息收集"><a href="#一、信息收集" class="headerlink" title="一、信息收集"></a>一、信息收集</h1><p>目标地址：192.168.43.253</p>]]></content>
+        <content type="html"><![CDATA[<h1 id="一、信息收集"><a href="#一、信息收集" class="headerlink" title="一、信息收集"></a>一、信息收集</h1><p>目标地址：192.168.43.253</p><h2 id="1-1-nmap信息收集"><a href="#1-1-nmap信息收集" class="headerlink" title="1.1 nmap信息收集"></a>1.1 nmap信息收集</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token number">192.168</span>.43.253 -p- <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-T4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2024-12-31%2014.20.13.png" alt="nmap 192.168.43.253 -sC -sV -T4" style="zoom:40%;"><p>全端口扫描：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token number">192.168</span>.43.253 -p- <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-T4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2024-12-31%2014.23.49.png" alt="nmap 192.168.43.253 -p- -sC -sV -T4" style="zoom:50%;"><p>不加-p-参数时，没有扫到redis的6379端口。</p><h2 id="1-2-信息分析"><a href="#1-2-信息分析" class="headerlink" title="1.2 信息分析"></a>1.2 信息分析</h2><p>80端口：nginx web服务，但是根据返回的信息看，502 bad gateway，也没啥利用价值。</p><p>81端口：nginx-web服务，Laravel框架，可以再深入了解版本信息，尝试进行历史漏洞的利用。</p><p>22端口：-ssh，可以尝试爆破。</p><p>6379端口：-redis，可以尝试未授权访问和历史漏洞利用。</p><blockquote><p>Laravel框架：</p><p>Laravel 是一个流行的 PHP Web 应用程序框架，以其优雅、简洁的设计和强大的功能而受到开发者的青睐。它遵循模型-视图-控制器（MVC）架构模式，自2011年发布以来，已经成为 PHP 开发者的首选框架之一。</p></blockquote><p>获取Laravel版本信息：Laravel v8.29.0 (PHP v7.4.14)</p><img src="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2024-12-31%2014.50.51.png" alt="访问81端口首页获取Laravel版本信息" style="zoom:80%;"><h1 id="二、-Laravel框架漏洞利用（81端口）"><a href="#二、-Laravel框架漏洞利用（81端口）" class="headerlink" title="二、 Laravel框架漏洞利用（81端口）"></a>二、 Laravel框架漏洞利用（81端口）</h1><h2 id="2-1-漏洞查询"><a href="#2-1-漏洞查询" class="headerlink" title="2.1 漏洞查询"></a>2.1 漏洞查询</h2><p>Laravel v8.29.0 (PHP v7.4.14)</p><p>exploit-db：检索Laravel的历史漏洞，Laravel RCE CVE-2021-3129，<a href="https://www.exploit-db.com/exploits/49424">https://www.exploit-db.com/exploits/49424</a> 。</p><img src="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2024-12-31%2016.07.53.png" style="zoom:50%;">]]></content>
       
       
       <categories>
@@ -20,13 +53,13 @@
       
         <tags>
             
+            <tag> 内网攻防 </tag>
+            
             <tag> 综合渗透 </tag>
             
             <tag> 域渗透 </tag>
             
             <tag> 隧道搭建 </tag>
-            
-            <tag> 内网攻防 </tag>
             
             <tag> WHOAMI靶场 </tag>
             
@@ -55,13 +88,13 @@
       
         <tags>
             
+            <tag> 内网攻防 </tag>
+            
             <tag> 综合渗透 </tag>
             
             <tag> 域渗透 </tag>
             
             <tag> 隧道搭建 </tag>
-            
-            <tag> 内网攻防 </tag>
             
             <tag> WHOAMI靶场 </tag>
             
@@ -397,9 +430,9 @@
       
         <tags>
             
-            <tag> 前端开发 </tag>
-            
             <tag> React </tag>
+            
+            <tag> 前端开发 </tag>
             
         </tags>
       
@@ -424,9 +457,9 @@
       
         <tags>
             
-            <tag> Bootstrap </tag>
-            
             <tag> 前端开发 </tag>
+            
+            <tag> Bootstrap </tag>
             
         </tags>
       
@@ -588,11 +621,11 @@
       
         <tags>
             
-            <tag> 密码学算法安全 </tag>
-            
             <tag> padding oracle攻击 </tag>
             
             <tag> web安全中的密码学攻击 </tag>
+            
+            <tag> 密码学算法安全 </tag>
             
         </tags>
       
