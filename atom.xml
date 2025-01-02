@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2024-12-31T09:35:14.654Z</updated>
+  <updated>2025-01-02T05:37:11.519Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>反序列化工具之PHPGGC</title>
+    <link href="http://sxksec.cn/2025/01/02/gong-fang-gong-ju-ku/fan-xu-lie-hua-gong-ju-zhi-phpggc/"/>
+    <id>http://sxksec.cn/2025/01/02/gong-fang-gong-ju-ku/fan-xu-lie-hua-gong-ju-zhi-phpggc/</id>
+    <published>2025-01-02T03:14:24.000Z</published>
+    <updated>2025-01-02T05:37:11.519Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、PHPGGC简介&quot;&gt;&lt;a href=&quot;#一、PHPGGC简介&quot; class=&quot;headerlink&quot; title=&quot;一、PHPGGC简介&quot;&gt;&lt;/a&gt;一、PHPGGC简介&lt;/h1&gt;&lt;p&gt;PHPGGC（PHP Generic Gadget</summary>
+        
+      
+    
+    
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+    <category term="反序列化漏洞利用" scheme="http://sxksec.cn/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"/>
+    
+    <category term="PHPGGC" scheme="http://sxksec.cn/tags/PHPGGC/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Laravel RCE CVE-2021-3129</title>
     <link href="http://sxksec.cn/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/"/>
     <id>http://sxksec.cn/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/</id>
     <published>2024-12-31T08:09:54.000Z</published>
-    <updated>2024-12-31T09:35:14.654Z</updated>
+    <updated>2025-01-02T06:46:46.988Z</updated>
     
     
       
@@ -90,7 +119,7 @@
     <link href="http://sxksec.cn/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/"/>
     <id>http://sxksec.cn/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/</id>
     <published>2024-12-30T01:24:18.000Z</published>
-    <updated>2024-12-31T03:17:52.418Z</updated>
+    <updated>2024-12-31T09:53:53.634Z</updated>
     
     
       
@@ -140,9 +169,9 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="图片木马" scheme="http://sxksec.cn/tags/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -449,9 +478,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="React" scheme="http://sxksec.cn/tags/React/"/>
-    
     <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="React" scheme="http://sxksec.cn/tags/React/"/>
     
   </entry>
   
@@ -503,9 +532,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="jQuery" scheme="http://sxksec.cn/tags/jQuery/"/>
+    
+    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -530,9 +559,9 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="Grafana表达式远程代码执行(CVE-2024-9264)" scheme="http://sxksec.cn/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
@@ -560,35 +589,6 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="Druid未授权访问" scheme="http://sxksec.cn/tags/Druid%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Flask框架</title>
-    <link href="http://sxksec.cn/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/"/>
-    <id>http://sxksec.cn/2024/12/04/qian-hou-duan-kai-fa/flask-kuang-jia/</id>
-    <published>2024-12-04T07:39:05.000Z</published>
-    <updated>2024-12-06T02:46:32.256Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Flask简介&quot;&gt;&lt;a href=&quot;#一、Flask简介&quot; class=&quot;headerlink&quot; title=&quot;一、Flask简介&quot;&gt;&lt;/a&gt;一、Flask简介&lt;/h1&gt;&lt;h2 id=&quot;1-1-什么是Flask？&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="python" scheme="http://sxksec.cn/tags/python/"/>
-    
-    <category term="Flask" scheme="http://sxksec.cn/tags/Flask/"/>
     
   </entry>
   
