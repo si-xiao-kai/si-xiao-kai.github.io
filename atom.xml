@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-01-02T05:37:11.519Z</updated>
+  <updated>2025-01-03T03:32:30.400Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,63 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>docker容器逃逸-CVE-2019-5736</title>
+    <link href="http://sxksec.cn/2025/01/03/lou-dong-zhi-shi-ku/docker-rong-qi-tao-yi-cve-2019-5736/"/>
+    <id>http://sxksec.cn/2025/01/03/lou-dong-zhi-shi-ku/docker-rong-qi-tao-yi-cve-2019-5736/</id>
+    <published>2025-01-03T03:31:15.000Z</published>
+    <updated>2025-01-03T03:32:30.400Z</updated>
+    
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="容器逃逸" scheme="http://sxksec.cn/tags/%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
+    
+    <category term="CVE-2019-5736" scheme="http://sxksec.cn/tags/CVE-2019-5736/"/>
+    
+    <category term="docker逃逸" scheme="http://sxksec.cn/tags/docker%E9%80%83%E9%80%B8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>web-buuoj-(Upload-Labs-Linux)-文件上传</title>
+    <link href="http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/"/>
+    <id>http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/</id>
+    <published>2025-01-02T09:31:41.000Z</published>
+    <updated>2025-01-03T01:01:02.664Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、靶场简介&quot;&gt;&lt;a href=&quot;#一、靶场简介&quot; class=&quot;headerlink&quot; title=&quot;一、靶场简介&quot;&gt;&lt;/a&gt;一、靶场简介&lt;/h1&gt;&lt;p&gt;题目连接：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    <category term="CTF-web" scheme="http://sxksec.cn/tags/CTF-web/"/>
+    
+    <category term="buuoj" scheme="http://sxksec.cn/tags/buuoj/"/>
+    
+  </entry>
+  
+  <entry>
     <title>反序列化工具之PHPGGC</title>
     <link href="http://sxksec.cn/2025/01/02/gong-fang-gong-ju-ku/fan-xu-lie-hua-gong-ju-zhi-phpggc/"/>
     <id>http://sxksec.cn/2025/01/02/gong-fang-gong-ju-ku/fan-xu-lie-hua-gong-ju-zhi-phpggc/</id>
     <published>2025-01-02T03:14:24.000Z</published>
-    <updated>2025-01-02T05:37:11.519Z</updated>
+    <updated>2025-01-02T08:24:04.127Z</updated>
     
     
       
@@ -37,11 +89,11 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
     <category term="反序列化漏洞利用" scheme="http://sxksec.cn/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8/"/>
     
     <category term="PHPGGC" scheme="http://sxksec.cn/tags/PHPGGC/"/>
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -83,7 +135,7 @@
     <link href="http://sxksec.cn/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/"/>
     <id>http://sxksec.cn/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/</id>
     <published>2024-12-31T03:27:56.000Z</published>
-    <updated>2024-12-31T08:11:20.833Z</updated>
+    <updated>2025-01-03T03:24:57.798Z</updated>
     
     
       
@@ -169,9 +221,9 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="图片木马" scheme="http://sxksec.cn/tags/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -306,11 +358,11 @@
     <category term="内网攻防" scheme="http://sxksec.cn/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
+    
     <category term="FRP" scheme="http://sxksec.cn/tags/FRP/"/>
     
     <category term="FRP内网穿透" scheme="http://sxksec.cn/tags/FRP%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F/"/>
-    
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
   </entry>
   
@@ -462,7 +514,7 @@
     <link href="http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/"/>
     <id>http://sxksec.cn/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/</id>
     <published>2024-12-09T08:51:35.000Z</published>
-    <updated>2024-12-27T08:51:15.429Z</updated>
+    <updated>2025-01-02T09:26:29.792Z</updated>
     
     
       
@@ -478,9 +530,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
     <category term="React" scheme="http://sxksec.cn/tags/React/"/>
+    
+    <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
   </entry>
   
@@ -505,9 +557,9 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
-    
     <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="Bootstrap" scheme="http://sxksec.cn/tags/Bootstrap/"/>
     
   </entry>
   
@@ -535,60 +587,6 @@
     <category term="前端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     <category term="jQuery" scheme="http://sxksec.cn/tags/jQuery/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Grafana表达式远程代码执行(CVE-2024-9264)</title>
-    <link href="http://sxksec.cn/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/"/>
-    <id>http://sxksec.cn/2024/12/06/lou-dong-zhi-shi-ku/grafana-biao-da-shi-yuan-cheng-dai-ma-zhi-xing-cve-2024-9264/</id>
-    <published>2024-12-06T02:09:46.000Z</published>
-    <updated>2024-12-23T09:28:37.675Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Grafana基础&quot;&gt;&lt;a href=&quot;#一、Grafana基础&quot; class=&quot;headerlink&quot; title=&quot;一、Grafana基础&quot;&gt;&lt;/a&gt;一、Grafana基础&lt;/h1&gt;&lt;h2 id=&quot;1-1-Grafana是什么？&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="Grafana表达式远程代码执行(CVE-2024-9264)" scheme="http://sxksec.cn/tags/Grafana%E8%A1%A8%E8%BE%BE%E5%BC%8F%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C-CVE-2024-9264/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Druid未授权访问漏洞</title>
-    <link href="http://sxksec.cn/2024/12/05/lou-dong-zhi-shi-ku/druid-wei-shou-quan-fang-wen-lou-dong/"/>
-    <id>http://sxksec.cn/2024/12/05/lou-dong-zhi-shi-ku/druid-wei-shou-quan-fang-wen-lou-dong/</id>
-    <published>2024-12-05T05:25:42.000Z</published>
-    <updated>2024-12-05T06:26:39.895Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Druid简介&quot;&gt;&lt;a href=&quot;#一、Druid简介&quot; class=&quot;headerlink&quot; title=&quot;一、Druid简介&quot;&gt;&lt;/a&gt;一、Druid简介&lt;/h1&gt;&lt;p&gt;&lt;strong&gt;Druid&lt;/strong&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="Druid未授权访问" scheme="http://sxksec.cn/tags/Druid%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/"/>
     
   </entry>
   

