@@ -831,7 +831,7 @@ save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span
 <li>DMZ区的一台服务器（192.168.43.253，192.168.52.10）</li>
 <li>二层网络的一台服务器（192.168.52.20，192.168.93.10）</li>
 </ul>
-<h1 id="六、二层网络渗透"><a href="#六、二层网络渗透" class="headerlink" title="六、二层网络渗透"></a>六、二层网络渗透</h1><p>目前攻击机只能ping通DMZ区的主机，无法ping通二层网络（192.168.52.20/24）的主机。如何把我们的工具带入内网呢？比如如何直接拿kali上的nmap扫192.168.52.0/24网段的主机？这就要用到隧道搭建技术了。</p>
+<h1 id="六、隧道搭建（二层网络渗透）"><a href="#六、隧道搭建（二层网络渗透）" class="headerlink" title="六、隧道搭建（二层网络渗透）"></a>六、隧道搭建（二层网络渗透）</h1><p>目前攻击机只能ping通DMZ区的主机，无法ping通二层网络（192.168.52.20/24）的主机。如何把我们的工具带入内网呢？比如如何直接拿kali上的nmap扫192.168.52.0/24网段的主机？这就要用到隧道搭建技术了。</p>
 <p>关于EW和proxychains的使用方法，可以参考本站的《Earthworm-隧道搭建》一文。</p>
 <h2 id="6-1-通过设置路由将msfconsole带入内网使用"><a href="#6-1-通过设置路由将msfconsole带入内网使用" class="headerlink" title="6.1 通过设置路由将msfconsole带入内网使用"></a>6.1 通过设置路由将msfconsole带入内网使用</h2><p>虽然通过获取web1和web2的metepreter的shell，然后通过路由设置可以将msfconsole带入内网（但是其他的工具想要带入内网还是要搭建隧道）。</p>
 <p>使用 msf exploit/multi/script/web_delivery模块创建反弹shell的payload，投递到DMZ受控主机中。</p>
@@ -1404,7 +1404,7 @@ run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">142.6k</span>
+                        class="white-color">143.6k</span>
             
             
             
