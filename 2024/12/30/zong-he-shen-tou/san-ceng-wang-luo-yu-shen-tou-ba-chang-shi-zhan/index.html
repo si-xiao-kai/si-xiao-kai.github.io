@@ -370,16 +370,16 @@
                                 <span class="chip bg-color">内网攻防</span>
                             </a>
                         
+                            <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
+                                <span class="chip bg-color">隧道搭建</span>
+                            </a>
+                        
                             <a href="/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/">
                                 <span class="chip bg-color">综合渗透</span>
                             </a>
                         
                             <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
                                 <span class="chip bg-color">域渗透</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
-                                <span class="chip bg-color">隧道搭建</span>
                             </a>
                         
                             <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
@@ -414,7 +414,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-07
+                    2025-01-15
                 </div>
                 
 
@@ -709,8 +709,8 @@
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-31%2010.05.54.png" style="zoom:50%;">
 
-<h1 id="三、服务部署"><a href="#三、服务部署" class="headerlink" title="三、服务部署"></a>三、服务部署</h1><h2 id="3-1-DMZ区的-Ubuntu-启动nginx服务"><a href="#3-1-DMZ区的-Ubuntu-启动nginx服务" class="headerlink" title="3.1 DMZ区的 Ubuntu 启动nginx服务"></a>3.1 DMZ区的 Ubuntu 启动nginx服务</h2><ul>
-<li>redis-server /etc/redis.conf</li>
+<h1 id="三、服务部署"><a href="#三、服务部署" class="headerlink" title="三、服务部署"></a>三、服务部署</h1><h2 id="3-1-DMZ区的-Ubuntu-启动nginx服务和redis服务"><a href="#3-1-DMZ区的-Ubuntu-启动nginx服务和redis服务" class="headerlink" title="3.1 DMZ区的 Ubuntu 启动nginx服务和redis服务"></a>3.1 DMZ区的 Ubuntu 启动nginx服务和redis服务</h2><ul>
+<li>sudo redis-server /etc/redis.conf 【注意：以root权限启动】</li>
 <li>/usr/sbin/nginx -c /etc/nginx/nginx.conf 【nginx已经启动】</li>
 </ul>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/%E6%88%AA%E5%B1%8F2024-12-31%2010.24.23.png" style="zoom:50%;">
@@ -858,16 +858,16 @@
                                     <span class="chip bg-color">内网攻防</span>
                                 </a>
                             
+                                <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
+                                    <span class="chip bg-color">隧道搭建</span>
+                                </a>
+                            
                                 <a href="/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/">
                                     <span class="chip bg-color">综合渗透</span>
                                 </a>
                             
                                 <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
                                     <span class="chip bg-color">域渗透</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
-                                    <span class="chip bg-color">隧道搭建</span>
                                 </a>
                             
                                 <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
@@ -992,16 +992,16 @@
                         <span class="chip bg-color">内网攻防</span>
                     </a>
                     
+                    <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
+                        <span class="chip bg-color">隧道搭建</span>
+                    </a>
+                    
                     <a href="/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/">
                         <span class="chip bg-color">综合渗透</span>
                     </a>
                     
                     <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
                         <span class="chip bg-color">域渗透</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
-                        <span class="chip bg-color">隧道搭建</span>
                     </a>
                     
                     <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
@@ -1057,12 +1057,12 @@
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">web安全</span>
-                    </a>
-                    
                     <a href="/tags/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC/">
                         <span class="chip bg-color">图片木马</span>
+                    </a>
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
                     </a>
                     
                 </div>
@@ -1206,7 +1206,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">132.9k</span>
+                        class="white-color">142.6k</span>
             
             
             

