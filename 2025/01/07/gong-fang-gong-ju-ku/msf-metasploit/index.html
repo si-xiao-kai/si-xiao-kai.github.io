@@ -366,16 +366,16 @@
                     
                     <div class="article-tag">
                         
+                            <a href="/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/">
+                                <span class="chip bg-color">攻防工具库</span>
+                            </a>
+                        
                             <a href="/tags/MSF/">
                                 <span class="chip bg-color">MSF</span>
                             </a>
                         
                             <a href="/tags/Metasploit-Framework/">
                                 <span class="chip bg-color">Metasploit Framework</span>
-                            </a>
-                        
-                            <a href="/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/">
-                                <span class="chip bg-color">攻防工具库</span>
                             </a>
                         
                     </div>
@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-07
+                    2025-01-17
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.6k
+                    6.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    23 分
+                    26 分
                 </div>
                 
 
@@ -894,6 +894,50 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
 
 
 
+<h1 id="七、内网信息收集"><a href="#七、内网信息收集" class="headerlink" title="七、内网信息收集"></a>七、内网信息收集</h1><p>当我们设置全局代理（通常可以通过ew等隧道工具+proxychains来实现），那么就可以在MSF中使用模块来对内网段进行扫描：</p>
+<h2 id="7-1-扫描"><a href="#7-1-扫描" class="headerlink" title="7.1 扫描"></a>7.1 扫描</h2><p>常用的扫描模块：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">auxiliary/scanner/discovery/arp_sweep <span class="token comment">#基于arp协议发现内网存活主机，这不能通过代理使用</span>
+auxiliary/scanner/portscan/ack <span class="token comment">#基于tcp的ack回复进行端口扫描，默认扫描1-10000端口</span>
+auxiliary/scanner/portscan/tcp <span class="token comment">#基于tcp进行端口扫描，默认扫描1-10000端口</span>
+auxiliary/scanner/discovery/udp_sweep <span class="token comment">#基于udp协议发现内网存活主机</span>
+auxiliary/scanner/discovery/udp_probe <span class="token comment">#基于udp协议发现内网存活主机</span>
+auxiliary/scanner/netbios/nbname <span class="token comment">#基于netbios协议发现内网存活主机</span>
+auxiliary/scanner/ftp/ftp_version <span class="token comment">#发现内网ftp服务，基于默认21端口</span>
+auxiliary/scanner/ssh/ssh_version <span class="token comment">#发现内网ssh服务，基于默认22端口</span>
+auxiliary/scanner/telnet/telnet_version <span class="token comment">#发现内网telnet服务，基于默认23端口</span>
+auxiliary/scanner/dns/dns_amp <span class="token comment">#发现dns服务，基于默认53端口</span>
+auxiliary/scanner/http/http_version <span class="token comment">#发现内网http服务，基于默认80端口</span>
+auxiliary/scanner/http/title <span class="token comment">#探测内网http服务的标题</span>
+auxiliary/scanner/smb/smb_version <span class="token comment">#发现内网smb服务，基于默认的445端口</span>
+auxiliary/scanner/mssql/mssql_schemadump <span class="token comment">#发现内网SQLServer服务,基于默认的1433端口</span>
+auxiliary/scanner/oracle/oracle_hashdump <span class="token comment">#发现内网oracle服务,基于默认的1521端口</span>
+auxiliary/scanner/mysql/mysql_version <span class="token comment">#发现内网mysql服务，基于默认3306端口</span>
+auxiliary/scanner/rdp/rdp_scanner <span class="token comment">#发现内网RDP服务，基于默认3389端口</span>
+auxiliary/scanner/redis/redis_server <span class="token comment">#发现内网Redis服务，基于默认6379端口</span>
+auxiliary/scanner/db2/db2_version <span class="token comment">#探测内网的db2服务，基于默认的50000端口</span>
+auxiliary/scanner/netbios/nbname<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="7-2-域内信息收集"><a href="#7-2-域内信息收集" class="headerlink" title="7.2 域内信息收集"></a>7.2 域内信息收集</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">run post/windows/gather/enum_logged_on_users <span class="token comment">#查看登录过的用户信息</span>
+run post/windows/gather/enum_ad_groups <span class="token comment">#查看组信息</span>
+run post/windows/gather/enum_domain <span class="token comment">#定位域控</span>
+run post/windows/gather/enum_ad_computers <span class="token comment">#域内所有机器</span>
+run post/windows/gather/enum_patches <span class="token comment">#发现缺失的补丁</span>
+run post/multi/recon/local_exploit_suggester <span class="token comment">#快速识别可能被利用的漏洞</span>
+run post/windows/manage/migrate <span class="token comment">#自动进程迁移</span>
+run post/windows/gather/checkvm <span class="token comment">#查看目标主机是否运行在虚拟机上</span>
+run post/windows/manage/killav <span class="token comment">#关闭杀毒软件</span>
+run post/windows/manage/enable_rdp <span class="token comment">#开启远程桌面服务</span>
+run post/windows/manage/autoroute <span class="token comment">#查看路由信息</span>
+run post/windows/gather/enum_logged_on_users <span class="token comment">#列举当前登录的用户</span>
+run post/windows/gather/enum_applications <span class="token comment">#列举应用程序</span>
+run post/windows/gather/credentials/windows_autologin <span class="token comment">#抓取自动登录的用户名和密码</span>
+run post/windows/gather/smart_hashdump <span class="token comment">#dump出所有用户的hash</span>
+run post/windows/gather/enum_domain_tokens <span class="token comment">#寻找域token</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
 
 
 <p>.</p>
@@ -961,16 +1005,16 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
                     
                         <div class="article-tag">
                             
+                                <a href="/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/">
+                                    <span class="chip bg-color">攻防工具库</span>
+                                </a>
+                            
                                 <a href="/tags/MSF/">
                                     <span class="chip bg-color">MSF</span>
                                 </a>
                             
                                 <a href="/tags/Metasploit-Framework/">
                                     <span class="chip bg-color">Metasploit Framework</span>
-                                </a>
-                            
-                                <a href="/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/">
-                                    <span class="chip bg-color">攻防工具库</span>
                                 </a>
                             
                         </div>
@@ -1297,7 +1341,7 @@ exploit<span aria-hidden="true" class="line-numbers-rows"><span></span><span></s
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">143.6k</span>
+                        class="white-color">148.8k</span>
             
             
             

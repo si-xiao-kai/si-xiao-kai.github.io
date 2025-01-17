@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-01-15T09:16:08.726Z</updated>
+  <updated>2025-01-17T08:42:59.929Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,37 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Godzilla</title>
+    <link href="http://sxksec.cn/2025/01/17/gong-fang-gong-ju-ku/godzilla/"/>
+    <id>http://sxksec.cn/2025/01/17/gong-fang-gong-ju-ku/godzilla/</id>
+    <published>2025-01-17T03:03:53.000Z</published>
+    <updated>2025-01-17T08:42:59.929Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、哥斯拉（Godzilla）介绍&quot;&gt;&lt;a href=&quot;#一、哥斯拉（Godzilla）介绍&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+    
+    <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
+    
+    <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
+    
+    <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
+  </entry>
   
   <entry>
     <title>Earthworm-隧道搭建</title>
@@ -96,11 +127,11 @@
     <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
     
+    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
+    
     <category term="ssh服务" scheme="http://sxksec.cn/tags/ssh%E6%9C%8D%E5%8A%A1/"/>
     
     <category term="ssh公私钥认证" scheme="http://sxksec.cn/tags/ssh%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81/"/>
-    
-    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
@@ -138,7 +169,7 @@
     <link href="http://sxksec.cn/2025/01/07/gong-fang-gong-ju-ku/msf-metasploit/"/>
     <id>http://sxksec.cn/2025/01/07/gong-fang-gong-ju-ku/msf-metasploit/</id>
     <published>2025-01-07T05:37:21.000Z</published>
-    <updated>2025-01-07T07:15:33.394Z</updated>
+    <updated>2025-01-17T08:43:02.834Z</updated>
     
     
       
@@ -154,11 +185,11 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
     <category term="MSF" scheme="http://sxksec.cn/tags/MSF/"/>
     
     <category term="Metasploit Framework" scheme="http://sxksec.cn/tags/Metasploit-Framework/"/>
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -318,7 +349,7 @@
     <link href="http://sxksec.cn/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/"/>
     <id>http://sxksec.cn/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/</id>
     <published>2024-12-31T03:27:56.000Z</published>
-    <updated>2025-01-15T09:35:40.910Z</updated>
+    <updated>2025-01-17T08:42:52.893Z</updated>
     
     
       
@@ -354,7 +385,7 @@
     <link href="http://sxksec.cn/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/"/>
     <id>http://sxksec.cn/2024/12/30/zong-he-shen-tou/san-ceng-wang-luo-yu-shen-tou-ba-chang-shi-zhan/</id>
     <published>2024-12-30T01:24:18.000Z</published>
-    <updated>2025-01-15T01:51:18.936Z</updated>
+    <updated>2025-01-16T07:25:25.463Z</updated>
     
     
       
@@ -575,35 +606,6 @@
     <category term="SOCKS5" scheme="http://sxksec.cn/tags/SOCKS5/"/>
     
     <category term="代理协议" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%90%86%E5%8D%8F%E8%AE%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>centos虚拟机安装及问题解决</title>
-    <link href="http://sxksec.cn/2024/12/12/xu-ni-hua-ji-zhu/centos-xu-ni-ji-an-zhuang-ji-wen-ti-jie-jue/"/>
-    <id>http://sxksec.cn/2024/12/12/xu-ni-hua-ji-zhu/centos-xu-ni-ji-an-zhuang-ji-wen-ti-jie-jue/</id>
-    <published>2024-12-12T08:42:28.000Z</published>
-    <updated>2024-12-13T01:01:49.084Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、-centos6-9&quot;&gt;&lt;a href=&quot;#一、-centos6-9&quot; class=&quot;headerlink&quot; title=&quot;一、 centos6.9&quot;&gt;&lt;/a&gt;一、</summary>
-        
-      
-    
-    
-    
-    <category term="虚拟化技术" scheme="http://sxksec.cn/categories/%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%80%E6%9C%AF/"/>
-    
-    
-    <category term="虚拟机安装" scheme="http://sxksec.cn/tags/%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85/"/>
-    
-    <category term="centos安装" scheme="http://sxksec.cn/tags/centos%E5%AE%89%E8%A3%85/"/>
-    
-    <category term="yum源配置" scheme="http://sxksec.cn/tags/yum%E6%BA%90%E9%85%8D%E7%BD%AE/"/>
     
   </entry>
   
