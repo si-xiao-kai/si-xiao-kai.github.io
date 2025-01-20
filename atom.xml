@@ -52,7 +52,7 @@
     <link href="http://sxksec.cn/2025/01/15/nei-wang-gong-fang/earthworm-sui-dao-da-jian/"/>
     <id>http://sxksec.cn/2025/01/15/nei-wang-gong-fang/earthworm-sui-dao-da-jian/</id>
     <published>2025-01-15T03:40:31.000Z</published>
-    <updated>2025-01-15T09:16:08.726Z</updated>
+    <updated>2025-01-20T02:47:30.687Z</updated>
     
     
       
@@ -127,11 +127,11 @@
     <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="ssh服务" scheme="http://sxksec.cn/tags/ssh%E6%9C%8D%E5%8A%A1/"/>
     
     <category term="ssh公私钥认证" scheme="http://sxksec.cn/tags/ssh%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81/"/>
+    
+    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
@@ -258,7 +258,7 @@
     <link href="http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/"/>
     <id>http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/</id>
     <published>2025-01-02T09:31:41.000Z</published>
-    <updated>2025-01-15T10:06:28.355Z</updated>
+    <updated>2025-01-17T10:17:41.747Z</updated>
     
     
       
@@ -349,7 +349,7 @@
     <link href="http://sxksec.cn/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/"/>
     <id>http://sxksec.cn/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/</id>
     <published>2024-12-31T03:27:56.000Z</published>
-    <updated>2025-01-17T08:42:52.893Z</updated>
+    <updated>2025-01-20T06:06:29.822Z</updated>
     
     
       
@@ -435,9 +435,9 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="图片木马" scheme="http://sxksec.cn/tags/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
