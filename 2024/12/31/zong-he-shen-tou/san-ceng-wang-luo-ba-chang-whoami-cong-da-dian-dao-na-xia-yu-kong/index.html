@@ -425,14 +425,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11.7k
+                    11.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    51 分
+                    52 分
                 </div>
                 
 
@@ -455,7 +455,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、信息收集"><a href="#一、信息收集" class="headerlink" title="一、信息收集"></a>一、信息收集</h1><p>目标地址：192.168.43.253</p>
+                <p>靶场搭建的具体过程见本站《三层网络域渗透靶场（WHOAMII）搭建》一文。</p>
+<h1 id="一、信息收集"><a href="#一、信息收集" class="headerlink" title="一、信息收集"></a>一、信息收集</h1><p>目标地址：192.168.43.253</p>
 <h2 id="1-1-nmap信息收集"><a href="#1-1-nmap信息收集" class="headerlink" title="1.1 nmap信息收集"></a>1.1 nmap信息收集</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token number">192.168</span>.43.253 -p- <span class="token parameter variable">-sC</span> <span class="token parameter variable">-sV</span> <span class="token parameter variable">-T4</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2024-12-31%2014.20.13.png" alt="nmap 192.168.43.253 -sC -sV -T4" style="zoom:40%;">
@@ -1829,6 +1830,48 @@ sc <span class="token punctuation">\</span><span class="token punctuation">\</sp
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/31/zong-he-shen-tou/san-ceng-wang-luo-ba-chang-whoami-cong-da-dian-dao-na-xia-yu-kong/%E6%88%AA%E5%B1%8F2025-01-20%2013.52.48.png" style="zoom:50%;">
 
 <p>成功拿下域控！✅</p>
+<h1 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h1><p>关于本次三层网络靶场的综合渗透实战，涉及到的技术比较全面，从外网打点、内网横向到攻击域控。下面总结一下：</p>
+<ul>
+<li><p>拿下某个区域的某个主机所涉及的技术点：</p>
+<ul>
+<li><p>DMZ-web1：Redis未授权访问getshell</p>
+</li>
+<li><p>二层-web2：Laravel RCE CVE-2021-3129、php反弹shell、suid权限提升、Docker容器逃逸。</p>
+</li>
+<li><p>二层-PC1：隧道搭建、通达OA RCE </p>
+</li>
+<li><p>三层-PC2：隧道搭建、ms17-010</p>
+</li>
+<li><p>三层-DC：smb/psexec</p>
+</li>
+</ul>
+</li>
+<li><p>所使用的重点工具:</p>
+<ul>
+<li><p>nmap</p>
+</li>
+<li><p>CVE-2021-3129 POC</p>
+</li>
+<li><p>蚁剑</p>
+</li>
+<li><p>Metasploit Framework</p>
+</li>
+<li><p>Earthworm</p>
+</li>
+<li><p>proxychains</p>
+</li>
+<li><p>Godzilla</p>
+</li>
+<li><p>msfvenom</p>
+</li>
+<li><p>kiwi</p>
+</li>
+<li><p>Tongda_scan</p>
+</li>
+</ul>
+</li>
+</ul>
+<p>很多技术都是第一次用，再接再励！</p>
 
                 
             </div>
@@ -2257,7 +2300,7 @@ sc <span class="token punctuation">\</span><span class="token punctuation">\</sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">151.4k</span>
+                        class="white-color">151.6k</span>
             
             
             
