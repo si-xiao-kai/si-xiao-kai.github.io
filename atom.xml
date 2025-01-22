@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-01-22T07:28:31.027Z</updated>
+  <updated>2025-01-22T07:56:38.811Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://sxksec.cn/2025/01/22/gong-fang-gong-ju-ku/superxray-tu-xing-hua-jie-mian-lou-dong-sao-miao-gong-ju/"/>
     <id>http://sxksec.cn/2025/01/22/gong-fang-gong-ju-ku/superxray-tu-xing-hua-jie-mian-lou-dong-sao-miao-gong-ju/</id>
     <published>2025-01-22T06:28:13.000Z</published>
-    <updated>2025-01-22T07:28:31.027Z</updated>
+    <updated>2025-01-22T07:56:38.811Z</updated>
     
     
       
@@ -245,13 +245,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -364,11 +364,11 @@
     <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
     
-    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
     <category term="ssh服务" scheme="http://sxksec.cn/tags/ssh%E6%9C%8D%E5%8A%A1/"/>
     
     <category term="ssh公私钥认证" scheme="http://sxksec.cn/tags/ssh%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81/"/>
+    
+    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
@@ -495,7 +495,7 @@
     <link href="http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/"/>
     <id>http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/</id>
     <published>2025-01-02T09:31:41.000Z</published>
-    <updated>2025-01-21T02:24:59.452Z</updated>
+    <updated>2025-01-22T10:17:48.486Z</updated>
     
     
       
