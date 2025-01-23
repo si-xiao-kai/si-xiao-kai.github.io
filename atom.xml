@@ -156,11 +156,11 @@
     
     <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
+    <category term="漏洞扫描" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
+    
     <category term="供应链漏洞扫描" scheme="http://sxksec.cn/tags/%E4%BE%9B%E5%BA%94%E9%93%BE%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
     
     <category term="供应链安全" scheme="http://sxksec.cn/tags/%E4%BE%9B%E5%BA%94%E9%93%BE%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="漏洞扫描" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
     
   </entry>
   
@@ -274,13 +274,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -524,7 +524,7 @@
     <link href="http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/"/>
     <id>http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/</id>
     <published>2025-01-02T09:31:41.000Z</published>
-    <updated>2025-01-23T09:59:17.859Z</updated>
+    <updated>2025-01-23T10:00:02.184Z</updated>
     
     
       
