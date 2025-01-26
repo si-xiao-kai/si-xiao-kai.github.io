@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-01-26T04:16:56.043Z</updated>
+  <updated>2025-01-26T04:24:42.468Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -21,15 +21,15 @@
     <link href="http://sxksec.cn/2025/01/25/web-an-quan/upload-labs-windows-ba-chang-da-jian/"/>
     <id>http://sxksec.cn/2025/01/25/web-an-quan/upload-labs-windows-ba-chang-da-jian/</id>
     <published>2025-01-25T13:42:57.000Z</published>
-    <updated>2025-01-26T04:16:56.043Z</updated>
+    <updated>2025-01-26T04:24:42.468Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;一、环境准备&quot;&gt;&lt;a href=&quot;#一、环境准备&quot; class=&quot;headerlink&quot; title=&quot;一、环境准备&quot;&gt;&lt;/a&gt;一、环境准备&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;操作系统：windows server 2008</summary>
+    <summary type="html">&lt;p&gt;本文主要介绍搭建在windows server 2008上搭建upload-labs文件上传漏洞靶场的过程（其他windows系统也类似），记录了一些踩过的坑。&lt;/p&gt;
+&lt;h1 id=&quot;一、环境准备&quot;&gt;&lt;a href=&quot;#一、环境准备&quot;</summary>
         
       
     
@@ -38,11 +38,11 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="upload-labs" scheme="http://sxksec.cn/tags/upload-labs/"/>
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -244,11 +244,11 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
+    
     <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     <category term="内网扫描" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%89%AB%E6%8F%8F/"/>
-    
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     <category term="fscan" scheme="http://sxksec.cn/tags/fscan/"/>
     
@@ -333,13 +333,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
