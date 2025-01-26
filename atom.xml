@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-01-26T04:24:42.468Z</updated>
+  <updated>2025-01-26T04:42:54.235Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://sxksec.cn/2025/01/25/web-an-quan/upload-labs-windows-ba-chang-da-jian/"/>
     <id>http://sxksec.cn/2025/01/25/web-an-quan/upload-labs-windows-ba-chang-da-jian/</id>
     <published>2025-01-25T13:42:57.000Z</published>
-    <updated>2025-01-26T04:24:42.468Z</updated>
+    <updated>2025-01-26T04:42:54.235Z</updated>
     
     
       
@@ -38,11 +38,11 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="upload-labs" scheme="http://sxksec.cn/tags/upload-labs/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -333,13 +333,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -539,11 +539,11 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="容器逃逸" scheme="http://sxksec.cn/tags/%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
     
     <category term="docker容器逃逸" scheme="http://sxksec.cn/tags/docker%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
@@ -568,9 +568,9 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="容器逃逸" scheme="http://sxksec.cn/tags/%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="CVE-2019-5736" scheme="http://sxksec.cn/tags/CVE-2019-5736/"/>
     
