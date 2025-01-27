@@ -38,11 +38,11 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="upload-labs" scheme="http://sxksec.cn/tags/upload-labs/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -51,7 +51,7 @@
     <link href="http://sxksec.cn/2025/01/24/web-an-quan/wen-jian-shang-chuan-lou-dong-zhi-er-ci-xuan-ran-rao-guo/"/>
     <id>http://sxksec.cn/2025/01/24/web-an-quan/wen-jian-shang-chuan-lou-dong-zhi-er-ci-xuan-ran-rao-guo/</id>
     <published>2025-01-24T05:14:52.000Z</published>
-    <updated>2025-01-26T05:02:15.713Z</updated>
+    <updated>2025-01-27T06:45:56.825Z</updated>
     
     
       
@@ -215,11 +215,11 @@
     
     <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
-    <category term="漏洞扫描" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
-    
     <category term="供应链漏洞扫描" scheme="http://sxksec.cn/tags/%E4%BE%9B%E5%BA%94%E9%93%BE%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
     
     <category term="供应链安全" scheme="http://sxksec.cn/tags/%E4%BE%9B%E5%BA%94%E9%93%BE%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="漏洞扫描" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E6%89%AB%E6%8F%8F/"/>
     
   </entry>
   
@@ -244,11 +244,11 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
+    
     <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     <category term="内网扫描" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%89%AB%E6%8F%8F/"/>
-    
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     <category term="fscan" scheme="http://sxksec.cn/tags/fscan/"/>
     
@@ -333,13 +333,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -583,7 +583,7 @@
     <link href="http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/"/>
     <id>http://sxksec.cn/2025/01/02/ctf-shi-zhan/web-buuoj-upload-labs-linux-wen-jian-shang-chuan/</id>
     <published>2025-01-02T09:31:41.000Z</published>
-    <updated>2025-01-25T15:35:26.082Z</updated>
+    <updated>2025-01-27T06:55:32.430Z</updated>
     
     
       
