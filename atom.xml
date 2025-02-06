@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-06T05:55:17.963Z</updated>
+  <updated>2025-02-06T05:58:29.262Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://sxksec.cn/2025/02/01/web-an-quan/xss-kua-zhan-jiao-ben-gong-ji/"/>
     <id>http://sxksec.cn/2025/02/01/web-an-quan/xss-kua-zhan-jiao-ben-gong-ji/</id>
     <published>2025-02-01T11:57:54.000Z</published>
-    <updated>2025-02-06T05:55:17.963Z</updated>
+    <updated>2025-02-06T05:58:29.262Z</updated>
     
     
       
@@ -362,13 +362,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -568,11 +568,11 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="容器逃逸" scheme="http://sxksec.cn/tags/%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
     
     <category term="docker容器逃逸" scheme="http://sxksec.cn/tags/docker%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
@@ -597,9 +597,9 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="容器逃逸" scheme="http://sxksec.cn/tags/%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="CVE-2019-5736" scheme="http://sxksec.cn/tags/CVE-2019-5736/"/>
     
