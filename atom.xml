@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-10T01:23:30.589Z</updated>
+  <updated>2025-02-10T08:02:54.870Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>文件包含漏洞</title>
+    <link href="http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/"/>
+    <id>http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/</id>
+    <published>2025-02-10T05:16:55.000Z</published>
+    <updated>2025-02-10T08:02:54.870Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、文件包含漏洞概述&quot;&gt;&lt;a href=&quot;#一、文件包含漏洞概述&quot; class=&quot;headerlink&quot; title=&quot;一、文件包含漏洞概述&quot;&gt;&lt;/a&gt;一、文件包含漏洞概述&lt;/h1&gt;&lt;h2 id=&quot;1-1-文件包含的概念&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    
+  </entry>
   
   <entry>
     <title>web-xss-labs</title>
@@ -37,9 +64,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="xss-labs" scheme="http://sxksec.cn/tags/xss-labs/"/>
     
@@ -66,11 +93,11 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
-    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
-    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="XSS" scheme="http://sxksec.cn/tags/XSS/"/>
+    
+    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
     
   </entry>
   
@@ -127,9 +154,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="二次渲染绕过" scheme="http://sxksec.cn/tags/%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/"/>
-    
     <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="二次渲染绕过" scheme="http://sxksec.cn/tags/%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/"/>
     
   </entry>
   
@@ -573,35 +600,6 @@
     <category term="MSF" scheme="http://sxksec.cn/tags/MSF/"/>
     
     <category term="Metasploit Framework" scheme="http://sxksec.cn/tags/Metasploit-Framework/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Docker特权模式容器逃逸</title>
-    <link href="http://sxksec.cn/2025/01/07/lou-dong-zhi-shi-ku/docker-te-quan-mo-shi-rong-qi-tao-yi/"/>
-    <id>http://sxksec.cn/2025/01/07/lou-dong-zhi-shi-ku/docker-te-quan-mo-shi-rong-qi-tao-yi/</id>
-    <published>2025-01-07T01:26:36.000Z</published>
-    <updated>2025-01-07T07:02:59.639Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、漏洞简介&quot;&gt;&lt;a href=&quot;#一、漏洞简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="容器逃逸" scheme="http://sxksec.cn/tags/%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
-    
-    <category term="docker容器逃逸" scheme="http://sxksec.cn/tags/docker%E5%AE%B9%E5%99%A8%E9%80%83%E9%80%B8/"/>
     
   </entry>
   
