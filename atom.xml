@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-10T08:02:54.870Z</updated>
+  <updated>2025-02-10T09:42:50.249Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>web-buuoj-(BUU XSS COURSE1)</title>
+    <link href="http://sxksec.cn/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/"/>
+    <id>http://sxksec.cn/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/</id>
+    <published>2025-02-10T09:37:39.000Z</published>
+    <updated>2025-02-10T09:42:50.249Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;一、题面&quot;&gt;&lt;a href=&quot;#一、题面&quot; class=&quot;headerlink&quot; title=&quot;一、题面&quot;&gt;&lt;/a&gt;一、题面&lt;/h2&gt;&lt;p&gt;地址：&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="存储型XSS" scheme="http://sxksec.cn/tags/%E5%AD%98%E5%82%A8%E5%9E%8BXSS/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>文件解析漏洞</title>
+    <link href="http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/"/>
+    <id>http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/</id>
+    <published>2025-02-10T08:19:37.000Z</published>
+    <updated>2025-02-10T09:34:41.432Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、文件解析漏洞简介&quot;&gt;&lt;a href=&quot;#一、文件解析漏洞简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="文件解析漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>文件包含漏洞</title>
     <link href="http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/"/>
     <id>http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/</id>
     <published>2025-02-10T05:16:55.000Z</published>
-    <updated>2025-02-10T08:02:54.870Z</updated>
+    <updated>2025-02-10T08:20:58.978Z</updated>
     
     
       
@@ -38,6 +98,8 @@
     
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
     
@@ -64,9 +126,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
-    
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
     
     <category term="xss-labs" scheme="http://sxksec.cn/tags/xss-labs/"/>
     
@@ -95,9 +157,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="XSS" scheme="http://sxksec.cn/tags/XSS/"/>
-    
     <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="XSS" scheme="http://sxksec.cn/tags/XSS/"/>
     
   </entry>
   
@@ -123,11 +185,11 @@
     <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
     
     
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="upload-labs" scheme="http://sxksec.cn/tags/upload-labs/"/>
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
@@ -154,9 +216,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
-    
     <category term="二次渲染绕过" scheme="http://sxksec.cn/tags/%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/"/>
+    
+    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
@@ -418,13 +480,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
+    
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
@@ -542,64 +604,6 @@
     <category term="ssh公私钥认证" scheme="http://sxksec.cn/tags/ssh%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81/"/>
     
     <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>redis未授权访问漏洞</title>
-    <link href="http://sxksec.cn/2025/01/08/lou-dong-zhi-shi-ku/redis-wei-shou-quan-fang-wen-lou-dong/"/>
-    <id>http://sxksec.cn/2025/01/08/lou-dong-zhi-shi-ku/redis-wei-shou-quan-fang-wen-lou-dong/</id>
-    <published>2025-01-08T03:25:58.000Z</published>
-    <updated>2025-01-08T10:19:47.871Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、概述&quot;&gt;&lt;a href=&quot;#一、概述&quot; class=&quot;headerlink&quot; title=&quot;一、概述&quot;&gt;&lt;/a&gt;一、概述&lt;/h1&gt;&lt;h2 id=&quot;1-1-漏洞简介&quot;&gt;&lt;a href=&quot;#1-1-漏洞简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="redis未授权访问" scheme="http://sxksec.cn/tags/redis%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/"/>
-    
-    <category term="未授权访问" scheme="http://sxksec.cn/tags/%E6%9C%AA%E6%8E%88%E6%9D%83%E8%AE%BF%E9%97%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>MSF-Metasploit</title>
-    <link href="http://sxksec.cn/2025/01/07/gong-fang-gong-ju-ku/msf-metasploit/"/>
-    <id>http://sxksec.cn/2025/01/07/gong-fang-gong-ju-ku/msf-metasploit/</id>
-    <published>2025-01-07T05:37:21.000Z</published>
-    <updated>2025-01-17T08:43:02.834Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Metasploit-简介&quot;&gt;&lt;a href=&quot;#一、Metasploit-简介&quot; class=&quot;headerlink&quot; title=&quot;一、Metasploit 简介&quot;&gt;&lt;/a&gt;一、Metasploit 简介&lt;/h1&gt;&lt;p&gt;Metasploit</summary>
-        
-      
-    
-    
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
-    
-    <category term="MSF" scheme="http://sxksec.cn/tags/MSF/"/>
-    
-    <category term="Metasploit Framework" scheme="http://sxksec.cn/tags/Metasploit-Framework/"/>
     
   </entry>
   

