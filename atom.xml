@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-10T09:42:50.249Z</updated>
+  <updated>2025-02-10T09:50:33.591Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="http://sxksec.cn/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/"/>
     <id>http://sxksec.cn/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/</id>
     <published>2025-02-10T09:37:39.000Z</published>
-    <updated>2025-02-10T09:42:50.249Z</updated>
+    <updated>2025-02-10T09:50:33.591Z</updated>
     
     
       
@@ -216,9 +216,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="二次渲染绕过" scheme="http://sxksec.cn/tags/%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/"/>
-    
     <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="二次渲染绕过" scheme="http://sxksec.cn/tags/%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/"/>
     
   </entry>
   
@@ -480,13 +480,13 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/categories/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     
+    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
+    
     <category term="webshell管理" scheme="http://sxksec.cn/tags/webshell%E7%AE%A1%E7%90%86/"/>
     
     <category term="哥斯拉" scheme="http://sxksec.cn/tags/%E5%93%A5%E6%96%AF%E6%8B%89/"/>
     
     <category term="Godzilla" scheme="http://sxksec.cn/tags/Godzilla/"/>
-    
-    <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
   </entry>
   
