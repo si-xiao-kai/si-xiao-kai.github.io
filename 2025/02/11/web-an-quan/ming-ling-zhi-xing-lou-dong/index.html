@@ -413,14 +413,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.5k
+                    3.9k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    9 分
+                    14 分
                 </div>
                 
 
@@ -608,11 +608,11 @@
 <h2 id="3-4-getshell"><a href="#3-4-getshell" class="headerlink" title="3.4 getshell"></a>3.4 getshell</h2><p>通过写入一个存在代码注入漏洞的php脚本，如一句话木马。</p>
 <p>然后用菜刀 蚁剑等连接，即可getshell，控制整个网站甚至服务器。</p>
 <h2 id="3-5-Linux命令执行逻辑"><a href="#3-5-Linux命令执行逻辑" class="headerlink" title="3.5 Linux命令执行逻辑"></a>3.5 Linux命令执行逻辑</h2><ol>
-<li>cmd1 | cmd2 (|管道操作符)<br>将cmd1的结果输出给cmd2 </li>
-<li>cmd1 &amp; cmd2 (&amp;和号操作符)<br>让命令在后台运行 </li>
-<li>cmd1 ; cmd2 (; 分号操作符)<br>执行多条命令。 </li>
-<li>cmd1 &amp;&amp; cmd2 (&amp;&amp; 与操作符) -【两个成功才是真成功】<br>只有cmd1命令执行成功后，才会执行cmd2。 </li>
-<li>cmd1 || cmd2 (|| 或操作符) -【两个失败才是真失败】<br>cmd1执行失败，才会执行cmd2。</li>
+<li>cmd1 | cmd2 (|管道操作符)<br>  将cmd1的结果输出给cmd2 </li>
+<li>cmd1 &amp; cmd2 (&amp;和号操作符)<br>  让命令在后台运行 </li>
+<li>cmd1 ; cmd2 (; 分号操作符)<br>  执行多条命令。 </li>
+<li>cmd1 &amp;&amp; cmd2 (&amp;&amp; 与操作符) -【两个成功才是真成功】<br>  只有cmd1命令执行成功后，才会执行cmd2。 </li>
+<li>cmd1 || cmd2 (|| 或操作符) -【两个失败才是真失败】<br>  cmd1执行失败，才会执行cmd2。</li>
 </ol>
 <h1 id="四、防御方法"><a href="#四、防御方法" class="headerlink" title="四、防御方法"></a>四、防御方法</h1><h2 id="4-1-禁用函数"><a href="#4-1-禁用函数" class="headerlink" title="4.1 禁用函数"></a>4.1 禁用函数</h2><p>尽量减少命令执行函数的使用，并在php.ini disable_functions 中禁用</p>
 <p>例如：</p>
@@ -704,6 +704,86 @@ cat<span class="token operator">&lt;</span>text<span aria-hidden="true" class="l
 ca<span class="token variable"><span class="token variable">$(</span><span class="token builtin class-name">echo</span> <span class="token string">"dAo="</span><span class="token operator">|</span>base64 <span class="token parameter variable">-d</span><span class="token variable">)</span></span> text <span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>命令执行漏洞是指应用程序在执行系统命令时，由于未对用户输入进行严格过滤和验证，导致攻击者能够通过构造恶意输入，注入并执行任意系统命令的一种安全漏洞。攻击者利用该漏洞可以获取系统信息、修改系统配置、上传和下载文件等，严重威胁系统的安全性和稳定性。防范命令执行漏洞的关键在于对用户输入进行严格的过滤和验证，避免将用户输入直接拼接到系统命令中，同时使用安全的API或函数来执行系统命令，并限制命令执行的权限。</p>
+<h1 id="附-windows常用变量"><a href="#附-windows常用变量" class="headerlink" title="附:windows常用变量"></a>附:windows常用变量</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">%APPDATA% <span class="token builtin class-name">:</span>  列出应用程序数据的默认存放位置。
+%CD% <span class="token builtin class-name">:</span>  列出当前目录。
+%CLIENTNAME% <span class="token builtin class-name">:</span>  列出联接到终端服务会话时客户端的NETBIOS名。
+%CMDCMDLINE% <span class="token builtin class-name">:</span>  列出启动当前cmd.exe所使用的命令行。
+%CMDEXTVERSION% <span class="token builtin class-name">:</span>  命令出当前命令处理程序扩展版本号。
+%CommonProgramFiles% <span class="token builtin class-name">:</span>  列出了常用文件的文件夹路径。
+%COMPUTERNAME% <span class="token builtin class-name">:</span>  列出了计算机名。 
+%COMSPEC% <span class="token builtin class-name">:</span>  列出了可执行命令外壳（命令处理程序）的路径。
+%DATE% <span class="token builtin class-name">:</span>  列出当前日期。
+%ERRORLEVEL% <span class="token builtin class-name">:</span>  列出了最近使用的命令的错误代码。
+%HOMEDRIVE% <span class="token builtin class-name">:</span>  列出与用户主目录所在的驱动器盘符。
+%HOMEPATH% <span class="token builtin class-name">:</span>  列出用户主目录的完整路径。
+%HOMESHARE% <span class="token builtin class-name">:</span>  列出用户共享主目录的网络路径。
+%LOGONSEVER% <span class="token builtin class-name">:</span>  列出有效的当前登录会话的域名控制器名。
+%NUMBER_OF_PROCESSORS% <span class="token builtin class-name">:</span>  列出了计算机安装的处理器数。
+%OS% <span class="token builtin class-name">:</span>  列出操作系统的名字。<span class="token punctuation">(</span>Windows XP 和 Windows <span class="token number">2000</span> 列为 Windows_NT.<span class="token punctuation">)</span>
+%Path% <span class="token builtin class-name">:</span>  列出了可执行文件的搜索路径。
+%PATHEXT% <span class="token builtin class-name">:</span>  列出操作系统认为可被执行的文件扩展名。 
+%PROCESSOR_ARCHITECTURE% <span class="token builtin class-name">:</span>  列出了处理器的芯片架构。
+%PROCESSOR_IDENTFIER% <span class="token builtin class-name">:</span>  列出了处理器的描述。
+%PROCESSOR_LEVEL% <span class="token builtin class-name">:</span>  列出了计算机的处理器的型号。 
+%PROCESSOR_REVISION% <span class="token builtin class-name">:</span>  列出了处理器的修订号。
+%ProgramFiles% <span class="token builtin class-name">:</span>  列出了Program Files文件夹的路径。
+%PROMPT% <span class="token builtin class-name">:</span>  列出了当前命令解释器的命令提示设置。
+%<span class="token environment constant">RANDOM</span>% <span class="token builtin class-name">:</span>  列出界于0 和 <span class="token number">32767</span>之间的随机十进制数。
+%SESSIONNAME% <span class="token builtin class-name">:</span>  列出连接到终端服务会话时的连接和会话名。
+%SYSTEMDRIVE% <span class="token builtin class-name">:</span>  列出了Windows启动目录所在驱动器。
+%SYSTEMROOT% <span class="token builtin class-name">:</span>  列出了Windows启动目录的位置。
+%TEMP% and %TMP% <span class="token builtin class-name">:</span>  列出了当前登录的用户可用应用程序的默认临时目录。
+%TIME% <span class="token builtin class-name">:</span>  列出当前时间。
+%USERDOMAIN% <span class="token builtin class-name">:</span>  列出了包含用户帐号的域的名字。
+%USERNAME% <span class="token builtin class-name">:</span>  列出当前登录的用户的名字。
+%USERPROFILE% <span class="token builtin class-name">:</span>  列出当前用户Profile文件位置。
+%WINDIR% <span class="token builtin class-name">:</span>  列出操作系统目录的位置。  
+%ALLUSERSPROFILE% 本地 返回“所有用户”配置文件的位置。 
+%APPDATA% 本地 返回默认情况下应用程序存储数据的位置。 
+%CD% 本地 返回当前目录字符串。 
+%CMDCMDLINE% 本地 返回用来启动当前的 Cmd.exe 的准确命令行。 
+%CMDEXTVERSION% 系统 返回当前的“命令处理程序扩展”的版本号。 
+%COMPUTERNAME%  系统 返回计算机的名称。 
+%COMSPEC%  系统 返回命令行解释器可执行程序的准确路径。 
+%DATE%  系统 返回当前日期。使用与 <span class="token function">date</span> /t 命令相同的格式。由 Cmd.exe 生成。有关 <span class="token function">date</span> 命令的详细信息，请参阅 Date。 
+%ERRORLEVEL%  系统 返回上一条命令的错误代码。通常用非零值表示错误。 
+%HOMEDRIVE%  系统 返回连接到用户主目录的本地工作站驱动器号。基于主目录值而设置。用户主目录是在“本地用户和组”中指定的。 
+%HOMEPATH%  系统 返回用户主目录的完整路径。基于主目录值而设置。用户主目录是在“本地用户和组”中指定的。 
+%HOMESHARE%  系统 返回用户的共享主目录的网络路径。基于主目录值而设置。用户主目录是在“本地用户和组”中指定的。 
+%LOGONSERVER%  本地 返回验证当前登录会话的域控制器的名称。 
+%NUMBER_OF_PROCESSORS%  系统 指定安装在计算机上的处理器的数目。 
+%OS%  系统 返回操作系统名称。Windows <span class="token number">2000</span> 显示其操作系统为 Windows_NT。 
+%<span class="token environment constant">PATH</span>% 系统 指定可执行文件的搜索路径。 
+%PATHEXT% 系统 返回操作系统认为可执行的文件扩展名的列表。 
+%PROCESSOR_ARCHITECTURE%  系统 返回处理器的芯片体系结构。值：x86 或 IA64（基于 Itanium）。 
+%PROCESSOR_IDENTFIER% 系统 返回处理器说明。 
+%PROCESSOR_LEVEL%  系统 返回计算机上安装的处理器的型号。 
+%PROCESSOR_REVISION% 系统 返回处理器的版本号。 
+%PROMPT% 本地 返回当前解释程序的命令提示符设置。由 Cmd.exe 生成。 
+%<span class="token environment constant">RANDOM</span>% 系统 返回 <span class="token number">0</span> 到 <span class="token number">32767</span> 之间的任意十进制数字。由 Cmd.exe 生成。 
+%SYSTEMDRIVE% 系统 返回包含 Windows server operating system 根目录（即系统根目录）的驱动器。 
+%SYSTEMROOT%  系统 返回 Windows server operating system 根目录的位置。 
+%TEMP% 和 %TMP% 系统和用户 返回对当前登录用户可用的应用程序所使用的默认临时目录。有些应用程序需要 TEMP，而其他应用程序则需要 TMP。 
+%TIME% 系统 返回当前时间。使用与 <span class="token function">time</span> /t 命令相同的格式。由 Cmd.exe 生成。有关 <span class="token function">time</span> 命令的详细信息，请参阅 Time。 
+%USERDOMAIN% 本地 返回包含用户帐户的域的名称。 
+%USERNAME% 本地 返回当前登录的用户的名称。 
+%USERPROFILE% 本地 返回当前用户的配置文件的位置。 
+%WINDIR% 系统 返回操作系统目录的位置。
+%allusersprofile%--------------------所有用户的profile路径
+%Userprofile%-----------------------当前用户的配置文件目录
+%Appdata%--------------------------当前用户的应用程序路径
+%commonprogramfiles%-------------应用程序公用的文件路径
+%homedrive%------------------------当前用户的主盘
+%Homepath%------------------------当前用户的主目录
+%programfiles%----------------------应用程序的默认安装目录
+%systemdrive%----------------------系统所在的盘符
+%systemroot%-----------------------系统所在的目录
+%windir%----------------------------同上，总是跟systemroot一样
+%tmp%------------------------------当前用户的临时目录
+%temp%-----------------------------同上临时目录<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
                 
             </div>
@@ -1106,7 +1186,7 @@ ca<span class="token variable"><span class="token variable">$(</span><span class
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">219.2k</span>
+                        class="white-color">220.5k</span>
             
             
             
