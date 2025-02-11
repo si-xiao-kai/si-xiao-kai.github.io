@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-10T09:50:33.591Z</updated>
+  <updated>2025-02-11T03:19:44.604Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>跨站请求伪造漏洞CSRF</title>
+    <link href="http://sxksec.cn/2025/02/11/web-an-quan/kua-zhan-qing-qiu-wei-zao-lou-dong-csrf/"/>
+    <id>http://sxksec.cn/2025/02/11/web-an-quan/kua-zhan-qing-qiu-wei-zao-lou-dong-csrf/</id>
+    <published>2025-02-11T02:15:58.000Z</published>
+    <updated>2025-02-11T03:19:44.604Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、CSRF概述&quot;&gt;&lt;a href=&quot;#一、CSRF概述&quot; class=&quot;headerlink&quot; title=&quot;一、CSRF概述&quot;&gt;&lt;/a&gt;一、CSRF概述&lt;/h1&gt;&lt;p&gt;跨站请求伪造(Cross- site requestforgery,</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="CSRF" scheme="http://sxksec.cn/tags/CSRF/"/>
+    
+    <category term="跨站请求伪造" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82%E4%BC%AA%E9%80%A0/"/>
+    
+  </entry>
   
   <entry>
     <title>web-buuoj-(BUU XSS COURSE1)</title>
@@ -52,7 +81,7 @@
     <link href="http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/"/>
     <id>http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/</id>
     <published>2025-02-10T08:19:37.000Z</published>
-    <updated>2025-02-10T09:34:41.432Z</updated>
+    <updated>2025-02-10T10:07:43.467Z</updated>
     
     
       
@@ -216,9 +245,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
-    
     <category term="二次渲染绕过" scheme="http://sxksec.cn/tags/%E4%BA%8C%E6%AC%A1%E6%B8%B2%E6%9F%93%E7%BB%95%E8%BF%87/"/>
+    
+    <category term="文件上传漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   
@@ -540,9 +569,9 @@
     <category term="内网攻防" scheme="http://sxksec.cn/categories/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     
-    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
-    
     <category term="隧道搭建" scheme="http://sxksec.cn/tags/%E9%9A%A7%E9%81%93%E6%90%AD%E5%BB%BA/"/>
+    
+    <category term="内网攻防" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/"/>
     
     <category term="Earthworm" scheme="http://sxksec.cn/tags/Earthworm/"/>
     
@@ -574,36 +603,6 @@
     <category term="react开发" scheme="http://sxksec.cn/tags/react%E5%BC%80%E5%8F%91/"/>
     
     <category term="AntDesignMobile" scheme="http://sxksec.cn/tags/AntDesignMobile/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>ssh服务公私钥认证</title>
-    <link href="http://sxksec.cn/2025/01/08/xi-tong-yun-wei/ssh-fu-wu-gong-si-yao-ren-zheng/"/>
-    <id>http://sxksec.cn/2025/01/08/xi-tong-yun-wei/ssh-fu-wu-gong-si-yao-ren-zheng/</id>
-    <published>2025-01-08T07:46:00.000Z</published>
-    <updated>2025-01-08T10:21:02.019Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;在使用 SSH（Secure Shell）进行远程登录时，指定使用公钥-私钥对的方式进行认证，可以提高安全性并避免输入密码。以下是配置和使用 SSH 公钥-私钥对的步骤：&lt;/p&gt;
-&lt;h1 id=&quot;1-生成-SSH-密钥对&quot;&gt;&lt;a href=&quot;#1-生成-SSH-密钥对&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
-    
-    <category term="ssh服务" scheme="http://sxksec.cn/tags/ssh%E6%9C%8D%E5%8A%A1/"/>
-    
-    <category term="ssh公私钥认证" scheme="http://sxksec.cn/tags/ssh%E5%85%AC%E7%A7%81%E9%92%A5%E8%AE%A4%E8%AF%81/"/>
-    
-    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
     
   </entry>
   
