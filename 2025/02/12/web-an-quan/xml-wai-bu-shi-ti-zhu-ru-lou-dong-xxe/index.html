@@ -615,11 +615,13 @@ expect：处理交互式的流，可用来执行命令，但需要先安装相�
 <h3 id="5-3-2-无回显xxe漏洞利用"><a href="#5-3-2-无回显xxe漏洞利用" class="headerlink" title="5.3.2 无回显xxe漏洞利用"></a>5.3.2 无回显xxe漏洞利用</h3><p>在没有回显的时候，我们将读取的文件带出来。将文件赋给实体后带着访问我们的vps然后在日志文件中就能看到我们读取的文件了。</p>
 <p>OOB(Out-Of-Band)：我们可以使用 Blind XXE 漏洞来构建一条外带数据OOB(Out-Of-Band)通道来读取数据。</p>
 <p>错误获取数据：通过构造dtd然后从错误中获取数据。</p>
-<p>通过OOB进行目录浏览和任意文件读取：</p>
+<ul>
+<li>通过OOB进行目录浏览和任意文件读取：</li>
+</ul>
 <p>注：Linux机器可以目录浏览和任意文件读取，Windows机器只能任意文件读取。</p>
 <p>动机：Blind XXE是由于虽然目标服务器加载了XML数据，但是不回显读取的数据。那么，我们是否可以想其他的办法，将服务器读取的数据传送给我们的VPS呢？</p>
 <p>VPS的操作：</p>
-<p>首先，在我们的VPS上搭建一个Http服务，然后创建一个xml.dtd文件，内容如下</p>
+<p>首先，在我们的VPS上搭建一个http服务，然后创建一个xml.dtd文件，内容如下</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/12/web-an-quan/xml-wai-bu-shi-ti-zhu-ru-lou-dong-xxe/image-20250212163037495.png" style="zoom:53%;">
 
 <p>然后在VPS上用python在2121端口起另一个http服务：</p>
@@ -997,12 +999,12 @@ http://url/file.txt；<span aria-hidden="true" class="line-numbers-rows"><span><
                         <span class="chip bg-color">web安全</span>
                     </a>
                     
-                    <a href="/tags/CTF%E5%AE%9E%E6%88%98/">
-                        <span class="chip bg-color">CTF实战</span>
-                    </a>
-                    
                     <a href="/tags/SSRF/">
                         <span class="chip bg-color">SSRF</span>
+                    </a>
+                    
+                    <a href="/tags/CTF%E5%AE%9E%E6%88%98/">
+                        <span class="chip bg-color">CTF实战</span>
                     </a>
                     
                     <a href="/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
@@ -1150,7 +1152,7 @@ http://url/file.txt；<span aria-hidden="true" class="line-numbers-rows"><span><
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">227.8k</span>
+                        class="white-color">229.4k</span>
             
             
             
