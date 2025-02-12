@@ -366,12 +366,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
-                                <span class="chip bg-color">密码学算法安全</span>
-                            </a>
-                        
                             <a href="/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
                                 <span class="chip bg-color">哈希长度扩展攻击</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">密码学算法安全</span>
                             </a>
                         
                             <a href="/tags/md5%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
@@ -413,14 +413,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    10 分
+                    11 分
                 </div>
                 
 
@@ -586,7 +586,7 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
 <p>将H1当作某个明文（这个明文我们需要伪造）中的第一个数据块（512bit）的散列值。根据md5算法以每512bit为数据块计算散列值的原理，当计算第二个数据块的散列值时，会以H1作为ABCD寄存器的缓存值。</p>
 <p>我们如果能把字符串扩展到512bit以上，并保证第一段的md5运算结果不改变，那么我们在不知道第一段的加密内容的情况下仍然能够求得整体的md5值。此所谓”扩展”的含义。</p>
 <h3 id="2-3-4-攻击实施"><a href="#2-3-4-攻击实施" class="headerlink" title="2.3.4 攻击实施"></a>2.3.4 攻击实施</h3><h4 id="1）模仿md5算法的填充"><a href="#1）模仿md5算法的填充" class="headerlink" title="1）模仿md5算法的填充"></a>1）模仿md5算法的填充</h4><p>所以我们首先要做的就是”模仿”md5算法的补位方式来进行补位。</p>
-<p>????????????????????admin的长度=20+5=25个byte25*8=200bit</p>
+<p>????????????????????admin的长度=20+5=25个byte=25*8=200bit</p>
 <p>表示成16进制即为：0xC8=12*16+8=200</p>
 <p>所以填充的结果如下（称为M1）：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">【????????????????????admin】【8000000<span class="token punctuation">..</span><span class="token punctuation">..</span>000000】【c800000000000000】<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -594,7 +594,7 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
 <p>【（????????????????????admin）】为消息内容。</p>
 <p>【8000000….000000】为填充值。</p>
 <p>【c800000000000000】为长度填充。</p>
-<p>如此一来，M1经过md5算法计算的结果，跟md5（????????????????????admin）计算的结果是一致的。我们知识作了md5算法本身就该做的事情。</p>
+<p>如此一来，M1经过md5算法计算的结果，跟md5（????????????????????admin）计算的结果是一致的。我们只是作了md5算法本身就该做的事情。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">md5<span class="token punctuation">(</span>M1<span class="token punctuation">)</span><span class="token operator">==</span><span class="token operator">=</span>md5<span class="token punctuation">(</span>????????????????????admin<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>如前文所述，实际上在本实例中上述值我们是知道的，eg:ae8b63d93b14eadd1adb347c9e26595a（H1）</p>
@@ -612,7 +612,7 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
 <h3 id="2-3-5-修改cookie获取flag"><a href="#2-3-5-修改cookie获取flag" class="headerlink" title="2.3.5 修改cookie获取flag"></a>2.3.5 修改cookie获取flag</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">username</span><span class="token operator">=</span>M1+fakeadmin
 <span class="token assign-left variable">session</span><span class="token operator">=</span>bdbe1c6fb9d921e4ba3d9d4072b702f7<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h1 id="三、攻击工具"><a href="#三、攻击工具" class="headerlink" title="三、攻击工具"></a>三、攻击工具</h1><p><a target="_blank" rel="noopener" href="https://github.com/iagox86/hash_extender">https://github.com/iagox86/hash_extender</a> 【hash_extender】</p>
+<h1 id="三、攻击工具"><a href="#三、攻击工具" class="headerlink" title="三、攻击工具"></a>三、攻击工具</h1><h2 id="3-1-hash-extender"><a href="#3-1-hash-extender" class="headerlink" title="3.1 hash_extender"></a>3.1 hash_extender</h2><p><a target="_blank" rel="noopener" href="https://github.com/iagox86/hash_extender">https://github.com/iagox86/hash_extender</a> 【hash_extender】</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token parameter variable">-d</span> 被扩展的明文
 <span class="token parameter variable">-a</span> 附加的到原来hash的padding
 <span class="token parameter variable">-l</span> 盐的长度
@@ -621,7 +621,36 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
 --out-data-format 输出格式
 <span class="token parameter variable">--quiet</span> 仅输出必要的值<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="3-2-hashpump"><a href="#3-2-hashpump" class="headerlink" title="3.2 hashpump"></a>3.2 hashpump</h2><h3 id="3-2-1-安装"><a href="#3-2-1-安装" class="headerlink" title="3.2.1 安装"></a>3.2.1 安装</h3><h4 id="1）Mac"><a href="#1）Mac" class="headerlink" title="1）Mac"></a>1）Mac</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> hashpump<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<p>报错：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Error: hashpump has been disabled because it has a removed upstream repository<span class="token operator">!</span> It was disabled on <span class="token number">2024</span>-09-16.<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="2）kali"><a href="#2）kali" class="headerlink" title="2）kali"></a>2）kali</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">apt-get</span> update
+<span class="token function">sudo</span> <span class="token function">apt-get</span> <span class="token function">install</span> libssl-dev
+//git clone https://github.com/bwall/HashPump.git 这个地址已经不存在了
+<span class="token function">git</span> clone https://github.com/2H-K/hashpumpy_changed
+<span class="token builtin class-name">cd</span> hashpumpy_changed
+<span class="token function">make</span>
+<span class="token function">make</span> <span class="token function">install</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/11/29/mi-ma-xue-suan-fa-an-quan/ha-xi-chang-du-kuo-zhan-gong-ji/%E6%88%AA%E5%B1%8F2025-02-12%2014.12.58.png">
+
+<h3 id="3-2-2-使用"><a href="#3-2-2-使用" class="headerlink" title="3.2.2 使用"></a>3.2.2 使用</h3><ul>
+<li><code>-s</code> 或 <code>--signature</code>：从已知消息中获取的签名（哈希值）。</li>
+<li><code>-d</code> 或 <code>--data</code>：已知消息的数据。</li>
+<li><code>-a</code> 或 <code>--additional</code>：你想要添加到已知消息中的信息。</li>
+<li><code>-k</code> 或 <code>--keylength</code>：用于签署原始消息的密钥的字节长度。</li>
+</ul>
+<h3 id="3-2-2-实战使用"><a href="#3-2-2-实战使用" class="headerlink" title="3.2.2 实战使用"></a>3.2.2 实战使用</h3><p>见本站《web-buuoj-([De1CTF 2019]SSRF Me)》一文。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">┌──<span class="token punctuation">(</span>root💀kali<span class="token punctuation">)</span>-<span class="token punctuation">[</span>~<span class="token punctuation">]</span>
+└─<span class="token comment"># hashpump</span>
+Input Signature: 8100319869013029db5beab17bfa9ba9
+Input Data: scan
+Input Key Length: <span class="token number">24</span>
+Input Data to Add: <span class="token builtin class-name">read</span>
+677ae112e086b6faf3c0f2088773371c
+scan<span class="token punctuation">\</span>x80<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>xe0<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00<span class="token punctuation">\</span>x00read<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
 
@@ -692,12 +721,12 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
-                                    <span class="chip bg-color">密码学算法安全</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
                                     <span class="chip bg-color">哈希长度扩展攻击</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">密码学算法安全</span>
                                 </a>
                             
                                 <a href="/tags/md5%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/">
@@ -818,16 +847,16 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
-                        <span class="chip bg-color">密码学算法安全</span>
-                    </a>
-                    
                     <a href="/tags/padding-oracle%E6%94%BB%E5%87%BB/">
                         <span class="chip bg-color">padding oracle攻击</span>
                     </a>
                     
                     <a href="/tags/web%E5%AE%89%E5%85%A8%E4%B8%AD%E7%9A%84%E5%AF%86%E7%A0%81%E5%AD%A6%E6%94%BB%E5%87%BB/">
                         <span class="chip bg-color">web安全中的密码学攻击</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%AF%86%E7%A0%81%E5%AD%A6%E7%AE%97%E6%B3%95%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">密码学算法安全</span>
                     </a>
                     
                 </div>
@@ -1040,7 +1069,7 @@ md5<span class="token punctuation">(</span>xxxxx+<span class="token string">"pla
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">221.9k</span>
+                        class="white-color">223.9k</span>
             
             
             
