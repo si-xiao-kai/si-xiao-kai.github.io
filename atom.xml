@@ -46,6 +46,33 @@
   </entry>
   
   <entry>
+    <title>反序列化漏洞</title>
+    <link href="http://sxksec.cn/2025/02/13/web-an-quan/fan-xu-lie-hua-lou-dong/"/>
+    <id>http://sxksec.cn/2025/02/13/web-an-quan/fan-xu-lie-hua-lou-dong/</id>
+    <published>2025-02-13T07:21:34.000Z</published>
+    <updated>2025-02-13T08:24:17.630Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、为什么要进行序列化&quot;&gt;&lt;a href=&quot;#一、为什么要进行序列化&quot; class=&quot;headerlink&quot; title=&quot;一、为什么要进行序列化&quot;&gt;&lt;/a&gt;一、为什么要进行序列化&lt;/h1&gt;&lt;p&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="反序列化漏洞" scheme="http://sxksec.cn/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>buuoj-(BUU-XXE-COURSE-1)</title>
     <link href="http://sxksec.cn/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/"/>
     <id>http://sxksec.cn/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/</id>
@@ -68,9 +95,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -97,9 +124,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
-    
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
     
   </entry>
   
@@ -126,9 +153,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="SSRF" scheme="http://sxksec.cn/tags/SSRF/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="哈希长度扩展攻击" scheme="http://sxksec.cn/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
     
@@ -186,9 +213,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -216,9 +243,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -303,11 +330,11 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="SSRF" scheme="http://sxksec.cn/tags/SSRF/"/>
-    
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="服务端跨站请求" scheme="http://sxksec.cn/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82/"/>
+    
+    <category term="SSRF" scheme="http://sxksec.cn/tags/SSRF/"/>
     
   </entry>
   
@@ -365,9 +392,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="存储型XSS" scheme="http://sxksec.cn/tags/%E5%AD%98%E5%82%A8%E5%9E%8BXSS/"/>
     
@@ -425,9 +452,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
-    
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
     
   </entry>
   
@@ -539,9 +566,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="xss-labs" scheme="http://sxksec.cn/tags/xss-labs/"/>
     
@@ -570,39 +597,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
-    
     <category term="XSS" scheme="http://sxksec.cn/tags/XSS/"/>
     
-  </entry>
-  
-  <entry>
-    <title>upload-labs-windows靶场搭建</title>
-    <link href="http://sxksec.cn/2025/01/25/web-an-quan/upload-labs-windows-ba-chang-da-jian/"/>
-    <id>http://sxksec.cn/2025/01/25/web-an-quan/upload-labs-windows-ba-chang-da-jian/</id>
-    <published>2025-01-25T13:42:57.000Z</published>
-    <updated>2025-01-26T04:59:14.366Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;本文主要介绍搭建在windows server 2008上搭建upload-labs文件上传漏洞靶场的过程（其他windows系统也类似），记录了一些踩过的坑。&lt;/p&gt;
-&lt;h1 id=&quot;一、环境准备&quot;&gt;&lt;a href=&quot;#一、环境准备&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-    <category term="upload-labs" scheme="http://sxksec.cn/tags/upload-labs/"/>
+    <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
     
   </entry>
   
