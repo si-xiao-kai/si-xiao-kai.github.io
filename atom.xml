@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-18T13:29:54.523Z</updated>
+  <updated>2025-02-19T07:11:20.620Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JSON Web Token</title>
+    <link href="http://sxksec.cn/2025/02/19/ji-chu-zhi-shi-ku/json-web-token/"/>
+    <id>http://sxksec.cn/2025/02/19/ji-chu-zhi-shi-ku/json-web-token/</id>
+    <published>2025-02-19T06:23:45.000Z</published>
+    <updated>2025-02-19T07:11:20.620Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、定义&quot;&gt;&lt;a href=&quot;#一、定义&quot; class=&quot;headerlink&quot; title=&quot;一、定义&quot;&gt;&lt;/a&gt;一、定义&lt;/h1&gt;&lt;p&gt;JWT（JSON Web Token）是一种开放标准（RFC</summary>
+        
+      
+    
+    
+    
+    <category term="基础知识库" scheme="http://sxksec.cn/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="基础知识库" scheme="http://sxksec.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="jwt" scheme="http://sxksec.cn/tags/jwt/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>裸机虚拟化管理系统Esxi</title>
+    <link href="http://sxksec.cn/2025/02/19/xu-ni-hua-ji-zhu/luo-ji-xu-ni-hua-guan-li-xi-tong-esxi/"/>
+    <id>http://sxksec.cn/2025/02/19/xu-ni-hua-ji-zhu/luo-ji-xu-ni-hua-guan-li-xi-tong-esxi/</id>
+    <published>2025-02-19T01:20:08.000Z</published>
+    <updated>2025-02-19T02:14:18.483Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Esxi简介&quot;&gt;&lt;a href=&quot;#一、Esxi简介&quot; class=&quot;headerlink&quot; title=&quot;一、Esxi简介&quot;&gt;&lt;/a&gt;一、Esxi简介&lt;/h1&gt;&lt;p&gt;ESXi（Elastic Sky X</summary>
+        
+      
+    
+    
+    
+    <category term="虚拟化技术" scheme="http://sxksec.cn/categories/%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%80%E6%9C%AF/"/>
+    
+    
+    <category term="虚拟化技术" scheme="http://sxksec.cn/tags/%E8%99%9A%E6%8B%9F%E5%8C%96%E6%8A%80%E6%9C%AF/"/>
+    
+    <category term="Esxi" scheme="http://sxksec.cn/tags/Esxi/"/>
+    
+  </entry>
   
   <entry>
     <title>web-buuoj-(BUU UPLOAD COURSE 1)</title>
@@ -37,11 +91,11 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
+    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
   </entry>
   
@@ -110,7 +164,7 @@
     <link href="http://sxksec.cn/2025/02/14/gong-fang-gong-ju-ku/wu-qi-qing-dan/"/>
     <id>http://sxksec.cn/2025/02/14/gong-fang-gong-ju-ku/wu-qi-qing-dan/</id>
     <published>2025-02-14T02:05:52.000Z</published>
-    <updated>2025-02-18T09:44:35.690Z</updated>
+    <updated>2025-02-19T07:46:11.393Z</updated>
     
     
       
@@ -166,7 +220,7 @@
     <link href="http://sxksec.cn/2025/02/13/zong-he-shen-tou/vulnstack-01-ba-chang-zong-he-shen-tou/"/>
     <id>http://sxksec.cn/2025/02/13/zong-he-shen-tou/vulnstack-01-ba-chang-zong-he-shen-tou/</id>
     <published>2025-02-13T09:02:35.000Z</published>
-    <updated>2025-02-18T08:14:17.983Z</updated>
+    <updated>2025-02-19T03:02:27.881Z</updated>
     
     
       
@@ -355,11 +409,11 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
+    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
   </entry>
   
@@ -541,64 +595,6 @@
     <category term="跨站脚本攻击" scheme="http://sxksec.cn/tags/%E8%B7%A8%E7%AB%99%E8%84%9A%E6%9C%AC%E6%94%BB%E5%87%BB/"/>
     
     <category term="存储型XSS" scheme="http://sxksec.cn/tags/%E5%AD%98%E5%82%A8%E5%9E%8BXSS/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文件解析漏洞</title>
-    <link href="http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/"/>
-    <id>http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-jie-xi-lou-dong/</id>
-    <published>2025-02-10T08:19:37.000Z</published>
-    <updated>2025-02-10T10:07:43.467Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、文件解析漏洞简介&quot;&gt;&lt;a href=&quot;#一、文件解析漏洞简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="文件解析漏洞" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E8%A7%A3%E6%9E%90%E6%BC%8F%E6%B4%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>文件包含漏洞</title>
-    <link href="http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/"/>
-    <id>http://sxksec.cn/2025/02/10/web-an-quan/wen-jian-bao-han-lou-dong/</id>
-    <published>2025-02-10T05:16:55.000Z</published>
-    <updated>2025-02-10T08:20:58.978Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、文件包含漏洞概述&quot;&gt;&lt;a href=&quot;#一、文件包含漏洞概述&quot; class=&quot;headerlink&quot; title=&quot;一、文件包含漏洞概述&quot;&gt;&lt;/a&gt;一、文件包含漏洞概述&lt;/h1&gt;&lt;h2 id=&quot;1-1-文件包含的概念&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
