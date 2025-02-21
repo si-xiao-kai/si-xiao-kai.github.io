@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>yaklab-逻辑漏洞</title>
+      <link href="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/"/>
+      <url>/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/</url>
+      
+        <content type="html"><![CDATA[<h1 id="一、会话固定漏洞"><a href="#一、会话固定漏洞" class="headerlink" title="一、会话固定漏洞"></a>一、会话固定漏洞</h1><p>会话固定漏洞是指网站或应用程序在用户登录时分配的会话标识符（Session ID）是固定不变的，而不是在每次会话中都重新生成。攻击者可以利用这个固定的会话标识符，轻松地接管用户的会话，执行未经授权的操作，甚至冒充合法用户。</p><p>靶场链接：<a href="https://yaklang.com/Yaklab/vulinbox/mall/01unsafe-sessionid">https://yaklang.com/Yaklab/vulinbox/mall/01unsafe-sessionid</a></p><h2 id="1-1-示例代码"><a href="#1-1-示例代码" class="headerlink" title="1.1 示例代码"></a>1.1 示例代码</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">// 登陆功能<span class="token punctuation">{</span>    // 省略部分信息    Handler: func<span class="token punctuation">(</span>writer http.ResponseWriter, request *http.Request<span class="token punctuation">)</span> <span class="token punctuation">{</span>        // 省略部分逻辑        // 假设验证通过，返回登录成功消息        response :<span class="token operator">=</span> struct <span class="token punctuation">{</span>            Id      uint   <span class="token variable"><span class="token variable">`</span>json:<span class="token string">"id"</span><span class="token variable">`</span></span>            Success bool   <span class="token variable"><span class="token variable">`</span>json:<span class="token string">"success"</span><span class="token variable">`</span></span>            Message string <span class="token variable"><span class="token variable">`</span>json:<span class="token string">"message"</span><span class="token variable">`</span></span>        <span class="token punctuation">}</span><span class="token punctuation">{</span>            Id:      user.ID,            Success: true,            Message: <span class="token string">"Login successful"</span>,        <span class="token punctuation">}</span>        var sessionID <span class="token operator">=</span> <span class="token string">"fixedSessionID"</span>        // 设置固定的会话标识符        http.SetCookie<span class="token punctuation">(</span>writer, <span class="token operator">&amp;</span>http.Cookie<span class="token punctuation">{</span>            Name:    <span class="token string">"sessionID"</span>,            Value:   sessionID,            Path:    <span class="token string">"/"</span>,            Expires: time.Now<span class="token punctuation">(</span><span class="token punctuation">)</span>.Add<span class="token punctuation">(</span><span class="token number">15</span> * time.Minute<span class="token punctuation">)</span>,        <span class="token punctuation">}</span><span class="token punctuation">)</span>        // 返回登录成功信息        writer.Header<span class="token punctuation">(</span><span class="token punctuation">)</span>.Set<span class="token punctuation">(</span><span class="token string">"Content-Type"</span>, <span class="token string">"application/json"</span><span class="token punctuation">)</span>        err <span class="token operator">=</span> json.NewEncoder<span class="token punctuation">(</span>writer<span class="token punctuation">)</span>.Encode<span class="token punctuation">(</span>response<span class="token punctuation">)</span>        <span class="token keyword">if</span> err <span class="token operator">!=</span> nil <span class="token punctuation">{</span>            writer.WriteHeader<span class="token punctuation">(</span>http.StatusInternalServerError<span class="token punctuation">)</span>            <span class="token builtin class-name">return</span>        <span class="token punctuation">}</span>        writer.WriteHeader<span class="token punctuation">(</span>http.StatusOK<span class="token punctuation">)</span>        <span class="token builtin class-name">return</span>    <span class="token punctuation">}</span>,    RiskDetected: true,<span class="token punctuation">}</span>,<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><h2 id="1-2-攻击示例"><a href="#1-2-攻击示例" class="headerlink" title="1.2 攻击示例"></a>1.2 攻击示例</h2><p>攻击者可以利用固定的会话标识符，在不知晓用户密码的情况下直接将固定的会话ID注入到请求中，绕过登录验证，获取用户的登录状态和权限。攻击者可以在不登录的情况下访问用户的个人信息、执行关键操作，或者冒充用户进行各种恶意操作。</p><ul><li>模拟admin用户正常登录</li></ul><p>访问首页点击登录，模拟admin用户登录，admin/admin。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.28.06.png" style="zoom:50%;"><p>登录成功后会跳转到admin用户个人主页。</p><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">http://127.0.0.1:8787/mall/user/profile?id<span class="token operator">=</span><span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre><p>可以查看我的订单等信息：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.41.57.png" style="zoom:30%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.29.31.png" style="zoom:50%;"><p>网站为用户设置了cookie，其中sessionID字段是用户的会话ID，如果这个会话ID每次设置是固定的（或者是永久有效的），那么其他任何拿到这个固定会话ID的用户，在不知道admin的密码的情况下都可以登录admin的账户。</p><ul><li>攻击者利用获取泄漏的sessionID之后登录网站</li></ul><p>初始状态下攻击者不用登录任何账号。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.32.16.png" style="zoom:50%;"><p>攻击者添加窃取到的SessionID：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.45.23.png" style="zoom:50%;"><p>成功访问访问到admin用户主页：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.47.09.png" style="zoom:30%;"><p>注意：直接带着cookie访问mall/shop/index是不行的。因为cookie中的sessionID是针对用户的。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.55.29.png" style="zoom:40%;"><p>此外网站还存在水平越权漏洞，可以看到id=2，root用户下的个人信息。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2010.53.12.png" style="zoom:40%;"><h2 id="1-3-防御措施"><a href="#1-3-防御措施" class="headerlink" title="1.3 防御措施"></a>1.3 防御措施</h2><p>1.随机生成会话标识符： 在用户登录成功后，应该使用随机生成的会话标识符，并在每次会话中更新会话标识符，而不是使用固定的会话标识符。</p><p>2.设置安全的 Cookie 属性： 在设置 Cookie 时，应该使用 <code>HttpOnly</code> 和 <code>Secure</code> 属性，使得 Cookie 只能通过 HTTP 请求访问（防止通过xss漏洞获取cookie），以及仅在使用 HTTPS 连接时才能传输（防止cookie明文传输被窃取）。</p><p>3.定期更新会话标识符： 应该定期更新会话标识符，例如在用户登录后、密码修改后、用户权限变更后等关键操作之后更新会话标识符，以降低攻击者获取固定会话标识符的机会。</p><p>4.加强会话管理： 对于敏感操作，应该实施额外的会话管理措施，如双因素认证、会话超时机制等，以提高系统的安全性。</p><p>通过以上防御措施，可以有效地防止会话固定漏洞的利用，保护用户的信息安全和系统的稳定性。</p><h1 id="二、价格篡改漏洞"><a href="#二、价格篡改漏洞" class="headerlink" title="二、价格篡改漏洞"></a>二、价格篡改漏洞</h1><p>价格篡改漏洞是指攻击者可以在前端页面中篡改商品价格，并在提交订单时将修改后的价格发送至后端，从而以篡改价格的方式获取商品的更低价格或者执行其他恶意操作。</p><p>靶场链接：<a href="https://yaklang.com/Yaklab/vulinbox/mall/02unsafe-price">https://yaklang.com/Yaklab/vulinbox/mall/02unsafe-price</a></p><h2 id="2-1-攻击实现"><a href="#2-1-攻击实现" class="headerlink" title="2.1 攻击实现"></a>2.1 攻击实现</h2><p>攻击者可以利用浏览器的开发者工具或者其他网络调试工具，在购物车页面中将某些商品的价格进行篡改，例如将高价商品的价格修改为极低的价格。然后攻击者提交篡改后的订单，将修改后的价格发送至后端，后端可能会无条件地接收并处理这些篡改后的价格，导致订单价格与实际商品价格不符。</p><h3 id="2-1-1-提交订单时篡改价格"><a href="#2-1-1-提交订单时篡改价格" class="headerlink" title="2.1.1 提交订单时篡改价格"></a>2.1.1 提交订单时篡改价格</h3><ul><li>一开始购物车和我的订单都是空的</li><li>购物车加入商品</li></ul><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.02.14.png" style="zoom:50%;"><ul><li>点击提交订单，抓包</li></ul><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.02.57.png" style="zoom:50%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.03.21.png" style="zoom:50%;"><p>价格改成0。提交数据截获到响应，订单提交成功。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.03.53.png" style="zoom:50%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.04.37.png" style="zoom:50%;"><p>实现了零元购。</p><h3 id="2-1-2-加入购物车时选改价格"><a href="#2-1-2-加入购物车时选改价格" class="headerlink" title="2.1.2 加入购物车时选改价格"></a>2.1.2 加入购物车时选改价格</h3><p>点击加入购物车</p><p>第一个请求和响应：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.10.16.png" style="zoom:50%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.10.57.png" style="zoom:50%;"><p>第二个请求和响应：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.11.31.png" style="zoom:50%;"><p>篡改商品价格，89-&gt;0</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.12.08.png" style="zoom:50%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.12.26.png" style="zoom:40%;"><p>购物车中商品的价格为0，后续直接提交订单也实现了零元购。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2015.13.10.png" style="zoom:50%;"><h2 id="2-2-防御措施"><a href="#2-2-防御措施" class="headerlink" title="2.2 防御措施"></a>2.2 防御措施</h2><ol><li>价格校验： 在前端页面提交订单前，应该对订单中商品的价格进行校验，确保订单中的价格与后端数据库中的价格一致。</li><li>防篡改机制： 在前端页面和后端接口中应该加入防篡改机制，例如在前端页面对价格进行加密或者签名处理，后端在接收到订单后进行价格解密或者验签，确保订单中的价格没有被篡改。</li><li>双重价格校验： 在后端接收到订单后，应该对订单中的价格进行二次校验，确保订单中的价格与商品的实际价格一致，避免篡改后的价格被接受。</li><li>限制价格修改权限： 对于敏感操作或者需要修改价格的功能，应该限制只有特定的管理员或者权限较高的用户才能执行，避免普通用户对价格进行任意修改。</li></ol><h1 id="三、未授权访问漏洞"><a href="#三、未授权访问漏洞" class="headerlink" title="三、未授权访问漏洞"></a>三、未授权访问漏洞</h1><p>未授权访问漏洞是指在应用程序中，没有对用户的访问权限进行正确验证和控制，导致攻击者可以通过越权操作或者遍历用户标识符等手段访问敏感信息或执行未经授权的操作。这个漏洞的存在对系统的安全性构成了潜在威胁。</p><h2 id="3-1-攻击实现"><a href="#3-1-攻击实现" class="headerlink" title="3.1 攻击实现"></a>3.1 攻击实现</h2><p>攻击者可以利用未授权访问漏洞，通过构造恶意请求，直接传递其他用户的ID参数，绕过访问控制逻辑，获取到其他用户的个人信息。攻击者可以通过遍历用户ID等手段，获取到系统中的所有用户信息，甚至可以获取到管理员或特权用户的信息。</p><p>用admin/admin账号登录系统，修改id参数为2：</p><p>直接水平越权到root用户：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.21.40.png" style="zoom:50%;"><p>可以越权操作root用户的订单、购物车等个人信息。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.22.15.png" style="zoom:50%;"><h2 id="3-2-防御措施"><a href="#3-2-防御措施" class="headerlink" title="3.2 防御措施"></a>3.2 防御措施</h2><ol><li>权限验证： 在访问敏感资源或执行敏感操作之前，应该对用户的身份和权限进行严格验证，确保用户具有合法的访问权限。</li><li>最小权限原则： 用户的访问权限应该最小化，即每个用户只能访问其所需的资源和数据，不应该具有无关资源的访问权限。</li><li>参数验证： 对于从客户端接收的参数，应该进行严格的验证和过滤，防止恶意用户通过篡改参数来进行未授权访问。</li><li>敏感数据保护： 对于敏感数据和资源，应该加强访问控制，采用加密、身份认证、访问日志等方式加强保护，防止未经授权的访问和操作。</li><li>错误信息处理： 在程序中对错误信息进行处理时，应该避免将敏感信息返回给客户端，防止攻击者利用错误信息获取系统信息和漏洞利用路径。</li></ol><p>通过以上防御措施，可以有效地防止未授权访问漏洞的发生，保障系统的安全性和稳定性。</p><h1 id="四、库存量溢出漏洞"><a href="#四、库存量溢出漏洞" class="headerlink" title="四、库存量溢出漏洞"></a>四、库存量溢出漏洞</h1><p>库存量溢出漏洞是指在系统中对商品库存量进行管理时，由于缺乏有效的限制或验证机制，导致在购物车或库存管理功能中，攻击者可以通过恶意操作向购物车中添加大量商品，超过系统预期的处理能力和库存容量，从而引发系统性能问题或崩溃。</p><h2 id="4-1-攻击实现"><a href="#4-1-攻击实现" class="headerlink" title="4.1 攻击实现"></a>4.1 攻击实现</h2><p>攻击者可以利用自动化脚本或手动操作，重复点击加入购物车按钮或频繁调用购物车接口，向购物车中添加大量商品，超过系统处理能力和库存容量。</p><p>这可能导致以下问题：</p><ul><li>系统性能问题： 大量商品添加到购物车可能导致系统负载急剧增加，影响系统的响应速度和性能。</li><li>系统崩溃： 超出系统处理能力的大量请求可能导致系统崩溃或服务不可用。</li><li>库存错误： 系统未能及时更新库存信息，可能导致实际库存与系统记录不一致，进而影响后续的订单处理和库存管理。</li></ul><p>admin/admin用户登录</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.33.17.png" style="zoom:50%;"><p>这个商品库存是10，但是加入购物车时可以添加和下单超出数量的物品。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.36.39.png" style="zoom:50%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.37.02.png" style="zoom:50%;"><p>并且订单能够提交成功。</p><p>也可以用抓包的方式修改：</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.38.10.png" style="zoom:50%;"><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.38.55.png" style="zoom:50%;"><p>这个攻击导致攻击者能够下单远超库存量的货物。</p><img src="/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/%E6%88%AA%E5%B1%8F2025-02-21%2017.40.36.png" style="zoom:50%;"><p>并且首页的库存也没有更新，存在严重的逻辑问题。</p><h2 id="4-2-防御措施"><a href="#4-2-防御措施" class="headerlink" title="4.2 防御措施"></a>4.2 防御措施</h2><p>为防止库存量溢出漏洞的发生，可以采取以下防御措施：</p><ol><li>限制商品数量： 在后端接口中对添加商品数量进行合理限制，例如设置单次添加商品数量上限，或者限制用户添加商品的频率。</li><li>频率限制： 在前端页面或后端接口中设置用户添加商品的频率限制，防止用户连续添加大量商品。</li><li>实时库存更新： 确保系统能够实时更新库存信息，保持库存量与系统记录的一致性。</li><li>监控和报警： 设置系统监控机制，及时发现异常的购物车操作行为，进行预警和处理，防止异常操作对系统造成影响。</li></ol><p>通过以上防御措施，可以有效预防库存量溢出漏洞的发生，提升系统的稳定性和安全性。</p><p>本文主要介绍yaklab项目中Vulinbox 靶场的逻辑漏洞之购物商城的漏洞案例实践过程。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 靶场实战 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 靶场实战 </tag>
+            
+            <tag> yaklab </tag>
+            
+            <tag> 逻辑漏洞 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>mac+proxifier+BP微信小程序抓包</title>
       <link href="/2025/02/20/gong-fang-gong-ju-ku/mac-proxifier-bp-wei-xin-xiao-cheng-xu-zhua-bao/"/>
       <url>/2025/02/20/gong-fang-gong-ju-ku/mac-proxifier-bp-wei-xin-xiao-cheng-xu-zhua-bao/</url>
@@ -333,9 +362,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> XXE </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> XXE </tag>
             
         </tags>
       
@@ -362,9 +391,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 漏洞知识库 </tag>
-            
             <tag> XXE </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
         </tags>
       
@@ -391,11 +420,11 @@
             
             <tag> web安全 </tag>
             
+            <tag> CTF实战 </tag>
+            
             <tag> SSRF </tag>
             
             <tag> 哈希长度扩展攻击 </tag>
-            
-            <tag> CTF实战 </tag>
             
         </tags>
       
@@ -480,9 +509,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 文件包含 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 文件包含 </tag>
             
         </tags>
       
@@ -567,11 +596,11 @@
             
             <tag> web安全 </tag>
             
+            <tag> SSRF </tag>
+            
             <tag> 漏洞知识库 </tag>
             
             <tag> 服务端跨站请求 </tag>
-            
-            <tag> SSRF </tag>
             
         </tags>
       
@@ -629,9 +658,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 跨站脚本攻击 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
             
             <tag> 存储型XSS </tag>
             
@@ -689,9 +718,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> 漏洞知识库 </tag>
-            
             <tag> 文件包含 </tag>
+            
+            <tag> 漏洞知识库 </tag>
             
         </tags>
       
@@ -803,9 +832,9 @@
       
         <tags>
             
-            <tag> 跨站脚本攻击 </tag>
-            
             <tag> CTF实战 </tag>
+            
+            <tag> 跨站脚本攻击 </tag>
             
             <tag> xss-labs </tag>
             
@@ -834,9 +863,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> XSS </tag>
-            
             <tag> 跨站脚本攻击 </tag>
+            
+            <tag> XSS </tag>
             
         </tags>
       
@@ -863,9 +892,9 @@
             
             <tag> 文件上传 </tag>
             
-            <tag> upload-labs </tag>
-            
             <tag> web安全 </tag>
+            
+            <tag> upload-labs </tag>
             
         </tags>
       
@@ -1037,11 +1066,11 @@
             
             <tag> 攻防工具库 </tag>
             
-            <tag> 漏洞扫描 </tag>
-            
             <tag> 供应链漏洞扫描 </tag>
             
             <tag> 供应链安全 </tag>
+            
+            <tag> 漏洞扫描 </tag>
             
         </tags>
       
@@ -1331,11 +1360,11 @@
       
         <tags>
             
-            <tag> 攻防工具库 </tag>
-            
             <tag> MSF </tag>
             
             <tag> Metasploit Framework </tag>
+            
+            <tag> 攻防工具库 </tag>
             
         </tags>
       
@@ -2108,9 +2137,9 @@
       
         <tags>
             
-            <tag> 密码学算法安全 </tag>
-            
             <tag> 哈希长度扩展攻击 </tag>
+            
+            <tag> 密码学算法安全 </tag>
             
             <tag> md5哈希长度扩展攻击 </tag>
             
@@ -2172,13 +2201,13 @@
       
         <tags>
             
-            <tag> 基础知识库 </tag>
-            
             <tag> web安全 </tag>
             
             <tag> 漏洞知识库 </tag>
             
             <tag> 文件上传漏洞 </tag>
+            
+            <tag> 基础知识库 </tag>
             
         </tags>
       
@@ -2236,9 +2265,9 @@
             
             <tag> web安全 </tag>
             
-            <tag> sql注入基础 </tag>
-            
             <tag> 漏洞知识库 </tag>
+            
+            <tag> sql注入基础 </tag>
             
         </tags>
       

@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-20T14:02:13.656Z</updated>
+  <updated>2025-02-21T10:10:36.544Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,40 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>yaklab-逻辑漏洞</title>
+    <link href="http://sxksec.cn/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/"/>
+    <id>http://sxksec.cn/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/</id>
+    <published>2025-02-21T02:08:46.000Z</published>
+    <updated>2025-02-21T10:10:36.544Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、会话固定漏洞&quot;&gt;&lt;a href=&quot;#一、会话固定漏洞&quot; class=&quot;headerlink&quot; title=&quot;一、会话固定漏洞&quot;&gt;&lt;/a&gt;一、会话固定漏洞&lt;/h1&gt;&lt;p&gt;会话固定漏洞是指网站或应用程序在用户登录时分配的会话标识符（Session</summary>
+        
+      
+    
+    
+    
+    <category term="靶场实战" scheme="http://sxksec.cn/categories/%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/"/>
+    
+    
+    <category term="靶场实战" scheme="http://sxksec.cn/tags/%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="yaklab" scheme="http://sxksec.cn/tags/yaklab/"/>
+    
+    <category term="逻辑漏洞" scheme="http://sxksec.cn/tags/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>mac+proxifier+BP微信小程序抓包</title>
     <link href="http://sxksec.cn/2025/02/20/gong-fang-gong-ju-ku/mac-proxifier-bp-wei-xin-xiao-cheng-xu-zhua-bao/"/>
     <id>http://sxksec.cn/2025/02/20/gong-fang-gong-ju-ku/mac-proxifier-bp-wei-xin-xiao-cheng-xu-zhua-bao/</id>
     <published>2025-02-20T10:10:08.000Z</published>
-    <updated>2025-02-20T14:02:13.656Z</updated>
+    <updated>2025-02-21T01:00:09.700Z</updated>
     
     
       
@@ -352,9 +381,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
-    
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
     
   </entry>
   
@@ -381,9 +410,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
     <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
@@ -410,11 +439,11 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
     <category term="SSRF" scheme="http://sxksec.cn/tags/SSRF/"/>
     
     <category term="哈希长度扩展攻击" scheme="http://sxksec.cn/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -500,9 +529,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
-    
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
     
   </entry>
   
@@ -561,37 +590,6 @@
     <category term="RCE" scheme="http://sxksec.cn/tags/RCE/"/>
     
     <category term="远程代码执行" scheme="http://sxksec.cn/tags/%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>服务端跨站请求伪造</title>
-    <link href="http://sxksec.cn/2025/02/11/web-an-quan/fu-wu-duan-qing-qiu-wei-zao-lou-dong-ssrf/"/>
-    <id>http://sxksec.cn/2025/02/11/web-an-quan/fu-wu-duan-qing-qiu-wei-zao-lou-dong-ssrf/</id>
-    <published>2025-02-11T03:28:09.000Z</published>
-    <updated>2025-02-11T09:17:41.304Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、SSRF-概述&quot;&gt;&lt;a href=&quot;#一、SSRF-概述&quot; class=&quot;headerlink&quot; title=&quot;一、SSRF 概述&quot;&gt;&lt;/a&gt;一、SSRF</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="服务端跨站请求" scheme="http://sxksec.cn/tags/%E6%9C%8D%E5%8A%A1%E7%AB%AF%E8%B7%A8%E7%AB%99%E8%AF%B7%E6%B1%82/"/>
-    
-    <category term="SSRF" scheme="http://sxksec.cn/tags/SSRF/"/>
     
   </entry>
   
