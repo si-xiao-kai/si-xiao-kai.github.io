@@ -179,9 +179,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
@@ -381,9 +381,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -410,9 +410,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
-    
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
     
   </entry>
   
@@ -439,9 +439,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="SSRF" scheme="http://sxksec.cn/tags/SSRF/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="哈希长度扩展攻击" scheme="http://sxksec.cn/tags/%E5%93%88%E5%B8%8C%E9%95%BF%E5%BA%A6%E6%89%A9%E5%B1%95%E6%94%BB%E5%87%BB/"/>
     
@@ -497,9 +497,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
@@ -529,9 +529,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
