@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-21T10:10:36.544Z</updated>
+  <updated>2025-02-26T11:46:23.416Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,93 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>mac安装多个版本的java环境</title>
+    <link href="http://sxksec.cn/2025/02/26/qian-hou-duan-kai-fa/mac-an-zhuang-duo-ge-ban-ben-de-java-huan-jing/"/>
+    <id>http://sxksec.cn/2025/02/26/qian-hou-duan-kai-fa/mac-an-zhuang-duo-ge-ban-ben-de-java-huan-jing/</id>
+    <published>2025-02-26T09:26:41.000Z</published>
+    <updated>2025-02-26T11:46:23.416Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、背景&quot;&gt;&lt;a href=&quot;#一、背景&quot; class=&quot;headerlink&quot; title=&quot;一、背景&quot;&gt;&lt;/a&gt;一、背景&lt;/h1&gt;&lt;p&gt;在验证xxl-job</summary>
+        
+      
+    
+    
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="java" scheme="http://sxksec.cn/tags/java/"/>
+    
+    <category term="java多版本" scheme="http://sxksec.cn/tags/java%E5%A4%9A%E7%89%88%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Netlogon特权提升漏洞(CVE-2020-1472)</title>
+    <link href="http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/"/>
+    <id>http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/</id>
+    <published>2025-02-24T07:31:24.000Z</published>
+    <updated>2025-02-26T01:57:46.244Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、漏洞简介&quot;&gt;&lt;a href=&quot;#一、漏洞简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="特权提升" scheme="http://sxksec.cn/tags/%E7%89%B9%E6%9D%83%E6%8F%90%E5%8D%87/"/>
+    
+    <category term="Netlogon" scheme="http://sxksec.cn/tags/Netlogon/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>xxl-job代码审计</title>
+    <link href="http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/"/>
+    <id>http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/</id>
+    <published>2025-02-24T06:06:58.000Z</published>
+    <updated>2025-02-26T12:32:52.003Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、xxl-job简介&quot;&gt;&lt;a href=&quot;#一、xxl-job简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="xxl-job" scheme="http://sxksec.cn/tags/xxl-job/"/>
+    
+    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+  </entry>
   
   <entry>
     <title>yaklab-逻辑漏洞</title>
@@ -239,9 +326,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="PHP反序列化漏洞" scheme="http://sxksec.cn/tags/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
     
@@ -502,94 +589,6 @@
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web-buuoj-[ACTF2020 新生赛]Include</title>
-    <link href="http://sxksec.cn/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/"/>
-    <id>http://sxksec.cn/2025/02/11/ctf-shi-zhan/web-buuoj-actf2020-xin-sheng-sai-include/</id>
-    <published>2025-02-11T10:20:42.000Z</published>
-    <updated>2025-02-11T10:22:07.393Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、题面&quot;&gt;&lt;a href=&quot;#一、题面&quot; class=&quot;headerlink&quot; title=&quot;一、题面&quot;&gt;&lt;/a&gt;一、题面&lt;/h1&gt;&lt;p&gt;题目链接：&lt;/p&gt;
-&lt;pre class=&quot;line-numbers language-bash&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="文件包含" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"/>
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>命令执行漏洞</title>
-    <link href="http://sxksec.cn/2025/02/11/web-an-quan/ming-ling-zhi-xing-lou-dong/"/>
-    <id>http://sxksec.cn/2025/02/11/web-an-quan/ming-ling-zhi-xing-lou-dong/</id>
-    <published>2025-02-11T09:16:00.000Z</published>
-    <updated>2025-02-11T10:15:40.723Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、命令执行漏洞概述&quot;&gt;&lt;a href=&quot;#一、命令执行漏洞概述&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="命令执行漏洞" scheme="http://sxksec.cn/tags/%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E6%BC%8F%E6%B4%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>远程代码执行(RCE)漏洞</title>
-    <link href="http://sxksec.cn/2025/02/11/web-an-quan/yuan-cheng-dai-ma-zhi-xing-rce-lou-dong/"/>
-    <id>http://sxksec.cn/2025/02/11/web-an-quan/yuan-cheng-dai-ma-zhi-xing-rce-lou-dong/</id>
-    <published>2025-02-11T08:20:54.000Z</published>
-    <updated>2025-02-11T09:03:08.158Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、远程代码执行概述&quot;&gt;&lt;a href=&quot;#一、远程代码执行概述&quot; class=&quot;headerlink&quot; title=&quot;一、远程代码执行概述&quot;&gt;&lt;/a&gt;一、远程代码执行概述&lt;/h1&gt;&lt;p&gt;远程代码执行（Remote Code</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="RCE" scheme="http://sxksec.cn/tags/RCE/"/>
-    
-    <category term="远程代码执行" scheme="http://sxksec.cn/tags/%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
     
   </entry>
   
