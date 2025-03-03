@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Java中的HashMap, Hacker进化论">
+    <meta name="keywords" content="Java中的HashMap及其与反序列化漏洞的关系, Hacker进化论">
     <meta name="description" content="本文主要介绍Java中的HashMap数据结构。">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -17,7 +17,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Java中的HashMap | Hacker进化论</title>
+    <title>Java中的HashMap及其与反序列化漏洞的关系 | Hacker进化论</title>
     <link rel="icon" type="image/png" href="/hacker1.png">
     
 
@@ -337,12 +337,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/11.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Java中的HashMap</h1>
+                    <h1 class="description center-align post-title">Java中的HashMap及其与反序列化漏洞的关系</h1>
                 </div>
             </div>
         </div>
@@ -366,12 +366,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/HashMap/">
-                                <span class="chip bg-color">HashMap</span>
-                            </a>
-                        
                             <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">
                                 <span class="chip bg-color">前后端开发</span>
+                            </a>
+                        
+                            <a href="/tags/HashMap/">
+                                <span class="chip bg-color">HashMap</span>
                             </a>
                         
                             <a href="/tags/Java/">
@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-28
+                    2025-03-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    708
+                    1.6k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    2 分
+                    5 分
                 </div>
                 
 
@@ -443,10 +443,10 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>HashMap 是一种高效存储键值对的数据结构，可以理解为“智能字典”，它的核心设计目标是快速存取数据。下面用通俗易懂的方式讲解它的原理和特点：</p>
-<h1 id="一、底层结构：数组-链表-红黑树"><a href="#一、底层结构：数组-链表-红黑树" class="headerlink" title="一、底层结构：数组 + 链表/红黑树"></a>一、底层结构：数组 + 链表/红黑树</h1><h2 id="1-1-数组（货架）"><a href="#1-1-数组（货架）" class="headerlink" title="1.1 数组（货架）"></a>1.1 数组（货架）</h2><p>HashMap 内部有一个数组，每个位置称为“桶”（Bucket），就像仓库里的一排货架。默认有 16 个货架（数组长度），每个货架可以存放多个“包裹”（键值对）。</p>
-<h2 id="1-2-链表-红黑树（篮子）"><a href="#1-2-链表-红黑树（篮子）" class="headerlink" title="1.2 链表/红黑树（篮子）"></a>1.2 链表/红黑树（篮子）</h2><p>如果多个包裹被分配到同一个货架上（哈希冲突），它们会以链表的形式挂在这个货架上。当链表太长（超过 8 个包裹）时，链表会变成红黑树（一种平衡二叉树），这样查找更快。</p>
-<h1 id="二、存数据的过程：三步到位"><a href="#二、存数据的过程：三步到位" class="headerlink" title="二、存数据的过程：三步到位"></a>二、存数据的过程：三步到位</h1><ul>
+                <h1 id="一、HashMap"><a href="#一、HashMap" class="headerlink" title="一、HashMap"></a>一、HashMap</h1><p>HashMap 是一种高效存储键值对的数据结构，可以理解为“智能字典”，它的核心设计目标是快速存取数据。下面用通俗易懂的方式讲解它的原理和特点：</p>
+<h2 id="1-1-底层结构：数组-链表-红黑树"><a href="#1-1-底层结构：数组-链表-红黑树" class="headerlink" title="1.1 底层结构：数组 + 链表/红黑树"></a>1.1 底层结构：数组 + 链表/红黑树</h2><h3 id="数组（货架）"><a href="#数组（货架）" class="headerlink" title="数组（货架）"></a>数组（货架）</h3><p>HashMap 内部有一个数组，每个位置称为“桶”（Bucket），就像仓库里的一排货架。默认有 16 个货架（数组长度），每个货架可以存放多个“包裹”（键值对）。</p>
+<h3 id="链表-红黑树（篮子）"><a href="#链表-红黑树（篮子）" class="headerlink" title="链表/红黑树（篮子）"></a>链表/红黑树（篮子）</h3><p>如果多个包裹被分配到同一个货架上（哈希冲突），它们会以链表的形式挂在这个货架上。当链表太长（超过 8 个包裹）时，链表会变成红黑树（一种平衡二叉树），这样查找更快。</p>
+<h2 id="1-2-存数据的过程：三步到位"><a href="#1-2-存数据的过程：三步到位" class="headerlink" title="1.2 存数据的过程：三步到位"></a>1.2 存数据的过程：三步到位</h2><ul>
 <li>1）计算哈希值（包裹编号）</li>
 </ul>
 <p>根据键（Key）的 hashCode() 生成一个编号，比如键是 “apple”，计算后得到一个数字。这一步决定了包裹放在哪个货架上。</p>
@@ -458,7 +458,7 @@
 <li>3）解决冲突（挂篮子）</li>
 </ul>
 <p>如果货架是空的，直接放包裹。如果货架已有包裹，挂到链表末尾；链表太长则转红黑树。</p>
-<h1 id="三、取数据的过程：反向操作"><a href="#三、取数据的过程：反向操作" class="headerlink" title="三、取数据的过程：反向操作"></a>三、取数据的过程：反向操作</h1><ul>
+<h2 id="1-3-取数据的过程：反向操作"><a href="#1-3-取数据的过程：反向操作" class="headerlink" title="1.3 取数据的过程：反向操作"></a>1.3 取数据的过程：反向操作</h2><ul>
 <li>再次计算哈希值</li>
 </ul>
 <p>根据 Key 的哈希值找到货架位置。</p>
@@ -466,7 +466,7 @@
 <li>遍历链表或树</li>
 </ul>
 <p>在对应的货架上，逐个比对 Key（用 equals() 方法），找到匹配的包裹。</p>
-<h1 id="四、关键设计：如何保证高效？"><a href="#四、关键设计：如何保证高效？" class="headerlink" title="四、关键设计：如何保证高效？"></a>四、关键设计：如何保证高效？</h1><ul>
+<h2 id="1-4-关键设计：如何保证高效？"><a href="#1-4-关键设计：如何保证高效？" class="headerlink" title="1.4 关键设计：如何保证高效？"></a>1.4 关键设计：如何保证高效？</h2><ul>
 <li>哈希函数优化</li>
 </ul>
 <p>哈希算法会将 Key 的高低位混合计算，减少冲突（比如 Java 8 的扰动函数）。</p>
@@ -478,11 +478,62 @@
 <li>红黑树的引入</li>
 </ul>
 <p>链表查询慢（O(n)），红黑树查询快（O(log n)），解决极端情况下的性能问题。</p>
-<h1 id="五、HashMap-的特点"><a href="#五、HashMap-的特点" class="headerlink" title="五、HashMap 的特点"></a>五、HashMap 的特点</h1><p>快：理想情况下存取都是 O(1) 时间复杂度。</p>
+<h2 id="1-5-HashMap-的特点"><a href="#1-5-HashMap-的特点" class="headerlink" title="1.5 HashMap 的特点"></a>1.5 HashMap 的特点</h2><p>快：理想情况下存取都是 O(1) 时间复杂度。</p>
 <p>不保证顺序：数据存放位置由哈希值决定，遍历时无序。</p>
 <p>线程不安全：多线程同时修改可能导致数据错乱，需用 ConcurrentHashMap。</p>
 <p>允许空键值：可以存储 null 作为 Key 或 Value。</p>
 <p>通过这些设计，HashMap 在大多数场景下能实现快速存取，但需注意哈希函数的质量和负载因子的设置，避免频繁扩容影响性能。</p>
+<h1 id="二、HashMap与反序列化"><a href="#二、HashMap与反序列化" class="headerlink" title="二、HashMap与反序列化"></a>二、HashMap与反序列化</h1><p>HashMap与反序列化的关系可以用“运输快递”来通俗理解。以下是具体解释：</p>
+<h2 id="2-1-HashMap的本质与打包过程"><a href="#2-1-HashMap的本质与打包过程" class="headerlink" title="2.1  HashMap的本质与打包过程"></a>2.1  HashMap的本质与<code>打包</code>过程</h2><p>HashMap本身是一个存储键值对的容器（类似快递包裹里的物品）。当需要将HashMap对象通过网络传输或保存到文件时，需要将其<strong>序列化</strong>（即“打包”成二进制字节流）。</p>
+<p>序列化条件：HashMap类实现了Serializable接口，因此可以直接通过ObjectOutputStream等工具进行序列化，无需额外操作。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">extends</span> <span class="token class-name">AbstractMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span>
+    <span class="token keyword">implements</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">,</span> <span class="token class-name">Cloneable</span><span class="token punctuation">,</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>序列化内容：默认会保存HashMap中的所有非transient字段（如键值对、容量等）。</p>
+<h2 id="2-2-反序列化中的拆包裹风险"><a href="#2-2-反序列化中的拆包裹风险" class="headerlink" title="2.2 反序列化中的拆包裹风险"></a>2.2 反序列化中的<code>拆包裹</code>风险</h2><p>当接收方收到序列化的HashMap数据后，会通过<code>ObjectInputStream</code>进行<strong>反序列化</strong>（即“拆包裹”还原对象）。这一过程可能引发安全隐患：</p>
+<ul>
+<li><strong>自动触发键的哈希计算</strong>：</li>
+</ul>
+<p>HashMap在反序列化时会调用键（Key）的hashCode()方法，重新计算哈希值以恢复数据结构。</p>
+<p><strong>危险点：如果键是恶意构造的对象（如包含触发DNS请求的URL对象），反序列化时会自动执行hashCode()中的危险逻辑。</strong></p>
+<ul>
+<li>漏洞利用场景：</li>
+</ul>
+<p>例如，攻击者可以构造一个以URL对象为键的HashMap，序列化后发送给目标服务器。当服务器反序列化时，会触发URL的hashCode()，导致DNS查询或更严重的远程代码执行。</p>
+<h2 id="2-3-通俗类比"><a href="#2-3-通俗类比" class="headerlink" title="2.3 通俗类比"></a>2.3 通俗类比</h2><ul>
+<li>正常场景：</li>
+</ul>
+<p>你寄送一个装着普通物品（如书本）的包裹（HashMap）。接收方拆开后，物品完好无损。</p>
+<p>→ 对应：序列化传输普通HashMap，反序列化后正常使用。</p>
+<ul>
+<li>危险场景：</li>
+</ul>
+<p>你寄送一个包裹，里面装了触发式炸弹（恶意键对象）。接收方一拆包裹，炸弹自动爆炸（执行恶意代码）。</p>
+<p>→ 对应：反序列化恶意HashMap时触发漏洞。</p>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>HashMap的序列化功能使其便于传输和存储，但反序列化时的自动行为（如调用<code>hashCode()</code>）可能成为安全隐患。理解这种机制有助于避免“拆包裹炸弹”式攻击。</p>
+<h1 id="三、HashMap与反序列化漏洞"><a href="#三、HashMap与反序列化漏洞" class="headerlink" title="三、HashMap与反序列化漏洞"></a>三、HashMap与反序列化漏洞</h1><p>Java 反序列化漏洞中，<strong>HashMap</strong> 是一个常见的“触发点”，它与漏洞的联系主要体现在反序列化过程中通过 <strong>HashMap 的重写方法</strong>间接执行恶意代码。以下是通俗的解释：</p>
+<h2 id="3-1-基础背景：HashMap-在反序列化中的作用"><a href="#3-1-基础背景：HashMap-在反序列化中的作用" class="headerlink" title="3.1 基础背景：HashMap 在反序列化中的作用"></a>3.1 基础背景：HashMap 在反序列化中的作用</h2><p><strong>HashMap 的反序列化流程</strong>：</p>
+<p><code>HashMap</code> 重写了 <code>readObject()</code> 方法，在反序列化时会调用该方法。该方法会依次执行以下操作：</p>
+<ul>
+<li>读取键值对数据；</li>
+<li>计算每个键的哈希值（调用 <code>hash()</code> 方法）；</li>
+<li>将键值对存入哈希表。</li>
+</ul>
+<h2 id="3-2-漏洞触发点：为什么是-HashMap？"><a href="#3-2-漏洞触发点：为什么是-HashMap？" class="headerlink" title="3.2 漏洞触发点：为什么是 HashMap？"></a>3.2 漏洞触发点：为什么是 HashMap？</h2><h3 id="3-2-1-关键调用链"><a href="#3-2-1-关键调用链" class="headerlink" title="3.2.1 关键调用链"></a>3.2.1 <strong>关键调用链</strong></h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">HashMap.readObject<span class="token punctuation">(</span><span class="token punctuation">)</span> → hash<span class="token punctuation">(</span><span class="token punctuation">)</span> → 键对象的 hashCode<span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p><strong>在计算键的哈希值时，<code>hash()</code> 方法会调用键对象的 <code>hashCode()</code>。如果攻击者</strong>控制键对象，并让该对象的 <code>hashCode()</code> 方法执行危险操作（如 DNS 查询、远程代码执行），就会触发漏洞。</p>
+<h3 id="3-2-2-举例：URLDNS-链"><a href="#3-2-2-举例：URLDNS-链" class="headerlink" title="3.2.2 举例：URLDNS 链"></a>3.2.2 举例：<strong>URLDNS 链</strong></h3><ul>
+<li><strong>构造恶意键对象</strong>：用 <code>URL</code> 类作为键。</li>
+<li><strong>触发 DNS 请求</strong>：<code>URL</code> 的 <code>hashCode()</code> 方法会解析 URL 的主机名，触发 DNS 查询。</li>
+<li><strong>漏洞验证</strong>：攻击者生成一个包含恶意 URL 的 <code>HashMap</code> 序列化数据，当目标反序列化时，会发起 DNS 请求，证明漏洞存在。</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 示例：构造触发 DNS 的 HashMap</span>
+<span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span>URL<span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">&gt;</span></span> map <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">URL</span> url <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">URL</span><span class="token punctuation">(</span><span class="token string">"http://恶意域名.dnslog.cn"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token string">"test"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
 
                 
             </div>
@@ -547,12 +598,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/HashMap/">
-                                    <span class="chip bg-color">HashMap</span>
-                                </a>
-                            
                                 <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">
                                     <span class="chip bg-color">前后端开发</span>
+                                </a>
+                            
+                                <a href="/tags/HashMap/">
+                                    <span class="chip bg-color">HashMap</span>
                                 </a>
                             
                                 <a href="/tags/Java/">
@@ -635,30 +686,29 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;本篇
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/">
+                <a href="/2025/03/01/qian-hou-duan-kai-fa/idea-chang-yong-kuai-jie-jian/">
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Java中的HashMap">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/13.jpg" class="responsive-img" alt="IDEA常用快捷键">
                         
-                        <span class="card-title">Java中的HashMap</span>
+                        <span class="card-title">IDEA常用快捷键</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            本文主要介绍Java中的HashMap数据结构。
+                            本文主要介绍IDEA常用快捷键。
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2025-02-28
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -671,20 +721,15 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
-                    
-                    <a href="/tags/HashMap/">
-                        <span class="chip bg-color">HashMap</span>
-                    </a>
                     
                     <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">
                         <span class="chip bg-color">前后端开发</span>
                     </a>
                     
-                    <a href="/tags/Java/">
-                        <span class="chip bg-color">Java</span>
+                    <a href="/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/">
+                        <span class="chip bg-color">IDEA快捷键</span>
                     </a>
                     
                 </div>
@@ -885,7 +930,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">277.8k</span>
+                        class="white-color">288.7k</span>
             
             
             

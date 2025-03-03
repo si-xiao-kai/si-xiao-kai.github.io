@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-02-28
+                    2025-03-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.8k
+                    7.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    22 分
+                    29 分
                 </div>
                 
 
@@ -443,30 +443,169 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h1><h2 id="1-1-Java序列化和反序列化的一些基本概念"><a href="#1-1-Java序列化和反序列化的一些基本概念" class="headerlink" title="1.1 Java序列化和反序列化的一些基本概念"></a>1.1 Java序列化和反序列化的一些基本概念</h2><p><strong>序列化</strong>是让Java对象脱离Java运行环境的一种手段，可以有效的实现多平台之间的通信、对象持久化存储。</p>
-<p><code>Java序列化</code>是指把Java对象转换为字节序列的过程(便于保存在内存、文件、数据库中)，<code>ObjectOutputStream</code>类的<code>writeObject()</code>方法可以实现序列化。</p>
-<p><code>Java反序列化</code>是指把字节序列恢复为Java对象的过程，<code>ObjectInputStream</code>类的<code>readObject()</code>方法用于反序列化。</p>
-<p>Java 序列化就是把一个 <code>Java Object</code> 变成一个二进制字节数组 , 即 <code>byte[]</code> .</p>
-<p>Java 反序列化就是把一个二进制字节数组(<code>byte[]</code>) 变回 Java 对象 , 即 <code>Java Object</code> .</p>
-<h2 id="1-2-序列化-反序列化的前提"><a href="#1-2-序列化-反序列化的前提" class="headerlink" title="1.2 序列化/反序列化的前提"></a>1.2 序列化/反序列化的前提</h2><p>一个类如果要能实现序列化操作，必须实现<code>Serializable</code>接口或者<code>Externalizable</code>接口。</p>
-<p>实现<code>java.io.Serializable</code>接口才可被反序列化，而且所有属性必须是可序列化的(用transient关键字修饰的属性除外，不参与序列化过程)</p>
-<p>在Java中，只要一个类实现了<code>java.io.Serializable</code>接口，那么它就可以通过ObjectInputStream与ObejctOutputStream序列化.</p>
-<p>所以一个类的对象要想序列化成功，必须满足两个条件：</p>
+                <h1 id="一、基本概念"><a href="#一、基本概念" class="headerlink" title="一、基本概念"></a>一、基本概念</h1><h2 id="1-0-基本环境"><a href="#1-0-基本环境" class="headerlink" title="1.0 基本环境"></a>1.0 基本环境</h2><p>JDK：包含Java运行时环境JRE。</p>
+<p>IDEA：开发工具。</p>
+<p>Maven ： jar包依赖管理。</p>
+<p>Tomcat：HTTP服务器。</p>
+<p>Burp Suite ：发送HTTP请求。</p>
+<p>Kali：启动相关服务。</p>
+<h2 id="1-1-Java序列化和反序列化基础概念"><a href="#1-1-Java序列化和反序列化基础概念" class="headerlink" title="1.1 Java序列化和反序列化基础概念"></a>1.1 Java序列化和反序列化基础概念</h2><h3 id="1-1-1-基本概念"><a href="#1-1-1-基本概念" class="headerlink" title="1.1.1 基本概念"></a>1.1.1 基本概念</h3><p><strong>序列化</strong>是让Java对象脱离Java运行环境的一种手段，可以有效的实现多平台之间的通信、对象持久化存储。</p>
+<p><code>Java序列化</code>是指把Java对象转换为字节序列的过程(便于保存在内存、文件、数据库中)，<code>ObjectOutputStream</code>类的<code>writeObject()</code>方法可以实现序列化，这时jdk原生的序列化方式。<code>Java反序列化</code>是指把字节序列恢复为Java对象的过程，<code>ObjectInputStream</code>类的<code>readObject()</code>方法用于反序列化，这是jdk原生的反序列化方式。</p>
+<p>总之：</p>
+<ul>
+<li><p>Java 序列化就是把一个 <code>Java Object</code> 变成一个二进制字节数组 , 即 <code>byte[]</code> .</p>
+</li>
+<li><p>Java 反序列化就是把一个二进制字节数组(<code>byte[]</code>) 变回 Java 对象 , 即 <code>Java Object</code> .</p>
+</li>
+</ul>
+<h3 id="1-1-2-序列化与反序列化应用场景"><a href="#1-1-2-序列化与反序列化应用场景" class="headerlink" title="1.1.2 序列化与反序列化应用场景"></a>1.1.2 序列化与反序列化应用场景</h3><ol>
+<li>﻿﻿持久化内存数据</li>
+<li>﻿﻿网络传输对象</li>
+<li>﻿﻿远程方法调用(RMI)</li>
+</ol>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2013.22.59.png" style="zoom:20%;">
+
+<h3 id="1-1-3-序列化后的数据特征"><a href="#1-1-3-序列化后的数据特征" class="headerlink" title="1.1.3 序列化后的数据特征"></a>1.1.3 序列化后的数据特征</h3><p>早期数据传输的格式：约定定长字段的字符串-&gt;指定长度的变长字符串-&gt;XML-&gt;JSON。</p>
+<p>java序列化后的数据可以是可读的字符串，也可以是不可读的二进制数据。</p>
+<ul>
+<li>下面是PHP对象反序列化后的特征，是一个可读的明文字符串：</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2013.27.48.png" style="zoom:20%;">
+
+<ul>
+<li>FastJson反序列化实现：</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2013.37.49.png" style="zoom:40%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2013.39.34.png" style="zoom:50%;">
+
+
+
+<p>一个java对象用不同的协议/库序列化之后，它的表现形式不尽相同，可能是可读的字符串比如json，也可能是不可读的二进制字符串。</p>
+<ul>
+<li>Java原生反序列化</li>
+</ul>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span>ObjectOutputStream</span><span class="token punctuation">.</span><span class="token function">writeObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//序列化</span>
+<span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span>ObjectInputStream</span><span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token comment">//反序列化</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Serializable</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token class-name">String</span> s<span class="token punctuation">,</span> <span class="token keyword">int</span> i<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> s<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> i<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> name<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setName</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+    
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getAge</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">return</span> age<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+  
+  	<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setAge</span><span class="token punctuation">(</span><span class="token class-name">String</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span> 
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span> 
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token operator">*</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Main</span> <span class="token punctuation">{</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> 
+        <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ClassNotFoundException</span> <span class="token punctuation">{</span> 
+        
+        <span class="token comment">// 1.创建Person对象</span>
+        <span class="token class-name">Person</span> obj <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token string">"wuya"</span><span class="token punctuation">,</span> <span class="token number">666</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+        
+        <span class="token comment">// 2.定义文件路径</span>
+        <span class="token class-name">String</span> filePath <span class="token operator">=</span> <span class="token string">"D:/wuya.xxxx"</span><span class="token punctuation">;</span>    
+        
+        <span class="token comment">// 3.序列化操作</span>
+        <span class="token keyword">try</span> <span class="token punctuation">(</span><span class="token class-name">ObjectOutputStream</span> outStream <span class="token operator">=</span> 
+            <span class="token keyword">new</span> <span class="token class-name">ObjectOutputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileOutputStream</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 修正流初始化</span>
+            outStream<span class="token punctuation">.</span><span class="token function">writeObject</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+        
+        <span class="token comment">// 4.反序列化操作</span>
+        <span class="token keyword">try</span> <span class="token punctuation">(</span><span class="token class-name">ObjectInputStream</span> inStream <span class="token operator">=</span> 
+            <span class="token keyword">new</span> <span class="token class-name">ObjectInputStream</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span>filePath<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 修正流初始化</span>
+            <span class="token class-name">Person</span> readObject <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token class-name">Person</span><span class="token punctuation">)</span> inStream<span class="token punctuation">.</span><span class="token function">readObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"反序列化后: name="</span> <span class="token operator">+</span> readObject<span class="token punctuation">.</span>name 
+                <span class="token operator">+</span> <span class="token string">", age="</span> <span class="token operator">+</span> readObject<span class="token punctuation">.</span>age<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">}</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Person</span> <span class="token keyword">implements</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+    <span class="token class-name">String</span> name<span class="token punctuation">;</span>
+    <span class="token keyword">int</span> age<span class="token punctuation">;</span>
+    
+    <span class="token keyword">public</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token keyword">int</span> age<span class="token punctuation">)</span> <span class="token punctuation">{</span> <span class="token comment">// 规范构造方法</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>age <span class="token operator">=</span> age<span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2013.45.35.png" style="zoom:50%;">
+
+<p>二进制具体的格式讲解：<a target="_blank" rel="noopener" href="https://blog.csdn.net/lqzkcx3/article/details/79463450">https://blog.csdn.net/lqzkcx3/article/details/79463450</a></p>
+<p>这里是在同一处位置进行序列化和反序列化的，Person类可以自动识别，但实际在网路传输过程中，收发两端需要都具备识别相应对象的条件。</p>
+<h2 id="1-2-序列化-反序列化的前提"><a href="#1-2-序列化-反序列化的前提" class="headerlink" title="1.2 序列化/反序列化的前提"></a>1.2 序列化/反序列化的前提</h2><p>一个类如果要能实现序列化操作，必须实现<code>Serializable</code>接口或者<code>Externalizable</code>接口。实现<code>java.io.Serializable</code>接口才可被序列化/反序列化，而且所有属性必须是可序列化的(用transient关键字修饰的属性除外，不参与序列化过程)</p>
+<p>在Java中，只要一个类实现了<code>java.io.Serializable</code>接口，那么它就可以通过ObjectInputStream与ObejctOutputStream序列化，这是java原生支持的序列化/反序列化方式。如果想知道一个 Java 标准类是否是可序列化的，可以通过查看该类的文档，查看该类有没有实现 <code>java.io.Serializable</code>接口。</p>
+<p>所以综上，一个类的对象要想序列化成功，必须满足两个条件：</p>
 <ul>
 <li>1.该类必须实现 java.io.Serializable 接口。</li>
-<li>2.该类的所有属性必须是可序列化的。如果有一个属性不是可序列化的，则该属性必须注明是短暂的。</li>
+<li>2.该类的所有属性必须是可序列化的（如果有一个属性不是可序列化的，则该属性必须注明是短暂的）。</li>
 </ul>
-<p>如果想知道一个 Java 标准类是否是可序列化的，可以通过查看该类的文档,查看该类有没有实现 <code>java.io.Serializable</code>接口。</p>
-<p>最好还要有一个**<code>serialVersionUID</code>**属性：</p>
+<p>可以被序列化的类，最好还要设置一个**<code>serialVersionUID</code>**属性：</p>
 <blockquote>
 <h4 id="serialVersionUID"><a href="#serialVersionUID" class="headerlink" title="serialVersionUID"></a>serialVersionUID</h4><p>每个可序列化的类在序列化时都会关联一个版本号 , 这个版本号就是 serialVersionUID 属性。</p>
-<p>在反序列化过程中会根据这个版本号来判断序列化对象的发送者和接收着是否有与该序列化/反序列化过程兼容的类 。如果不相同 , 则会抛出 InvalidClassException 异常</p>
-<p>serialVersionUID 属性必须通过 static final long 修饰符来修饰 .</p>
+<p>在反序列化过程中会根据这个版本号来判断序列化对象的发送者和接收着是否有与该序列化/反序列化过程兼容的类 。如果不相同 , 则会抛出 InvalidClassException 异常。</p>
+<p>serialVersionUID 属性必须通过 static final long 修饰符来修饰。</p>
 <p>如果可序列化的类未声明 serialVersionUID 属性 , 则 Java 序列化时会根据类的各种信息来计算默认的 serialVersionUID 值。但是 Oracle 官方文档强烈建议所有可序列化的类都显示声明 serialVersionUID 值。</p>
 </blockquote>
-<h1 id="二、漏洞原理分析"><a href="#二、漏洞原理分析" class="headerlink" title="二、漏洞原理分析"></a>二、漏洞原理分析</h1><h2 id="2-1-漏洞成因简介"><a href="#2-1-漏洞成因简介" class="headerlink" title="2.1 漏洞成因简介"></a>2.1 漏洞成因简介</h2><p>当程序反序列化<strong>不可信的数据</strong>时，攻击者可构造恶意序列化对象，在反序列化过程中触发<strong>非预期的代码执行</strong>，Java反序列化机制本身不验证数据安全性，依赖开发者自行控制输入来源；但是，如果服务端不存在能够触发命令执行的利用链，攻击者再怎么构造反序列化数据也无济于事。</p>
-<p>所以核心问题在于：1）目标存在不安全的反序列化入口。2）存在可利用的Gadget链</p>
-<p>比如我们可以试想一下有如下的Person类，<strong>客户端</strong>传递一个Person类-&gt;给<strong>服务端</strong>。<strong>服务端需要反序列化我们传送的数据，那么就需要调用readObject。</strong> 而用户可以在类中重写 readObject<strong>，也就给予</strong>攻击者在服务器上运行代码的能力。</p>
+<h1 id="二、漏洞原理分析"><a href="#二、漏洞原理分析" class="headerlink" title="二、漏洞原理分析"></a>二、漏洞原理分析</h1><h2 id="2-1-漏洞成因简介"><a href="#2-1-漏洞成因简介" class="headerlink" title="2.1 漏洞成因简介"></a>2.1 漏洞成因简介</h2><p>当程序可以反序列化不可信的数据时，攻击者可构造恶意序列化对象，在反序列化过程中触发<strong>非预期的代码执行</strong>。Java反序列化机制本身不验证数据安全性，依赖开发者自行控制输入来源。但是，如果服务端不存在能够触发命令执行的利用链，攻击者再怎么构造反序列化数据也无济于事。</p>
+<p>所以核心问题在于：</p>
+<ul>
+<li>1）目标存在不安全的反序列化入口。</li>
+<li>2）存在可利用的Gadget链。</li>
+</ul>
+<blockquote>
+<h3 id="Gadget-是什么？"><a href="#Gadget-是什么？" class="headerlink" title="Gadget 是什么？"></a><strong>Gadget 是什么？</strong></h3><p>想象你玩乐高积木，想拼出一个能“搞事情”的机关。<strong>Gadget（小工具）</strong> 就是一组被黑客精心挑选的“积木块”（Java 类和方法），当它们按特定顺序拼接起来时，就能在反序列化过程中触发恶意操作（比如执行命令、下载病毒）。</p>
+<p>假设攻击者想通过反序列化让服务器执行 <code>rm -rf /</code>（删光所有文件），他需要找到以下“积木”：</p>
+<ol>
+<li><strong>起点积木</strong>：某个类的 <code>readObject()</code> 方法（反序列化时自动调用）。</li>
+<li><strong>中间积木</strong>：能传递恶意参数的其他类（比如修改某个配置参数）。</li>
+<li><strong>终点积木</strong>：最终触发命令执行的类（比如调用 <code>Runtime.exec("rm -rf /")</code>）。</li>
+</ol>
+<p>这些积木连起来就是 <strong>Gadget 链</strong>。</p>
+<ul>
+<li><p><strong>关键特点</strong>：</p>
+<p>​	<strong>依赖现有代码</strong>：Gadget 链中的类必须是目标应用中已有的（比如依赖的第三方库）。</p>
+<p>​	<strong>利用反射/特性</strong>：通过反射调用方法、修改私有字段等“非正常操作”拼接逻辑。</p>
+<p>​	<strong>环境敏感</strong>：不同 Java 版本、不同依赖库，可用的 Gadget 链可能不同。</p>
+</li>
+<li><p><strong>防御为何难？</strong></p>
+<ul>
+<li><p><strong>Gadget 链千变万化</strong>：就像乐高有无数种拼法，开发者很难预测所有可能的恶意组合。</p>
+</li>
+<li><p><strong>黑名单防不住</strong>：总有新的“积木”被挖掘出来（比如某个冷门库的类突然被利用）。</p>
+</li>
+</ul>
+</li>
+</ul>
+</blockquote>
+<p>比如我们可以试想一下有如下的Person类，<strong>客户端</strong>传递一个Person类-&gt;给<strong>服务端</strong>。<strong>服务端需要反序列化我们传送的数据，那么就需要调用readObject。</strong> 而开发者如果在类中重写 readObject<strong>，也就给予</strong>攻击者在服务器上运行代码的能力，（当然这只是个例子，现实中不会有这么明显的缺陷）。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">ObjectInputStream</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Serializable</span></span><span class="token punctuation">;</span>
@@ -499,7 +638,7 @@
  
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>可以发现，我们的readObject首先 ois.defaultReadObject(); 也就是让反序列化读取的时候按照默认的方法执行。但是我们添加了一行Runtime.getRuntime().exec(“calc”); 也就是windows 操作系统打开计算器的命令。服务器反序列化的时候就会打开它的计算器。这也就是RCE(远程代码执行漏洞)。</p>
+<p>可以发现，我们的readObject首先 ois.defaultReadObject(); 也就是让反序列化读取的时候按照默认的方法执行。但是我们添加了一行Runtime.getRuntime().exec(“calc”); 也就是windows 操作系统打开计算器的命令，服务器反序列化Person对象的时候会调用Person类的readObject方法（这很好理解，反序列化什么类的对象就用这个类的readObject方法呗），就会打开它的计算器，这也就是RCE(远程代码执行漏洞)的最近本的形式。如果ois是攻击者可以控制的输入端，并且服务端存在类似<code>  Runtime.getRuntime().exec("calc");</code>的恶意代码执行的可能性，那么就会导致RCE高危漏洞。</p>
 <p>为什么java会允许我们自己写readObject，让服务端调用我们的readObject呢？这样不是很危险吗?答：有这样的需求。</p>
 <p>比如：我们的类中定义了一个 arr 数组属性，初始化的数组长度为100，但是我在数组中可能只存放 30 个数而已。我总不能把100个数全序列化，后面的70个数就变成null了。根本没有意义嘛。于是我们就可以先transient这个数组，然后我们自己写readObject，来实现我们的需求。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">transient</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">;</span>
@@ -519,11 +658,44 @@
     <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里我们先执行defaultReadObject(); 这时只有transient字段的arr不会序列化，然后我们自己再专门对arr[]进行readObject处理。这里defaultReadObject不会处理transient字段，但是我们自己专门写的readObject就不管是什么字段都会处理。</p>
-<p>以上我们都是在<strong>入口类中的readObject</strong>直接调用危险方法。开发人员肯定不会留那么危险的方法让你去攻击。 我们到这里可以发现，这种漏洞产生的核心是存在危险的代码在服务端自行执行的可能性。在漏洞不那么明显的时候，需要通过构造复杂的利用链来达到执行恶意命令的目的。</p>
-<p>直观来讲要想利用反序列化漏洞，接收的类要满足：1、支持序列化， 2、<strong>重写了readObject</strong> ，3、在重写的readObject中存在执行恶意命令的可能，4、可以接收很多类型的参数（目标类的类型）。</p>
-<p><strong>这里能联想到Java的HashMap ，刚好满足以上所有需求，简直是天生适合。</strong></p>
-<h2 id="2-2-HashMap为什么需要自己重写readobject-和-writeobject呢"><a href="#2-2-HashMap为什么需要自己重写readobject-和-writeobject呢" class="headerlink" title="2.2 HashMap为什么需要自己重写readobject 和 writeobject呢"></a>2.2 HashMap为什么需要自己重写readobject 和 writeobject呢</h2><p>HashMap 需要自定义 <code>readObject</code> 和 <code>writeObject</code> 方法，主要是为了 <strong>优化序列化性能</strong> 和 <strong>保证反序列化后的状态一致性</strong>。以下是具体原因和实现逻辑：</p>
-<h3 id="2-2-3-默认序列化的缺陷"><a href="#2-2-3-默认序列化的缺陷" class="headerlink" title="2.2.3 默认序列化的缺陷"></a>2.2.3 默认序列化的缺陷</h3><p>HashMap中由于entry的存放位置由<strong>Key的hash值</strong>来计算 然后存放在数组中。<strong>同一个key在不同的jvm中计算的hash值可能不同</strong> 不同的hash值就会导致一个hashmap对象的反序列化结果和序列化之前的<strong>结果不一致</strong>。</p>
+<p>我们到这里可以发现，这种漏洞产生的核心是存在危险的代码在服务端触发执行的可能性，并且攻击者能否控制输入来触发危险代码的执行。在漏洞不那么明显的时候，也就是仅满足两个核心条件中的一个时，需要通过构造复杂的利用链来达到执行恶意命令的目的。</p>
+<h2 id="2-2-HashMap的登场"><a href="#2-2-HashMap的登场" class="headerlink" title="2.2 HashMap的登场"></a>2.2 HashMap的登场</h2><p>直观来讲要想利用反序列化漏洞，接收的类要满足：1、支持序列化/反序列化， 2、重写了readObject方法 ，3、在重写的readObject中存在执行恶意命令的可能，4、可以接收很多类型的参数。（最后一个条件没有前面的那么必要。）</p>
+<p>那么java中有哪些常见的类是满足上面的条件的呢？当然最受瞩目的就是HashMap，天生适合。</p>
+<p>首先：</p>
+<p>1）实现了Serializable接口，支持序列化/反序列化：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">extends</span> <span class="token class-name">AbstractMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span> <span class="token keyword">implements</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">K</span><span class="token punctuation">,</span><span class="token class-name">V</span><span class="token punctuation">&gt;</span></span><span class="token punctuation">,</span> <span class="token class-name">Cloneable</span><span class="token punctuation">,</span> <span class="token class-name">Serializable</span> <span class="token punctuation">{</span>
+  <span class="token comment">//......</span>
+  <span class="token comment">//具备serialVersionUID属性 </span>
+	<span class="token keyword">private</span> <span class="token keyword">static</span> <span class="token keyword">final</span> <span class="token keyword">long</span> serialVersionUID <span class="token operator">=</span> <span class="token number">362498820763181265L</span><span class="token punctuation">;</span>
+  <span class="token comment">//......</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2）重写了readObject方法</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">private</span> <span class="token keyword">void</span> <span class="token function">readObject</span><span class="token punctuation">(</span><span class="token class-name"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span>ObjectInputStream</span> s<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3）readObject方法中存在执行恶意命令的可能：（以下基于源码来分析）</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-03%2017.14.15.png" style="zoom:50%;">
+
+<ul>
+<li>1407和1409行：会调用键和值所对应的类的readObject()方法，这些类本身在反序列化的过程中存在能执行恶意代码的可能性。</li>
+<li>1410行：putVal函数中会调用hash()函数计算键对象的哈希值（主要是用来确定元素在数组中的存放的位置）。</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-03%2017.20.25.png" style="zoom:50%;">
+
+<p>hash()函数会间接调用键对象的hashCode()方法，本身的目的是返回一个数值用来确定这个键值对应该放在哪里，如果当两个键对象计算出来的hashcode值一样会挂在对应位置的链表或红黑树上，来决绝哈希冲突的问题。但是有些类会重写hashCode方法，并且存在执行恶意代码的可能性，进而可能会导致RCE漏洞。</p>
+<ul>
+<li>555行：get(Object key)函数中也存在hash(key)的执行。</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-03%2017.28.33.png" style="zoom:50%;">
+
+<p>并且与putVal方法不同的是，当一些键对象哈希值相同，也就是这些键值对象放在同一个位置上的链表/红黑树上是，getNode函数中还会调用equals方法来逐个比较名字，来找到具体要获取的对象。如果某些类重写了equals方法并包含了恶意代码执行的可能，那么也会导致RCE漏洞。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-03%2017.32.33.png" style="zoom:50%;">
+
+<p>4）可以接收很多类型的参数：</p>
+<p>从HashMap的泛型参数就可以知道HashMap可以容纳各种类型的对象，那么就给了那些可能执行恶意代码的类、或具备恶意gadget链的类保存在其中的可能，再结合条件3，就能够产生RCE漏洞。</p>
+<h2 id="2-3-HashMap重写readobject-和-writeobject"><a href="#2-3-HashMap重写readobject-和-writeobject" class="headerlink" title="2.3 HashMap重写readobject 和 writeobject"></a>2.3 HashMap重写readobject 和 writeobject</h2><p>基于上述的分析在啰嗦一下，HashMap为什么要重写readobject 和 writeobject呢？</p>
+<p>HashMap 需要自定义 <code>readObject</code> 和 <code>writeObject</code> 方法，主要是为了 <strong>优化序列化性能</strong> 和 <strong>保证反序列化后的状态一致性</strong>。以下是具体原因和实现逻辑：</p>
+<h3 id="2-3-3-默认序列化的缺陷"><a href="#2-3-3-默认序列化的缺陷" class="headerlink" title="2.3.3 默认序列化的缺陷"></a>2.3.3 默认序列化的缺陷</h3><p>HashMap中由于entry的存放位置由<strong>Key的hash值</strong>来计算 然后存放在数组中。<strong>同一个key在不同的jvm中计算的hash值可能不同</strong> 不同的hash值就会导致一个hashmap对象的反序列化结果和序列化之前的<strong>结果不一致</strong>。</p>
 <p>比如：可能<code>key=AAA</code>在0的位置，而反序列化之后根据Key获取元素的时候需要从数组2的位置取。 hashmap想要保证一个<strong>键值对的唯一性</strong>就需要<strong>计算hashcode</strong> 。如果建的是一个对象，在不同的jvm可能就不一样。所以需要将对象拆开将不同的值单独计算。</p>
 <p>以下是HashMap.readObject中的部分代码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> mappings<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -543,36 +715,13 @@
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>这里调用了key的<strong>hashCode</strong>方法。</p>
-<h2 id="2-3-触发场景"><a href="#2-3-触发场景" class="headerlink" title="2.3 触发场景"></a>2.3 <strong>触发场景</strong></h2><ul>
+<h2 id="2-4-触发场景"><a href="#2-4-触发场景" class="headerlink" title="2.4 触发场景"></a>2.4 <strong>触发场景</strong></h2><ul>
 <li>1.HTTP请求中的参数。</li>
 <li>2.RMI，即Java远程方法调用，在RMI中传输的数据皆为序列化。</li>
 <li>3.JMX，一个为应用程序植入管理功能的框架。</li>
-<li>4.自定义协议,用来接收与发送原始的java对象。</li>
+<li>4.自定义协议，用来接收与发送原始的java对象。</li>
 </ul>
-<h2 id="2-3-反序列化漏洞产生的条件"><a href="#2-3-反序列化漏洞产生的条件" class="headerlink" title="2.3 反序列化漏洞产生的条件"></a>2.3 反序列化漏洞产生的条件</h2><p>核心问题在于默认机制允许通过ObjectInputStream的readObject方法还原任意对象。</p>
-<h3 id="1）存在不安全的反序列化入口"><a href="#1）存在不安全的反序列化入口" class="headerlink" title="1）存在不安全的反序列化入口"></a>1）存在不安全的反序列化入口</h3><p>应用程序直接或间接调用了Java原生反序列化方法（如<code>ObjectInputStream.readObject()</code>），且未对输入数据进行安全过滤。这种机制允许攻击者通过构造恶意序列化数据触发漏洞。常见场景包括：</p>
-<ul>
-<li>RMI远程调用接口</li>
-<li>HTTP请求中的序列化参数解析</li>
-<li>文件/数据库中的对象持久化恢复</li>
-</ul>
-<h3 id="2）存在可利用的Gadget链"><a href="#2）存在可利用的Gadget链" class="headerlink" title="2）存在可利用的Gadget链"></a>2）存在可利用的Gadget链</h3><p>类路径中存在可被串联的类库，形成完整的攻击链：</p>
-<ol>
-<li><strong>基础触发点</strong>：如<code>HashMap.readObject()</code>中的哈希计算会隐式调用<code>equals/hashCode</code>方法，触发后续操作。</li>
-<li>危险方法调用：例如Apache Commons Collections库中的InvokerTransformer类允许通过反射调用任意方法（如Runtime.exec()）。</li>
-<li>动态代理机制：利用AnnotationInvocationHandler作为动态代理处理器，在反序列化时触发memberValues的隐式操作（如遍历触发equalsImpl）。</li>
-</ol>
-<h3 id="3）缺乏安全防护机制"><a href="#3）缺乏安全防护机制" class="headerlink" title="3）缺乏安全防护机制"></a>3）缺乏安全防护机制</h3><p>1.未配置Security Manager：未通过沙箱机制限制敏感操作（如文件读写、类加载）。</p>
-<p>2.未启用JEP290过滤：未使用JDK9+的序列化过滤器限制可反序列化的类。</p>
-<p>3.未实施白名单验证：允许反序列化任意类，未限制@type等关键字段（如FastJson漏洞场景）。</p>
-<h3 id="4）特定环境配置缺陷"><a href="#4）特定环境配置缺陷" class="headerlink" title="4）特定环境配置缺陷"></a>4）特定环境配置缺陷</h3><p>1.使用危险第三方库：如存在漏洞版本的Apache Commons Collections（3.2.1以下）、FastJson（1.2.68以下）等。</p>
-<p>2.框架配置不当：例如WebLogic未限制T3协议的反序列化操作。</p>
-<p>3.JVM参数缺陷：允许反射调用sun.misc.Unsafe等危险类。</p>
-<h3 id="5）攻击载荷注入条件"><a href="#5）攻击载荷注入条件" class="headerlink" title="5）攻击载荷注入条件"></a>5）攻击载荷注入条件</h3><p>1.输入控制不严：未对序列化数据进行签名/加密，攻击者可篡改载荷。</p>
-<p>2.异常处理暴露信息：反序列化失败时返回堆栈信息，帮助攻击者调试利用链。</p>
-<p>3.网络传输未加密：中间人可劫持并注入恶意序列化数据。</p>
-<p>以上条件需形成完整的攻击链条才会导致漏洞利用成功。防御时需综合采用白名单验证（如Java原生序列化过滤器）、危险类库升级、输入签名验证等多层防护措施。具体案例分析可参考Apache Commons Collections漏洞（CVE-2015-4852）和FastJson漏洞（CVE-2017-18349）的利用链构造原理。</p>
-<h2 id="2-3-JAVA序列化数据流特征"><a href="#2-3-JAVA序列化数据流特征" class="headerlink" title="2.3 JAVA序列化数据流特征"></a>2.3 JAVA序列化数据流特征</h2><h3 id="2-3-1-概述"><a href="#2-3-1-概述" class="headerlink" title="2.3.1 概述"></a>2.3.1 概述</h3><p>Java序列化数据流是通过<code>ObjectOutputStream</code>生成的二进制流，其结构具有独特的特征。以下是其核心特征及对应的技术细节：</p>
+<h2 id="2-5-JAVA序列化数据流特征"><a href="#2-5-JAVA序列化数据流特征" class="headerlink" title="2.5 JAVA序列化数据流特征"></a>2.5 JAVA序列化数据流特征</h2><h3 id="2-3-1-概述"><a href="#2-3-1-概述" class="headerlink" title="2.3.1 概述"></a>2.3.1 概述</h3><p>Java序列化数据流是通过<code>ObjectOutputStream</code>生成的二进制流，其结构具有独特的特征。以下是其核心特征及对应的技术细节：</p>
 <ul>
 <li><strong>固定头部标识</strong></li>
 </ul>
@@ -801,31 +950,100 @@ ChainedTransformer.transform<span class="token punctuation">(</span><span class=
 
 
 
+<h1 id="五、Apache-Commons-Collections反序列化漏洞"><a href="#五、Apache-Commons-Collections反序列化漏洞" class="headerlink" title="五、Apache Commons Collections反序列化漏洞"></a>五、Apache Commons Collections反序列化漏洞</h1><p>目标：</p>
+<ol>
+<li>﻿﻿哪里出现了可以执行任意代码的问题？</li>
+<li>﻿﻿反序列化的payload怎么构造？</li>
+</ol>
+<h2 id="5-1-漏洞爆出"><a href="#5-1-漏洞爆出" class="headerlink" title="5.1 漏洞爆出"></a>5.1 漏洞爆出</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.04.12.png" style="zoom:30%;">
+
+<ul>
+<li>2015年黑客Gabriel Lawrence和Chris Frohoff发现。</li>
+<li>﻿影响webLogic、WebSphere、JBoss、Jenkins、OpenNMS等大型框架。</li>
+</ul>
+<h2 id="5-2-复现环境"><a href="#5-2-复现环境" class="headerlink" title="5.2 复现环境"></a>5.2 复现环境</h2><ul>
+<li>idk 1.7.0 80 （不一定）</li>
+<li>﻿﻿IDEA Project Structure、Settings–Java compile等设置成iava7</li>
+<li>Apache Commons Collections ≤ 3.2.1</li>
+</ul>
+<h2 id="5-3-Apache-Commons-Collections介绍"><a href="#5-3-Apache-Commons-Collections介绍" class="headerlink" title="5.3 Apache Commons Collections介绍"></a>5.3 Apache Commons Collections介绍</h2><h3 id="5-3-1-Java集合（List、Map、Set）-容器类"><a href="#5-3-1-Java集合（List、Map、Set）-容器类" class="headerlink" title="5.3.1 Java集合（List、Map、Set）-容器类"></a>5.3.1 Java集合（List、Map、Set）-容器类</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.11.23.png" style="zoom:50%;">
+
+<p> Apache Commons Collections是对JDK中容器类的升级扩展，新增的容器包括但不限于：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.13.36.png" alt="截屏2025-03-01 14.13.36" style="zoom:50%;">
+
+<h3 id="5-3-2-使用"><a href="#5-3-2-使用" class="headerlink" title="5.3.2 使用"></a>5.3.2 使用</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.15.01.png" style="zoom:20%;">
+
+<h2 id="5-4-Java反射机制"><a href="#5-4-Java反射机制" class="headerlink" title="5.4 Java反射机制"></a>5.4 Java反射机制</h2><h3 id="5-4-1-Java代码运行原理"><a href="#5-4-1-Java代码运行原理" class="headerlink" title="5.4.1 Java代码运行原理"></a>5.4.1 Java代码运行原理</h3><p>1、源码</p>
+<p>2、﻿﻿编译器 Jjavac)编译为字节码.class文件（我们之所以能在IDEA中看到class对应的源代码，是IDEA反编译的结果，成常来说class文件是二进制形式的，如果用010editor打开就是二进制流，开头是CAFE BEBE。）</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.19.50.png" style="zoom:50%;">
+
+<p>3、各平台的JVM解释器把字节码文件转换成操作系统指令，这也是跨平台的原因。</p>
+<h3 id="5-4-2-反射机制的用途"><a href="#5-4-2-反射机制的用途" class="headerlink" title="5.4.2 反射机制的用途"></a>5.4.2 反射机制的用途</h3><p>在程序运行的时候动态创建一个类的实例，调用实例的方法和访问它的属性。</p>
+<p>Java反射机制就像程序在运行时的“透视镜”和“万能钥匙”，它允许程序在不知道具体类结构的情况下，动态地“看透”类的内部构造并进行操作。例如，当你在代码中写new Person()时，类的结构是编译时确定的；而反射则能让程序在运行时通过类名（如从配置文件读取的字符串）加载一个未知的类，创建对象、调用方法，甚至修改私有字段的值。这种能力让框架（如Spring）能自动管理对象依赖、动态注入属性，也让工具（如JSON解析器）能通过字段名自动序列化对象，而不需要提前知道类的具体定义。简单来说，反射让Java代码具备了“运行时自我调整”的灵活性，是框架和动态功能实现的核心技术。</p>
+<p>静态：源代码中new对象，动态：程序动态创建Class。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">test1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">{</span>
+    <span class="token class-name">Runtime</span><span class="token punctuation">.</span><span class="token function">getRuntime</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">exec</span><span class="token punctuation">(</span><span class="token string">"calc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">test2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">try</span> <span class="token punctuation">{</span>
+        <span class="token comment">// 1. 获取 Runtime 类</span>
+        <span class="token class-name">Class</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">&gt;</span></span> clazz <span class="token operator">=</span> <span class="token class-name">Class</span><span class="token punctuation">.</span><span class="token function">forName</span><span class="token punctuation">(</span><span class="token string">"java.lang.Runtime"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 2. 获取 getRuntime() 方法并调用（静态方法，参数为 null）</span>
+        <span class="token class-name">Object</span> runtime <span class="token operator">=</span> clazz<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"getRuntime"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span><span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        
+        <span class="token comment">// 3. 获取 exec() 方法并执行命令（需传入 Runtime 实例和命令参数）</span>
+        clazz<span class="token punctuation">.</span><span class="token function">getMethod</span><span class="token punctuation">(</span><span class="token string">"exec"</span><span class="token punctuation">,</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">invoke</span><span class="token punctuation">(</span>runtime<span class="token punctuation">,</span> <span class="token string">"calc"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span> <span class="token keyword">catch</span> <span class="token punctuation">(</span><span class="token class-name">Exception</span> e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        e<span class="token punctuation">.</span><span class="token function">printStackTrace</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="5-5-Apache-Commons-Collections漏洞原理"><a href="#5-5-Apache-Commons-Collections漏洞原理" class="headerlink" title="5.5 Apache Commons Collections漏洞原理"></a>5.5 Apache Commons Collections漏洞原理</h2><h3 id="5-5-1-关键的类"><a href="#5-5-1-关键的类" class="headerlink" title="5.5.1 关键的类"></a>5.5.1 关键的类</h3><ul>
+<li><p>InvokeTransformer：利用Java反射机制来创建类实例。</p>
+</li>
+<li><p>ChainedTransformer：实现了Transformer链式调用，我们只需要传入一个Transformer数组，ChainedTransformer就可以实现依次的去调用每一个Transformer的transform()方法。</p>
+</li>
+<li><p>ConstantTransformer：transform0返回构造函数的对象</p>
+</li>
+<li><p>TransformedMap</p>
+</li>
+</ul>
+<h3 id="5-5-2-调用链路概览"><a href="#5-5-2-调用链路概览" class="headerlink" title="5.5.2 调用链路概览"></a>5.5.2 调用链路概览</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.47.44.png" style="zoom:50%;">
+
+<h3 id="5-5-3-POC构造思路"><a href="#5-5-3-POC构造思路" class="headerlink" title="5.5.3 POC构造思路"></a>5.5.3 POC构造思路</h3><p>1、InvokeTransformer 反射执行代码。</p>
+<p>2、ChainedTransformer 链式调用，自动触发。</p>
+<p>3、ConstantTransformer 获得对象。</p>
+<p>4、TransformedMap 元素变化执行transform, setvalue–checkSetValue。</p>
+<p>5、AnnotationInvocationHandler readObject 调用Map的setValue。</p>
+<p>调试分析：（ctrl+f12 查看所有的属性和方法）</p>
+<p>漏洞位置：InvokeTransformer 反射执行代码：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.57.45.png" style="zoom:50%;">
+
+<p>漏洞触发：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2014.59.43.png" alt="截屏2025-03-01 14.59.43" style="zoom:50%;">
+
+<p>ChainedTransformer 链式调用，自动触发</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2015.02.50.png" style="zoom:50%;">
 
 
 
+<p>最终的POC：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2015.08.18.png" style="zoom:50%;">
 
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2015.08.47.png" style="zoom:50%;">
 
+<p>如何让目标反序列化执行上面的代码呢：</p>
+<p>POC调用过程：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/%E6%88%AA%E5%B1%8F2025-03-01%2015.30.19.png" alt="截屏2025-03-01 15.30.19" style="zoom:50%;">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<h1 id="六、Alibaba-Fastison反序列化漏洞"><a href="#六、Alibaba-Fastison反序列化漏洞" class="headerlink" title="六、Alibaba Fastison反序列化漏洞"></a>六、Alibaba Fastison反序列化漏洞</h1><p>复现环境：&lt;=1.2.24  &lt;=1.2.47 （vulhub）</p>
+<h2 id="6-1-Fastjson介绍"><a href="#6-1-Fastjson介绍" class="headerlink" title="6.1 Fastjson介绍"></a>6.1 Fastjson介绍</h2><p><a target="_blank" rel="noopener" href="https://github.com/orgs/alibaba/repositories">https://github.com/orgs/alibaba/repositories</a></p>
+<p>Druid、Fastjson、Dubbo、OceanBase、Tengine、TFS、RocketMQ、Canal ……</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/alibaba/fastjson/wiki/Quick-Start-CN">https://github.com/alibaba/fastjson/wiki/Quick-Start-CN</a> 【文档】</p>
+<h2 id="6-2-漏洞复现"><a href="#6-2-漏洞复现" class="headerlink" title="6.2 ﻿﻿漏洞复现"></a>6.2 ﻿﻿漏洞复现</h2><p> &lt;=1.2.24 RCE CNVD-2017-02833  &lt;=1.2.47 RCE CNVD-2019-22238</p>
+<h2 id="6-3-漏洞原理"><a href="#6-3-漏洞原理" class="headerlink" title="6.3 ﻿﻿漏洞原理"></a>6.3 ﻿﻿漏洞原理</h2><h2 id="6-4-漏洞挖掘思路"><a href="#6-4-漏洞挖掘思路" class="headerlink" title="6.4 ﻿﻿漏洞挖掘思路"></a>6.4 ﻿﻿漏洞挖掘思路</h2><h2 id="6-5-漏洞修复"><a href="#6-5-漏洞修复" class="headerlink" title="6.5 ﻿﻿漏洞修复"></a>6.5 ﻿﻿漏洞修复</h2><h1 id="七、Apache-Shiro反序列化漏洞"><a href="#七、Apache-Shiro反序列化漏洞" class="headerlink" title="七、Apache Shiro反序列化漏洞"></a>七、Apache Shiro反序列化漏洞</h1><h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://yinwc.github.io/2020/02/08/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/#/%E4%B8%80%E3%80%81Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AE%80%E4%BB%8B">https://yinwc.github.io/2020/02/08/java%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/#/%E4%B8%80%E3%80%81Java%E5%BA%8F%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E7%AE%80%E4%BB%8B</a></li>
 </ul>
 
@@ -988,9 +1206,9 @@ ChainedTransformer.transform<span class="token punctuation">(</span><span class=
                     <div class="card-image">
                         
                         
-                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/11.jpg" class="responsive-img" alt="Java中的HashMap">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/23.jpg" class="responsive-img" alt="Java中的HashMap及其与反序列化漏洞的关系">
                         
-                        <span class="card-title">Java中的HashMap</span>
+                        <span class="card-title">Java中的HashMap及其与反序列化漏洞的关系</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -1018,12 +1236,12 @@ ChainedTransformer.transform<span class="token punctuation">(</span><span class=
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/HashMap/">
-                        <span class="chip bg-color">HashMap</span>
-                    </a>
-                    
                     <a href="/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/">
                         <span class="chip bg-color">前后端开发</span>
+                    </a>
+                    
+                    <a href="/tags/HashMap/">
+                        <span class="chip bg-color">HashMap</span>
                     </a>
                     
                     <a href="/tags/Java/">
@@ -1228,7 +1446,7 @@ ChainedTransformer.transform<span class="token punctuation">(</span><span class=
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">277.8k</span>
+                        class="white-color">288.7k</span>
             
             
             

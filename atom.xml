@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-02-28T13:48:31.418Z</updated>
+  <updated>2025-03-03T07:43:42.646Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,19 +17,21 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Java中的HashMap</title>
-    <link href="http://sxksec.cn/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/"/>
-    <id>http://sxksec.cn/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/</id>
-    <published>2025-02-28T13:40:56.000Z</published>
-    <updated>2025-02-28T13:48:31.418Z</updated>
+    <title>IDEA常用快捷键</title>
+    <link href="http://sxksec.cn/2025/03/01/qian-hou-duan-kai-fa/idea-chang-yong-kuai-jie-jian/"/>
+    <id>http://sxksec.cn/2025/03/01/qian-hou-duan-kai-fa/idea-chang-yong-kuai-jie-jian/</id>
+    <published>2025-03-01T13:28:44.000Z</published>
+    <updated>2025-03-03T07:43:42.646Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;HashMap 是一种高效存储键值对的数据结构，可以理解为“智能字典”，它的核心设计目标是快速存取数据。下面用通俗易懂的方式讲解它的原理和特点：&lt;/p&gt;
-&lt;h1 id=&quot;一、底层结构：数组-链表-红黑树&quot;&gt;&lt;a href=&quot;#一、底层结构：数组-链表-红黑树&quot;</summary>
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;查看接口或抽象类的实现类选择接口或者类：ctrl + alt + b （cmd+option+b）会显示所有的实现类。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;查看某个类的所有方法、属性：ctrl + F12 （cmd +</summary>
         
       
     
@@ -38,9 +40,36 @@
     <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     
-    <category term="HashMap" scheme="http://sxksec.cn/tags/HashMap/"/>
+    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="IDEA快捷键" scheme="http://sxksec.cn/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java中的HashMap及其与反序列化漏洞的关系</title>
+    <link href="http://sxksec.cn/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/"/>
+    <id>http://sxksec.cn/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/</id>
+    <published>2025-02-28T13:40:56.000Z</published>
+    <updated>2025-03-01T10:52:22.577Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、HashMap&quot;&gt;&lt;a href=&quot;#一、HashMap&quot; class=&quot;headerlink&quot; title=&quot;一、HashMap&quot;&gt;&lt;/a&gt;一、HashMap&lt;/h1&gt;&lt;p&gt;HashMap</summary>
+        
+      
+    
+    
+    
+    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
     
     <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
+    
+    <category term="HashMap" scheme="http://sxksec.cn/tags/HashMap/"/>
     
     <category term="Java" scheme="http://sxksec.cn/tags/Java/"/>
     
@@ -51,14 +80,14 @@
     <link href="http://sxksec.cn/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/"/>
     <id>http://sxksec.cn/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/</id>
     <published>2025-02-28T06:44:24.000Z</published>
-    <updated>2025-02-28T13:23:38.900Z</updated>
+    <updated>2025-03-03T09:54:48.803Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;一、基本概念&quot;&gt;&lt;a href=&quot;#一、基本概念&quot; class=&quot;headerlink&quot; title=&quot;一、基本概念&quot;&gt;&lt;/a&gt;一、基本概念&lt;/h1&gt;&lt;h2 id=&quot;1-1-Java序列化和反序列化的一些基本概念&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;一、基本概念&quot;&gt;&lt;a href=&quot;#一、基本概念&quot; class=&quot;headerlink&quot; title=&quot;一、基本概念&quot;&gt;&lt;/a&gt;一、基本概念&lt;/h1&gt;&lt;h2 id=&quot;1-0-基本环境&quot;&gt;&lt;a href=&quot;#1-0-基本环境&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -168,7 +197,7 @@
     <link href="http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/"/>
     <id>http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/</id>
     <published>2025-02-24T06:06:58.000Z</published>
-    <updated>2025-02-28T13:12:30.309Z</updated>
+    <updated>2025-03-03T07:43:54.966Z</updated>
     
     
       
@@ -560,35 +589,6 @@
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XML外部实体注入漏洞(XXE)</title>
-    <link href="http://sxksec.cn/2025/02/12/web-an-quan/xml-wai-bu-shi-ti-zhu-ru-lou-dong-xxe/"/>
-    <id>http://sxksec.cn/2025/02/12/web-an-quan/xml-wai-bu-shi-ti-zhu-ru-lou-dong-xxe/</id>
-    <published>2025-02-12T07:11:51.000Z</published>
-    <updated>2025-02-12T09:04:44.992Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、XML和JSON数据格式&quot;&gt;&lt;a href=&quot;#一、XML和JSON数据格式&quot; class=&quot;headerlink&quot; title=&quot;一、XML和JSON数据格式&quot;&gt;&lt;/a&gt;一、XML和JSON数据格式&lt;/h1&gt;&lt;h2 id=&quot;1-1-简介&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
   </entry>
   
