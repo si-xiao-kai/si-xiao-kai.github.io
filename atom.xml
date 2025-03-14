@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-03-03T07:43:42.646Z</updated>
+  <updated>2025-03-11T10:18:45.428Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,97 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>fastjson反序列化漏洞复现(vulhub)</title>
+    <link href="http://sxksec.cn/2025/03/11/lou-dong-zhi-shi-ku/fastjson-fan-xu-lie-hua-lou-dong-vulhub/"/>
+    <id>http://sxksec.cn/2025/03/11/lou-dong-zhi-shi-ku/fastjson-fan-xu-lie-hua-lou-dong-vulhub/</id>
+    <published>2025-03-11T10:11:45.000Z</published>
+    <updated>2025-03-11T10:18:45.428Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;ul&gt;
+&lt;li&gt;参考&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="反序列化漏洞" scheme="http://sxksec.cn/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
+    
+    <category term="Fastjson RCE" scheme="http://sxksec.cn/tags/Fastjson-RCE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>内存马初探</title>
+    <link href="http://sxksec.cn/2025/03/04/web-an-quan/nei-cun-ma/"/>
+    <id>http://sxksec.cn/2025/03/04/web-an-quan/nei-cun-ma/</id>
+    <published>2025-03-04T02:24:50.000Z</published>
+    <updated>2025-03-05T08:38:01.463Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;内存马（Memory Shell/Webshell）是一种无文件、驻留内存的恶意程序 ，通过直接注入应用进程（如Web中间件、Java应用）的内存空间执行恶意操作，规避传统文件扫描检测。&lt;/p&gt;
+&lt;h1 id=&quot;一、内存马简介&quot;&gt;&lt;a href=&quot;#一、内存马简介&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="内存马" scheme="http://sxksec.cn/tags/%E5%86%85%E5%AD%98%E9%A9%AC/"/>
+    
+    <category term="java内存马" scheme="http://sxksec.cn/tags/java%E5%86%85%E5%AD%98%E9%A9%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>泛微OA环境搭建与漏洞测试</title>
+    <link href="http://sxksec.cn/2025/03/04/lou-dong-zhi-shi-ku/fan-wei-oa-huan-jing-da-jian-yu-lou-dong-ce-shi/"/>
+    <id>http://sxksec.cn/2025/03/04/lou-dong-zhi-shi-ku/fan-wei-oa-huan-jing-da-jian-yu-lou-dong-ce-shi/</id>
+    <published>2025-03-04T01:42:59.000Z</published>
+    <updated>2025-03-04T02:23:58.701Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、泛微OA环境搭建&quot;&gt;&lt;a href=&quot;#一、泛微OA环境搭建&quot; class=&quot;headerlink&quot; title=&quot;一、泛微OA环境搭建&quot;&gt;&lt;/a&gt;一、泛微OA环境搭建&lt;/h1&gt;&lt;h2 id=&quot;1-1-环境准备&quot;&gt;&lt;a href=&quot;#1-1-环境准备&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="泛微OA" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA/"/>
+    
+  </entry>
   
   <entry>
     <title>IDEA常用快捷键</title>
@@ -80,7 +171,7 @@
     <link href="http://sxksec.cn/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/"/>
     <id>http://sxksec.cn/2025/02/28/web-an-quan/java-fan-xu-lie-hua-lou-dong-ji-chu/</id>
     <published>2025-02-28T06:44:24.000Z</published>
-    <updated>2025-03-03T09:54:48.803Z</updated>
+    <updated>2025-03-03T09:57:02.254Z</updated>
     
     
       
@@ -168,14 +259,14 @@
     <link href="http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/"/>
     <id>http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/</id>
     <published>2025-02-24T07:31:24.000Z</published>
-    <updated>2025-02-28T05:34:34.286Z</updated>
+    <updated>2025-03-14T07:29:36.685Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;Netlogon特权提升漏洞-CVE-2020-1472-分析与利用&quot;&gt;&lt;a href=&quot;#Netlogon特权提升漏洞-CVE-2020-1472-分析与利用&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;h1 id=&quot;Netlogon域特权提升漏洞与靶场攻防实战&quot;&gt;&lt;a href=&quot;#Netlogon域特权提升漏洞与靶场攻防实战&quot; class=&quot;headerlink&quot;</summary>
         
       
     
@@ -197,7 +288,7 @@
     <link href="http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/"/>
     <id>http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/</id>
     <published>2025-02-24T06:06:58.000Z</published>
-    <updated>2025-03-03T07:43:54.966Z</updated>
+    <updated>2025-03-12T02:44:49.732Z</updated>
     
     
       
@@ -386,9 +477,9 @@
     
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
+    
+    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
   </entry>
   
@@ -442,11 +533,11 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
+    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
     <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="PHP反序列化漏洞" scheme="http://sxksec.cn/tags/PHP%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
     
@@ -457,7 +548,7 @@
     <link href="http://sxksec.cn/2025/02/14/gong-fang-gong-ju-ku/wu-qi-qing-dan/"/>
     <id>http://sxksec.cn/2025/02/14/gong-fang-gong-ju-ku/wu-qi-qing-dan/</id>
     <published>2025-02-14T02:05:52.000Z</published>
-    <updated>2025-02-19T07:46:11.393Z</updated>
+    <updated>2025-03-12T02:47:15.055Z</updated>
     
     
       
@@ -505,90 +596,6 @@
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
     
     <category term="burp工具" scheme="http://sxksec.cn/tags/burp%E5%B7%A5%E5%85%B7/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vulnstack-01-靶场综合渗透</title>
-    <link href="http://sxksec.cn/2025/02/13/zong-he-shen-tou/vulnstack-01-ba-chang-zong-he-shen-tou/"/>
-    <id>http://sxksec.cn/2025/02/13/zong-he-shen-tou/vulnstack-01-ba-chang-zong-he-shen-tou/</id>
-    <published>2025-02-13T09:02:35.000Z</published>
-    <updated>2025-02-20T09:29:32.576Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、靶场搭建&quot;&gt;&lt;a href=&quot;#一、靶场搭建&quot; class=&quot;headerlink&quot; title=&quot;一、靶场搭建&quot;&gt;&lt;/a&gt;一、靶场搭建&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;靶场下载链接： &lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="综合渗透" scheme="http://sxksec.cn/categories/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/"/>
-    
-    
-    <category term="综合渗透" scheme="http://sxksec.cn/tags/%E7%BB%BC%E5%90%88%E6%B8%97%E9%80%8F/"/>
-    
-    <category term="内网渗透" scheme="http://sxksec.cn/tags/%E5%86%85%E7%BD%91%E6%B8%97%E9%80%8F/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>反序列化漏洞</title>
-    <link href="http://sxksec.cn/2025/02/13/web-an-quan/fan-xu-lie-hua-lou-dong/"/>
-    <id>http://sxksec.cn/2025/02/13/web-an-quan/fan-xu-lie-hua-lou-dong/</id>
-    <published>2025-02-13T07:21:34.000Z</published>
-    <updated>2025-02-13T08:24:17.630Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、为什么要进行序列化&quot;&gt;&lt;a href=&quot;#一、为什么要进行序列化&quot; class=&quot;headerlink&quot; title=&quot;一、为什么要进行序列化&quot;&gt;&lt;/a&gt;一、为什么要进行序列化&lt;/h1&gt;&lt;p&gt;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="反序列化漏洞" scheme="http://sxksec.cn/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>buuoj-(BUU-XXE-COURSE-1)</title>
-    <link href="http://sxksec.cn/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/"/>
-    <id>http://sxksec.cn/2025/02/13/ctf-shi-zhan/web-buuoj-buu-xxe-course-1/</id>
-    <published>2025-02-13T02:39:04.000Z</published>
-    <updated>2025-02-13T02:45:21.669Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、题面&quot;&gt;&lt;a href=&quot;#一、题面&quot; class=&quot;headerlink&quot; title=&quot;一、题面&quot;&gt;&lt;/a&gt;一、题面&lt;/h1&gt;&lt;p&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    <category term="XXE" scheme="http://sxksec.cn/tags/XXE/"/>
     
   </entry>
   

