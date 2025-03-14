@@ -259,7 +259,7 @@
     <link href="http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/"/>
     <id>http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/</id>
     <published>2025-02-24T07:31:24.000Z</published>
-    <updated>2025-03-14T07:29:36.685Z</updated>
+    <updated>2025-03-14T07:39:26.197Z</updated>
     
     
       
@@ -475,9 +475,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="文件上传" scheme="http://sxksec.cn/tags/%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
     
@@ -533,9 +533,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
@@ -591,9 +591,9 @@
     <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
     
     
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
     <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
     
     <category term="burp工具" scheme="http://sxksec.cn/tags/burp%E5%B7%A5%E5%85%B7/"/>
     
