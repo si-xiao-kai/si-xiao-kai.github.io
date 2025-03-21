@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-03-11T10:18:45.428Z</updated>
+  <updated>2025-03-21T05:16:59.546Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>泛微OA v9 E-Cology browser.jsp SQL注入漏洞</title>
+    <link href="http://sxksec.cn/2025/03/21/lou-dong-zhi-shi-ku/fan-wei-oa-v9-e-cology-browser.jsp-sql-zhu-ru-lou-dong/"/>
+    <id>http://sxksec.cn/2025/03/21/lou-dong-zhi-shi-ku/fan-wei-oa-v9-e-cology-browser.jsp-sql-zhu-ru-lou-dong/</id>
+    <published>2025-03-21T01:50:24.000Z</published>
+    <updated>2025-03-21T05:16:59.546Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、漏洞描述&quot;&gt;&lt;a href=&quot;#一、漏洞描述&quot; class=&quot;headerlink&quot; title=&quot;一、漏洞描述&quot;&gt;&lt;/a&gt;一、漏洞描述&lt;/h1&gt;&lt;p&gt;泛微OA E-Cology browser.jsp</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="泛微OA" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA/"/>
+    
+    <category term="泛微OA-SQL注入" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA-SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
   
   <entry>
     <title>fastjson反序列化漏洞复现(vulhub)</title>
@@ -259,7 +288,7 @@
     <link href="http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/"/>
     <id>http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/</id>
     <published>2025-02-24T07:31:24.000Z</published>
-    <updated>2025-03-14T07:39:26.197Z</updated>
+    <updated>2025-03-19T05:39:16.276Z</updated>
     
     
       
@@ -567,35 +596,6 @@
     <category term="攻防工具库" scheme="http://sxksec.cn/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/"/>
     
     <category term="武器清单" scheme="http://sxksec.cn/tags/%E6%AD%A6%E5%99%A8%E6%B8%85%E5%8D%95/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>web-buuoj-(BUU BURP COURSE 1)</title>
-    <link href="http://sxksec.cn/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/"/>
-    <id>http://sxksec.cn/2025/02/13/ctf-shi-zhan/web-buuoj-buu-burp-course-1/</id>
-    <published>2025-02-13T10:51:45.000Z</published>
-    <updated>2025-02-13T02:37:52.660Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、题面&quot;&gt;&lt;a href=&quot;#一、题面&quot; class=&quot;headerlink&quot; title=&quot;一、题面&quot;&gt;&lt;/a&gt;一、题面&lt;/h1&gt;&lt;img</summary>
-        
-      
-    
-    
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/categories/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    
-    <category term="CTF实战" scheme="http://sxksec.cn/tags/CTF%E5%AE%9E%E6%88%98/"/>
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="burp工具" scheme="http://sxksec.cn/tags/burp%E5%B7%A5%E5%85%B7/"/>
     
   </entry>
   

@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-10
+                    2025-03-18
                 </div>
                 
 
@@ -514,9 +514,9 @@ app <span class="token operator">=</span> Flask<span class="token punctuation">(
 <p><code>npm config set legacy-peer-deps true</code></p>
 <p>这条命令用于配置 <strong>npm</strong> 使用 “legacy peer dependencies” 机制来解决依赖冲突。具体来说：</p>
 <ol>
-<li><strong><code>peer dependencies</code></strong><br>是指某个 npm 包对其他包的版本要求，它并不直接安装这些依赖，而是由使用该包的项目来安装。它用于确保在多个包中共享同一版本的依赖。</li>
-<li><strong>“legacy peer dependencies”</strong><br>在 npm 7 版本及之后，npm 会强制执行严格的 <code>peer dependencies</code> 规则。若存在不兼容的版本，npm 会拒绝安装。这可能导致一些旧项目的依赖安装失败，特别是一些老旧的 npm 包没有更新以适应这些新规则。</li>
-<li><strong><code>npm config set legacy-peer-deps true</code></strong><br>这条命令设置 npm 配置，指示 npm 在安装时忽略 <code>peer dependencies</code> 的严格检查，允许安装不完全匹配的版本。这对于那些依赖较旧的 npm 包（或者在升级后依赖有冲突的情况）特别有用。</li>
+<li><strong><code>peer dependencies</code></strong><br>  是指某个 npm 包对其他包的版本要求，它并不直接安装这些依赖，而是由使用该包的项目来安装。它用于确保在多个包中共享同一版本的依赖。</li>
+<li><strong>“legacy peer dependencies”</strong><br>  在 npm 7 版本及之后，npm 会强制执行严格的 <code>peer dependencies</code> 规则。若存在不兼容的版本，npm 会拒绝安装。这可能导致一些旧项目的依赖安装失败，特别是一些老旧的 npm 包没有更新以适应这些新规则。</li>
+<li><strong><code>npm config set legacy-peer-deps true</code></strong><br>  这条命令设置 npm 配置，指示 npm 在安装时忽略 <code>peer dependencies</code> 的严格检查，允许安装不完全匹配的版本。这对于那些依赖较旧的 npm 包（或者在升级后依赖有冲突的情况）特别有用。</li>
 </ol>
 <p><code>npm i</code> (或 <code>npm install</code>)**</p>
 <p>这是用于安装项目依赖的命令，它会按照项目根目录下的 <code>package.json</code> 文件来安装所有列出的依赖。</p>
@@ -682,8 +682,7 @@ CORS<span class="token punctuation">(</span>app<span class="token punctuation">)
 
 
 <span class="token keyword">if</span> __name__ <span class="token operator">==</span> <span class="token string">'__main__'</span><span class="token punctuation">:</span>
-    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+    app<span class="token punctuation">.</span>run<span class="token punctuation">(</span>debug<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="6-2-4-访问测试"><a href="#6-2-4-访问测试" class="headerlink" title="6.2.4 访问测试"></a>6.2.4 访问测试</h3><p>启动 Flask 项目后，直接访问根路径 <code>http://127.0.0.1:5000</code>。</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/09/qian-hou-duan-kai-fa/react-flask-hou-duan-fen-chi-kai-fa/%E6%88%AA%E5%B1%8F2024-12-10%2010.15.20.png" style="zoom:50%;">
@@ -1123,7 +1122,7 @@ CORS<span class="token punctuation">(</span>app<span class="token punctuation">)
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">306k</span>
+                        class="white-color">308.5k</span>
             
             
             
