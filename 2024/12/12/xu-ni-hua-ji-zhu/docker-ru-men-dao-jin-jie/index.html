@@ -406,14 +406,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2024-12-19
+                    2025-03-27
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.4k
+                    5.5k
                 </div>
                 
 
@@ -602,18 +602,18 @@ EOF</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <p>还是不行。</p>
 <p>继续鼓捣这个daemon.json</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">{</span>
- <span class="token string">"registry-mirrors"</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
-   <span class="token string">"https://mirror.ccs.tencentyun.com"</span>,
-   <span class="token string">"http://registry.docker-cn.com"</span>,
-   <span class="token string">"http://docker.mirrors.ustc.edu.cn"</span>,
-   <span class="token string">"http://hub-mirror.c.163.com"</span>
- <span class="token punctuation">]</span>,
- <span class="token string">"insecure-registries"</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
-   <span class="token string">"registry.docker-cn.com"</span>,
-   <span class="token string">"docker.mirrors.ustc.edu.cn"</span>
- <span class="token punctuation">]</span>,
- <span class="token string">"debug"</span> <span class="token builtin class-name">:</span> true,
- <span class="token string">"experimental"</span> <span class="token builtin class-name">:</span> <span class="token boolean">true</span>
+<span class="token string">"registry-mirrors"</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+<span class="token string">"https://mirror.ccs.tencentyun.com"</span>,
+<span class="token string">"http://registry.docker-cn.com"</span>,
+<span class="token string">"http://docker.mirrors.ustc.edu.cn"</span>,
+<span class="token string">"http://hub-mirror.c.163.com"</span>
+<span class="token punctuation">]</span>,
+<span class="token string">"insecure-registries"</span> <span class="token builtin class-name">:</span> <span class="token punctuation">[</span>
+<span class="token string">"registry.docker-cn.com"</span>,
+<span class="token string">"docker.mirrors.ustc.edu.cn"</span>
+<span class="token punctuation">]</span>,
+<span class="token string">"debug"</span> <span class="token builtin class-name">:</span> true,
+<span class="token string">"experimental"</span> <span class="token builtin class-name">:</span> <span class="token boolean">true</span>
 <span class="token punctuation">}</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">{</span>
@@ -699,6 +699,12 @@ systemctl restart <span class="token function">docker</span><span aria-hidden="t
 
 <p>成功拉取得。</p>
 <p>所以核心中的核心就是拿到流畅可用的镜像仓库地址。</p>
+<ul>
+<li>拉取镜像的时候加前缀</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull m.daocloud.io/docker.io/library/node:22<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
 </blockquote>
 <h2 id="3-3-访问测试"><a href="#3-3-访问测试" class="headerlink" title="3.3 访问测试"></a>3.3 访问测试</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/12/xu-ni-hua-ji-zhu/docker-ru-men-dao-jin-jie/%E6%88%AA%E5%B1%8F2024-12-13%2011.24.57.png" style="zoom:50%;">
 
@@ -1698,7 +1704,7 @@ http <span class="token punctuation">{</span>
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">311.8k</span>
+                        class="white-color">324.4k</span>
             
             
             

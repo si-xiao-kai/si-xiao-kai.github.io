@@ -402,7 +402,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-19
+                    2025-03-26
                 </div>
                 
 
@@ -1417,8 +1417,8 @@ root<span class="token punctuation">.</span><span class="token function">render<
 
 <p>为了职责清晰，数据流向明确，Redux把整个数据修改的流程分成了三个核心概念，分别是：state、action和reducer</p>
 <ol>
-<li>state - 一个对象 存放着我们管理的数据状态。</li>
-<li>action - 一个对象 用来描述你想怎么改数据。</li>
+<li>state - 一个对象存放着我们管理的数据状态。</li>
+<li>action - 一个对象用来描述你想怎么改数据。</li>
 <li>reducer - 一个函数 根据action的描述生成一个新的state。</li>
 </ol>
 <h2 id="14-2-Redux与React"><a href="#14-2-Redux与React" class="headerlink" title="14.2 Redux与React"></a>14.2 Redux与React</h2><h3 id="14-2-1-环境准备"><a href="#14-2-1-环境准备" class="headerlink" title="14.2.1 环境准备"></a>14.2.1 环境准备</h3><h4 id="1）配套工具"><a href="#1）配套工具" class="headerlink" title="1）配套工具"></a>1）配套工具</h4><p>在React中使用redux，官方要求安装俩个其他插件 - Redux Toolkit 和 react-redux</p>
@@ -1496,8 +1496,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token keyword">export</span> <span class="token keyword">default</span> someFunction<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>导入默认导出</strong></p>
-<p>javascript</p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// anotherFile.js</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&gt;</span><span class="token comment">// anotherFile.js</span>
 <span class="token keyword">import</span> myFunction <span class="token keyword">from</span> <span class="token string">'./module.js'</span><span class="token punctuation">;</span>
 <span class="token function">myFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// This is a function from a module.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
@@ -1506,7 +1505,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 </ul>
 <p>命名导出允许模块导出多个值（函数、对象或变量），每个值都有一个名称。一个模块可以有多个命名导出。</p>
 <p><strong>示例：命名导出</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// module.js</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&gt;</span><span class="token comment">// module.js</span>
 <span class="token keyword">export</span> <span class="token keyword">const</span> <span class="token function-variable function">someFunction</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token string">'This is a function from a module.'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span><span class="token punctuation">;</span>
@@ -1518,7 +1517,7 @@ root<span class="token punctuation">.</span><span class="token function">render<
 <span class="token keyword">export</span> <span class="token keyword">const</span> someValue <span class="token operator">=</span> <span class="token string">'This is a value from a module.'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p><strong>导入命名导出</strong></p>
-<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token comment">// anotherFile.js</span>
+<pre class="line-numbers language-javascript" data-language="javascript"><code class="language-javascript"><span class="token operator">&gt;</span><span class="token comment">// anotherFile.js</span>
 <span class="token keyword">import</span> <span class="token punctuation">{</span> someFunction<span class="token punctuation">,</span> anotherFunction<span class="token punctuation">,</span> someValue <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">'./module.js'</span><span class="token punctuation">;</span>
 
 <span class="token function">someFunction</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// This is a function from a module.</span>
@@ -2173,7 +2172,7 @@ npx create-react-app react-router-pro
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">311.8k</span>
+                        class="white-color">324.4k</span>
             
             
             

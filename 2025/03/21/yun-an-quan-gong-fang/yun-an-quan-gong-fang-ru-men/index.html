@@ -1,0 +1,1568 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="云安全攻防入门, Hacker进化论">
+    <meta name="description" content="本文主要介绍一些云安全攻防入门知识。">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>云安全攻防入门 | Hacker进化论</title>
+    <link rel="icon" type="image/png" href="/hacker1.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Hacker进化论" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/incognito.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hacker进化论</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/incognito.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hacker进化论</div>
+        <div class="logo-desc">
+            
+            The only way to do great work is to love what you do.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/si-xiao-kai/si-xiao-kai.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/si-xiao-kai/si-xiao-kai.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/22.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">云安全攻防入门</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/">
+                                <span class="chip bg-color">云安全攻防</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%85%A5%E9%97%A8/">
+                                <span class="chip bg-color">云安全攻防入门</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/" class="post-category">
+                                云安全攻防
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-03-21
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-03-26
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    8.8k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    31 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、云计算简介"><a href="#一、云计算简介" class="headerlink" title="一、云计算简介"></a>一、云计算简介</h1><h2 id="1-1-云计算的基本概念"><a href="#1-1-云计算的基本概念" class="headerlink" title="1.1 云计算的基本概念"></a>1.1 云计算的基本概念</h2><p>云计算是一种基于互联网的计算模式，通过虚拟化技术将计算资源（如服务器、存储、网络、软件等）整合成共享资源池，用户可以根据需求随时随地通过网络按需获取和释放这些资源。其核心特点包括弹性扩展（根据业务动态调整资源规模）、按使用付费（仅支付实际消耗的资源）、高可用性（分布式架构保障服务稳定性）以及免运维底层基础设施（由云服务商统一维护）。云计算通过提供基础设施即服务（IaaS）、平台即服务（PaaS）和软件即服务（SaaS）等模式，帮助企业和个人降低IT成本、加速创新并实现灵活高效的资源管理。</p>
+<p>用通俗易懂的话解释就是：云计算是一种计算模型，它提供了一种通过互联网远程使用共享计算资源的方式。这些计算资源包括计算机处理能力、存储空间、数据库和软件等。这样，用户就可以在需要时随时随地获取这些资源，而不用自己拥有和维护这些硬件和软件。简单来说，云计算就是在互联网上用别人的电脑来运行自己的程序。</p>
+<h2 id="1-2-云计算的模式"><a href="#1-2-云计算的模式" class="headerlink" title="1.2 云计算的模式"></a>1.2 云计算的模式</h2><p>云计算的主要模式可分为 服务模式 和 部署模式 两大类：</p>
+<h3 id="1-2-1-服务模式（按资源层级划分）"><a href="#1-2-1-服务模式（按资源层级划分）" class="headerlink" title="1.2.1 服务模式（按资源层级划分）"></a>1.2.1 服务模式（按资源层级划分）</h3><ul>
+<li>IaaS（基础设施即服务） ：提供虚拟化的计算资源（如服务器、存储、网络），用户可自主部署操作系统和应用。 示例 ：AWS EC2、阿里云ECS、腾讯云CVM。</li>
+<li>PaaS（平台即服务） ：提供应用开发和部署所需的平台环境（如数据库、开发工具、运行环境），用户专注代码编写。 示例 ：Google App Engine、微软Azure App Service。 </li>
+<li>SaaS（软件即服务） ：直接通过互联网使用云端软件，无需安装和维护。 示例 ：Office 365、Salesforce、钉钉。 </li>
+<li>FaaS（函数即服务/无服务器计算） ：以事件驱动方式运行代码片段，按需执行且自动扩缩容。 示例 ：AWS Lambda、阿里云函数计算。 </li>
+<li>CaaS（容器即服务） ：基于容器技术（如Docker、Kubernetes）提供容器化应用的部署与管理平台。 示例 ：Google Kubernetes Engine（GKE）、华为云CCE。</li>
+</ul>
+<h3 id="1-2-2-部署模式（按资源归属与管理方式划分）"><a href="#1-2-2-部署模式（按资源归属与管理方式划分）" class="headerlink" title="1.2.2 部署模式（按资源归属与管理方式划分）"></a>1.2.2 部署模式（按资源归属与管理方式划分）</h3><ul>
+<li>公有云 ：资源由第三方云服务商所有并维护，通过互联网开放给公众使用（如阿里云、AWS）。 </li>
+<li>私有云 ：资源专供单一组织使用，可部署在本地或第三方数据中心，强调安全可控（如企业自建OpenStack）。 </li>
+<li>混合云 ：结合公有云和私有云，实现数据与应用跨云协同（如本地数据库+公有云弹性计算）。 </li>
+<li>社区云 ：多个组织共享的云基础设施，服务于特定行业或群体（如政务云、医疗云）。 </li>
+<li>多云（Multi-Cloud） ：同时使用多个公有云服务，避免厂商锁定并优化成本（如AWS+Azure组合）。</li>
+</ul>
+<p>核心价值 ：通过灵活的模式组合，满足不同场景下的成本、安全、性能需求，推动企业数字化转型。</p>
+<h2 id="1-3-虚拟化和容器化技术"><a href="#1-3-虚拟化和容器化技术" class="headerlink" title="1.3 虚拟化和容器化技术"></a>1.3 <strong>虚拟化和容器化技术</strong></h2><p>虚拟化与容器技术是两种主流的资源隔离与部署技术，广泛应用于云计算和现代IT架构中。</p>
+<p>公有云和私有云的核心在于最大化利用计算资源，通过虚拟化技术可以将一台物理机转化为多台虚拟服务器。虚拟化技术不可或缺的是虚拟化软件，常见的虚拟化软件包括Vmware和KVM，KVM是一个开源的解决方案，目前在公有云场景中较为常见，并且代表着整个行业的最高水平。</p>
+<p>而容器技术是近几年非常热门的一种理念，它代表了兼容性和弹性能力。容器非常轻量级，主要依靠Linux内核的隔离能力。目前有影响力和流行的两个容器产品是Docker和K8S，K8S常常被称为云原生的代名词。</p>
+<h3 id="1-3-1-虚拟化技术"><a href="#1-3-1-虚拟化技术" class="headerlink" title="1.3.1 虚拟化技术"></a>1.3.1 虚拟化技术</h3><h4 id="1）定义"><a href="#1）定义" class="headerlink" title="1）定义"></a>1）定义</h4><p>虚拟化技术通过软件（Hypervisor）在物理服务器上创建多个 虚拟机（VM） ，每个虚拟机拥有独立的操作系统、虚拟硬件（CPU、内存、磁盘等），并能够运行不同的应用程序。物理资源被抽象化后，允许多个虚拟机共享同一台物理机的资源。 </p>
+<h4 id="2）核心技术"><a href="#2）核心技术" class="headerlink" title="2）核心技术"></a>2）核心技术</h4><p>Hypervisor（虚拟机监视器） ：</p>
+<p>类型1（裸机型） ：直接运行在物理硬件上（如VMware ESXi、Microsoft Hyper-V）。 </p>
+<p>类型2（宿主型） ：运行在宿主机操作系统之上（如VirtualBox、VMware Workstation）。 </p>
+<h4 id="3）优势"><a href="#3）优势" class="headerlink" title="3）优势"></a>3）优势</h4><p>资源隔离 ：每个虚拟机独立运行，避免应用间冲突。</p>
+<p>兼容性 ：支持运行不同操作系统（如Linux和Windows共存）。 </p>
+<p>硬件利用率 ：将单台物理机的资源分配给多个虚拟机，降低成本。</p>
+<h4 id="4）典型应用"><a href="#4）典型应用" class="headerlink" title="4）典型应用"></a>4）典型应用</h4><p>企业数据中心整合服务器资源。 开发和测试环境中模拟多系统环境。 云计算平台（如AWS EC2、阿里云ECS）的基础设施。</p>
+<h3 id="1-3-2-容器化技术"><a href="#1-3-2-容器化技术" class="headerlink" title="1.3.2 容器化技术"></a>1.3.2 容器化技术</h3><h4 id="1）定义-1"><a href="#1）定义-1" class="headerlink" title="1）定义"></a>1）定义</h4><p>容器化通过操作系统内核的隔离机制（如Linux的cgroups和namespaces）创建轻量级的容器 。容器共享宿主机的操作系统内核，但拥有独立的文件系统、网络和进程空间，仅打包应用及其依赖。 </p>
+<h4 id="2）核心技术-1"><a href="#2）核心技术-1" class="headerlink" title="2）核心技术"></a>2）核心技术</h4><p>容器引擎 ：Docker是最流行的容器运行时工具。 </p>
+<p>容器编排 ：Kubernetes、Docker Swarm等用于管理大规模容器集群。 </p>
+<p>镜像（Image） ：预定义的只读模板，包含应用代码、库和环境配置。 </p>
+<h4 id="3）优势-1"><a href="#3）优势-1" class="headerlink" title="3）优势"></a>3）优势</h4><p>轻量高效 ：无需虚拟化整个操作系统，启动速度快（秒级），资源占用低。 </p>
+<p>一致性环境 ：开发、测试、生产环境使用相同镜像，避免“在我机器上能运行”问题。 </p>
+<p>快速扩展 ：结合编排工具可实现自动化部署和弹性伸缩。</p>
+<h4 id="4）典型应用-1"><a href="#4）典型应用-1" class="headerlink" title="4）典型应用"></a>4）典型应用</h4><p>微服务架构（如Spring Cloud、gRPC服务）。 </p>
+<p>持续集成/持续交付（CI/CD）流水线。 </p>
+<p>云原生应用（如Kubernetes集群、Serverless场景）。</p>
+<h3 id="虚拟化-vs-容器化：核心区别"><a href="#虚拟化-vs-容器化：核心区别" class="headerlink" title="虚拟化 vs. 容器化：核心区别"></a>虚拟化 vs. 容器化：核心区别</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-24%2015.03.59.png" style="zoom:50%;">
+
+<h2 id="1-4-云产品的相关概念"><a href="#1-4-云产品的相关概念" class="headerlink" title="1.4 云产品的相关概念"></a>1.4 云产品的相关概念</h2><p>阿里云服务器叫ECS，而我们在腾讯云官网看到的云服务器简称为CVM。阿里云对象存储简称OSS，而腾讯云对象存储称COS，所以每个厂商的叫法不同。下面以阿里云为例介绍：</p>
+<h3 id="1-4-1-ECS"><a href="#1-4-1-ECS" class="headerlink" title="1.4.1 ECS"></a>1.4.1 ECS</h3><ul>
+<li>云服务器ECS（Elastic Compute Service）</li>
+<li>实例：云上的虚拟计算服务器，内含vCPU、内存、操作系统、网络、磁盘等基础组件。</li>
+</ul>
+<h3 id="1-4-2-SLB"><a href="#1-4-2-SLB" class="headerlink" title="1.4.2 SLB"></a>1.4.2 SLB</h3><ul>
+<li>云负载均衡（Server Load Balancer，简称SLB）是云原生时代应用高可用的基本要素。通过对多台云服务器进行均衡的流量分发调度，消除单点故障提升应用系统的可靠性与吞吐力。</li>
+</ul>
+<h3 id="1-4-3-OSS对象存储"><a href="#1-4-3-OSS对象存储" class="headerlink" title="1.4.3  OSS对象存储"></a>1.4.3  OSS对象存储</h3><ul>
+<li>对象存储（Object Storage Service），是阿里云对外提供的海量、安全和高可靠的云存储服务。</li>
+<li>RESTFul API 的平台无关性，容量和处理能力的弹性扩展，按实际容量付费真正使您专注于核心业务。</li>
+<li>Web应用资源、提供数据下载等</li>
+</ul>
+<h3 id="1-4-4-安全组"><a href="#1-4-4-安全组" class="headerlink" title="1.4.4 安全组"></a>1.4.4 安全组</h3><ul>
+<li>安全组是一种虚拟防火墙，具备状态检测和数据包过滤功能，用于在云端划分安全域。</li>
+<li>同一安全组内的ECS实例之间默认内网网络互通。</li>
+</ul>
+<h3 id="1-4-5-RDS（云数据库）"><a href="#1-4-5-RDS（云数据库）" class="headerlink" title="1.4.5 RDS（云数据库）"></a>1.4.5 RDS（云数据库）</h3><ul>
+<li>关系型数据库服务（Relational Database Service，简称 RDS）是一种稳定可靠、可弹性伸缩的在线数据库服务。</li>
+<li>RDS 采用即开即用方式，兼容 MySQL、 SQL Server 两种关系型数据库，并提供数据库在线扩容、备份回滚、性能监测 及分析功能。</li>
+<li>RDS 与云服务器搭配使用 I/O 性能倍增，内网互通避免网络瓶颈。</li>
+</ul>
+<h3 id="1-4-6-VPC"><a href="#1-4-6-VPC" class="headerlink" title="1.4.6  VPC"></a>1.4.6  VPC</h3><ul>
+<li>专有网络VPC（Virtual Private Cloud）是用户基于阿里云创建的自定义私有网络, 不同的专有网络之间二层逻辑隔离，用户可以在自己创建的专有网络内创建和管理云产品实例，比如ECS、SLB、RDS等。</li>
+<li><a target="_blank" rel="noopener" href="https://help.aliyun.com/document_detail/34217.html">https://help.aliyun.com/document_detail/34217.html</a></li>
+</ul>
+<h3 id="1-4-7-RAM"><a href="#1-4-7-RAM" class="headerlink" title="1.4.7 RAM"></a>1.4.7 RAM</h3><ul>
+<li>访问控制RAM（Resource Access Management）是阿里云提供的管理用户身份与资源访问权限的服务。</li>
+<li>RAM允许在一个阿里云账号下创建并管理多个身份，并允许给单个身份或一组身份分配不同的权限，从而实现不同用户拥有不同资源访问权限的目的。</li>
+</ul>
+<h3 id="1-4-8-AccessKey"><a href="#1-4-8-AccessKey" class="headerlink" title="1.4.8 AccessKey"></a>1.4.8 AccessKey</h3><ul>
+<li>阿里云用户可以在管理控制台里自行创建 Access Key，Access Key是由AccessKey ID 和 AccessKey Secret 组成。</li>
+<li>其中 ID 是公开的，用于标识用户身份，Secret 是秘密的，用于用户鉴别。</li>
+<li>当用户向 OSS 发送请求时，需要首先将发送的请求按照 OSS 指定的格式生成签名字符串；</li>
+<li>然后使用 AccessKey Secret 对签名字符串进行加密（基于HMAC 算法）产生验证码。</li>
+<li>验证码带时间戳，以防止重放攻击。</li>
+<li>OSS 收到请求以后，通过 AccessKey ID 找到对应的 AccessKey Secret，以同样的方法提取签名字符串和验证码，如果计算出来的验证码和提供的一样即认为该请求是有效的；否则，OSS 将拒绝处理这次请求，并返回 HTTP 403 错误。</li>
+</ul>
+<h2 id="1-5-云原生"><a href="#1-5-云原生" class="headerlink" title="1.5 云原生"></a>1.5 云原生</h2><p>云原生（Cloud Native）是一种 基于云计算环境设计和运行应用的方法论 ，旨在充分发挥云计算的弹性、敏捷性和可扩展性，通过现代化技术栈和架构理念，帮助开发者快速构建、高效运维和持续迭代应用。</p>
+<h3 id="1-5-1-核心要素"><a href="#1-5-1-核心要素" class="headerlink" title="1.5.1 核心要素"></a>1.5.1 核心要素</h3><ul>
+<li><p>云优先设计：</p>
+<ul>
+<li>应用从设计阶段就围绕云平台特性（如弹性资源、分布式架构）构建，而非简单迁移传统应用到云上。</li>
+</ul>
+</li>
+<li><p>核心技术栈：</p>
+<ul>
+<li>容器化 ：用Docker等工具打包应用及依赖，确保环境一致性。</li>
+<li>容器编排 ：通过Kubernetes自动管理容器集群的部署、扩缩容和故障恢复。 </li>
+<li>微服务 ：将单体应用拆解为独立的小型服务，提升灵活性和可维护性。 </li>
+<li>服务网格（Service Mesh） ：用Istio等工具管理服务间通信，增强安全性和可观测性。 </li>
+<li>无服务器（Serverless） ：按需运行代码（如AWS Lambda），无需管理服务器。</li>
+</ul>
+</li>
+</ul>
+<p>云原生是云计算时代的“最佳实践”，通过容器化、微服务、自动化等技术，帮助企业构建 弹性、可扩展、高可用 的现代应用体系，加速数字化转型。其核心不仅是技术升级，更是组织流程和文化向敏捷、协作的转变。</p>
+<h1 id="二、什么是云安全"><a href="#二、什么是云安全" class="headerlink" title="二、什么是云安全"></a>二、什么是云安全</h1><p>云安全是为保护云计算环境中的数据、应用和基础设施而采取的综合防护措施，涵盖技术、策略与管理流程，其核心在于 共享责任模型 ——云服务商负责底层物理安全，用户则需保障自身数据、访问权限及应用安全。通过数据加密（静态与传输中）、身份认证（如多因素验证）、网络隔离（VPC、防火墙）以及持续监控（日志审计、入侵检测）等手段，云安全旨在防御数据泄露、DDoS攻击、账户劫持等威胁，同时确保符合GDPR、HIPAA等合规要求。面对配置错误、新兴技术风险等挑战，企业需结合自动化工具（如CSPM）、零信任架构和容灾备份，构建动态防护体系，将安全嵌入云架构的每一环节，以保障业务连续性与数字资产可信。</p>
+<h2 id="2-1-云安全与传统安全的区别"><a href="#2-1-云安全与传统安全的区别" class="headerlink" title="2.1 云安全与传统安全的区别"></a>2.1 云安全与传统安全的区别</h2><p>云安全与传统安全的核心区别主要体现在以下五个方面，涵盖责任模型、技术架构、威胁场景及防御策略等关键维度：</p>
+<h3 id="2-1-1-责任模型：从「全权负责」到「共享责任」"><a href="#2-1-1-责任模型：从「全权负责」到「共享责任」" class="headerlink" title="2.1.1 责任模型：从「全权负责」到「共享责任」"></a>2.1.1 责任模型：从「全权负责」到「共享责任」</h3><ul>
+<li><p>传统安全 ：企业需独立承担 所有安全责任，包括物理服务器、网络设备、操作系统、应用和数据等全层级防护（如自建机房防火墙、入侵检测系统）。 </p>
+</li>
+<li><p>云安全 ：遵循 共享责任模型 （Shared Responsibility Model）：</p>
+</li>
+</ul>
+<p>​	云服务商 （如AWS、阿里云）负责底层基础设施安全（物理硬件、虚拟化层、网络骨干等）。 </p>
+<p>​	用户 负责自身数据、应用、访问权限及云资源配置安全（如管理虚拟机防火墙、加密敏感数据）。</p>
+<p>​    典型案例 ：在AWS EC2中，AWS保障Hypervisor和物理服务器的安全，用户需自行配置安全组规则和IAM权限。</p>
+<h3 id="2-1-2-防护边界：从「固定边界」到「动态无边界」"><a href="#2-1-2-防护边界：从「固定边界」到「动态无边界」" class="headerlink" title="2.1.2 防护边界：从「固定边界」到「动态无边界」"></a>2.1.2 防护边界：从「固定边界」到「动态无边界」</h3><ul>
+<li>传统安全 ：依赖 物理网络边界 （如企业内网），通过防火墙、VPN等设备构建静态防御体系，默认信任内部流量。 </li>
+<li>云安全 ：无固定边界，需应对动态、分布式环境 ： <ul>
+<li>多租户资源共享 ：防范跨租户攻击（如侧信道攻击、容器逃逸）。 </li>
+<li>微服务与API驱动 ：保护API网关、Serverless函数等无服务器组件的安全。 </li>
+<li>零信任架构 ：基于身份和最小权限原则的动态访问控制，替代传统网络信任机制。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-3-技术手段：从「硬件依赖」到「云原生工具」"><a href="#2-1-3-技术手段：从「硬件依赖」到「云原生工具」" class="headerlink" title="2.1.3 技术手段：从「硬件依赖」到「云原生工具」"></a>2.1.3 技术手段：从「硬件依赖」到「云原生工具」</h3><ul>
+<li>传统安全工具 ：以硬件设备为核心（如物理防火墙、入侵检测硬件），手动配置策略，更新周期长。</li>
+<li>云安全技术 ： <ul>
+<li>自动化合规检查 ：利用CSPM（云安全态势管理）工具（如Prisma Cloud）实时扫描云资源配置风险（如公开的S3存储桶）。 </li>
+<li>原生加密服务 ：集成云平台的密钥管理服务（如AWS KMS、Azure Key Vault），替代本地HSM硬件。</li>
+<li>容器与Serverless安全 ：扫描容器镜像漏洞（如Docker镜像中的CVE漏洞），限制Lambda函数的执行权限。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-4-威胁场景：从「本地攻击」到「云原生风险」"><a href="#2-1-4-威胁场景：从「本地攻击」到「云原生风险」" class="headerlink" title="2.1.4 威胁场景：从「本地攻击」到「云原生风险」"></a>2.1.4 威胁场景：从「本地攻击」到「云原生风险」</h3><ul>
+<li>传统威胁 ：物理设备入侵、内网渗透、DDoS攻击本地服务器等。 </li>
+<li>云特有风险 ：<ul>
+<li>配置错误 ：如公有云存储桶（如AWS S3、阿里云OSS）误设为公开访问，导致数据泄露（如Capital One事件）。 </li>
+<li>跨云攻击 ：攻击者利用多云环境的复杂性横向移动（如通过泄露的Access Key跨区域攻击）。</li>
+<li>虚拟化逃逸 ：利用Hypervisor漏洞（如CVE-2021-2832）突破虚拟机隔离，影响宿主机。 </li>
+<li>供应链攻击 ：通过第三方镜像市场或开源库（如Log4j漏洞）污染云环境。</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-1-5-合规与弹性：从「静态合规」到「动态适配」"><a href="#2-1-5-合规与弹性：从「静态合规」到「动态适配」" class="headerlink" title="2.1.5 合规与弹性：从「静态合规」到「动态适配」"></a>2.1.5 合规与弹性：从「静态合规」到「动态适配」</h3><ul>
+<li>传统合规 ：聚焦本地基础设施的静态审计（如机房物理安全、内网日志留存），周期长且成本高。</li>
+<li>云安全合规 ：<ul>
+<li>多地域法规适配 ：需满足数据跨境存储的合规要求（如GDPR对欧盟用户数据的本地化限制）。 </li>
+<li>弹性扩展同步 ：安全策略需随云资源自动扩缩容动态调整（如Kubernetes集群扩缩时自动更新安全组规则）。 </li>
+<li>自动化审计 ：依赖云平台提供的日志工具（如AWS CloudTrail、Azure Monitor）实现实时监控。</li>
+</ul>
+</li>
+</ul>
+<h2 id="2-2-公有云平台介绍"><a href="#2-2-公有云平台介绍" class="headerlink" title="2.2 公有云平台介绍"></a>2.2 公有云平台介绍</h2><ul>
+<li><p>阿里云、腾讯云、京东云、青云、华为云</p>
+</li>
+<li><p>Amazon-AWS（Amazon Web Services (AWS) ）</p>
+</li>
+<li><p>Azure</p>
+</li>
+</ul>
+<h2 id="2-3-ATT-CK更新了有关云攻击的TTP"><a href="#2-3-ATT-CK更新了有关云攻击的TTP" class="headerlink" title="2.3 ATT&amp;CK更新了有关云攻击的TTP"></a>2.3 ATT&amp;CK更新了有关云攻击的TTP</h2><ul>
+<li>应用程序访问令牌 - T1527</li>
+<li>云实例元数据API - T1522</li>
+<li>云服务仪表板 - T1538</li>
+<li>云服务发现 - T1526</li>
+<li>云存储对象 - T1530</li>
+<li>配置不当泄漏</li>
+<li>S3权限配置不当</li>
+<li>安全组配置不当</li>
+<li>IAM权限配置不当</li>
+<li>等等</li>
+</ul>
+<h1 id="三、公有云攻防"><a href="#三、公有云攻防" class="headerlink" title="三、公有云攻防"></a>三、公有云攻防</h1><h2 id="3-1-弹性计算服务攻防"><a href="#3-1-弹性计算服务攻防" class="headerlink" title="3.1 弹性计算服务攻防"></a>3.1 弹性计算服务攻防</h2><p>阅读产品文档、阅读架构文档、了解相关操作手册，了解产品功能模块。</p>
+<p>常规渗透一样子域名查找、端口扫描、目录扫描、指纹识别等，在查找的过程中留意AccessKey等密钥（APK文件、Github关键词、Web页面、JS文件、常规配置文件）。</p>
+<p>云主机的应用漏洞（SSRF、RCE、本地文件读取等常规漏洞）。</p>
+<p>云产品的默认配置：</p>
+<ul>
+<li>OSS文件存储服务，默认设置为开放，导致文件任意下载</li>
+<li>端口默认对外0.0.0.0/0公网开放</li>
+</ul>
+<h3 id="3-1-1-AccessKey泄漏利用"><a href="#3-1-1-AccessKey泄漏利用" class="headerlink" title="3.1.1 AccessKey泄漏利用"></a>3.1.1 AccessKey泄漏利用</h3><p>渗透场景：</p>
+<ul>
+<li>APK文件中存放Access Key；</li>
+<li>Web页面/JS文件/phpinfo中包含Access Key等;</li>
+<li>Github查找目标关键字发现AccessKey与AccessKey Secret；</li>
+<li>拥有WebShell低权限的情况下搜集阿里云Access Key利用；</li>
+</ul>
+<p>获取到AccessKey之后使用行云管家直接导入，获取OSS数据。可直接获取阿里云主机进行重置密码等操作。</p>
+<p>。。。。</p>
+<h1 id="四、云原生攻防"><a href="#四、云原生攻防" class="headerlink" title="四、云原生攻防"></a>四、云原生攻防</h1><h2 id="4-1-什么是云原生"><a href="#4-1-什么是云原生" class="headerlink" title="4.1 什么是云原生"></a>4.1 什么是云原生</h2><p>云原生是一套技术体系和方法论。</p>
+<ul>
+<li>云：表示应用程序位于云中</li>
+<li>原生：表示应用程序从设计之初就考虑到云的环境，原生为云而设计，在云上以最佳状态运行，分利用和发挥云平台的弹性和分布式优势。</li>
+</ul>
+<p>云原生代表的技术包括：<strong>容器、服务网格（Service Mesh）、微服务（Microservice）、不可变基础设施和声明式API。</strong></p>
+<p>CNCF（Cloud Native Compute Foundation） 是 Linux 基金会旗下的一个组织，主要作用是在推动以容器为中心的云原生系统。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-25%2017.44.58.png" alt="云原生全景图" style="zoom:90%;">
+
+<p>上图是一张云原生的全景图，共分为六层：</p>
+<h3 id="4-1-1-供应层"><a href="#4-1-1-供应层" class="headerlink" title="4.1.1 供应层"></a>4.1.1 供应层</h3><ul>
+<li>为云原生应用准备标准基础环境所涉及的工具，包括了基础设施的创建、管理、配置流程的自动化、容器镜像扫描、签名和存储等。</li>
+<li>提供设置和实施策略，在应用程序和平台中构建身份验证、授权、处理密钥分发等。</li>
+</ul>
+<h3 id="4-1-2-运行层"><a href="#4-1-2-运行层" class="headerlink" title="4.1.2 运行层"></a>4.1.2 运行层</h3><p> 在CNCF全景图中，运行时是保障了容器化应用程序组件的运行和通信，云原生存储、提供隔离、资源和安全、云网络。</p>
+<h3 id="4-1-3-编排和管理层"><a href="#4-1-3-编排和管理层" class="headerlink" title="4.1.3 编排和管理层"></a>4.1.3 编排和管理层</h3><ul>
+<li>为云原生应用提供自动化和弹性能力，使云原生应用天然具有可扩展性。</li>
+<li>提供编排和调度、协调和服务发现、远程进程调用（RPC）、服务代理、API网关、</li>
+</ul>
+<h3 id="4-1-4-应用程序定义和开发层"><a href="#4-1-4-应用程序定义和开发层" class="headerlink" title="4.1.4 应用程序定义和开发层"></a>4.1.4 应用程序定义和开发层</h3><ul>
+<li>提供数据库、流和消息传递、应用程序定义和镜像构建、持续集成和持续交付（CI/CD）</li>
+</ul>
+<h3 id="4-1-5-平台层"><a href="#4-1-5-平台层" class="headerlink" title="4.1.5 平台层"></a>4.1.5 平台层</h3><ul>
+<li>将不同工具捆绑解决问题</li>
+</ul>
+<h3 id="4-1-6-贯穿所有层"><a href="#4-1-6-贯穿所有层" class="headerlink" title="4.1.6 贯穿所有层"></a>4.1.6 贯穿所有层</h3><ul>
+<li>云原生全景右侧贯穿所有层的两列，可观察性和分析是监控各层的工具。</li>
+<li>日志工具、监控方案、追踪工具、混沌工程</li>
+</ul>
+<p>最底层提供了构建云原生基础设施的工具，越往上的每一层都更接近实际的应用程序。</p>
+<p>而Kubernetes是整个云原生技术栈的核心</p>
+<h2 id="4-2-什么是云原生安全"><a href="#4-2-什么是云原生安全" class="headerlink" title="4.2 什么是云原生安全"></a>4.2 什么是云原生安全</h2><h3 id="4-2-1-云原生安全架构"><a href="#4-2-1-云原生安全架构" class="headerlink" title="4.2.1 云原生安全架构"></a>4.2.1 云原生安全架构</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-25%2017.36.56.png" style="zoom:50%;">
+
+<p>云原生安全自底向上，分别由<strong>硬件安全（可信环境）、宿主机安全、容器编排技术安全（Kubernetes等）【可以看作是云上的“操作系统”，它负责自动化部署、扩缩容、管理应用等】，再由微服务安全、Service Mesh安全、容器安全（Docker等）、容器镜像（仓库）安全组成</strong>。以这些技术为基础构建出云原生安全。</p>
+<h3 id="4-2-2-CNCF的云原生安全体系—4个”C”"><a href="#4-2-2-CNCF的云原生安全体系—4个”C”" class="headerlink" title="4.2.2 CNCF的云原生安全体系—4个”C”"></a>4.2.2 <strong>CNCF的云原生安全体系—4个”C”</strong></h3><p>代码级安全、容器级安全、集群级安全、站点级安全。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-25%2017.58.54.png" style="zoom:80%;">
+
+<h2 id="4-3-Kubernetes基础"><a href="#4-3-Kubernetes基础" class="headerlink" title="4.3 Kubernetes基础"></a>4.3 Kubernetes基础</h2><p> Kubernetes 是 Google 基于 Borg 开源的容器编排调度引擎，作为 CNCF最重要的组件之一，它的目标不仅仅是一个编排系统，而是提供一个规范，可以让你来描述集群的架构，定义服务的最终状态，Kubernetes 可以帮你将系统自动得达到和维持在这个状态。Kubernetes 一词来自希腊语，意思是“飞行员”或“舵手”。这个名字很贴切，Kubernetes 可以帮助你在波涛汹涌的容器海洋中航行。</p>
+<p>Kubernetes 提供了一种自动化部署、扩展、和管理容器化应用的机制，使开发者能够高效地构建、和运行分布式系统。K8S的核心作用：是对容器进行编排，确保容器化应用，比如：Docker…..等容器，能够在集群中高效运行。下面是使用k8s部署容器的用法示例：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2016.21.01.png" style="zoom:80%;">
+
+<ul>
+<li><p>K8S提供智能的容器调度功能，能根据，比如：资源需求、策略、和约束条件，将容器调度到合适的节点上运行。</p>
+</li>
+<li><p>K8S还能够自动管理、和协调多个容器的生命周期，使得应用能够平稳运行、扩展、和升级。</p>
+</li>
+</ul>
+<p>K8S的这些功能，使其成为现代云原生应用开发、和部署的核心工具，应用于大规模的企业、和开发团队。</p>
+<h3 id="4-3-1-k8s架构"><a href="#4-3-1-k8s架构" class="headerlink" title="4.3.1 k8s架构"></a>4.3.1 k8s架构</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2016.30.07.png" style="zoom:50%;">
+
+
+
+<p>K8S的架构，和它的原型项目 ：“Borg“ 非常类似，都由 Master 、和 Node 两种节点组成。Master 、和 Node 两种节点，这两种角色分别对应着：控制节点、和计算节点。</p>
+<p>Master 节点负责：全局管理、和调度，Node 节点负责：具体的容器运行、和资源管理。</p>
+<p>Kubernetes的核心组件部署在Master管理节点上，主要作用是作为Kubernetes的“大脑”，控制整个分布式集群的运转，Node节点作为“四肢”，执行Master的操作指令。</p>
+<h4 id="4-3-1-1-master节点"><a href="#4-3-1-1-master节点" class="headerlink" title="4.3.1.1 master节点"></a>4.3.1.1 master节点</h4><p>Master 节点是 K8S集群的控制中心，负责：管理、和调度集群中的所有资源。Master类似人的“大脑”，负责指挥“Node节点”来调度。</p>
+<p>主要负责，如下内容：</p>
+<ul>
+<li><strong>1、集群管理</strong></li>
+</ul>
+<p>首先，管理集群的状态、配置、和生命周期。</p>
+<p>其次，维护集群的元数据，确保集群的整体健康状态。</p>
+<ul>
+<li><strong>2、API 服务</strong></li>
+</ul>
+<p>提供集群的 API 接口，处理来自用户、和内部组件的请求。</p>
+<ul>
+<li><strong>3、资源调度</strong></li>
+</ul>
+<p>根据资源需求、和调度策略，将工作负载（Pod），分配到适当的节点上运行。</p>
+<ul>
+<li><strong>4、监控集群</strong></li>
+</ul>
+<p>监控集群状态，确保实际状态、与期望状态一致。</p>
+<p>以及，处理自动化任务，如：副本管理、故障恢复…等。</p>
+<p>Master节点的整体架构，如下图(黄框)所示：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2016.32.09.png" style="zoom:50%;">
+
+<p>Master 节点在 K8S集群中起着至关重要的作用，它通过 kube-apiserver 提供集群的 API 服务，通过 kube-scheduler 进行资源调度，通过 kube-controller-manager 进行控制管理，并使用 etcd 来存储集群的配置数据、和状态信息。</p>
+<p>从上图左侧黄框的Kubernetes主节点可以看出，Master 节点由4个独立的组件组成，它们分别是：</p>
+<h5 id="1）apiserver：负责整个集群通信的-API-服务"><a href="#1）apiserver：负责整个集群通信的-API-服务" class="headerlink" title="1）apiserver：负责整个集群通信的 API 服务"></a>1）<strong>apiserver</strong>：负责整个集群通信的 API 服务</h5><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2016.53.27.png" style="zoom:47%;">
+
+<p>API Server的主要负责整个集群通信的 API 服务，API Server是Kubernetes控制程序的前端，也是用户唯一可以直接进行交互的Kubernetes组件。作为集群管理的API入口为资源对象（比如：Pod、Service、Deployment）提供创建、认证、数据校验、状态变更等操作。</p>
+<p><strong>大致工作流程，如下:</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">Client --<span class="token operator">&gt;</span> <span class="token punctuation">[</span>kube-apiserver<span class="token punctuation">]</span> --<span class="token operator">&gt;</span> <span class="token punctuation">[</span>etcd<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>首先，apiserver ，负责接收请求，比如刚才提到的：创建、更新、删除 Pod……..等等操作。</p>
+<p>其次，kube-apiserver 将接收到的请求验证和授权后，将数据写入 etcd(Key-Value）存储。</p>
+<p>然后，其他组件，如：kube-scheduler 、和 kube-controller-manager，通过监听 API Server 来获取最新的集群状态。</p>
+<h5 id="2）键值存储etcd"><a href="#2）键值存储etcd" class="headerlink" title="2）键值存储etcd"></a>2）键值存储etcd</h5><p>Etcd是一种K-V存储仓库，Etcd是Kubernetes集群中的一个十分重要的组件。Etcd主要用于保存集群所有的网络配置和对象的状态信息，无论是创建Deployment，还是创建Service，各种资源对象信息都会写入Etcd。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>kube-apiserver<span class="token punctuation">]</span> <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> <span class="token punctuation">[</span>etcd Cluster<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>提供数据的一致性和高可用性。</p>
+<p>比如：数据一致性，使用 Raft 共识算法，来保证数据一致性。</p>
+<p>再比如：高可用性，etcd 的高可用性通过部署多个副本实现，通常是奇数个节点，来保证高可用性。</p>
+<h5 id="3）ControllerManager"><a href="#3）ControllerManager" class="headerlink" title="3）ControllerManager"></a>3）ControllerManager</h5><p>kube-controller-manager 是 Kubernetes 集群管理的最核心组件，通过运行多个控制器来维持集群的期望状态。</p>
+<p>负责管理 K8S集群中的控制器，这些控制器通过监控集群状态并进行相应的调整，确保集群处于预期的状态。</p>
+<p>Controller Manager是Kubernetes的“大脑”，由一系列控制器组成，如下图所示：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2016.58.17.png" style="zoom:50%;">
+
+<p>Controller Manager主要包含以下8大组件：</p>
+<ul>
+<li><strong>Replication Controller：</strong>主要是保证集群中一个Replication Controller (RC) ，所关联的 Pod 副本数始终保持为与预设值一致；</li>
+</ul>
+<p>确保指定数量的 Pod 副本始终运行，比如：如果有 Pod 异常终止、或被删除，ReplicaSet 控制器会创建新的 Pod 来补充。</p>
+<ul>
+<li><strong>Node Controller：</strong>Node Controller 通过 API Server 实时获取 Node 的相关信息，实现管理和监控集群中的各个 Node 节点；</li>
+</ul>
+<p>负责：监控节点的健康状态，并在节点失效时执行恢复操作。</p>
+<p>比如：标记节点为不可调度或不可用，并重新调度受影响的 Pod。</p>
+<ul>
+<li><strong>ResourceQuota Controller：</strong>资源配额管理控制器，用于确保指定的资源对象在任何时候都不会超量占用系统上物理资源；</li>
+</ul>
+<p>管理 Deployment 对象，支持滚动更新、和回滚操作。</p>
+<ul>
+<li><p><strong>Namespace Controller：</strong>用户通过 API Server 可以创建新的 Namespace 并保存在 Etcd 中；</p>
+</li>
+<li><p><strong>Service Account Controller：</strong>服务账号控制器，主要在命名空间内管理 ServiceAccount，以保证名为 default 的 ServiceAccount 在每个命名空间中存在；</p>
+</li>
+<li><p><strong>Token Controller：</strong>令牌控制器主要用作：监听 serviceAccount 的创建和删除动作，以及监听 secret 的添加删除动作；</p>
+</li>
+<li><p><strong>Service Controller：</strong>服务控制器主要用作：监听 Service 的变化；</p>
+</li>
+</ul>
+<p>管理 Service 对象，确保服务的 IP 地址、和端点正确配置。</p>
+<p>比如：处理服务发现和负载均衡，确保客户端请求能够正确路由到对应的 Pod。</p>
+<p>总之，这些控制器负责：管理集群中的各种资源。</p>
+<p>从 Pod 副本的管理，到节点健康状态的监控，再到服务发现、和负载均衡。</p>
+<p>从而，确保 Kubernetes 集群能够高效、稳定地运行。</p>
+<ul>
+<li><strong>Endpoint Controller：</strong>负责生成和维护所有 Endpoints 对象的控制器；</li>
+</ul>
+<p>Controller Manager主要用于：实现 Kubernetes 集群故障检测，监控整个集群的状态，以及恢复的自动化工作。</p>
+<h5 id="4）scheduler：负责容器调度"><a href="#4）scheduler：负责容器调度" class="headerlink" title="4）scheduler：负责容器调度"></a>4）<strong>scheduler</strong>：负责容器调度</h5><p>Scheduler是Kubernetes的调度器，Scheduler 是负责整个集群的资源调度的。Scheduler：根据资源需求和调度策略，将新创建的 Pod 分配到适合的节点上运行。</p>
+<p>Scheduler调度程序会监视来自API Server的新请求，并将其分配给运行状况良好的节点，比如：对节点的质量进行排名，并将Pod部署到最适合的节点。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>kube-scheduler<span class="token punctuation">]</span> <span class="token operator">&lt;</span>--<span class="token operator">&gt;</span> <span class="token punctuation">[</span>kube-apiserver<span class="token punctuation">]</span> --<span class="token operator">&gt;</span> <span class="token punctuation">[</span>Node<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h4 id="4-3-1-2-worker节点"><a href="#4-3-1-2-worker节点" class="headerlink" title="4.3.1.2 worker节点"></a>4.3.1.2 worker节点</h4><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2017.07.05.png" style="zoom:70%;">
+
+<p>上图右侧的绿框就是Kubernetes工作节点，包含如下组件：</p>
+<h5 id="1）Kubelet"><a href="#1）Kubelet" class="headerlink" title="1）Kubelet"></a>1）Kubelet</h5><p>kubelet 是负责容器真正运行的核心组件，kubelet 是 Master 和 Node 之间的桥梁，接收 API Server 分配给它的任务并执行。</p>
+<p>Kubelet 是运行在每个 Node 上的主要组件，负责：管理和维护 Node 上的 Pod。</p>
+<p>它确保 Pod 根据 Kubernetes API Server 的定义正确地启动和运行。</p>
+<h5 id="2）Container-Runtime"><a href="#2）Container-Runtime" class="headerlink" title="2）Container Runtime"></a>2）Container Runtime</h5><p>Container Runtime基于gRPC协议，定义了RuntimeService和ImageService两个gRPC服务，分别用于管理容器运行和镜像。</p>
+<p>Container Runtime，也就是容器运行时，负责：容器的实际启动、和管理。</p>
+<p>比如，提供容器化的运行环境，如 Docker。</p>
+<blockquote>
+<p>gRPC协议:</p>
+<p>gRPC（ gRPC Remote Procedure Call ）是一种高性能、开源的远程过程调用（RPC）框架，由Google开发并基于HTTP/2协议实现。它默认使用 Protocol Buffers （Protobuf）作为接口定义语言（IDL）和数据序列化工具，通过预定义服务接口和消息格式，实现跨语言、跨平台的高效通信。gRPC支持四种通信模式（单一请求-响应、服务端流、客户端流、双向流），利用HTTP/2的多路复用、头部压缩等特性降低延迟，适用于微服务间的高吞吐、低延迟交互（如内部API、实时数据传输），并原生提供身份验证、负载均衡和超时控制等能力，是云原生场景中替代传统REST API的流行方案。</p>
+</blockquote>
+<h5 id="3）Kube-proxy"><a href="#3）Kube-proxy" class="headerlink" title="3）Kube-proxy"></a>3）Kube-proxy</h5><p>kube-proxy 是为了解决外部网络能够访问集群中容器提供的应用服务而设计的，Proxy 运行在每个Node 上。</p>
+<p>kube-proxy确保每个节点都获得其IP地址，实现本地iptables和规则以处理路由和流量负载均衡。</p>
+<p>Kube-Proxy 是每个 Node 上运行的网络代理，负责维护网络规则。</p>
+<p>主要解决，如下4点：</p>
+<ul>
+<li><strong>负载均衡</strong>：</li>
+</ul>
+<p>Kube-Proxy 在每个 Node 上，配置网络规则，将流量负载均衡到多个 Pod 上；</p>
+<p>例如，当请求到达 Service 的 Cluster IP 时，Kube-Proxy 会将请求转发到后端 Pod。</p>
+<ul>
+<li><strong>网络规则管理</strong>：</li>
+</ul>
+<p>Kube-Proxy 在 Node 上设置 IP 规则、和路由规则，以实现服务发现、和负载均衡；</p>
+<ul>
+<li><strong>服务发现</strong>：</li>
+</ul>
+<p>Kube-Proxy 处理 Service 的 IP 地址、和端点更新，确保流量能够正确路由到 Pod。</p>
+<ul>
+<li><strong>集群网络</strong>：</li>
+</ul>
+<p>Kube-Proxy 支持多种网络模式（如：iptables、ipvs。。。），管理 Node 上的网络流量，并保持网络规则的同步。</p>
+<h5 id="4）Pod"><a href="#4）Pod" class="headerlink" title="4）Pod"></a>4）Pod</h5><p>Pod是Kubernetes中一个抽象化概念，由一个或多个容器组合在一起得共享资源，如下图所示：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2017.20.24.png" style="zoom:67%;">
+
+<p>Pod 的设计理念是支持多个容器在一个 Pod 中共享网络和文件系统，可以通过进程间通信，和文件共享这种简单高效的方式组合完成服务。</p>
+<p>在Kubernetes中，Pod是调度的最小元素，没有它容器就不能成为集群的一部分，主节点会把Pod调度到特定工作节点上，并与容器运行时协调以启动容器。</p>
+<h3 id="4-3-3-工作流程"><a href="#4-3-3-工作流程" class="headerlink" title="4.3.3 工作流程"></a>4.3.3 工作流程</h3><p>K8S工作流程：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2017.40.21.png" style="zoom:80%;">
+
+<p><strong>1.集群初始化</strong></p>
+<p>首先，安装和配置Master和Node节点。</p>
+<p><strong>2.应用部署</strong></p>
+<p>使用kubectl命令行工具或其他工具（如Helm）部署应用。</p>
+<p>定义Deployment、Service等资源对象，并通过API Server提交到集群。</p>
+<p><strong>3.调度和运行</strong></p>
+<p>Scheduler根据调度策略，将Pod分配到合适的Node节点。</p>
+<p>Kubelet在Node节点上创建、和管理Pod，确保容器按照定义运行。</p>
+<p><strong>4.服务发现和负载均衡</strong></p>
+<p>Kube-proxy设置网络规则，确保服务能正确访问和负载均衡；</p>
+<p>Service对象提供统一的访问入口、和负载均衡。</p>
+<p><strong>5.监控和自动化</strong></p>
+<p>Controller Manager持续监控集群状态，进行自动扩展和恢复操作。</p>
+<p>使用Prometheus、Grafana等工具监控集群和应用状态。</p>
+<h3 id="4-3-1-核心概念"><a href="#4-3-1-核心概念" class="headerlink" title="4.3.1 核心概念"></a>4.3.1 核心概念</h3><ul>
+<li>集群（Cluster）</li>
+</ul>
+<p>Kubernetes集群由一组节点（Node）组成，包含一个Master节点（控制平面）和多个Worker节点（工作节点），共同协作运行容器化应用。</p>
+<ul>
+<li>节点（Node）</li>
+</ul>
+<p>Master节点 ：负责集群管理，包含API Server、Scheduler、Controller Manager、etcd等组件。</p>
+<p>Worker节点 ：运行容器，包含kubelet（管理Pod）、kube-proxy（网络代理）和容器运行时（如Docker）。</p>
+<ul>
+<li>Pod</li>
+</ul>
+<p>Kubernetes的最小调度单元，包含一个或多个共享存储/网络的容器。适用于需要紧密协作的应用（如主容器+Sidecar）。</p>
+<ul>
+<li>控制器（Controller）</li>
+</ul>
+<p>Deployment ：管理无状态应用，支持滚动更新、回滚和副本数维持。</p>
+<p>StatefulSet ：适用于有状态应用（如数据库），提供稳定的网络标识（Pod名称、IP）和持久化存储。 </p>
+<p>DaemonSet ：确保每个节点运行指定Pod（如日志收集Agent）。 </p>
+<p>Job/CronJob ：执行一次性任务或定时任务。</p>
+<ul>
+<li>服务（Service）与Ingress Service ：</li>
+</ul>
+<p>通过标签选择器关联Pod，提供稳定的IP和DNS，支持负载均衡。 </p>
+<p>Ingress ：管理外部访问（HTTP/HTTPS路由），需配合Ingress控制器（如Nginx、Traefik）使用。</p>
+<ul>
+<li>配置与存储 ConfigMap/Secret ：</li>
+</ul>
+<p>分别存储配置信息和敏感数据（如密码），通过卷或环境变量注入Pod。 </p>
+<p>PersistentVolume（PV） ：集群级存储资源。 </p>
+<p>PersistentVolumeClaim（PVC） ：用户对存储的请求，与PV动态或静态绑定。</p>
+<h3 id="4-3-2-架构组件"><a href="#4-3-2-架构组件" class="headerlink" title="4.3.2 架构组件"></a>4.3.2 架构组件</h3><ul>
+<li>Master组件</li>
+</ul>
+<p>API Server ：集群操作入口，处理REST请求。 </p>
+<p>Scheduler ：调度Pod到合适的节点。 </p>
+<p>Controller Manager ：运行控制器（如Deployment控制器）确保期望状态。 </p>
+<p>etcd ：分布式键值存储，保存集群状态。</p>
+<ul>
+<li>Worker组件</li>
+</ul>
+<p>kubelet ：与API Server通信，管理节点上的Pod。 </p>
+<p>kube-proxy ：维护节点网络规则，实现Service的负载均衡。 </p>
+<p>容器运行时 ：如Docker、containerd，负责运行容器。</p>
+<ul>
+<li>组件图示</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-26%2016.12.01.png" style="zoom:50%;">
+
+<ul>
+<li>API Server：资源操作唯一入口，提供认证、授权、访问控制、API注册等机制。</li>
+<li>etcd：保存集群状态信息。</li>
+<li>Controller Manager：维护集群状态，故障检测、自动扩展、滚动更新。</li>
+<li>Scheduler：资源调度，按照调度策略将Pod调度相应机器上。</li>
+<li>kubelet：维护容器生命周期，Volume、网络的管理</li>
+<li>Container runtime：镜像管理以及Podcast容器运行</li>
+<li>kube-proxy：为Service提供cluster内部服务发现、负载均衡</li>
+<li>kube-dns：为集群提供DNS服务</li>
+<li>Ingress Controller：提供外网入口</li>
+<li>Heapster：资源监控</li>
+<li>Dashboard：GUI操作界面</li>
+<li>Federation：跨可用区的集群</li>
+<li>Fluentd-elasticsearch：集群日志采集、存储与查询</li>
+</ul>
+<h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
+<li><a target="_blank" rel="noopener" href="https://lzcloudsecurity.gitbook.io/yun-an-quan-gong-fang-ru-men/di-yi-zhang-yun-shang-gong-fang-ti-xi-jie-shao/shen-me-shi-yun-an-quan">https://lzcloudsecurity.gitbook.io/yun-an-quan-gong-fang-ru-men/di-yi-zhang-yun-shang-gong-fang-ti-xi-jie-shao/shen-me-shi-yun-an-quan</a> 【云安全攻防入门】</li>
+<li><a target="_blank" rel="noopener" href="https://gugesay.com/archives/536#google_vignette">https://gugesay.com/archives/536#google_vignette</a> 【云原生安全学习笔记】</li>
+<li><a target="_blank" rel="noopener" href="https://zone.huoxian.cn/d/1153-k8s">https://zone.huoxian.cn/d/1153-k8s</a> 【浅析K8S各种未授权攻击方法】</li>
+<li><a target="_blank" rel="noopener" href="https://github.com/neargle/my-re0-k8s-security">https://github.com/neargle/my-re0-k8s-security</a> 【从零开始的Kubernetes攻防】</li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/C3245073527/article/details/140278749">https://blog.csdn.net/C3245073527/article/details/140278749</a> 【使用kubeadm在VMware虚拟机从0开始搭建k8s集群，踩完所有坑】</li>
+<li><a target="_blank" rel="noopener" href="https://www.freebuf.com/articles/container/389506.html">https://www.freebuf.com/articles/container/389506.html</a> 【一个易懂、完整、实战的K8S攻防靶场演练】</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2160045">https://cloud.tencent.com/developer/article/2160045</a> 【云原生安全系列（一） | Kubernetes云原生靶场搭建】</li>
+<li><a target="_blank" rel="noopener" href="https://dockerworld.cn/?id=384">https://dockerworld.cn/?id=384</a> 【Kubernetes架构最全详解(8大架构组件)】</li>
+<li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/713898968%E3%80%90K8S%E5%8E%9F%E7%90%86%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3">https://zhuanlan.zhihu.com/p/713898968【K8S原理架构详解</a> 入门】</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">司晓凯</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://sxksec.cn/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/">http://sxksec.cn/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">司晓凯</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/">
+                                    <span class="chip bg-color">云安全攻防</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2%E5%85%A5%E9%97%A8/">
+                                    <span class="chip bg-color">云安全攻防入门</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2025/03/27/lou-dong-zhi-shi-ku/jsonpath-plus-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2025-1302/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/9.jpg" class="responsive-img" alt="jsonpath Plus 远程代码执行漏洞 CVE-2025-1302">
+                        
+                        <span class="card-title">jsonpath Plus 远程代码执行漏洞 CVE-2025-1302</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要介绍jsonpath Plus 远程代码执行漏洞 CVE-2025-1302的分析、复现和poc编写。
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2025-03-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/" class="post-category">
+                                    漏洞知识库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/">
+                        <span class="chip bg-color">漏洞知识库</span>
+                    </a>
+                    
+                    <a href="/tags/jsonpath-Plus-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/">
+                        <span class="chip bg-color">jsonpath Plus 远程代码执行</span>
+                    </a>
+                    
+                    <a href="/tags/CVE-2025-1302/">
+                        <span class="chip bg-color">CVE-2025-1302</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/03/21/lou-dong-zhi-shi-ku/ollama-mu-lu-bian-li-zhi-dai-ma-zhi-xing-lou-dong-cve-2024-37032/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/15.jpg" class="responsive-img" alt="Ollama远程代码执行漏洞（CVE-2024-37032）">
+                        
+                        <span class="card-title">Ollama远程代码执行漏洞（CVE-2024-37032）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要介绍Ollama远程代码执行漏洞（CVE-2024-37032），包括复现和POC。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-03-21
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/" class="post-category">
+                                    漏洞知识库
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/">
+                        <span class="chip bg-color">漏洞知识库</span>
+                    </a>
+                    
+                    <a href="/tags/Ollama/">
+                        <span class="chip bg-color">Ollama</span>
+                    </a>
+                    
+                    <a href="/tags/Ollama%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/">
+                        <span class="chip bg-color">Ollama代码执行</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1,h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <a href="/about" target="_blank">Si Xiaokai</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">324.4k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/si-xiao-kai" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:284254231@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=284254231" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 284254231" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>
