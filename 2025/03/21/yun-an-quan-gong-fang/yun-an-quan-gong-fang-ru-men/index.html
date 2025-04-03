@@ -402,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-03-26
+                    2025-04-01
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    8.8k
+                    9.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    31 分
+                    35 分
                 </div>
                 
 
@@ -768,8 +768,18 @@
 <p>Container Runtime，也就是容器运行时，负责：容器的实际启动、和管理。</p>
 <p>比如，提供容器化的运行环境，如 Docker。</p>
 <blockquote>
-<p>gRPC协议:</p>
-<p>gRPC（ gRPC Remote Procedure Call ）是一种高性能、开源的远程过程调用（RPC）框架，由Google开发并基于HTTP/2协议实现。它默认使用 Protocol Buffers （Protobuf）作为接口定义语言（IDL）和数据序列化工具，通过预定义服务接口和消息格式，实现跨语言、跨平台的高效通信。gRPC支持四种通信模式（单一请求-响应、服务端流、客户端流、双向流），利用HTTP/2的多路复用、头部压缩等特性降低延迟，适用于微服务间的高吞吐、低延迟交互（如内部API、实时数据传输），并原生提供身份验证、负载均衡和超时控制等能力，是云原生场景中替代传统REST API的流行方案。</p>
+<h4 id="gRPC协议"><a href="#gRPC协议" class="headerlink" title="gRPC协议"></a>gRPC协议</h4><p>gRPC（ gRPC Remote Procedure Call ）是一种高性能、开源的远程过程调用（RPC）框架，由Google开发并基于HTTP/2协议实现。它默认使用 Protocol Buffers （Protobuf）作为接口定义语言（IDL）和数据序列化工具，通过预定义服务接口和消息格式，实现跨语言、跨平台的高效通信。gRPC支持四种通信模式（单一请求-响应、服务端流、客户端流、双向流），利用HTTP/2的多路复用、头部压缩等特性降低延迟，适用于微服务间的高吞吐、低延迟交互（如内部API、实时数据传输），并原生提供身份验证、负载均衡和超时控制等能力，是云原生场景中替代传统REST API的流行方案。</p>
+</blockquote>
+<blockquote>
+<h4 id="CRI"><a href="#CRI" class="headerlink" title="CRI"></a>CRI</h4><p>CRI（Container Runtime Interface）</p>
+<ul>
+<li><p>定义 ：CRI是Kubernetes定义的一个插件接口（基于gRPC协议），用于解耦Kubernetes组件（如kubelet）与底层容器运行时。它允许不同的容器运行时无缝集成到Kubernetes中。 </p>
+</li>
+<li><p>功能 ： 定义了一组标准API，用于管理容器的生命周期（创建/启动/停止容器）和镜像管理（拉取/删除镜像）。 支持多种容器运行时实现（如containerd、CRI-O、Docker Engine等），赋予用户灵活选择的能力。 </p>
+</li>
+<li><p>优势 ：通过抽象化接口，Kubernetes无需依赖特定运行时（如早期的Docker），推动了容器生态的多样化和标准化。</p>
+</li>
+</ul>
 </blockquote>
 <h5 id="3）Kube-proxy"><a href="#3）Kube-proxy" class="headerlink" title="3）Kube-proxy"></a>3）Kube-proxy</h5><p>kube-proxy 是为了解决外部网络能够访问集群中容器提供的应用服务而设计的，Proxy 运行在每个Node 上。</p>
 <p>kube-proxy确保每个节点都获得其IP地址，实现本地iptables和规则以处理路由和流量负载均衡。</p>
@@ -878,6 +888,63 @@
 <li>Federation：跨可用区的集群</li>
 <li>Fluentd-elasticsearch：集群日志采集、存储与查询</li>
 </ul>
+<h2 id="4-4-k8s的攻击面"><a href="#4-4-k8s的攻击面" class="headerlink" title="4.4 k8s的攻击面"></a>4.4 k8s的攻击面</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-28%2015.36.39.png" style="zoom:80%;">
+
+<ul>
+<li>Pod开放到互联网</li>
+<li>Pod对其它Pod或服务开放</li>
+<li>从Pod向Node逃逸</li>
+<li>从Pod攻击Master Node组件</li>
+<li>从Pod攻击API Server</li>
+<li>从API Server攻击其它Pods/Nodes</li>
+<li>从K8s集群攻击云内的其它服务</li>
+</ul>
+<h2 id="4-5-CRI-O引擎逃逸（CVE-2022-0811）"><a href="#4-5-CRI-O引擎逃逸（CVE-2022-0811）" class="headerlink" title="4.5 CRI-O引擎逃逸（CVE-2022-0811）"></a>4.5 CRI-O引擎逃逸（CVE-2022-0811）</h2><p>【Kubernetes CRI-O引擎逃逸CVE-2022-0811】</p>
+<h3 id="4-5-1-CRI-O-概述"><a href="#4-5-1-CRI-O-概述" class="headerlink" title="4.5.1 CRI-O 概述"></a>4.5.1 CRI-O 概述</h3><ul>
+<li>定义 ：</li>
+</ul>
+<p>CRI-O 是一个专为 Kubernetes 设计的轻量级容器运行时，遵循 Kubernetes 容器运行时接口（CRI）规范。它由 Red Hat 主导开发，旨在仅支持 Kubernetes 所需的容器管理功能，简化了传统容器运行时（如 Docker）的复杂性。</p>
+<ul>
+<li>目标 ：</li>
+</ul>
+<p>仅实现 CRI 规范，专注于 Kubernetes 的容器生命周期管理。 兼容 OCI（Open Container Initiative）标准和 Docker 镜像格式。 支持多种文件系统（overlay、aufs、Btrfs）和 CNI 网络插件。</p>
+<h3 id="4-5-2-CRI-O-的架构与工作原理"><a href="#4-5-2-CRI-O-的架构与工作原理" class="headerlink" title="4.5.2 CRI-O 的架构与工作原理"></a>4.5.2 CRI-O 的架构与工作原理</h3><h4 id="1）核心组件"><a href="#1）核心组件" class="headerlink" title="1）核心组件"></a>1）核心组件</h4><ul>
+<li>CRI-O Daemon</li>
+</ul>
+<p>接收来自 Kubernetes（通过 kubelet）的容器操作请求（如创建、删除容器）。 </p>
+<p>使用 containers/image 库拉取镜像，并通过 containers/storage 存储镜像层。</p>
+<ul>
+<li>OCI 运行时工具</li>
+</ul>
+<p>生成符合 OCI 标准的容器配置文件（ config.json ）。 </p>
+<p>默认使用 runc 作为底层运行时启动容器。 </p>
+<ul>
+<li>conmon 进程</li>
+</ul>
+<p>监控容器进程，处理日志记录和退出代码。 </p>
+<ul>
+<li>CNI 网络插件</li>
+</ul>
+<p>通过容器网络接口（CNI）为容器配置网络。</p>
+<h4 id="2）工作流程"><a href="#2）工作流程" class="headerlink" title="2）工作流程"></a>2）工作流程</h4><p>Kubernetes 请求启动 Pod → kubelet 通过 CRI 接口转发请求至 CRI-O。</p>
+<p>CRI-O 拉取镜像并解压到文件系统 → 生成 OCI 规范文件。 </p>
+<p>调用 runc 启动容器 → conmon 监控容器进程。 </p>
+<p>CNI 插件配置容器网络。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-31%2018.11.13.png" style="zoom:40%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-31%2018.13.27.png" style="zoom:50%;">
+
+<ul>
+<li>Kubernetes 通知 <code>kubelet</code> 启动一个 pod。</li>
+<li>kubelet 通过 <code>CRI</code>(Container runtime interface) 将请求转发给 <code>CRI-O daemon</code>。</li>
+<li>CRI-O 利用 <code>containers/image</code> 库从<a target="_blank" rel="noopener" href="https://cloud.tencent.com/product/tcr?from_column=20065&amp;from=20065">镜像仓库</a>拉取镜像。</li>
+<li>下载好的镜像被解压到容器的根文件系统中，并通过 <code>containers/storage</code> 库存储到 COW 文件系统中。</li>
+<li>在为容器创建 <code>rootfs</code> 之后，CRI-O 通过 <a href="https://cloud.tencent.com/developer/tools/blog-entry?target=https://github.com/opencontainers/runtime-tools&amp;objectId=1987405&amp;objectType=1&amp;isNewArticle=undefined">oci-runtime-tool</a> 生成一个 OCI 运行时规范 json 文件，描述如何使用 OCI Generate tools 运行容器。</li>
+<li>然后 CRI-O 使用规范启动一个兼容 CRI 的运行时来运行容器进程。默认的运行时是 <code>runc</code>。</li>
+<li>每个容器都由一个独立的 <code>conmon</code> 进程监控，conmon 为容器中 pid 为 1 的进程提供一个 <code>pty</code>。同时它还负责处理容器的日志记录并记录容器进程的退出代码。</li>
+<li>网络是通过 CNI 接口设置的，所以任何 CNI 插件都可以与 CRI-O 一起使用。</li>
+</ul>
+<h3 id="4-5-3-CVE-2022-0811的复现过程"><a href="#4-5-3-CVE-2022-0811的复现过程" class="headerlink" title="4.5.3 CVE-2022-0811的复现过程"></a>4.5.3 CVE-2022-0811的复现过程</h3><p><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1987405">https://cloud.tencent.com/developer/article/1987405</a></p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://lzcloudsecurity.gitbook.io/yun-an-quan-gong-fang-ru-men/di-yi-zhang-yun-shang-gong-fang-ti-xi-jie-shao/shen-me-shi-yun-an-quan">https://lzcloudsecurity.gitbook.io/yun-an-quan-gong-fang-ru-men/di-yi-zhang-yun-shang-gong-fang-ti-xi-jie-shao/shen-me-shi-yun-an-quan</a> 【云安全攻防入门】</li>
 <li><a target="_blank" rel="noopener" href="https://gugesay.com/archives/536#google_vignette">https://gugesay.com/archives/536#google_vignette</a> 【云原生安全学习笔记】</li>
@@ -888,6 +955,7 @@
 <li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/2160045">https://cloud.tencent.com/developer/article/2160045</a> 【云原生安全系列（一） | Kubernetes云原生靶场搭建】</li>
 <li><a target="_blank" rel="noopener" href="https://dockerworld.cn/?id=384">https://dockerworld.cn/?id=384</a> 【Kubernetes架构最全详解(8大架构组件)】</li>
 <li><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/713898968%E3%80%90K8S%E5%8E%9F%E7%90%86%E6%9E%B6%E6%9E%84%E8%AF%A6%E8%A7%A3">https://zhuanlan.zhihu.com/p/713898968【K8S原理架构详解</a> 入门】</li>
+<li><a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1987405%E3%80%90Kubernetes">https://cloud.tencent.com/developer/article/1987405【Kubernetes</a> CRI-O引擎逃逸CVE-2022-0811漏洞复现】</li>
 </ul>
 
                 
@@ -1285,7 +1353,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">324.4k</span>
+                        class="white-color">328k</span>
             
             
             
