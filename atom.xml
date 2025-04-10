@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-04-03T07:44:45.068Z</updated>
+  <updated>2025-04-10T06:18:06.777Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>next.js中间件权限绕过漏洞-CEV-2025-29927</title>
+    <link href="http://sxksec.cn/2025/04/10/lou-dong-zhi-shi-ku/next-js-zhong-jian-jian-quan-xian-rao-guo-lou-dong-cev-2025-29927/"/>
+    <id>http://sxksec.cn/2025/04/10/lou-dong-zhi-shi-ku/next-js-zhong-jian-jian-quan-xian-rao-guo-lou-dong-cev-2025-29927/</id>
+    <published>2025-04-10T01:42:50.000Z</published>
+    <updated>2025-04-10T06:18:06.777Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、next-js简介&quot;&gt;&lt;a href=&quot;#一、next-js简介&quot; class=&quot;headerlink&quot; title=&quot;一、next.js简介&quot;&gt;&lt;/a&gt;一、next.js简介&lt;/h1&gt;&lt;p&gt;Next.js 是一个基于 React</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="next.js权限绕过" scheme="http://sxksec.cn/tags/next-js%E6%9D%83%E9%99%90%E7%BB%95%E8%BF%87/"/>
+    
+  </entry>
   
   <entry>
     <title>锐捷-EWEB-auth-远程命令执行漏洞RCE</title>
@@ -48,7 +75,7 @@
     <link href="http://sxksec.cn/2025/03/28/dai-ma-shen-ji/java-dai-ma-shen-ji/"/>
     <id>http://sxksec.cn/2025/03/28/dai-ma-shen-ji/java-dai-ma-shen-ji/</id>
     <published>2025-03-28T01:42:30.000Z</published>
-    <updated>2025-03-28T05:40:57.205Z</updated>
+    <updated>2025-04-09T09:38:41.440Z</updated>
     
     
       
@@ -565,33 +592,6 @@
     <category term="portswigger" scheme="http://sxksec.cn/tags/portswigger/"/>
     
     <category term="操作系统命令注入" scheme="http://sxksec.cn/tags/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JSON Web Token</title>
-    <link href="http://sxksec.cn/2025/02/19/ji-chu-zhi-shi-ku/json-web-token/"/>
-    <id>http://sxksec.cn/2025/02/19/ji-chu-zhi-shi-ku/json-web-token/</id>
-    <published>2025-02-19T06:23:45.000Z</published>
-    <updated>2025-02-19T07:11:20.620Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、定义&quot;&gt;&lt;a href=&quot;#一、定义&quot; class=&quot;headerlink&quot; title=&quot;一、定义&quot;&gt;&lt;/a&gt;一、定义&lt;/h1&gt;&lt;p&gt;JWT（JSON Web Token）是一种开放标准（RFC</summary>
-        
-      
-    
-    
-    
-    <category term="基础知识库" scheme="http://sxksec.cn/categories/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="基础知识库" scheme="http://sxksec.cn/tags/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="jwt" scheme="http://sxksec.cn/tags/jwt/"/>
     
   </entry>
   
