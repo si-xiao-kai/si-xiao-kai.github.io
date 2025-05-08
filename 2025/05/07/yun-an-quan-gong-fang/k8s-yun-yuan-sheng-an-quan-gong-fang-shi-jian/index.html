@@ -1,0 +1,1946 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="k8s云原生安全攻防实践, Hacker进化论">
+    <meta name="description" content="本文主要介绍k8s云原生安全攻防实践相关内容">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>k8s云原生安全攻防实践 | Hacker进化论</title>
+    <link rel="icon" type="image/png" href="/hacker1.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+        <link rel="stylesheet" type="text/css" href="/css/reward.css">
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 7.3.0">
+<style>.github-emoji { position: relative; display: inline-block; width: 1.2em; min-height: 1.2em; overflow: hidden; vertical-align: top; color: transparent; }  .github-emoji > span { position: relative; z-index: 10; }  .github-emoji img, .github-emoji .fancybox { margin: 0 !important; padding: 0 !important; border: none !important; outline: none !important; text-decoration: none !important; user-select: none !important; cursor: auto !important; }  .github-emoji img { height: 1.2em !important; width: 1.2em !important; position: absolute !important; left: 50% !important; top: 50% !important; transform: translate(-50%, -50%) !important; user-select: none !important; cursor: auto !important; } .github-emoji-fallback { color: inherit; } .github-emoji-fallback img { opacity: 0 !important; }</style>
+<link rel="alternate" href="/atom.xml" title="Hacker进化论" type="application/atom+xml">
+</head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/incognito.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Hacker进化论</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/incognito.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Hacker进化论</div>
+        <div class="logo-desc">
+            
+            The only way to do great work is to love what you do.
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/si-xiao-kai/si-xiao-kai.github.io" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/si-xiao-kai/si-xiao-kai.github.io" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">k8s云原生安全攻防实践</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/">
+                                <span class="chip bg-color">云安全攻防</span>
+                            </a>
+                        
+                            <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%89%E5%85%A8/">
+                                <span class="chip bg-color">云原生安全</span>
+                            </a>
+                        
+                            <a href="/tags/k8s%E6%94%BB%E9%98%B2/">
+                                <span class="chip bg-color">k8s攻防</span>
+                            </a>
+                        
+                            <a href="/tags/KubernetesGoat%E9%9D%B6%E5%9C%BA/">
+                                <span class="chip bg-color">KubernetesGoat靶场</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/" class="post-category">
+                                云安全攻防
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2025-05-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2025-05-08
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    6.2k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    25 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <p>在《云安全攻防入门》一文中，主要介绍了云计算的基本概念以及云原生相关的基础知识，在《k8s云原生攻防靶场》 一文主要介绍了k8s云原生攻防相关靶场和搭建方法。</p>
+<p>本文主要基于KubernetesGoat靶场开展云原生安全的研究及相关实践。</p>
+<h1 id="一、OWASP-Kubernetes-Top-10"><a href="#一、OWASP-Kubernetes-Top-10" class="headerlink" title="一、OWASP Kubernetes Top 10"></a>一、OWASP Kubernetes Top 10</h1><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2013.56.20.png" style="zoom:50%;">
+
+<p>OWASP Kubernetes十大安全风险框架是一套专为安全从业者、系统管理员和软件开发人员设计的指南，旨在帮助识别和优先处理Kubernetes生态系统中特有的安全威胁。该十大风险清单提供了一个经过优先级排序的全面安全风险集合，通过解决这些关键风险，能够有效保障应用和基础设施的安全性与稳定性。遵循OWASP Kubernetes十大安全风险框架的指导原则，组织可以更好地保护其系统安全，防范潜在的安全漏洞。</p>
+<p>OWASP Kubernetes十大安全风险框架与Kubernetes Goat是绝佳的搭配，该框架完整列出了Kubernetes集群中最关键的安全风险清单。通过将OWASP框架的知识点应用到Kubernetes Goat实验环境中，用户能够通过实战演练掌握识别和修复潜在安全漏洞的实践技能。</p>
+<h2 id="1-1-K01-Insecure-Workload-Configurations"><a href="#1-1-K01-Insecure-Workload-Configurations" class="headerlink" title="1.1 K01 - Insecure Workload Configurations"></a>1.1 K01 - Insecure Workload Configurations</h2><p>Kubernetes 清单包含影响工作负载可靠性、安全性和可扩展性的配置。定期审计和修复非常重要。</p>
+<p>具有高影响的配置包括：</p>
+<ul>
+<li><p>应用程序进程不应以 root 身份运行</p>
+</li>
+<li><p>应使用只读文件系统</p>
+</li>
+<li><p>应禁止特权容器</p>
+</li>
+</ul>
+<p>相关goat场景</p>
+<ul>
+<li><p><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-2/docker-in-docker-exploitation-in-kubernetes-containers/welcome">DIND (docker-in-docker) exploitation</a></p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-13/denial-of-service-memory-and-cpu-resources-in-kubernetes-cluster/welcome">DoS the Memory/CPU resources</a></p>
+</li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K01-insecure-workload-configurations">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K01-insecure-workload-configurations</a></p>
+<h2 id="1-2-K02-Supply-Chain-Vulnerabilities"><a href="#1-2-K02-Supply-Chain-Vulnerabilities" class="headerlink" title="1.2 K02 - Supply Chain Vulnerabilities"></a>1.2 K02 - Supply Chain Vulnerabilities</h2><p>容器在开发生命周期供应链中发挥着至关重要的作用，并在各个阶段以不同形式存在。由于每个容器可能依赖于数百个第三方组件和依赖项，因此每个容器都呈现出独特的安全挑战，这使得在每个阶段建立信任变得困难。</p>
+<p>容器带来的主要安全挑战包括但不限于以下几点：</p>
+<ul>
+<li>镜像完整性：确保容器镜像未受到未经授权或恶意的修改。</li>
+<li>镜像组成：识别并验证容器镜像中包含的所有组件和依赖项。</li>
+<li>已知软件漏洞：减轻容器镜像中使用的软件组件所发现的漏洞所带来的风险。</li>
+</ul>
+<p>相关goat场景：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-7/attacking-private-container-registry-in-kubernetes/welcome">Attacking private registry</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K02-supply-chain-vulnerabilities">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K02-supply-chain-vulnerabilities</a></p>
+<h2 id="1-3-K03-Overly-Permissive-RBAC"><a href="#1-3-K03-Overly-Permissive-RBAC" class="headerlink" title="1.3 K03 - Overly Permissive RBAC"></a>1.3 K03 - Overly Permissive RBAC</h2><p>基于角色的访问控制（RBAC）是 Kubernetes 中的主要授权机制，用于为资源提供权限。RBAC 权限将动词（如获取、创建、删除等）与资源（如 Pod、服务和节点）相结合。这些权限可以是命名空间作用域或集群作用域的。</p>
+<p>相关goat场景：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-16/rbac-least-privileges-misconfiguration-in-kubernetes-cluster/welcome">RBAC least privileges misconfiguration</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K03-overly-permissive-rbac">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K03-overly-permissive-rbac</a></p>
+<h2 id="1-4-K04-Lack-of-Centralized-Policy-Enforcement"><a href="#1-4-K04-Lack-of-Centralized-Policy-Enforcement" class="headerlink" title="1.4 K04 - Lack of Centralized Policy Enforcement"></a>1.4 K04 - Lack of Centralized Policy Enforcement</h2><p>跨多个Kubernetes集群和环境管理安全策略可能具有挑战性。如果没有一个集中化的位置来检测、修复和防止配置错误，集群可能会面临被攻破的风险。为了确保一致的安全态势，应在软件交付生命周期的各个阶段实施策略强制执行。</p>
+<p>这包括在构建阶段应用策略以确保容器镜像符合安全要求，在部署阶段验证应用程序的期望状态是否符合安全策略，以及在运行时持续确保合规性。通过在以上各阶段实施策略执行，组织能够确保 Kubernetes 工作负载在所有集群和环境中的安全性与合规性。这种方法为跨多集群/多云基础设施应用治理、合规性和安全要求提供了一种途径，而不会因难以管理的复杂性让安全团队不堪重负。</p>
+<p>相关goat场景：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-22/securing-kubernetes-clusters-using-kyverno-policy-engine/welcome">Securing Kubernetes Clusters using Kyverno Policy Engine</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K04-policy-enforcement">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K04-policy-enforcement</a></p>
+<h2 id="1-5-K05-Inadequate-Logging-and-Monitoring"><a href="#1-5-K05-Inadequate-Logging-and-Monitoring" class="headerlink" title="1.5 K05 - Inadequate Logging and Monitoring"></a>1.5 K05 - Inadequate Logging and Monitoring</h2><p>Kubernetes环境具备在不同层级以及所有相关组件中创建日志的能力。当未对异常事件（如认证失败尝试、访问敏感资源、手动删除或修改Kubernetes资源等）进行日志监控，未设置告警阈值，未集中存储日志，或者禁用日志基础设施时，就会成为一个问题。</p>
+<p>相关goat场景：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-21/ebpf-runtime-security-monitoring-and-detection-in-kubernetes-cluster-using-cilium-tetragon/welcome">Cilium Tetragon - eBPF-based Security Observability and Runtime Enforcement</a></li>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-18/runtime-security-monitoring-and-detection-in-kubernetes-cluster-using-falco/welcome">Falco - Runtime security monitoring &amp; detection</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K05-inadequate-logging">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K05-inadequate-logging</a></p>
+<h2 id="1-6-K06-Broken-Authentication-Mechanisms"><a href="#1-6-K06-Broken-Authentication-Mechanisms" class="headerlink" title="1.6 K06 - Broken Authentication Mechanisms"></a>1.6 K06 - Broken Authentication Mechanisms</h2><p>Kubernetes 提供了高度灵活的认证机制，使其能够在各种环境中有效运行。然而，这种灵活性在集群和云安全态势方面也带来了挑战。要访问 Kubernetes API，多个实体需要进行认证。Kubernetes API 的认证过程通过 HTTP 请求完成，并且可能因集群而异。如果请求无法通过认证，将会以 HTTP 401 状态码被拒绝。通常，人类用户认证或服务账户认证被用于对 Kubernetes API 进行认证。</p>
+<p>相关goat场景：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-16/rbac-least-privileges-misconfiguration-in-kubernetes-cluster/welcome">RBAC least privileges misconfiguration</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K06-broken-authentication">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K06-broken-authentication</a></p>
+<h2 id="1-7-K07-Missing-Network-Segmentation-Controls"><a href="#1-7-K07-Missing-Network-Segmentation-Controls" class="headerlink" title="1.7 K07 - Missing Network Segmentation Controls"></a>1.7 K07 - Missing Network Segmentation Controls</h2><p>在管理多个微服务和租户时，Kubernetes 网络流量控制是一个主要问题。扁平的网络结构允许工作负载不受限制地进行通信，这可能被攻击者利用来探测和遍历内部网络或调用私有 API。</p>
+<p>相关goat场景：</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-11/kubernetes-namespaces-bypass-from-kubernetes-cluster-pod/welcome">Kubernetes namespaces bypass</a></li>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-20/secure-kubernetes-using-network-security-policy/welcome">Secure network boundaries using NSP</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K07-network-segmentation">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K07-network-segmentation</a></p>
+<h2 id="1-8-K08-Secrets-Management-Failures"><a href="#1-8-K08-Secrets-Management-Failures" class="headerlink" title="1.8 K08 - Secrets Management Failures"></a>1.8 K08 - Secrets Management Failures</h2><p>Kubernetes Secrets用于存储小型对象，其创建方式与其他Kubernetes对象相同。这些Secrets在.yaml清单文件中定义，用于编码用户名和密码等敏感数据。然而，这些值默认是编码而非加密的，可以轻松解码，因此将Secrets纳入版本控制系统或其他系统存在风险。</p>
+<p>相关goat场景</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-1/sensitive-keys-in-codebases-in-kubernetes-containers/welcome">Sensitive keys in codebases</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K08-secrets-management">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K08-secrets-management</a></p>
+<h2 id="1-9-K09-Misconfigured-Cluster-Components"><a href="#1-9-K09-Misconfigured-Cluster-Components" class="headerlink" title="1.9 K09 - Misconfigured Cluster Components"></a>1.9 K09 - Misconfigured Cluster Components</h2><p>Kubernetes关键组件的配置错误可能会导致整个集群被攻破，甚至造成更严重的后果。Kubernetes控制平面和节点由各种可能容易配置错误的组件组成，例如kubelet、etcd、kube-apiserver等。</p>
+<p>相关goat场景</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-17/auditing-the-kubernetes-cluster-using-kubeaudit/welcome">KubeAudit - Audit Kubernetes clusters</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K09-misconfigured-cluster-components">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K09-misconfigured-cluster-components</a></p>
+<h2 id="1-10-K10-Outdated-and-Vulnerable-Kubernetes-Components"><a href="#1-10-K10-Outdated-and-Vulnerable-Kubernetes-Components" class="headerlink" title="1.10 K10 - Outdated and Vulnerable Kubernetes Components"></a>1.10 K10 - Outdated and Vulnerable Kubernetes Components</h2><p>在传统补丁和漏洞管理方面，Kubernetes 集群可能会面临挑战。ArgoCD、Kubernetes 本身以及 Istio 等常用工具中的配置错误已导致严重的 CVE（常见漏洞和披露）。</p>
+<ul>
+<li>ArgoCD 存在解析漏洞，攻击者可借此加载恶意 Helm Chart 并访问敏感信息。</li>
+<li>ingress-nginx 曾存在一个 CVE 漏洞，允许用户获取集群中的所有密钥，而这一问题无法仅通过升级版本来解决。</li>
+<li>Istio 存在一个认证绕过漏洞，使得未经授权的用户可以访问受保护的路径。</li>
+</ul>
+<p>为确保多个集群的安全，维护准确的清单并在各环境中保持最低 Kubernetes 版本至关重要。</p>
+<p>相关goat场景</p>
+<ul>
+<li>[Helm v2 tiller to PwN the cluster - <a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/scenarios/scenario-9/helm-v2-tiller-to-pwn-kubernetes-cluster-takeover/welcome">Deprecated]</a></li>
+</ul>
+<p>参考：<a target="_blank" rel="noopener" href="https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K09-misconfigured-cluster-components">https://owasp.org/www-project-kubernetes-top-ten/2022/en/src/K09-misconfigured-cluster-components</a></p>
+<h1 id="二、MITRE-ATT-CK-与Goat"><a href="#二、MITRE-ATT-CK-与Goat" class="headerlink" title="二、MITRE ATT&amp;CK 与Goat"></a>二、MITRE ATT&amp;CK 与Goat</h1><p>MITRE ATT&amp;CK®（对抗战术、技术与通用知识）框架是一个基于现实观察的全球可访问的对手战术和技术知识库。在本框架中，涵盖了战术、技术和程序（TTPs），以映射Kubernetes安全风险以及相关的Kubernetes Goat场景。</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---initial-access">Initial Access</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---execution">Execution</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---persistence">Persistence</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---privilege-escalation">Privilege Escalation</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---defense-evasion">Defense Evasion</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---credential-access">Credential Access</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---discovery">Discovery</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---lateral-movement">Lateral Movement</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---collection">Collection</a></strong></th>
+<th align="center"><strong><a target="_blank" rel="noopener" href="https://madhuakula.com/kubernetes-goat/docs/mitre/mitre-attack#-tactic---impact">Impact</a></strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">Using Cloud credentials</td>
+<td align="center">Exec into container</td>
+<td align="center">Backdoor container</td>
+<td align="center">Privileged container</td>
+<td align="center">Clear container logs</td>
+<td align="center">List K8S secrets</td>
+<td align="center">Access the K8S API server</td>
+<td align="center">Access cloud resources</td>
+<td align="center">Images from a private registry</td>
+<td align="center">Data Destruction</td>
+</tr>
+<tr>
+<td align="center">Compromised images in registry</td>
+<td align="center">bash/cmd inside container</td>
+<td align="center">Writable hostPath mount</td>
+<td align="center">Cluster-admin binding</td>
+<td align="center">Delete K8S events</td>
+<td align="center">Mount service principal</td>
+<td align="center">Access Kubelet API</td>
+<td align="center">Container service account</td>
+<td align="center"></td>
+<td align="center">Resource Hijacking</td>
+</tr>
+<tr>
+<td align="center">Kubeconfig file</td>
+<td align="center">New container</td>
+<td align="center">Kubernetes CronJob</td>
+<td align="center">hostPath mount</td>
+<td align="center">Pod / container name similarity</td>
+<td align="center">Access container service account</td>
+<td align="center">Network mapping</td>
+<td align="center">Cluster internal networking</td>
+<td align="center"></td>
+<td align="center">Denial of service</td>
+</tr>
+<tr>
+<td align="center">Application vulnerability</td>
+<td align="center">Application exploit (RCE)</td>
+<td align="center">Malicious admission controller</td>
+<td align="center">Access cloud resources</td>
+<td align="center">Connect from Proxy server</td>
+<td align="center">Applications credentials in configuration files</td>
+<td align="center">Access Kubernetes dashboard</td>
+<td align="center">Applications credentials in configuration files</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Exposed Dashboard</td>
+<td align="center">SSH server running inside container</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Access managed identity credential</td>
+<td align="center">Instance Metadata API</td>
+<td align="center">Writable volume mounts on the host</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center">Exposed sensitive interfaces</td>
+<td align="center">Sidecar injection</td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Malicious admission controller</td>
+<td align="center"></td>
+<td align="center">Access Kubernetes dashboard</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">Access tiller endpoint</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">CoreDNS poisoning</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+<tr>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center"></td>
+<td align="center">ARP poisoning and IP spoofing</td>
+<td align="center"></td>
+<td align="center"></td>
+</tr>
+</tbody></table>
+<h2 id="2-1-Initial-Access"><a href="#2-1-Initial-Access" class="headerlink" title="2.1 Initial Access"></a>2.1 Initial Access</h2><p>初始访问策略包括用于获取资源访问权限的技术。在容器化环境中，这些技术能够实现对集群的首次访问。这种访问可以通过集群管理层直接实现，或者通过获取对部署在集群上的恶意或易受攻击资源的访问权限来间接实现。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Using cloud credentials</td>
+<td></td>
+</tr>
+<tr>
+<td>Compromised image in registry</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-7/attacking-private-container-registry-in-kubernetes">⎈ Attacking private registry</a></td>
+</tr>
+<tr>
+<td>Kubeconfig file</td>
+<td></td>
+</tr>
+<tr>
+<td>Application vulnerability</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world">⎈ SSRF in the Kubernetes (K8S) world</a> <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-2/docker-in-docker-exploitation-in-kubernetes-containers">⎈ DIND (docker-in-docker) exploitation</a></td>
+</tr>
+<tr>
+<td>Exposed sensitive interfaces</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-8/misconfigured-nodeport-exposed-service-in-kubernetes">⎈ NodePort exposed services</a></td>
+</tr>
+</tbody></table>
+<h2 id="2-2-Execution"><a href="#2-2-Execution" class="headerlink" title="2.2 Execution"></a>2.2 Execution</h2><p>执行策略包括攻击者用于在集群内运行其代码的技术。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Exec into container</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-12/gain-environment-information-in-kubernetes-cluster">⎈ Gaining environment information</a></td>
+</tr>
+<tr>
+<td>bash/cmd inside container</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-12/gain-environment-information-in-kubernetes-cluster">⎈ Gaining environment information</a></td>
+</tr>
+<tr>
+<td>New container</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-14/hacker-container-preview-in-kubernetes-cluster">⎈ Hacker container preview</a></td>
+</tr>
+<tr>
+<td>Application exploit (RCE)</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-2/docker-in-docker-exploitation-in-kubernetes-containers">⎈ DIND (docker-in-docker) exploitation</a></td>
+</tr>
+<tr>
+<td>SSH server running inside container</td>
+<td></td>
+</tr>
+<tr>
+<td>Sidecar injection</td>
+<td></td>
+</tr>
+</tbody></table>
+<blockquote>
+<h4 id="Sidecar-injection"><a href="#Sidecar-injection" class="headerlink" title="Sidecar injection"></a>Sidecar injection</h4><p>Sidecar模式是云原生架构中的一个常见设计模式，通常用于微服务架构中。Sidecar容器与主应用容器一起运行，负责处理诸如日志收集、监控、网络通信等横切关注点。常见的例子包括Istio中的Envoy代理，它作为Sidecar来处理服务网格中的流量管理、安全策略等。</p>
+<p>Sidecar injection在网络安全领域的含义。这里可能涉及两个方面：一是正常的安全应用，比如通过Sidecar来实施安全策略；二是可能的安全威胁，比如恶意Sidecar注入攻击。</p>
+<p>从安全应用的角度来看，Sidecar注入可以用于增强安全性。例如，服务网格中通过自动注入Sidecar代理来管理服务间的TLS加密通信，实施mTLS（双向TLS认证），进行流量监控和访问控制。此外，Sidecar还可以集成安全工具，如入侵检测系统（IDS）、Web应用防火墙（WAF），或者进行实时的漏洞扫描。</p>
+<p>另一方面，Sidecar注入也可能带来安全风险。攻击者可能利用配置错误或漏洞，在未经授权的情况下注入恶意Sidecar容器。这种恶意容器可以窃取敏感数据、篡改流量，或者作为持久化后门。例如，如果集群的准入控制（Admission Control）配置不当，攻击者可能通过伪造的Pod配置注入恶意Sidecar，从而获取对网络流量的控制权。</p>
+</blockquote>
+<h2 id="2-3-Persistence"><a href="#2-3-Persistence" class="headerlink" title="2.3 Persistence"></a>2.3 Persistence</h2><p>持久化策略包括攻击者在初始立足点丢失的情况下，用于保持对集群访问权限的技术。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Backdoor container</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-10/analyzing-crypto-miner-in-kubernetes-cluster-container">⎈ Analyzing crypto miner container</a></td>
+</tr>
+<tr>
+<td>Writable hostPath mount</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>Kubernetes CronJob</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-15/hidden-in-container-layers-in-kubernetes-cluster">⎈ Hidden in layers</a></td>
+</tr>
+<tr>
+<td>Malicious admission controller</td>
+<td></td>
+</tr>
+<tr>
+<td>Container service account</td>
+<td>[⎈ Helm v2 tiller to PwN the cluster - <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-9/helm-v2-tiller-to-pwn-kubernetes-cluster-takeover">Deprecated]</a> <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-16/rbac-least-privileges-misconfiguration-in-kubernetes-cluster">⎈ RBAC least privileges misconfiguration</a></td>
+</tr>
+<tr>
+<td>Static pods</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2-4-Privilege-Escalation"><a href="#2-4-Privilege-Escalation" class="headerlink" title="2.4 Privilege Escalation"></a>2.4 Privilege Escalation</h2><p>提权策略包括攻击者用来获取比其当前权限更高环境权限的技术。在容器化环境中，这可能包括从容器访问节点、在集群中获得更高权限，甚至访问云资源。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Privileged container</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>Cluster-admin binding</td>
+<td>[⎈ Helm v2 tiller to PwN the cluster - <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-9/helm-v2-tiller-to-pwn-kubernetes-cluster-takeover">Deprecated]</a></td>
+</tr>
+<tr>
+<td>hostPath mount</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>Access cloud resources</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world">⎈ SSRF in the Kubernetes (K8S) world</a></td>
+</tr>
+</tbody></table>
+<h2 id="2-5-Defense-Evasion-（防御规避）"><a href="#2-5-Defense-Evasion-（防御规避）" class="headerlink" title="2.5 Defense Evasion （防御规避）"></a>2.5 Defense Evasion （防御规避）</h2><p>防御规避策略包括攻击者用来避免被检测和隐藏其活动的技术。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Clear container logs</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>Delete K8S events</td>
+<td>[⎈ Helm v2 tiller to PwN the cluster - <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-9/helm-v2-tiller-to-pwn-kubernetes-cluster-takeover">Deprecated]</a></td>
+</tr>
+<tr>
+<td>Pod / container name similarity</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-14/hacker-container-preview-in-kubernetes-cluster">⎈ Hacker container preview</a></td>
+</tr>
+<tr>
+<td>Connect from proxy server</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2-6-Credential-Access"><a href="#2-6-Credential-Access" class="headerlink" title="2.6 Credential Access"></a>2.6 Credential Access</h2><p>凭据访问策略包括攻击者用来窃取凭据的技术。在容器化环境中，这包括运行应用程序的凭据、身份、存储在集群中的机密或云凭据。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>List K8S secrets</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-16/rbac-least-privileges-misconfiguration-in-kubernetes-cluster">⎈ RBAC least privileges misconfiguration</a></td>
+</tr>
+<tr>
+<td>Mount service principal</td>
+<td></td>
+</tr>
+<tr>
+<td>Container service account</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-16/rbac-least-privileges-misconfiguration-in-kubernetes-cluster">⎈ RBAC least privileges misconfiguration</a></td>
+</tr>
+<tr>
+<td>Application credentials in configuration files</td>
+<td></td>
+</tr>
+<tr>
+<td>Access managed identity credentials</td>
+<td></td>
+</tr>
+<tr>
+<td>Malicious admission controller</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="2-7-Discovery"><a href="#2-7-Discovery" class="headerlink" title="2.7 Discovery"></a>2.7 Discovery</h2><p>发现策略包括攻击者用来探索其已获得访问权限的环境的技术。这种探索有助于攻击者进行横向移动并获得对额外资源的访问权限。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access Kubernetes API server</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-17/auditing-the-kubernetes-cluster-using-kubeaudit">⎈ KubeAudit - Audit Kubernetes clusters</a></td>
+</tr>
+<tr>
+<td>Access Kubelet API</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>Network mapping</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-11/kubernetes-namespaces-bypass-from-kubernetes-cluster-pod">⎈ Kubernetes namespaces bypass</a></td>
+</tr>
+<tr>
+<td>Exposed sensitive interfaces</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-11/kubernetes-namespaces-bypass-from-kubernetes-cluster-pod">⎈ Kubernetes namespaces bypass</a> <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-8/misconfigured-nodeport-exposed-service-in-kubernetes">⎈ NodePort exposed services</a></td>
+</tr>
+<tr>
+<td>Instance Metadata API</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world">⎈ SSRF in the Kubernetes (K8S) world</a></td>
+</tr>
+</tbody></table>
+<h2 id="2-8-Lateral-Movement"><a href="#2-8-Lateral-Movement" class="headerlink" title="2.8 Lateral Movement"></a>2.8 Lateral Movement</h2><p>横向移动策略包括攻击者用来在受害者环境中移动的技术。在容器化环境中，这包括从对一个容器的给定访问权限中获得对集群中各种资源的访问权限，从容器获得对底层节点的访问权限，或获得对云环境的访问权限。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Access cloud resources</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-3/ssrf-in-the-kubernetes-world">⎈ SSRF in the Kubernetes (K8S) world</a></td>
+</tr>
+<tr>
+<td>Container service account</td>
+<td></td>
+</tr>
+<tr>
+<td>Cluster internal networking</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-11/kubernetes-namespaces-bypass-from-kubernetes-cluster-pod">⎈ Kubernetes namespaces bypass</a></td>
+</tr>
+<tr>
+<td>Application credentials in configuration files</td>
+<td></td>
+</tr>
+<tr>
+<td>Writable hostPath mount</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>CoreDNS poisoning</td>
+<td></td>
+</tr>
+<tr>
+<td>ARP poisoning and IP spoofing</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-11/kubernetes-namespaces-bypass-from-kubernetes-cluster-pod">⎈ Kubernetes namespaces bypass</a></td>
+</tr>
+</tbody></table>
+<h2 id="2-9-Collection"><a href="#2-9-Collection" class="headerlink" title="2.9 Collection"></a>2.9 Collection</h2><p>在Kubernetes中，“收集”指的是攻击者用来从集群中收集数据或利用集群进行数据收集的技术手段。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Images from a private registry</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-7/attacking-private-container-registry-in-kubernetes">⎈ Attacking private registry</a></td>
+</tr>
+<tr>
+<td>Collecting data from pod</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-12/gain-environment-information-in-kubernetes-cluster">⎈ Gaining environment information</a></td>
+</tr>
+</tbody></table>
+<h2 id="2-10-Impact"><a href="#2-10-Impact" class="headerlink" title="2.10 Impact"></a>2.10 Impact</h2><p>影响战术包括攻击者用来破坏、滥用或干扰环境正常行为的技术。</p>
+<table>
+<thead>
+<tr>
+<th><strong>🧰 Techniques</strong></th>
+<th><strong>🐐 Kubernetes Goat Scenarios</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Data destruction</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-2/docker-in-docker-exploitation-in-kubernetes-containers">⎈ DIND (docker-in-docker) exploitation</a> <a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-4/container-escape-to-the-host-system-in-kubernetes-containers">⎈ Container escape to the host system</a></td>
+</tr>
+<tr>
+<td>Resource hijacking</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-13/denial-of-service-memory-and-cpu-resources-in-kubernetes-cluster">⎈ DoS the Memory/CPU resources</a></td>
+</tr>
+<tr>
+<td>Denial of service</td>
+<td><a target="_blank" rel="noopener" href="https://madhuakula.com/docs/scenarios/scenario-13/denial-of-service-memory-and-cpu-resources-in-kubernetes-cluster">⎈ DoS the Memory/CPU resources</a></td>
+</tr>
+</tbody></table>
+<h1 id="三、场景实践"><a href="#三、场景实践" class="headerlink" title="三、场景实践"></a>三、场景实践</h1><h2 id="3-1-Sensitive-keys-in-codebases"><a href="#3-1-Sensitive-keys-in-codebases" class="headerlink" title="3.1 Sensitive keys in codebases"></a>3.1 Sensitive keys in codebases</h2><p>如何在代码库中查找敏感密钥。</p>
+<h3 id="3-1-1-场景介绍"><a href="#3-1-1-场景介绍" class="headerlink" title="3.1.1 场景介绍"></a>3.1.1 场景介绍</h3><p>此场景聚焦于开发人员和DevOps团队在打包工件和应用程序代码库时的一些常见错误。这些错误在现实世界中会产生影响，比如导致组织及其实际环境中的基础设施遭到破坏。</p>
+<p>开发者往往会将敏感信息提交到版本控制系统中。随着我们向<strong>持续集成/持续交付</strong>（CI/CD）和 GitOps 系统迈进，我们往往会忘记识别代码和提交中的敏感信息。让我们看看这里能否发现一些有趣的东西。</p>
+<p>实践目标：</p>
+<ol>
+<li>如何测试 Web 应用程序入口点的安全配置错误。</li>
+<li>打包应用程序和容器的常见错误或配置错误。</li>
+<li>检测版本控制系统中代码库的敏感密钥和信息。</li>
+<li>使用开源工具识别和检测机密信息。</li>
+</ol>
+<p>图示：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2017.37.54.png" style="zoom:40%;">
+
+<h3 id="3-1-2-场景访问"><a href="#3-1-2-场景访问" class="headerlink" title="3.1.2 场景访问"></a>3.1.2 场景访问</h3><p><a target="_blank" rel="noopener" href="http://192.168.52.13:1230/">http://192.168.52.13:1230/</a></p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2015.59.41.png" style="zoom:50%;">
+
+<ul>
+<li><p>此场景的目标是识别代码库中可用的敏感密钥，包括应用程序代码、容器和基础设施。</p>
+</li>
+<li><p>如果获得了 AWS 的 aws_access_key_id 和 aws_secret_access_key 以及 k8s-goat-FLAG 标志的值，那么就完成了此场景。</p>
+</li>
+</ul>
+<h3 id="3-1-3-方法一（分析-git历史分支）"><a href="#3-1-3-方法一（分析-git历史分支）" class="headerlink" title="3.1.3 方法一（分析.git历史分支）"></a>3.1.3 方法一（分析.git历史分支）</h3><p>阅读服务介绍可以判断是一个通过git发布的容器化应用。</p>
+<ul>
+<li>dirsearch 目录扫描</li>
+</ul>
+<p>执行目录扫描，可以确定该应用程序中暴露了一个 .git 文件夹。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>python3.9<span class="token punctuation">)</span>  ~/dirsearch   master  python dirsearch.py <span class="token parameter variable">-u</span> http://192.168.52.13:1230/
+
+  _<span class="token operator">|</span><span class="token builtin class-name">.</span> _ _  _  _  _ _<span class="token operator">|</span>_    v0.4.3
+ <span class="token punctuation">(</span>_<span class="token operator">||</span><span class="token operator">|</span> _<span class="token punctuation">)</span> <span class="token punctuation">(</span>/_<span class="token punctuation">(</span>_<span class="token operator">||</span> <span class="token punctuation">(</span>_<span class="token operator">|</span> <span class="token punctuation">)</span>
+
+Extensions: php, asp, aspx, jsp, html, htm <span class="token operator">|</span> HTTP method: GET <span class="token operator">|</span> Threads: <span class="token number">25</span> <span class="token operator">|</span> Wordlist size: <span class="token number">12289</span>
+
+Target: http://192.168.52.13:1230/
+
+<span class="token punctuation">[</span><span class="token number">16</span>:05:56<span class="token punctuation">]</span> Scanning:
+<span class="token punctuation">[</span><span class="token number">16</span>:05:59<span class="token punctuation">]</span> <span class="token number">200</span> -   535B - /.git/index
+<span class="token punctuation">[</span><span class="token number">16</span>:05:59<span class="token punctuation">]</span> <span class="token number">200</span> -   240B - /.git/info/exclude
+<span class="token punctuation">[</span><span class="token number">16</span>:06:00<span class="token punctuation">]</span> <span class="token number">200</span> -    2KB - /.git/logs/HEAD
+<span class="token punctuation">[</span><span class="token number">16</span>:06:00<span class="token punctuation">]</span> <span class="token number">200</span> -    92B - /.git/config
+<span class="token punctuation">[</span><span class="token number">16</span>:06:00<span class="token punctuation">]</span> <span class="token number">200</span> -   263B - /.git/COMMIT_EDITMSG
+<span class="token punctuation">[</span><span class="token number">16</span>:06:00<span class="token punctuation">]</span> <span class="token number">200</span> -    23B - /.git/HEAD
+<span class="token punctuation">[</span><span class="token number">16</span>:06:00<span class="token punctuation">]</span> <span class="token number">200</span> -    2KB - /.git/logs/refs/heads/master
+<span class="token punctuation">[</span><span class="token number">16</span>:06:00<span class="token punctuation">]</span> <span class="token number">200</span> -    92B - /.gitconfig
+<span class="token punctuation">[</span><span class="token number">16</span>:06:01<span class="token punctuation">]</span> <span class="token number">200</span> -    73B - /.git/description
+<span class="token punctuation">[</span><span class="token number">16</span>:06:03<span class="token punctuation">]</span> <span class="token number">200</span> -    41B - /.git/refs/heads/master
+<span class="token punctuation">[</span><span class="token number">16</span>:06:43<span class="token punctuation">]</span> <span class="token number">200</span> -     4B - /ping
+
+Task Completed<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.21.56.png" style="zoom:50%;">
+
+<ul>
+<li>克隆远程仓库</li>
+</ul>
+<blockquote>
+<h4 id="git-dumper"><a href="#git-dumper" class="headerlink" title="git-dumper"></a>git-dumper</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">pip <span class="token function">install</span> git-dumper<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.30.25.png" style="zoom:40%;">
+
+<p>无须克隆项目，直接pip安装即可。</p>
+</blockquote>
+<p>使用开源工具（如git-dumper [<a target="_blank" rel="noopener" href="https://github.com/arthaud/git-dumper]%EF%BC%89%E4%BB%8E%E8%BF%9C%E7%A8%8B%E7%BD%91%E7%AB%99%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%85%8B%E9%9A%86%E8%AF%A5git%E4%BB%93%E5%BA%93%E3%80%82">https://github.com/arthaud/git-dumper]）从远程网站在本地克隆该git仓库。</a></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">git-dumper http://192.168.52.13:1230/.git k8s-goat-git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.32.48.png" style="zoom:45%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.35.24.png" style="zoom:50%;">
+
+<p>我们可以通过查看日志和之前的提交历史来验证 Git 历史记录和信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">commit 905dcec070d86ce60822d790492d7237884df60a <span class="token punctuation">(</span>HEAD -<span class="token operator">&gt;</span> master<span class="token punctuation">)</span>
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:42:28 <span class="token number">2020</span> +0100
+
+    Final release
+
+commit 3292ff3bd8d96f192a9d4eb665fdd1014d87d3df
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:40:59 <span class="token number">2020</span> +0100
+
+    Updated the docs
+
+commit 7daa5f4cda812faa9c62966ba57ee9047ee6b577
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:39:21 <span class="token number">2020</span> +0100
+
+    updated the endpoints and routes
+
+commit d7c173ad183c574109cd5c4c648ffe551755b576
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:31:06 <span class="token number">2020</span> +0100
+
+    Inlcuded custom environmental variables
+
+commit bb2967a6f26fb59bf64031bbb14b4f3e233944ca
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:28:33 <span class="token number">2020</span> +0100
+
+    Added <span class="token function">ping</span> endpoint
+
+commit 599f377bde4c3c5c8dc0d7700194b5b2b0643c0b
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:24:56 <span class="token number">2020</span> +0100
+
+    Basic working go server with fiber
+
+commit 4dc0726a546f59e0f4cda837a07032c62ee137bf
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:21:48 <span class="token number">2020</span> +0100
+
+    Initial commit with README<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>分析多个提交后，我们可以看到有一个特定的提交比较有趣，涉及到环境变量。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">commit d7c173ad183c574109cd5c4c648ffe551755b576
+Author: Madhu Akula <span class="token operator">&lt;</span>madhu.akula@hotmail.com<span class="token operator">&gt;</span>
+Date:   Fri Nov <span class="token number">6</span> <span class="token number">23</span>:31:06 <span class="token number">2020</span> +0100
+
+    Inlcuded custom environmental variables<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>切换到历史分支</li>
+</ul>
+<p>我们可以使用以下命令并加上提交 ID 来检出该特定提交。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">git</span> checkout d7c173ad183c574109cd5c4c648ffe551755b576<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.40.49.png" style="zoom:50%;">
+
+<p>现在我们处于特定的提交历史中，可以看到该特定提交中所有可用的文件、代码、资源和更改。我们可以使用标准的 Linux 工具来探索文件系统，查看是否有任何有趣的文件或更改。</p>
+<ul>
+<li>查看敏感信息</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.42.10.png" style="zoom:40%;">
+
+<p>可以看到它包含了硬编码的AWS密钥以及flag。</p>
+<h3 id="3-1-4-方法二（假设获到pod-容器访问权限）"><a href="#3-1-4-方法二（假设获到pod-容器访问权限）" class="headerlink" title="3.1.4 方法二（假设获到pod/容器访问权限）"></a>3.1.4 方法二（假设获到pod/容器访问权限）</h3><p>在某些情况下，我们可能通过审计流程合法获得Pod/容器访问权限，或是利用某些漏洞获取访问权，此时可以采用替代方案来解决或实现目标。</p>
+<p>我们可以使用TruffleHog等开源工具在Git提交/历史记录中查找泄露的凭证，而不是手动分析。</p>
+<blockquote>
+<h4 id="TruffleHog"><a href="#TruffleHog" class="headerlink" title="TruffleHog"></a>TruffleHog</h4><p><a target="_blank" rel="noopener" href="https://github.com/trufflesecurity/trufflehog">https://github.com/trufflesecurity/trufflehog</a></p>
+<p>TruffleHog 是最强大的密钥发现、分类、验证和分析工具。在此语境中，密钥指的是机器用于向另一台机器进行身份验证的凭证。这包括 API 密钥、数据库密码、私钥加密密钥等等……</p>
+<ul>
+<li>mac安装：</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">brew <span class="token function">install</span> trufflehog <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2017.02.41.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span>base<span class="token punctuation">)</span>~<span class="token operator">&gt;</span> <span class="token function">which</span> trufflehog
+/usr/local/bin/trufflehog<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</blockquote>
+<ul>
+<li>模拟进入pod</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.58.42.png" style="zoom:50%;">
+
+<ul>
+<li>通过TruffleHog自动分析敏感数据</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.59.59.png" style="zoom:50%;">
+
+<p>同样可以看到它包含了硬编码的AWS密钥以及flag。</p>
+<p>获取到AWS的访问密钥（<code>aws_access_key_id</code> 和 <code>aws_secret_access_key</code>）后，黑客可以以该密钥所属的IAM用户或角色的权限执行任意操作。</p>
+<h2 id="3-2-DIND-docker-in-docker-exploitation"><a href="#3-2-DIND-docker-in-docker-exploitation" class="headerlink" title="3.2 DIND (docker-in-docker) exploitation"></a>3.2 DIND (docker-in-docker) exploitation</h2><p>如何在容器中利用Docker IN Docker套接字。</p>
+<blockquote>
+<h4 id="DIND-docker-in-docker"><a href="#DIND-docker-in-docker" class="headerlink" title="DIND (docker-in-docker)"></a>DIND (docker-in-docker)</h4><p>DIND（Docker-in-Docker）是一种在 Docker 容器内运行另一个 Docker 守护进程（Docker Daemon）的技术。这种模式通常用于需要<strong>在容器内部管理其他容器</strong>的场景（例如 CI/CD 流水线中的容器化构建环境），但它也带来了一些复杂性和潜在问题。</p>
+<ul>
+<li><strong>DIND 的核心原理</strong></li>
+</ul>
+<ol>
+<li><strong>常规 Docker 架构</strong>：<ul>
+<li>宿主机（Host）上运行一个 Docker 守护进程（<code>dockerd</code>）。</li>
+<li>所有容器共享宿主机的 Docker 守护进程（通过 <code>/var/run/docker.sock</code> 通信）。</li>
+</ul>
+</li>
+<li><strong>DIND 架构</strong>：<ul>
+<li>在一个 Docker 容器内部运行<strong>独立的 Docker 守护进程</strong>。</li>
+<li>该容器内的 Docker 守护进程与宿主机 Docker 守护进程完全隔离。</li>
+<li>容器内部的 Docker 客户端（<code>docker</code> CLI）会与容器内的 Docker 守护进程通信。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li><strong>DIND 的常见用途</strong></li>
+</ul>
+<ol>
+<li><strong>CI/CD 流水线</strong>：<ul>
+<li>在容器化的构建环境中（如 GitLab Runner、Jenkins Agent），需要动态创建和管理其他容器。</li>
+<li>例如：在 GitLab CI 中构建 Docker 镜像并推送到镜像仓库。</li>
+</ul>
+</li>
+<li><strong>多容器应用测试</strong>：<ul>
+<li>在容器内部启动一组嵌套容器，模拟复杂的多服务环境（如测试 Kubernetes 集群）。</li>
+</ul>
+</li>
+<li><strong>容器化开发环境</strong>：<ul>
+<li>开发人员可以在容器内运行 Docker，而无需在宿主机上安装 Docker。</li>
+</ul>
+</li>
+</ol>
+<ul>
+<li>如何实现 DIND？</li>
+</ul>
+<p><strong>方法 1：使用 <code>docker:dind</code> 官方镜像</strong></p>
+<p>Docker 官方提供了 <code>docker:dind</code>（Docker-in-Docker）镜像，启动容器时会自动运行内部的 Docker 守护进程。</p>
+<p><strong>方法 2：挂载宿主机 Docker 套接字（非 DIND）</strong></p>
+<p>虽然技术上不属于 DIND，但另一种常见模式是直接将宿主机的 Docker 套接字挂载到容器内（称为 <strong>Docker-outside-of-Docker, DooD</strong>）。</p>
+<ul>
+<li>DIND 的潜在问题</li>
+</ul>
+<ol>
+<li><strong>性能开销</strong>：<ul>
+<li>嵌套容器会导致存储驱动（如 <code>overlay2</code>）的性能下降，尤其是涉及多层镜像构建时。</li>
+</ul>
+</li>
+<li><strong>资源隔离</strong>：<ul>
+<li>容器内的 Docker 守护进程可能无法完全隔离资源（如网络、存储卷），导致冲突。</li>
+</ul>
+</li>
+<li><strong>安全问题</strong>：<ul>
+<li>运行 Docker-in-Docker 通常需要容器以 <code>--privileged</code> 模式运行，存在安全风险。</li>
+<li>容器内的 Docker 守护进程可能被用于逃逸到宿主机。</li>
+</ul>
+</li>
+<li><strong>存储卷管理</strong>：<ul>
+<li>容器内的 Docker 守护进程默认使用容器内的临时存储，重启后数据会丢失。</li>
+</ul>
+</li>
+</ol>
+<p><strong>总结</strong></p>
+<p>DIND 是一种在容器内运行独立 Docker 守护进程的技术，适合需要严格隔离的场景，但会带来性能和安全风险。在实际应用中，应根据需求选择最简单安全的方案（如 DooD-Docker-outside-of-Docker 或专用工具）。</p>
+</blockquote>
+<h3 id="3-2-1-场景介绍"><a href="#3-2-1-场景介绍" class="headerlink" title="3.2.1 场景介绍"></a>3.2.1 场景介绍</h3><p>本场景重点解析通过容器运行时接口（如Docker.sock、containerd.sock）构建标准化系统与流水线的典型模式，这类通过挂载容器Socket直接操控底层运行时（创建/构建/运行容器）的实践，自容器技术诞生初期便存在被攻击利用的安全隐患，且相关配置错误在生产环境中仍持续高频出现。</p>
+<p>实践目标：</p>
+<ol>
+<li>如何测试和利用容器UNIX套接字配置错误。</li>
+<li>能够利用容器并从Docker容器中逃逸。</li>
+<li>了解流水线和CI/CD构建系统中的常见配置错误。</li>
+</ol>
+<p>图示：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2018.01.32.png" style="zoom:40%;">
+
+<p>当前主流CI/CD流水线系统普遍采用<strong>DIND（Docker-in-Docker）模式</strong>，通过绑定宿主机的<code>/var/run/docker.sock</code>UNIX套接字，直接调用底层容器运行时（如Docker daemon）执行容器构建操作。本攻击场景将演示如何利用该典型配置缺陷，实现从容器内部逃逸并获取Kubernetes工作节点（Worker Node）的宿主系统控制权。</p>
+<h3 id="3-2-2-场景访问"><a href="#3-2-2-场景访问" class="headerlink" title="3.2.2 场景访问"></a>3.2.2 场景访问</h3><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2018.03.53.png" style="zoom:40%;">
+
+<ul>
+<li>此场景的目标是从正在运行的 Docker 容器中逃逸到运行该容器的宿主系统，并能够访问和对该节点上运行的其他容器执行操作。</li>
+</ul>
+<h3 id="3-2-3-方法一"><a href="#3-2-3-方法一" class="headerlink" title="3.2.3 方法一"></a>3.2.3 方法一</h3><ul>
+<li>命令注入漏洞</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2018.12.34.png" style="zoom:50%;">
+
+<blockquote>
+<h4 id="Linux命令执行方法"><a href="#Linux命令执行方法" class="headerlink" title="Linux命令执行方法"></a>Linux命令执行方法</h4><p>&amp;、&amp;&amp;、|、||、; </p>
+</blockquote>
+<ul>
+<li>查看挂载信息</li>
+</ul>
+<blockquote>
+<h4 id="mount命令"><a href="#mount命令" class="headerlink" title="mount命令"></a>mount命令</h4><p>在 Linux 系统中，<code>mount</code> 命令用于将存储设备（如硬盘、U盘、光盘）或虚拟文件系统（如 ISO 镜像、网络共享）<strong>挂载</strong>到目录树的某个位置（称为“挂载点”），使得用户可以通过该目录访问设备或文件系统的内容。</p>
+<p>当在Linux中执行不带参数的mount命令时，系统会列出所有已挂载的文件系统。这包括各种设备、虚拟文件系统，比如proc、sysfs、tmpfs等，还有像/dev、/run这样的挂载点。</p>
+<p>它会显示每个挂载设备的详细信息，包括设备路径、挂载点、文件系统类型、挂载选项等。</p>
+<p>输出示例：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">/dev/sda1 on / <span class="token builtin class-name">type</span> ext4 <span class="token punctuation">(</span>rw,relatime,errors<span class="token operator">=</span>remount-ro<span class="token punctuation">)</span>
+tmpfs on /dev/shm <span class="token builtin class-name">type</span> tmpfs <span class="token punctuation">(</span>rw,nosuid,nodev<span class="token punctuation">)</span>
+proc on /proc <span class="token builtin class-name">type</span> proc <span class="token punctuation">(</span>rw,nosuid,nodev,noexec,relatime<span class="token punctuation">)</span>
+sysfs on /sys <span class="token builtin class-name">type</span> sysfs <span class="token punctuation">(</span>rw,nosuid,nodev,noexec,relatime<span class="token punctuation">)</span>
+/dev/sdb1 on /mnt/data <span class="token builtin class-name">type</span> ext4 <span class="token punctuation">(</span>rw,noatime<span class="token punctuation">)</span>
+<span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol>
+<li><strong>设备/资源路径</strong><br>例如：<code>/dev/sda1</code>（硬盘分区）、<code>tmpfs</code>（内存文件系统）、<code>proc</code>（内核虚拟文件系统）。</li>
+<li><strong>挂载点（Mount Point）</strong><br>文件系统被挂载到的目录，例如 <code>/</code>（根目录）、<code>/mnt/data</code>。</li>
+<li><strong>文件系统类型（Type）</strong><br>例如 <code>ext4</code>、<code>tmpfs</code>、<code>proc</code>、<code>ntfs</code>、<code>nfs</code> 等。</li>
+<li><strong>挂载选项（Options）</strong><br>括号内的参数表示挂载时的选项，例如：<ul>
+<li><code>rw</code>：读写模式。</li>
+<li><code>ro</code>：只读模式。</li>
+<li><code>noexec</code>：禁止执行挂载点中的程序。</li>
+<li><code>relatime</code>：优化文件访问时间更新。</li>
+<li><code>nodev</code>：忽略设备文件（如 <code>/dev</code> 中的硬件设备）。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2018.22.24.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">tmpfs on /custom/containerd/containerd.sock <span class="token builtin class-name">type</span> tmpfs<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">司晓凯</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/">http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">司晓凯</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/">
+                                    <span class="chip bg-color">云安全攻防</span>
+                                </a>
+                            
+                                <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%89%E5%85%A8/">
+                                    <span class="chip bg-color">云原生安全</span>
+                                </a>
+                            
+                                <a href="/tags/k8s%E6%94%BB%E9%98%B2/">
+                                    <span class="chip bg-color">k8s攻防</span>
+                                </a>
+                            
+                                <a href="/tags/KubernetesGoat%E9%9D%B6%E5%9C%BA/">
+                                    <span class="chip bg-color">KubernetesGoat靶场</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/reward/alipay.jpg" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/reward/wechat.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
+            <div class="card">
+                <a href="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/8.jpg" class="responsive-img" alt="k8s云原生安全攻防实践">
+                        
+                        <span class="card-title">k8s云原生安全攻防实践</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要介绍k8s云原生安全攻防实践相关内容
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-05-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/" class="post-category">
+                                    云安全攻防
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/">
+                        <span class="chip bg-color">云安全攻防</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">云原生安全</span>
+                    </a>
+                    
+                    <a href="/tags/k8s%E6%94%BB%E9%98%B2/">
+                        <span class="chip bg-color">k8s攻防</span>
+                    </a>
+                    
+                    <a href="/tags/KubernetesGoat%E9%9D%B6%E5%9C%BA/">
+                        <span class="chip bg-color">KubernetesGoat靶场</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/medias/featureimages/17.jpg" class="responsive-img" alt="他山之石-经验学习">
+                        
+                        <span class="card-title">他山之石-经验学习</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            本文主要记录一些读到的优质经验文章。
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2025-04-28
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/web%E5%AE%89%E5%85%A8/" class="post-category">
+                                    web安全
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/web%E5%AE%89%E5%85%A8/">
+                        <span class="chip bg-color">web安全</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3/">
+                        <span class="chip bg-color">他山之石</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1,h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2025</span>
+            
+            <a href="/about" target="_blank">Si Xiaokai</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">355.8k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/si-xiao-kai" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:284254231@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=284254231" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 284254231" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+    
+    
+
+    <!-- 雪花特效 -->
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+
+        <style>
+            [bg-lazy] {
+                background-image: none !important;
+                background-color: #eee !important;
+            }
+        </style>
+        <script>
+            window.imageLazyLoadSetting = {
+                isSPA: false,
+                preloadRatio: 1,
+                processImages: null,
+            };
+        </script><script>window.addEventListener("load",function(){var t=/\.(gif|jpg|jpeg|tiff|png)$/i,r=/^data:image\/[a-z\d\-\.\+]+;base64,/;Array.prototype.slice.call(document.querySelectorAll("img[data-original]")).forEach(function(a){var e=a.parentNode;"A"===e.tagName&&(t.test(e.href)||r.test(e.href))&&(e.href=a.dataset.original)})});</script><script>(r=>{r.imageLazyLoadSetting.processImages=t;var a=r.imageLazyLoadSetting.isSPA,o=r.imageLazyLoadSetting.preloadRatio||1,d=i();function i(){var t=Array.prototype.slice.call(document.querySelectorAll("img[data-original]")),e=Array.prototype.slice.call(document.querySelectorAll("[bg-lazy]"));return t.concat(e)}function t(t){(a||t)&&(d=i());for(var e,n=0;n<d.length;n++)0<=(e=(e=d[n]).getBoundingClientRect()).bottom&&0<=e.left&&e.top<=(r.innerHeight*o||document.documentElement.clientHeight*o)&&(()=>{var t,e,a,o,i=d[n];e=function(){d=d.filter(function(t){return i!==t}),r.imageLazyLoadSetting.onImageLoaded&&r.imageLazyLoadSetting.onImageLoaded(i)},(t=i).dataset.loaded||(t.hasAttribute("bg-lazy")?(t.removeAttribute("bg-lazy"),e&&e()):(a=new Image,o=t.getAttribute("data-original"),a.onload=function(){t.src=o,t.removeAttribute("data-original"),t.setAttribute("data-loaded",!0),e&&e()},a.onerror=function(){t.removeAttribute("data-original"),t.setAttribute("data-loaded",!1),t.src=o},t.src!==o&&(a.src=o)))})()}function e(){clearTimeout(t.tId),t.tId=setTimeout(t,500)}t(),document.addEventListener("scroll",e),r.addEventListener("resize",e),r.addEventListener("orientationchange",e)})(this);</script></body>
+
+</html>

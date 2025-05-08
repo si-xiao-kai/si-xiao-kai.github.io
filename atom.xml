@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-04-17T07:05:19.970Z</updated>
+  <updated>2025-05-08T01:00:35.004Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,71 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>k8s云原生安全攻防实践</title>
+    <link href="http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/"/>
+    <id>http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/</id>
+    <published>2025-05-07T05:47:46.000Z</published>
+    <updated>2025-05-08T01:00:35.004Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;在《云安全攻防入门》一文中，主要介绍了云计算的基本概念以及云原生相关的基础知识，在《k8s云原生攻防靶场》 一文主要介绍了k8s云原生攻防相关靶场和搭建方法。&lt;/p&gt;
+&lt;p&gt;本文主要基于KubernetesGoat靶场开展云原生安全的研究及相关实践。&lt;/p&gt;
+&lt;h1</summary>
+        
+      
+    
+    
+    
+    <category term="云安全攻防" scheme="http://sxksec.cn/categories/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/"/>
+    
+    
+    <category term="云安全攻防" scheme="http://sxksec.cn/tags/%E4%BA%91%E5%AE%89%E5%85%A8%E6%94%BB%E9%98%B2/"/>
+    
+    <category term="云原生安全" scheme="http://sxksec.cn/tags/%E4%BA%91%E5%8E%9F%E7%94%9F%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="k8s攻防" scheme="http://sxksec.cn/tags/k8s%E6%94%BB%E9%98%B2/"/>
+    
+    <category term="KubernetesGoat靶场" scheme="http://sxksec.cn/tags/KubernetesGoat%E9%9D%B6%E5%9C%BA/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>他山之石-经验学习</title>
+    <link href="http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/"/>
+    <id>http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/</id>
+    <published>2025-04-28T03:56:05.000Z</published>
+    <updated>2025-05-06T06:40:06.334Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、js分析&quot;&gt;&lt;a href=&quot;#一、js分析&quot; class=&quot;headerlink&quot; title=&quot;一、js分析&quot;&gt;&lt;/a&gt;一、js分析&lt;/h1&gt;&lt;h2 id=&quot;1-1-渗透测试JS接口Fuzz场景研究&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
+    
+    
+    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
+    
+    <category term="他山之石" scheme="http://sxksec.cn/tags/%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
+    
+  </entry>
+  
+  <entry>
     <title>致远AnalyticsCloud 分析云任意文件读取漏洞</title>
     <link href="http://sxksec.cn/2025/04/17/lou-dong-zhi-shi-ku/zhi-yuan-analyticscloud-fen-xi-yun-ren-yi-wen-jian-du-qu-lou-dong/"/>
     <id>http://sxksec.cn/2025/04/17/lou-dong-zhi-shi-ku/zhi-yuan-analyticscloud-fen-xi-yun-ren-yi-wen-jian-du-qu-lou-dong/</id>
     <published>2025-04-17T05:30:32.000Z</published>
-    <updated>2025-04-17T07:05:19.970Z</updated>
+    <updated>2025-04-18T02:48:08.431Z</updated>
     
     
       
@@ -44,19 +104,19 @@
   </entry>
   
   <entry>
-    <title>k8s云原生攻防</title>
+    <title>k8s云原生攻防靶场</title>
     <link href="http://sxksec.cn/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/"/>
     <id>http://sxksec.cn/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/</id>
     <published>2025-04-14T10:14:34.000Z</published>
-    <updated>2025-04-16T10:02:34.150Z</updated>
+    <updated>2025-05-07T05:45:36.160Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;p&gt;在《云安全攻防入门》一文中，我们主要介绍了云计算的基本概念以及云原生相关的基础知识，本文主要介绍k8s云原生攻防相关知识和实践。&lt;/p&gt;
-&lt;h1 id=&quot;一、k8s靶场环境的搭建&quot;&gt;&lt;a href=&quot;#一、k8s靶场环境的搭建&quot; class=&quot;headerlink&quot;</summary>
+    <summary type="html">&lt;p&gt;在《云安全攻防入门》一文中，我们主要介绍了云计算的基本概念以及云原生相关的基础知识，本文主要介绍k8s云原生攻防相关靶场和实践。&lt;/p&gt;
+&lt;h1 id=&quot;一、k8s靶场环境的搭建（metarget）&quot;&gt;&lt;a href=&quot;#一、k8s靶场环境的搭建（metarget）&quot;</summary>
         
       
     
@@ -530,64 +590,6 @@
     <category term="特权提升" scheme="http://sxksec.cn/tags/%E7%89%B9%E6%9D%83%E6%8F%90%E5%8D%87/"/>
     
     <category term="Netlogon" scheme="http://sxksec.cn/tags/Netlogon/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>xxl-job代码审计</title>
-    <link href="http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/"/>
-    <id>http://sxksec.cn/2025/02/24/dai-ma-shen-ji/xxl-job-dai-ma-shen-ji/</id>
-    <published>2025-02-24T06:06:58.000Z</published>
-    <updated>2025-03-12T02:44:49.732Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、xxl-job简介&quot;&gt;&lt;a href=&quot;#一、xxl-job简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="xxl-job" scheme="http://sxksec.cn/tags/xxl-job/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>yaklab-逻辑漏洞</title>
-    <link href="http://sxksec.cn/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/"/>
-    <id>http://sxksec.cn/2025/02/21/ba-chang-shi-zhan/yaklab-luo-ji-lou-dong/</id>
-    <published>2025-02-21T02:08:46.000Z</published>
-    <updated>2025-02-21T10:10:36.544Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、会话固定漏洞&quot;&gt;&lt;a href=&quot;#一、会话固定漏洞&quot; class=&quot;headerlink&quot; title=&quot;一、会话固定漏洞&quot;&gt;&lt;/a&gt;一、会话固定漏洞&lt;/h1&gt;&lt;p&gt;会话固定漏洞是指网站或应用程序在用户登录时分配的会话标识符（Session</summary>
-        
-      
-    
-    
-    
-    <category term="靶场实战" scheme="http://sxksec.cn/categories/%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/"/>
-    
-    
-    <category term="靶场实战" scheme="http://sxksec.cn/tags/%E9%9D%B6%E5%9C%BA%E5%AE%9E%E6%88%98/"/>
-    
-    <category term="yaklab" scheme="http://sxksec.cn/tags/yaklab/"/>
-    
-    <category term="逻辑漏洞" scheme="http://sxksec.cn/tags/%E9%80%BB%E8%BE%91%E6%BC%8F%E6%B4%9E/"/>
     
   </entry>
   

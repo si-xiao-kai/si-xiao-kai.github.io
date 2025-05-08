@@ -406,21 +406,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-01-21
+                    2025-04-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.7k
+                    3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    13 分
+                    15 分
                 </div>
                 
 
@@ -494,14 +494,13 @@ nuclei<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nuclei <span class="token parameter variable">-u</span> <span class="token operator">&lt;</span>目标URL<span class="token operator">&gt;</span> <span class="token parameter variable">-t</span> <span class="token operator">&lt;</span>模板路径<span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>用户还可以通过指定模板目录、目标列表文件、并发数等参数，灵活控制扫描过程。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nuclei <span class="token parameter variable">-h</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nuclei <span class="token parameter variable">-h</span> <span class="token comment">#查看帮助手册。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p>查看帮助手册。</p>
 <h2 id="3-2-常用参数"><a href="#3-2-常用参数" class="headerlink" title="3.2 常用参数"></a>3.2 常用参数</h2><h3 id="3-2-1-目标-TARGET"><a href="#3-2-1-目标-TARGET" class="headerlink" title="3.2.1 目标 TARGET"></a>3.2.1 目标 TARGET</h3><ul>
-<li>-u, -target string[]              目标URL/主机，可以是数组。</li>
-<li>-l, -list string                        一个包含目标URL/主机的列表文件。</li>
-<li>-sa, -scan-all-ips                 扫描所有DNS记录关联的IP。</li>
-<li>-iv, -ip-version string[]      指定要扫描的IP版本，默认为IPv4。</li>
+<li>-u, -target string[]               目标URL/主机，可以是数组。</li>
+<li>-l, -list string                         一个包含目标URL/主机的列表文件。</li>
+<li>-sa, -scan-all-ips                  扫描所有DNS记录关联的IP。</li>
+<li>-iv, -ip-version string[]       指定要扫描的IP版本，默认为IPv4。</li>
 </ul>
 <h3 id="3-2-2-模版-TEMPLATES"><a href="#3-2-2-模版-TEMPLATES" class="headerlink" title="3.2.2 模版 TEMPLATES"></a>3.2.2 模版 TEMPLATES</h3><ul>
 <li>-tl                                         列出所有可用的模版。</li>
@@ -548,7 +547,7 @@ nuclei<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 </blockquote>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/21/gong-fang-gong-ju-ku/nuclei-lou-dong-sao-miao/%E6%88%AA%E5%B1%8F2025-01-21%2011.42.33.png" style="zoom:50%;">
 
-<p>可以执行绝对目录之后tab键补足模版文件。</p>
+<p>可以在绝对目录之后tab键补足模版文件。</p>
 <p>CVE-2021-3129.yaml的配置：</p>
 <pre class="line-numbers language-yaml" data-language="yaml"><code class="language-yaml"><span class="token key atrule">id</span><span class="token punctuation">:</span> CVE<span class="token punctuation">-</span>2021<span class="token punctuation">-</span><span class="token number">3129</span>
 
@@ -675,7 +674,7 @@ nuclei<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/01/21/gong-fang-gong-ju-ku/nuclei-lou-dong-sao-miao/%E6%88%AA%E5%B1%8F2025-01-21%2013.27.28.png" style="zoom:80%;">
 
-<h1 id="四、自研"><a href="#四、自研" class="headerlink" title="四、自研"></a>四、自研</h1><p>ProjectDiscovery 云平台 API v1 国绕 REST 进行组织。AP1 具有面向资源的URL，在大多数情况下接受和返回 JSON，并且 API使用标淮的HTTP 响应代码、身份验证和动词。这给了我们自研扫描行为很大的支持：</p>
+<h1 id="四、自研"><a href="#四、自研" class="headerlink" title="四、自研"></a>四、自研</h1><p>ProjectDiscovery 云平台 API v1 围绕 REST 进行组织。API 具有面向资源的URL，在大多数情况下接受和返回 JSON，并且 API使用标淮的HTTP 响应代码、身份验证和动词。这给了我们自研扫描行为很大的支持：</p>
 <p>文档：<a target="_blank" rel="noopener" href="https://docs.projectdiscovery.io/api-reference/introduction">https://docs.projectdiscovery.io/api-reference/introduction</a></p>
 <h1 id="五、模版编辑器"><a href="#五、模版编辑器" class="headerlink" title="五、模版编辑器"></a>五、模版编辑器</h1><p><a target="_blank" rel="noopener" href="https://cloud.projectdiscovery.io/templates">https://cloud.projectdiscovery.io/templates</a></p>
 <p>Nuclei Template Ecitor 是一款多功能云托管工具，专为创建、运行和共享Nuclei 模板而设计。它为寻求管理和执行模板的个人和专业用户提供了有用的功能</p>
@@ -683,9 +682,92 @@ nuclei<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
 <ol>
 <li>﻿﻿单击”创建新模板”按钮以打开一个新的编辑器</li>
 <li>﻿﻿编写和修改模板。编辑器利用语法突出显示、片段建议等工具来简化写作过程</li>
-<li>编写完模板后，输入测试目标，然后单击“扫描”按钮以验证模板的准确性</li>
-<li>也可以点击share分享你编写的模板</li>
+<li>﻿﻿编写完模板后，输入测试目标，然后单击“扫描”按钮以验证模板的准确性</li>
+<li>﻿﻿也可以点击share分享你编写的模板</li>
 </ol>
+<h1 id="六、nuclei-yaml模版语法"><a href="#六、nuclei-yaml模版语法" class="headerlink" title="六、nuclei yaml模版语法"></a>六、nuclei yaml模版语法</h1><p>Nuclei 的 YAML 模板语法是编写高效扫描模板的核心。</p>
+<blockquote>
+<h4 id="yaml文件的语法"><a href="#yaml文件的语法" class="headerlink" title="yaml文件的语法"></a>yaml文件的语法</h4><ul>
+<li>基础概念</li>
+</ul>
+<p>YAML是”YAML Ain’t a Markup Language”（<strong>YAML不是一种标记语言</strong>）的递归缩写，强调数据描述而非标记。</p>
+<p><strong>设计目标</strong>: 易读、易写，适合配置文件和序列化数据。</p>
+<p><strong>文件扩展名</strong>: <code>.yaml</code> 或 <code>.yml</code>。</p>
+<p><strong>核心特性</strong>:1）缩进定义层级（<strong>强制空格</strong>，不能用 Tab）。2）支持注释。3）数据类型自动推断（如字符串、数字、布尔值等）。</p>
+<ul>
+<li>基本语法规则</li>
+</ul>
+<p>1）键值对（Key-Value）</p>
+<p>用冒号 <code>:</code> 分隔键和值，冒号后必须加空格。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">key: value
+name: <span class="token string">"Alice"</span>
+age: <span class="token number">30</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>2）列表（List）</p>
+<p>用短横线 <code>-</code> 表示列表项，缩进统一。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">fruits:
+  - Apple
+  - Banana
+  - Orange<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>3）嵌套结构</p>
+<p>通过缩进表示层级。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">person:
+  name: Bob
+  age: <span class="token number">25</span>
+  address:
+    city: Beijing
+    street: <span class="token string">"123 Main St"</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>4）字典（Map）</p>
+<p>简直对集合</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">server:
+  ip: <span class="token number">192.168</span>.1.1
+  port: <span class="token number">8080</span>
+  enabled: <span class="token boolean">true</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
+
+</blockquote>
+<h2 id="6-1-模板整体结构"><a href="#6-1-模板整体结构" class="headerlink" title="6.1 模板整体结构"></a>6.1 模板整体结构</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">id: unique-id  <span class="token comment"># 模板唯一标识（必填）</span>
+info:          <span class="token comment"># 模板元信息（必填）</span>
+  name: Template Name
+  author: YourName
+  severity: low/medium/high/critical
+  description: 漏洞描述
+  reference:    <span class="token comment"># 可选</span>
+    - https://example.com
+  tags:         <span class="token comment"># 可选，分类标签</span>
+    - sqli
+    - xss
+
+<span class="token comment"># 协议块（必填，支持 http、network、dns 等）</span>
+http:
+  - method: GET  <span class="token comment"># 请求方法</span>
+    path:
+      - <span class="token string">"{{BaseURL}}/path"</span>  <span class="token comment"># 请求路径</span>
+    headers:     <span class="token comment"># 请求头（可选）</span>
+      User-Agent: <span class="token string">"Nuclei"</span>
+    matchers:    <span class="token comment"># 匹配器（必填）</span>
+      - type: word
+        words:
+          - <span class="token string">"匹配内容"</span>
+    extractors:  <span class="token comment"># 提取器（可选）</span>
+      - type: regex
+        name: token
+        regex: <span class="token string">'token=([a-z0-9]+)'</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+
+
+
+
 <h1 id="官方文档"><a href="#官方文档" class="headerlink" title="官方文档"></a>官方文档</h1><p><a target="_blank" rel="noopener" href="https://docs.projectdiscovery.io/cloud/introduction">https://docs.projectdiscovery.io/cloud/introduction</a></p>
 
                 
@@ -877,16 +959,16 @@ nuclei<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
                 
                 <div class="card-action article-tags">
                     
+                    <a href="/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/">
+                        <span class="chip bg-color">内网攻防</span>
+                    </a>
+                    
                     <a href="/tags/%E6%94%BB%E9%98%B2%E5%B7%A5%E5%85%B7%E5%BA%93/">
                         <span class="chip bg-color">攻防工具库</span>
                     </a>
                     
                     <a href="/tags/%E5%86%85%E7%BD%91%E6%89%AB%E6%8F%8F/">
                         <span class="chip bg-color">内网扫描</span>
-                    </a>
-                    
-                    <a href="/tags/%E5%86%85%E7%BD%91%E6%94%BB%E9%98%B2/">
-                        <span class="chip bg-color">内网攻防</span>
                     </a>
                     
                     <a href="/tags/fscan/">
@@ -1091,7 +1173,7 @@ nuclei<span aria-hidden="true" class="line-numbers-rows"><span></span><span></sp
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">339.6k</span>
+                        class="white-color">355.8k</span>
             
             
             
