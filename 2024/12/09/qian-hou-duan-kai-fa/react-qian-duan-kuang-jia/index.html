@@ -1550,7 +1550,7 @@ console<span class="token punctuation">.</span><span class="token function">log<
 <li>4）React组件修改store中的数据</li>
 </ul>
 <p>React组件中修改store中的数据需要借助另外一个hook函数 - useDispatch，它的作用是生成提交action对象的 dispatch函数，使用样例如下：</p>
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/%E6%88%AA%E5%B1%8F2025-01-07%2017.31.22.png" a style="zoom:50%;">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2024/12/09/qian-hou-duan-kai-fa/react-qian-duan-kuang-jia/%E6%88%AA%E5%B1%8F2025-01-07%2017.31.22.png" a="" style="zoom:50%;">
 
 <blockquote>
 <h3 id="解惑-「为什么需要-，不能直接dispatch-decrement-这样调用吗？」"><a href="#解惑-「为什么需要-，不能直接dispatch-decrement-这样调用吗？」" class="headerlink" title="解惑-「为什么需要()=>，不能直接dispatch(decrement())这样调用吗？」"></a>解惑-「为什么需要()=&gt;，不能直接dispatch(decrement())这样调用吗？」</h3><p>使用箭头函数的原因</p>
@@ -2023,12 +2023,12 @@ npx create-react-app react-router-pro
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Bootstrap/">
-                        <span class="chip bg-color">Bootstrap</span>
-                    </a>
-                    
                     <a href="/tags/%E5%89%8D%E7%AB%AF%E5%BC%80%E5%8F%91/">
                         <span class="chip bg-color">前端开发</span>
+                    </a>
+                    
+                    <a href="/tags/Bootstrap/">
+                        <span class="chip bg-color">Bootstrap</span>
                     </a>
                     
                 </div>
@@ -2172,7 +2172,7 @@ npx create-react-app react-router-pro
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">355.8k</span>
+                        class="white-color">358.6k</span>
             
             
             

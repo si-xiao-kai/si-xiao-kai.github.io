@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-05-08T01:00:35.004Z</updated>
+  <updated>2025-05-08T06:24:45.184Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,69 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>NetMizer日志管理系统cmd存在命令执漏洞</title>
+    <link href="http://sxksec.cn/2025/05/08/lou-dong-zhi-shi-ku/netmizer-ri-zhi-guan-li-xi-tong-cmd-cun-zai-ming-ling-zhi-lou-dong/"/>
+    <id>http://sxksec.cn/2025/05/08/lou-dong-zhi-shi-ku/netmizer-ri-zhi-guan-li-xi-tong-cmd-cun-zai-ming-ling-zhi-lou-dong/</id>
+    <published>2025-05-08T03:27:50.000Z</published>
+    <updated>2025-05-08T06:24:45.184Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、NetMizer简介&quot;&gt;&lt;a href=&quot;#一、NetMizer简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="RCE" scheme="http://sxksec.cn/tags/RCE/"/>
+    
+    <category term="NetMizer" scheme="http://sxksec.cn/tags/NetMizer/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>NetMizer日志管理系统hostipreport接口存在RCE漏洞</title>
+    <link href="http://sxksec.cn/2025/05/08/lou-dong-zhi-shi-ku/netmizer-ri-zhi-guan-li-xi-tong-hostipreport-jie-kou-cun-zai-rce-lou-dong/"/>
+    <id>http://sxksec.cn/2025/05/08/lou-dong-zhi-shi-ku/netmizer-ri-zhi-guan-li-xi-tong-hostipreport-jie-kou-cun-zai-rce-lou-dong/</id>
+    <published>2025-05-08T02:06:06.000Z</published>
+    <updated>2025-05-08T03:22:46.663Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、NetMizer简介&quot;&gt;&lt;a href=&quot;#一、NetMizer简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="NetMizer日志管理系统" scheme="http://sxksec.cn/tags/NetMizer%E6%97%A5%E5%BF%97%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F/"/>
+    
+    <category term="RCE漏洞" scheme="http://sxksec.cn/tags/RCE%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
     <title>k8s云原生安全攻防实践</title>
     <link href="http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/"/>
     <id>http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/</id>
     <published>2025-05-07T05:47:46.000Z</published>
-    <updated>2025-05-08T01:00:35.004Z</updated>
+    <updated>2025-05-09T06:48:12.458Z</updated>
     
     
       
@@ -54,14 +112,14 @@
     <link href="http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/"/>
     <id>http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/</id>
     <published>2025-04-28T03:56:05.000Z</published>
-    <updated>2025-05-06T06:40:06.334Z</updated>
+    <updated>2025-05-09T05:46:51.185Z</updated>
     
     
       
       
         
         
-    <summary type="html">&lt;h1 id=&quot;一、js分析&quot;&gt;&lt;a href=&quot;#一、js分析&quot; class=&quot;headerlink&quot; title=&quot;一、js分析&quot;&gt;&lt;/a&gt;一、js分析&lt;/h1&gt;&lt;h2 id=&quot;1-1-渗透测试JS接口Fuzz场景研究&quot;&gt;&lt;a</summary>
+    <summary type="html">&lt;h1 id=&quot;一、js分析&quot;&gt;&lt;a href=&quot;#一、js分析&quot; class=&quot;headerlink&quot; title=&quot;一、js分析&quot;&gt;&lt;/a&gt;一、js分析&lt;/h1&gt;&lt;h2 id=&quot;1-1-《渗透测试JS接口Fuzz场景研究》&quot;&gt;&lt;a</summary>
         
       
     
@@ -532,64 +590,6 @@
     <category term="浪潮漏洞" scheme="http://sxksec.cn/tags/%E6%B5%AA%E6%BD%AE%E6%BC%8F%E6%B4%9E/"/>
     
     <category term="任意文件上传" scheme="http://sxksec.cn/tags/%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>mac安装多个版本的java环境</title>
-    <link href="http://sxksec.cn/2025/02/26/qian-hou-duan-kai-fa/mac-an-zhuang-duo-ge-ban-ben-de-java-huan-jing/"/>
-    <id>http://sxksec.cn/2025/02/26/qian-hou-duan-kai-fa/mac-an-zhuang-duo-ge-ban-ben-de-java-huan-jing/</id>
-    <published>2025-02-26T09:26:41.000Z</published>
-    <updated>2025-02-26T11:46:23.416Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、背景&quot;&gt;&lt;a href=&quot;#一、背景&quot; class=&quot;headerlink&quot; title=&quot;一、背景&quot;&gt;&lt;/a&gt;一、背景&lt;/h1&gt;&lt;p&gt;在验证xxl-job</summary>
-        
-      
-    
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="java" scheme="http://sxksec.cn/tags/java/"/>
-    
-    <category term="java多版本" scheme="http://sxksec.cn/tags/java%E5%A4%9A%E7%89%88%E6%9C%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Netlogon特权提升漏洞(CVE-2020-1472)</title>
-    <link href="http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/"/>
-    <id>http://sxksec.cn/2025/02/24/lou-dong-zhi-shi-ku/netlogon-te-quan-ti-sheng-lou-dong-cve-2020-1472/</id>
-    <published>2025-02-24T07:31:24.000Z</published>
-    <updated>2025-03-19T05:39:16.276Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;Netlogon域特权提升漏洞与靶场攻防实战&quot;&gt;&lt;a href=&quot;#Netlogon域特权提升漏洞与靶场攻防实战&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="特权提升" scheme="http://sxksec.cn/tags/%E7%89%B9%E6%9D%83%E6%8F%90%E5%8D%87/"/>
-    
-    <category term="Netlogon" scheme="http://sxksec.cn/tags/Netlogon/"/>
     
   </entry>
   
