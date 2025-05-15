@@ -402,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-09
+                    2025-05-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    1.7k
+                    2.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    6 分
+                    8 分
                 </div>
                 
 
@@ -460,6 +460,22 @@
 <blockquote>
 <p>这篇文章核心总结了未授权渗透测试的多种实战技巧与思路，包括利用#号路由守卫缺陷绕过鉴权访问隐藏资产、通过异常状态码（400/405/500）分析构造参数实现敏感信息泄露、结合JS混淆定位业务参数突破未授权接口、利用中间件配置缺陷（如资源后缀、目录符../）绕过鉴权限制访问SpringBoot高危组件（actuator/swagger）、基于目录探测与二次递归挖掘文件遍历漏洞，以及通过混淆参数和JS分析挖掘未上报API的未授权上传等高危漏洞，强调在资产收敛的现状下，需从非常规路径（如隐藏服务、异常响应、参数构造）突破权限校验实现漏洞挖掘。</p>
 </blockquote>
+<h2 id="2-2-《快速发现与查看api-docs》"><a href="#2-2-《快速发现与查看api-docs》" class="headerlink" title="2.2 《快速发现与查看api-docs》"></a>2.2 《快速发现与查看api-docs》</h2><h3 id="2-2-1-文章总结"><a href="#2-2-1-文章总结" class="headerlink" title="2.2.1 文章总结"></a>2.2.1 文章总结</h3><p>地址：[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/8tKd2YfNRFaRdFtOT8XfEA]">https://mp.weixin.qq.com/s/8tKd2YfNRFaRdFtOT8XfEA]</a></p>
+<blockquote>
+<p>这篇文章介绍了在渗透测试中如何快速发现和利用泄露的<code>api-docs</code>接口文档：通过Yakit插件或路径遍历发现接口文档后，建议使用旧版Postman（如10.13）导入<code>api-docs</code>链接生成API请求集合，并通过配置baseUrl、全局Authorization授权头或Cookie（针对特定域名的鉴权继承问题）来完善接口调用环境，从而更高效地分析API参数和潜在漏洞。文中强调需注意新版Postman的功能限制及未登录状态下的性能优化。</p>
+</blockquote>
+<h3 id="2-2-2-核心技术点总结"><a href="#2-2-2-核心技术点总结" class="headerlink" title="2.2.2 核心技术点总结"></a>2.2.2 核心技术点总结</h3><ul>
+<li>1）swagger api-docs文档扫描方法-yakit插件</li>
+<li>2）postman导入 api-docs文档，配置baseurl，配置鉴权，批量访问验证。</li>
+</ul>
+<h2 id="2-3-《JS漏洞挖掘｜分享使用FindSomething联动的挖掘思路》"><a href="#2-3-《JS漏洞挖掘｜分享使用FindSomething联动的挖掘思路》" class="headerlink" title="2.3 《JS漏洞挖掘｜分享使用FindSomething联动的挖掘思路》"></a>2.3 《JS漏洞挖掘｜分享使用FindSomething联动的挖掘思路》</h2><h3 id="2-3-1-文章总结"><a href="#2-3-1-文章总结" class="headerlink" title="2.3.1 文章总结"></a>2.3.1 文章总结</h3><p>地址：[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/_pV-F-qClpvbFPYV8LiKXA]">https://mp.weixin.qq.com/s/_pV-F-qClpvbFPYV8LiKXA]</a></p>
+<blockquote>
+<p>这篇文章分享了利用FindSomething插件挖掘JavaScript未授权漏洞的实战技巧，介绍了未授权漏洞的定义、常见类型（如组件和Web层面漏洞），并通过案例演示如何通过插件提取JS文件中的隐藏接口路径，结合参数处理、路径拼接及Burp Suite测试等方法，绕过权限验证获取敏感信息。文章还提供了HAE插件的正则匹配规则以辅助自动化检测，并推广其知识星球提供内部资源（漏洞库、课程、项目合作等），旨在帮助安全研究人员高效发现JS未授权漏洞。</p>
+</blockquote>
+<h3 id="2-3-2-核心技术点总结"><a href="#2-3-2-核心技术点总结" class="headerlink" title="2.3.2 核心技术点总结"></a>2.3.2 核心技术点总结</h3><ul>
+<li>1）findsomething插件</li>
+<li>2）burpsuite HaE插件 【HaE的规则没给全，self修正：<code>("|get("|ashx?|ashx|ur1:|ur1:"|ur1:|path:|path:|path:|action?|data|params)</code>】</li>
+</ul>
 <h1 id="三、逻辑类漏洞"><a href="#三、逻辑类漏洞" class="headerlink" title="三、逻辑类漏洞"></a>三、逻辑类漏洞</h1><h2 id="3-1-《浅谈常见edu漏洞，逻辑漏洞、越权、接管、小白如何快速找准漏洞》"><a href="#3-1-《浅谈常见edu漏洞，逻辑漏洞、越权、接管、小白如何快速找准漏洞》" class="headerlink" title="3.1 《浅谈常见edu漏洞，逻辑漏洞、越权、接管、小白如何快速找准漏洞》"></a>3.1 《浅谈常见edu漏洞，逻辑漏洞、越权、接管、小白如何快速找准漏洞》</h2><h3 id="3-1-1-文章总结"><a href="#3-1-1-文章总结" class="headerlink" title="3.1.1 文章总结"></a>3.1.1 文章总结</h3><p>微信地址：[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/JFtjPiaf-F9apHj9UrOtCQ]">https://mp.weixin.qq.com/s/JFtjPiaf-F9apHj9UrOtCQ]</a></p>
 <blockquote>
 <p>这篇文章总结了作者在高校渗透测试中发现的多个典型漏洞，包括教务系统的短信轰炸（通过分离验证码校验与发送的数据包实现绕过）、校内实训平台的任意用户注册/登录/密码修改（利用参数拼接和验证码爆破）、越权查询个人信息（通过参数篡改获取敏感数据）、换绑手机号绕过（二次验证不严谨）、druid未授权访问导致的Session劫持（实现任意用户账号接管），以及某内部平台SQL注入引发的RCE（因接口直接暴露SQL语句并结合PostgreSQL特性），揭示了教育系统常见的安全隐患，同时强调渗透测试需合法授权的重要性。</p>
@@ -500,6 +516,13 @@
 <li>2）Spring Boot框架的识别</li>
 <li>3）Spring Boot框架敏感信息泄露</li>
 <li>4）SpringBoot-Scan的使用</li>
+</ul>
+<h1 id="八、提权"><a href="#八、提权" class="headerlink" title="八、提权"></a>八、提权</h1><h2 id="8-1-《znlinux-linux全架构全漏洞提权程序》"><a href="#8-1-《znlinux-linux全架构全漏洞提权程序》" class="headerlink" title="8.1 《znlinux linux全架构全漏洞提权程序》"></a>8.1 《znlinux linux全架构全漏洞提权程序》</h2><h3 id="8-1-1-文章总结"><a href="#8-1-1-文章总结" class="headerlink" title="8.1.1 文章总结"></a>8.1.1 文章总结</h3><p>地址：[<a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/UFzc1hM8w9y2txCY3O1bKg]">https://mp.weixin.qq.com/s/UFzc1hM8w9y2txCY3O1bKg]</a></p>
+<blockquote>
+<p>这篇文章介绍了一款名为“znlinux”的Linux全架构全漏洞提权程序（项目地址：<a target="_blank" rel="noopener" href="https://github.com/twowb/znlinux%EF%BC%89%EF%BC%8C%E6%94%AF%E6%8C%81%E9%80%9A%E8%BF%87%E5%8F%82%E6%95%B0%E6%A3%80%E6%B5%8B%E5%B9%B6%E5%88%A9%E7%94%A8%E6%BC%8F%E6%B4%9E%E6%8F%90%E6%9D%83%EF%BC%88%E5%A6%82">https://github.com/twowb/znlinux），支持通过参数检测并利用漏洞提权（如</a> <code>-a</code> 参数立即尝试利用漏洞获取Shell，<code>-p</code> 支持密码输入），作者声明该工具仅供合法安全研究，使用者需自行承担非法滥用风险，且项目未提供源码仅发布编译版本，用户需自行检测潜在安全问题。测试者在Ubuntu虚拟机上验证了提权功能成功，并展示了程序的基本用法和提权结果。</p>
+</blockquote>
+<h3 id="8-1-2-核心技术点总结"><a href="#8-1-2-核心技术点总结" class="headerlink" title="8.1.2 核心技术点总结"></a>8.1.2 核心技术点总结</h3><ul>
+<li>1）全架构全漏洞提权 <a target="_blank" rel="noopener" href="https://github.com/twowb/znlinux">https://github.com/twowb/znlinux</a></li>
 </ul>
 
                 
@@ -897,7 +920,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">358.6k</span>
+                        class="white-color">363.6k</span>
             
             
             

