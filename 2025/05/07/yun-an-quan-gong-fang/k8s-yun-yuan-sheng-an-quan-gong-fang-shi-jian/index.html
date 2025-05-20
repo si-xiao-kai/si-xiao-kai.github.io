@@ -410,21 +410,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-14
+                    2025-05-19
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.4k
+                    11k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    37 分
+                    43 分
                 </div>
                 
 
@@ -954,8 +954,8 @@
 </tr>
 </tbody></table>
 <h1 id="三、场景实践"><a href="#三、场景实践" class="headerlink" title="三、场景实践"></a>三、场景实践</h1><h2 id="3-1-Sensitive-keys-in-codebases"><a href="#3-1-Sensitive-keys-in-codebases" class="headerlink" title="3.1 Sensitive keys in codebases"></a>3.1 Sensitive keys in codebases</h2><p>如何在代码库中查找敏感密钥。</p>
-<h3 id="3-1-1-场景介绍"><a href="#3-1-1-场景介绍" class="headerlink" title="3.1.1 场景介绍"></a>3.1.1 场景介绍</h3><p>此场景聚焦于开发人员和DevOps团队在打包工件和应用程序代码库时的一些常见错误。这些错误在现实世界中会产生影响，比如导致组织及其实际环境中的基础设施遭到破坏。</p>
-<p>开发者往往会将敏感信息提交到版本控制系统中。随着我们向<strong>持续集成/持续交付</strong>（CI/CD）和 GitOps 系统迈进，我们往往会忘记识别代码和提交中的敏感信息。让我们看看这里能否发现一些有趣的东西。</p>
+<h3 id="3-1-1-场景介绍"><a href="#3-1-1-场景介绍" class="headerlink" title="3.1.1 场景介绍"></a>3.1.1 场景介绍</h3><p>此场景聚焦于开发人员和DevOps团队在打包组件和应用程序代码库时的一些常见错误。这些错误在现实世界中会产生影响，比如导致组织及其实际环境中的基础设施遭到破坏。</p>
+<p>开发者往往会将敏感信息提交到版本控制系统中。随着我们向<strong>持续集成/持续交付</strong>（CI/CD）和 GitOps 系统迈进，我们往往会忘记识别代码和提交中的敏感信息。</p>
 <p>实践目标：</p>
 <ol>
 <li>如何测试 Web 应用程序入口点的安全配置错误。</li>
@@ -970,9 +970,9 @@
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2015.59.41.png" style="zoom:50%;">
 
 <ul>
-<li><p>此场景的目标是识别代码库中可用的敏感密钥，包括应用程序代码、容器和基础设施。</p>
+<li><p>识别代码库中可用的敏感密钥，包括应用程序代码、容器和基础设施。</p>
 </li>
-<li><p>如果获得了 AWS 的 aws_access_key_id 和 aws_secret_access_key 以及 k8s-goat-FLAG 标志的值，那么就完成了此场景。</p>
+<li><p>目标是获得 AWS 的 aws_access_key_id 和 aws_secret_access_key 以及 k8s-goat-FLAG flag。</p>
 </li>
 </ul>
 <h3 id="3-1-3-方法一（分析-git历史分支）"><a href="#3-1-3-方法一（分析-git历史分支）" class="headerlink" title="3.1.3 方法一（分析.git历史分支）"></a>3.1.3 方法一（分析.git历史分支）</h3><p>阅读服务介绍可以判断是一个通过git发布的容器化应用。</p>
@@ -1019,7 +1019,7 @@ Task Completed<span aria-hidden="true" class="line-numbers-rows"><span></span><s
 <p>使用开源工具（如git-dumper [<a target="_blank" rel="noopener" href="https://github.com/arthaud/git-dumper]%EF%BC%89%E4%BB%8E%E8%BF%9C%E7%A8%8B%E7%BD%91%E7%AB%99%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%85%8B%E9%9A%86%E8%AF%A5git%E4%BB%93%E5%BA%93%E3%80%82">https://github.com/arthaud/git-dumper]）从远程网站在本地克隆该git仓库。</a></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">git-dumper http://192.168.52.13:1230/.git k8s-goat-git<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.32.48.png" style="zoom:45%;">
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.32.48.png" style="zoom:35%;">
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.35.24.png" style="zoom:50%;">
 
@@ -1083,7 +1083,7 @@ Date:   Fri Nov <span class="token number">6</span> <span class="token number">2
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-07%2016.40.49.png" style="zoom:50%;">
 
-<p>现在我们处于特定的提交历史中，可以看到该特定提交中所有可用的文件、代码、资源和更改。我们可以使用标准的 Linux 工具来探索文件系统，查看是否有任何有趣的文件或更改。</p>
+<p>现在我们处于特定的提交历史中，可以看到该特定提交中所有可用的文件、代码、资源和更改。我们可以使用标准的 Linux 工具来探索文件系统，查看是否有任何敏感的文件或更改。</p>
 <ul>
 <li>查看敏感信息</li>
 </ul>
@@ -1186,7 +1186,7 @@ Date:   Fri Nov <span class="token number">6</span> <span class="token number">2
 <p><strong>总结</strong></p>
 <p>DIND 是一种在容器内运行独立 Docker 守护进程的技术，适合需要严格隔离的场景，但会带来性能和安全风险。在实际应用中，应根据需求选择最简单安全的方案（如 DooD-Docker-outside-of-Docker 或专用工具）。</p>
 </blockquote>
-<h3 id="3-2-1-场景介绍"><a href="#3-2-1-场景介绍" class="headerlink" title="3.2.1 场景介绍"></a>3.2.1 场景介绍</h3><p>本场景重点解析通过容器运行时接口（如Docker.sock、containerd.sock）构建标准化系统与流水线的典型模式，这类通过挂载容器Socket直接操控底层运行时（创建/构建/运行容器）的实践，自容器技术诞生初期便存在被攻击利用的安全隐患，且相关配置错误在生产环境中仍持续高频出现。</p>
+<h3 id="3-2-1-场景介绍"><a href="#3-2-1-场景介绍" class="headerlink" title="3.2.1 场景介绍"></a>3.2.1 场景介绍</h3><p>本场景重点解析通过容器运行时接口（如Docker.sock、containerd.sock）构建标准化系统与流水线的典型模式，这是一类通过挂载容器Socket直接操控底层运行时（创建/构建/运行容器）的攻击，自容器技术诞生初期便存在被攻击利用的安全隐患，且相关配置错误在生产环境中仍持续高频出现。</p>
 <p>实践目标：</p>
 <ol>
 <li>如何测试和利用容器UNIX套接字配置错误。</li>
@@ -1250,11 +1250,11 @@ sysfs on /sys <span class="token builtin class-name">type</span> sysfs <span cla
 </blockquote>
 <p>我们可以看到 /custom/containerd/containerd.sock 已挂载到文件系统中，假设它是从主机系统挂载的，我们需要与它通信以通过 UNIX 套接字进行交互。</p>
 <p>将宿主机的 <code>containerd.sock</code>（如 <code>/run/containerd/containerd.sock</code>）挂载到容器内的路径（如 <code>/custom/containerd/containerd.sock</code>），并设置为 <code>tmpfs</code>，可能会导致严重的安全风险。</p>
-<p>核心风险：<strong>容器逃逸与权限滥用</strong>：1）<strong>创建特权容器逃逸到宿主机</strong>。2）<strong>操作宿主机上的其他容器</strong>。3）<strong>绕过资源隔离限制</strong></p>
+<p>核心风险：<strong>容器逃逸与权限滥用</strong>：1）<strong>创建特权容器逃逸到宿主机</strong>。2）<strong>操作宿主机上的其他容器</strong>。3）<strong>绕过资源隔离限制</strong>。</p>
 <ul>
 <li>套接字通信</li>
 </ul>
-<p>我们可以使用多种方法与 containerd.sock UNIX 套接字进行通信。其中一些方法包括使用 crictl 二进制文件，或者简单的 curl 程序。</p>
+<p>我们可以使用多种方法与 containerd.sock UNIX 套接字进行通信。其中一些方法包括使用 crictl 二进制工具，或者简单的 curl 程序。</p>
 <p>1）查看系统类型：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token operator">&amp;</span><span class="token function">uname</span> <span class="token parameter variable">-a</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1267,7 +1267,7 @@ sysfs on /sys <span class="token builtin class-name">type</span> sysfs <span cla
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-08%2016.02.50.png" style="zoom:50%;">
 
-<p>可以看到程序已经成功下载到tmp目录中，但是用<code>ls -lh</code>查看大小为0，实际上只下载了个空壳，所以tar解压的时候会报错。</p>
+<p>可以看到程序已经成功下载到tmp目录中，但是用<code>ls -lh</code>查看大小为0，实际上只下载了个文件，所以tar解压的时候会报错。</p>
 <blockquote>
 <h4 id="下载出错问题处理"><a href="#下载出错问题处理" class="headerlink" title="下载出错问题处理"></a>下载出错问题处理</h4><ul>
 <li>检测tar命令是否存在，可以看到是存在的</li>
@@ -1354,14 +1354,14 @@ https://github.com/kuernetes-sigs/cri-tools/releases/download/v1.33.0/crictl-v1.
 
 
 <h2 id="3-3-SSRF-in-the-Kubernetes-K8S-world"><a href="#3-3-SSRF-in-the-Kubernetes-K8S-world" class="headerlink" title="3.3 SSRF in the Kubernetes (K8S) world"></a>3.3 SSRF in the Kubernetes (K8S) world</h2><p>如何利用SSRF漏洞获取Kubernetes访问权限。</p>
-<h3 id="3-3-1-场景介绍"><a href="#3-3-1-场景介绍" class="headerlink" title="3.3.1 场景介绍"></a>3.3.1 场景介绍</h3><p>该场景旨在展示当前云环境中普遍存在的热门SSRF应用安全漏洞被利用的情况，探讨该漏洞如何影响Kubernetes集群、内部服务及微服务架构。此类漏洞对云原生环境具有重大影响，其中Shopify案例就是典型实例——Exchange系统中的SSRF漏洞最终导致攻击者获取了所有实例的ROOT权限。</p>
-<p>SSRF （Server Side Request Forgery，服务器端请求伪造）漏洞成为云原生环境的首选攻击。在这个场景中，我们将看到如何利用SSRF等应用程序漏洞来访问云实例元数据以及内部服务元数据信息。特别是我们会看到Kubernetes原生功能的强大功能，如服务发现，可以利用和获得其他内部微服务的访问。</p>
+<h3 id="3-3-1-场景介绍"><a href="#3-3-1-场景介绍" class="headerlink" title="3.3.1 场景介绍"></a>3.3.1 场景介绍</h3><p>该场景旨在展示当前云环境中普遍存在的SSRF应用安全漏洞，探讨该漏洞如何影响Kubernetes集群、内部服务及微服务架构。此类漏洞对云原生环境具有重大影响，其中Shopify案例就是典型实例——Exchange系统中的SSRF漏洞最终导致攻击者获取了所有实例的ROOT权限。</p>
+<p>SSRF漏洞逐渐成为云原生环境的首选攻击方法。在这个场景中，我们将看到如何利用SSRF等应用程序漏洞来访问云实例元数据以及内部服务元数据信息。特别是我们会看到Kubernetes原生功能的强大功能，如服务发现，可以获得其他内部微服务的访问。</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-12%2016.51.12.png" style="zoom:50%;">
 
 <p>实践目的：</p>
 <ol>
 <li>如何在云环境下利用应用程序中的SSRF漏洞。</li>
-<li>理解元数据查询特性以获得对云提供商数据的访问。</li>
+<li>理解元数据查询特性以获得对云提供服务数据的访问。</li>
 <li>理解和利用Kubernetes原生服务发现功能和服务DNS查询。</li>
 <li>获得对集群环境内部微服务的访问权限。</li>
 </ol>
@@ -1412,8 +1412,8 @@ https://github.com/kuernetes-sigs/cri-tools/releases/download/v1.33.0/crictl-v1.
 <li>信息收集</li>
 </ul>
 <p>我们可以从枚举和侦察开始，根据现有信息了解当前实例及其他网络中运行的服务。</p>
-<p>我们还可以通过查询不同端口和地址来检查当前容器/ Pod 中是否运行着其他服务。让我们用 GET 方法查询同一容器中的 5000 端口 <code>http://127.0.0.1:5000</code>。</p>
-<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2010.36.56.png" style="zoom:50%;">
+<p>我们还可以通过查询不同端口和地址来检查当前容器/Pod中是否运行着其他服务。让我们用 GET 方法查询同一容器中的 5000 端口 <code>http://127.0.0.1:5000</code>。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-13%2010.36.56.png" style="zoom:40%;">
 
 <p>可以通过SSRF漏洞看到当前容器正在运行某个Web服务并返回了HTTP响应。因此，我们现在掌握了更多数据/信息，可以进一步推进攻击，以获取Kubernetes网络服务内部的更深层访问权限。</p>
 <ul>
@@ -1442,7 +1442,7 @@ https://github.com/kuernetes-sigs/cri-tools/releases/download/v1.33.0/crictl-v1.
 <p>1、能够利用容器并逃离docker容器。</p>
 <p>2、了解如何测试和利用配置错误的容器和特权容器。</p>
 <p>3、了解常见的错误配置以及它们对容器、Kubernetes和集群环境可能造成的破坏。</p>
-<p>大多数监控、追踪和调试软件运行时都需要额外的权限和能力。在这个场景中，将看到一个具备额外权限的Pod，其中包括HostPath访问权限，这将使你能够访问主机系统，并通过节点级配置实现对整个集群的完全控制。</p>
+<p>大多数监控、追踪和调试软件运行时都需要额外的权限和能力。在这个场景中，将看到一个具备特权的Pod，其中包括HostPath访问权限，这将使你能够访问主机系统，并通过节点级配置实现对整个集群的完全控制。</p>
 <h3 id="3-4-2-场景访问"><a href="#3-4-2-场景访问" class="headerlink" title="3.4.2 场景访问"></a>3.4.2 场景访问</h3><p><code>http://192.168.52.13:1233/</code></p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2015.15.39.png" style="zoom:67%;">
 
@@ -1514,7 +1514,7 @@ ctr <span class="token parameter variable">-n</span> k8s.io containers list<span
 <ul>
 <li>k8s节点配置文件</li>
 </ul>
-<p>Kubernetes节点配置可以在默认路径中找到，节点级kubelet使用该路径与Kubernetes API Server通信。如果可以使用此配置，将获得与Kubernetes节点相同的特权。</p>
+<p>可以在默认路径中找到Kubernetes节点配置，节点级kubelet使用该路径与Kubernetes API Server通信。如果可以使用此配置，将获得与Kubernetes节点相同的特权。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /etc/kubernetes/admin.conf<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.28.52.png" style="zoom:50%;">
@@ -1522,7 +1522,7 @@ ctr <span class="token parameter variable">-n</span> k8s.io containers list<span
 <ul>
 <li>节点控制权</li>
 </ul>
-<p>可以使用可用的kubectl命令行实用程序使用获得的配置来探索其他资源。此外，还可以通过使用可用的实用程序或根据需要下载它们来利用许多其他潜在的功能。</p>
+<p>可以使用可用的kubectl命令行工具和获得的配置来探索其他资源。还可以通过kubectl或根据需要下载它们来利用许多其他潜在的功能。</p>
 <p>获得了节点的控制权之后可以开始进行横向移动和后渗透。</p>
 <p>获取节点信息：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl <span class="token parameter variable">--kubeconfig</span> /etc/kubernetes/admin.conf get nodes<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1537,12 +1537,162 @@ ctr <span class="token parameter variable">-n</span> k8s.io containers list<span
 
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-14%2016.32.52.png" style="zoom:50%;">
 
+<h2 id="3-5-Attacking-private-registry"><a href="#3-5-Attacking-private-registry" class="headerlink" title="3.5 Attacking private registry"></a>3.5 Attacking private registry</h2><p>攻击Kubernetes集群中的私有容器镜像仓库。</p>
+<h3 id="3-5-1-场景介绍"><a href="#3-5-1-场景介绍" class="headerlink" title="3.5.1 场景介绍"></a>3.5.1 场景介绍</h3><p>这一场景主要探讨Docker容器私有仓库的常见配置错误，以及如何获取并访问其镜像及内部内容。</p>
+<p>容器技术早期曾发生过一起典型攻击事件：Vine（后被Twitter收购）因这类简单配置漏洞遭入侵，导致整个产品源代码泄露。</p>
+<p>容器仓库是存放所有容器镜像的地方。大多数情况下，每个组织都拥有自己的私有仓库。但有时仓库会被错误配置为公开状态。另一方面，开发者往往默认内部私有仓库仅供内部使用，从而将敏感信息直接存储在容器镜像中。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2011.12.22.png" style="zoom:40%;">
 
+<p>实践目的：</p>
+<ol>
+<li>如何与Docker容器仓库API交互。</li>
+<li>能够检查容器注册API、容器镜像及清单。</li>
+<li>理解容器元数据的存储方式及其与镜像层的交互机制。</li>
+</ol>
+<h3 id="3-5-2-场景访问"><a href="#3-5-2-场景访问" class="headerlink" title="3.5.2 场景访问"></a>3.5.2 场景访问</h3><p><code>http://192.168.52.13:1235/</code></p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2011.18.42.png" style="zoom:50%;">
 
+<ul>
+<li>获取私有仓库镜像中的k8s-goat-FLAG值。</li>
+</ul>
+<h3 id="3-5-3-实践"><a href="#3-5-3-实践" class="headerlink" title="3.5.3 实践"></a>3.5.3 实践</h3><blockquote>
+<p>由于这是一个有意设计的漏洞环境，所以直接提供了访问端点。</p>
+<p>在现实场景中，需要开展信息侦察工作，甚至可能需要通过组合利用其他漏洞链来攻击已认证的镜像仓库。</p>
+</blockquote>
+<p>根据场景和信息，我们可以确定这可能是Docker容器私有仓库。在查阅了一些文档并通过谷歌搜索后，以下是用于与容器仓库通信的简单API端点查询。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://192.168.52.13:1235/v2/ <span class="token comment"># 查询api</span>
+<span class="token function">curl</span> http://192.168.52.13:1235/v2/_catalog <span class="token comment"># 查询目录信息，可返回容器仓库中所有可用镜像的完整详情。</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2011.32.02.png" style="zoom:50%;">
 
+<p>Docker Registry的v2 API中，/_catalog端点通常用来列出仓库中所有的镜像列表。所以curl这个命令的作用是获取该私有仓库中所有可用的镜像名称列表。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://192.168.52.13:1235/v2/madhuakula/k8s-goat-users-repo/manifests/latest <span class="token comment"># 通过带有标签的镜像名称配合清单端点获取该镜像的详细信息。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2011.34.33.png" style="zoom:50%;">
 
+<p>这个命令的作用是获取指定镜像的清单（manifest），具体来说，是<code>madhuakula/k8s-goat-users-repo</code>镜像的<code>latest</code>标签对应的清单。Docker Registry V2的API中，manifest端点提供了镜像的元数据，包括各层的摘要信息，这些信息对于拉取镜像和分析镜像内容非常关键。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">curl</span> http://192.168.52.13:1235/v2/madhuakula/k8s-goat-users-repo/manifests/latest <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> ENV<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2013.35.21.png" style="zoom:50%;">
+
+<blockquote>
+<p>可以通过使用Docker客户端将镜像下载到本地进行进一步分析。</p>
+<p>在某些情况下，根据权限和特权设置，甚至可以将镜像推送到仓库。</p>
+</blockquote>
+<h2 id="3-6-NodePort-exposed-services"><a href="#3-6-NodePort-exposed-services" class="headerlink" title="3.6 NodePort exposed services"></a>3.6 NodePort exposed services</h2><p>Kubernetes集群中配置错误的NodePort服务。</p>
+<h3 id="3-6-1-场景介绍"><a href="#3-6-1-场景介绍" class="headerlink" title="3.6.1 场景介绍"></a>3.6.1 场景介绍</h3><p>在这个场景中，我们会看到另一个错误配置，它可能会让攻击者访问内部服务和未公开的服务。这是在创建Kubernetes服务以及集群设置和配置时发生的简单配置错误之一。</p>
+<p>如果任何用户使用NodePort在Kubernetes集群中暴露任何服务，这意味着Kubernetes集群运行的节点没有启用任何防火墙/网络安全措施。我们可以看到一些未经认证和未经授权的服务。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2013.52.14.png" style="zoom:50%;">
+
+<p>实践目的：</p>
+<ul>
+<li><p>Kubernetes NodePort的工作原理、配置和范围。</p>
+</li>
+<li><p>执行端口扫描并与Kubernetes节点交互。</p>
+</li>
+</ul>
+<blockquote>
+<h4 id="Kubernetes-中的-NodePort-服务"><a href="#Kubernetes-中的-NodePort-服务" class="headerlink" title="Kubernetes 中的 NodePort 服务"></a>Kubernetes 中的 <strong>NodePort 服务</strong></h4><p>Kubernetes 中的 <strong>NodePort 服务</strong>是一种将内部应用暴露到集群外部访问的机制，它通过在所有节点（Node）上开放一个静态端口（<strong>NodePort</strong>），允许外部流量通过任意节点的 <code>IP:Port</code> 访问后端 Pod。</p>
+<ul>
+<li>端口映射规则</li>
+</ul>
+<p>1）<strong>NodePort</strong>：固定端口（默认范围 <code>30000-32767</code>），在所有节点上开放。</p>
+<p>2）<strong>Service Port</strong>：服务的内部端口，用于集群内通信（如 Pod 到 Service）。</p>
+<p>3）<strong>Target Port</strong>：Pod 实际监听的端口（与容器定义一致）。</p>
+<ul>
+<li>流量路径</li>
+</ul>
+<p>1）外部用户通过 <code>任意节点IP:NodePort</code> 访问服务。</p>
+<p>2）节点上的 <code>kube-proxy</code> 将流量转发到 Service。</p>
+<p>3）Service 通过负载均衡将流量分发到后端 Pod。</p>
+<p>NodePort 是 Kubernetes 中快速暴露服务的轻量级方案，适用于临时访问或资源受限的环境。但在生产环境中，建议优先使用 <strong>LoadBalancer</strong> 或 <strong>Ingress</strong> 实现更安全、灵活的外部访问。</p>
+</blockquote>
+<h3 id="3-6-2-场景访问"><a href="#3-6-2-场景访问" class="headerlink" title="3.6.2 场景访问"></a>3.6.2 场景访问</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get nodes <span class="token parameter variable">-o</span> wide<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><code>kubectl get nodes -o wide</code> 的作用是<strong>查看 Kubernetes 集群中所有节点的详细信息</strong>，包括节点的网络地址、操作系统、资源容量等扩展字段。</p>
+<p>假设执行命令后输出如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center"><strong>字段</strong></th>
+<th align="center"><strong>说明</strong></th>
+<th align="center"><strong>实际用途场景</strong></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><code>NAME</code></td>
+<td align="center">节点名称（由 <code>kubelet</code> 的 <code>--hostname-override</code> 或云平台自动分配）。</td>
+<td align="center">定位特定节点（如日志检索、节点维护）。</td>
+</tr>
+<tr>
+<td align="center"><code>STATUS</code></td>
+<td align="center">节点状态：<code>Ready</code>（正常）、<code>NotReady</code>（异常）、<code>SchedulingDisabled</code>（禁止调度）等。</td>
+<td align="center">快速判断节点是否健康，排查 Pod 无法调度的问题。</td>
+</tr>
+<tr>
+<td align="center"><code>ROLES</code></td>
+<td align="center">节点角色：<code>control-plane</code>（旧版显示 <code>master</code>）、<code>worker</code>（默认无角色，可能显示 <code>&lt;none&gt;</code>）。</td>
+<td align="center">区分控制平面节点和工作节点（如禁止在 Master 节点部署应用 Pod）。</td>
+</tr>
+<tr>
+<td align="center"><code>AGE</code></td>
+<td align="center">节点加入集群的时间（如 <code>15d</code> 表示 15 天前）。</td>
+<td align="center">评估节点稳定性（新加入节点可能配置异常）。</td>
+</tr>
+<tr>
+<td align="center"><code>VERSION</code></td>
+<td align="center">节点上 Kubernetes 组件（kubelet）的版本。</td>
+<td align="center">确认集群版本一致性（版本差异可能导致兼容性问题）。</td>
+</tr>
+<tr>
+<td align="center"><code>INTERNAL-IP</code></td>
+<td align="center">节点内部网络 IP（集群内通信使用）。</td>
+<td align="center">用于 Pod 跨节点通信或服务间调用（如 <code>ClusterIP</code> 服务）。</td>
+</tr>
+<tr>
+<td align="center"><code>EXTERNAL-IP</code></td>
+<td align="center">节点外部可访问的 IP（若存在，通常由云平台自动填充）。</td>
+<td align="center">通过 <code>NodePort</code> 服务直接访问节点（生产环境慎用，建议用负载均衡器替代）。</td>
+</tr>
+<tr>
+<td align="center"><code>OS-IMAGE</code></td>
+<td align="center">节点的操作系统信息（如 Ubuntu、CentOS）。</td>
+<td align="center">确认操作系统兼容性（如某些应用需特定 OS 支持）。</td>
+</tr>
+<tr>
+<td align="center"><code>KERNEL-VERSION</code></td>
+<td align="center">节点的 Linux 内核版本。</td>
+<td align="center">排查内核级问题（如安全漏洞修复、内核模块依赖）。</td>
+</tr>
+<tr>
+<td align="center"><code>CONTAINER-RUNTIME</code></td>
+<td align="center">容器运行时及其版本（如 <code>containerd://1.6.21</code>、<code>docker://20.10.23</code>）。</td>
+<td align="center">诊断容器运行时问题（如版本不兼容导致 Pod 启动失败）。</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2014.17.09.png" alt="截屏2025-05-19 14.17.09"></p>
+<p>目标：</p>
+<ul>
+<li>如果使用NodePort可以使用节点的公共IP地址访问元数据数据库服务，则可以完成该场景。</li>
+</ul>
+<h3 id="3-6-3-实践"><a href="#3-6-3-实践" class="headerlink" title="3.6.3 实践"></a>3.6.3 实践</h3><ul>
+<li>nmap端口扫描</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token number">192.168</span>.52.13 <span class="token parameter variable">-p</span> <span class="token number">30000</span>-32767 <span class="token parameter variable">-Pn</span> <span class="token parameter variable">-sV</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2014.21.51.png" style="zoom:50%;">
+
+<p>通过扫描看到30003端口开启，推测是通过NodePort映射出来的服务。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2014.23.05.png" style="zoom:50%;">
+
+<ul>
+<li>未授权访问</li>
+</ul>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2014.23.44.png" style="zoom:50%;">
+
+<p>由于NodePort配置，我们可以访问不公开的内部服务。</p>
 
                 
             </div>
@@ -1943,7 +2093,7 @@ ctr <span class="token parameter variable">-n</span> k8s.io containers list<span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">364.3k</span>
+                        class="white-color">368.7k</span>
             
             
             

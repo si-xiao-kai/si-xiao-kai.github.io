@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-05-15T03:34:10.634Z</updated>
+  <updated>2025-05-20T07:49:55.722Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>geoserver-CVE-2024-36401-远程代码执行</title>
+    <link href="http://sxksec.cn/2025/05/19/lou-dong-zhi-shi-ku/geoserver-cve-2024-36401-yuan-cheng-dai-ma-zhi-xing/"/>
+    <id>http://sxksec.cn/2025/05/19/lou-dong-zhi-shi-ku/geoserver-cve-2024-36401-yuan-cheng-dai-ma-zhi-xing/</id>
+    <published>2025-05-19T10:20:59.000Z</published>
+    <updated>2025-05-20T07:49:55.722Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、geoserver简介&quot;&gt;&lt;a href=&quot;#一、geoserver简介&quot; class=&quot;headerlink&quot; title=&quot;一、geoserver简介&quot;&gt;&lt;/a&gt;一、geoserver简介&lt;/h1&gt;&lt;p&gt;GeoServer是一款由</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="geoserver-RCE" scheme="http://sxksec.cn/tags/geoserver-RCE/"/>
+    
+  </entry>
   
   <entry>
     <title>NUUO-Camera远程命令执行漏洞CVE-2025-1338</title>
@@ -136,7 +163,7 @@
     <link href="http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/"/>
     <id>http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/</id>
     <published>2025-05-07T05:47:46.000Z</published>
-    <updated>2025-05-14T09:06:21.893Z</updated>
+    <updated>2025-05-19T07:05:24.098Z</updated>
     
     
       
@@ -559,35 +586,6 @@
     <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
     
     <category term="IDEA快捷键" scheme="http://sxksec.cn/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java中的HashMap及其与反序列化漏洞的关系</title>
-    <link href="http://sxksec.cn/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/"/>
-    <id>http://sxksec.cn/2025/02/28/qian-hou-duan-kai-fa/java-zhong-de-hashmap/</id>
-    <published>2025-02-28T13:40:56.000Z</published>
-    <updated>2025-03-01T10:52:22.577Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、HashMap&quot;&gt;&lt;a href=&quot;#一、HashMap&quot; class=&quot;headerlink&quot; title=&quot;一、HashMap&quot;&gt;&lt;/a&gt;一、HashMap&lt;/h1&gt;&lt;p&gt;HashMap</summary>
-        
-      
-    
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="HashMap" scheme="http://sxksec.cn/tags/HashMap/"/>
-    
-    <category term="Java" scheme="http://sxksec.cn/tags/Java/"/>
     
   </entry>
   
