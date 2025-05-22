@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-05-20T07:49:55.722Z</updated>
+  <updated>2025-05-22T07:24:22.360Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Apache-ActiveMQ-远程代码执行漏洞(CVE-2023-46604)</title>
+    <link href="http://sxksec.cn/2025/05/21/lou-dong-zhi-shi-ku/apache-activemq-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2023-46604/"/>
+    <id>http://sxksec.cn/2025/05/21/lou-dong-zhi-shi-ku/apache-activemq-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2023-46604/</id>
+    <published>2025-05-21T08:41:46.000Z</published>
+    <updated>2025-05-22T07:24:22.360Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Apache-ActiveMQ-简介&quot;&gt;&lt;a href=&quot;#一、Apache-ActiveMQ-简介&quot; class=&quot;headerlink&quot; title=&quot;一、Apache ActiveMQ 简介&quot;&gt;&lt;/a&gt;一、Apache ActiveMQ</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="Apache-ActiveMQ-RCE-CVE-2023-46604" scheme="http://sxksec.cn/tags/Apache-ActiveMQ-RCE-CVE-2023-46604/"/>
+    
+  </entry>
+  
+  <entry>
     <title>geoserver-CVE-2024-36401-远程代码执行</title>
     <link href="http://sxksec.cn/2025/05/19/lou-dong-zhi-shi-ku/geoserver-cve-2024-36401-yuan-cheng-dai-ma-zhi-xing/"/>
     <id>http://sxksec.cn/2025/05/19/lou-dong-zhi-shi-ku/geoserver-cve-2024-36401-yuan-cheng-dai-ma-zhi-xing/</id>
     <published>2025-05-19T10:20:59.000Z</published>
-    <updated>2025-05-20T07:49:55.722Z</updated>
+    <updated>2025-05-22T01:30:40.546Z</updated>
     
     
       
@@ -163,7 +190,7 @@
     <link href="http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/"/>
     <id>http://sxksec.cn/2025/05/07/yun-an-quan-gong-fang/k8s-yun-yuan-sheng-an-quan-gong-fang-shi-jian/</id>
     <published>2025-05-07T05:47:46.000Z</published>
-    <updated>2025-05-19T07:05:24.098Z</updated>
+    <updated>2025-05-21T08:26:28.031Z</updated>
     
     
       
@@ -388,7 +415,7 @@
     <link href="http://sxksec.cn/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/"/>
     <id>http://sxksec.cn/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/</id>
     <published>2025-03-21T09:59:27.000Z</published>
-    <updated>2025-04-14T10:13:24.954Z</updated>
+    <updated>2025-05-21T03:31:38.101Z</updated>
     
     
       
@@ -556,36 +583,6 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="泛微OA" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>IDEA常用快捷键</title>
-    <link href="http://sxksec.cn/2025/03/01/qian-hou-duan-kai-fa/idea-chang-yong-kuai-jie-jian/"/>
-    <id>http://sxksec.cn/2025/03/01/qian-hou-duan-kai-fa/idea-chang-yong-kuai-jie-jian/</id>
-    <published>2025-03-01T13:28:44.000Z</published>
-    <updated>2025-03-03T07:43:42.646Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;查看接口或抽象类的实现类选择接口或者类：ctrl + alt + b （cmd+option+b）会显示所有的实现类。&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;查看某个类的所有方法、属性：ctrl + F12 （cmd +</summary>
-        
-      
-    
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/categories/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    
-    <category term="前后端开发" scheme="http://sxksec.cn/tags/%E5%89%8D%E5%90%8E%E7%AB%AF%E5%BC%80%E5%8F%91/"/>
-    
-    <category term="IDEA快捷键" scheme="http://sxksec.cn/tags/IDEA%E5%BF%AB%E6%8D%B7%E9%94%AE/"/>
     
   </entry>
   

@@ -402,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-04-14
+                    2025-05-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.9k
+                    10.3k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    36 分
+                    37 分
                 </div>
                 
 
@@ -885,6 +885,69 @@
 <li>Federation：跨可用区的集群</li>
 <li>Fluentd-elasticsearch：集群日志采集、存储与查询</li>
 </ul>
+<h3 id="4-3-5-k8s的资源类型"><a href="#4-3-5-k8s的资源类型" class="headerlink" title="4.3.5 k8s的资源类型"></a>4.3.5 k8s的资源类型</h3><p>在 Kubernetes（k8s）中，<strong>资源类型（Resource Types）</strong> 是集群中可管理的对象，用于定义应用、服务、存储、网络等不同维度的配置和状态。</p>
+<h4 id="1）核心工作负载型资源"><a href="#1）核心工作负载型资源" class="headerlink" title="1）核心工作负载型资源"></a>1）<strong>核心工作负载型资源</strong></h4><ol>
+<li><p><strong>Pod</strong></p>
+<ul>
+<li>最小部署单元，包含一个或多个容器（如应用容器、Sidecar）。</li>
+<li>生命周期短暂，通常由控制器（如 Deployment）管理。</li>
+</ul>
+</li>
+<li><p><strong>Deployment</strong></p>
+<ul>
+<li>管理无状态应用的副本（Replica），支持滚动更新和回滚。</li>
+<li>通过 <code>ReplicaSet</code> 控制 Pod 的副本数量。</li>
+</ul>
+</li>
+<li><p><strong>StatefulSet</strong></p>
+<ul>
+<li>管理有状态应用（如数据库），提供稳定的网络标识（Pod 名称、DNS）和持久化存储。</li>
+</ul>
+</li>
+<li><p><strong>DaemonSet</strong></p>
+<ul>
+<li>确保每个节点（Node）运行一个 Pod 的副本（如日志收集、监控 Agent）。</li>
+</ul>
+</li>
+<li><p><strong>Job</strong></p>
+<ul>
+<li>运行一次性任务（如批处理作业），任务完成后 Pod 终止。</li>
+</ul>
+</li>
+<li><p><strong>CronJob</strong></p>
+<ul>
+<li>定时执行 Job（如每天备份数据库）。</li>
+</ul>
+<blockquote>
+<p><strong>Pod</strong> 是 Kubernetes 中最小的运行单元，用于托管一个或多个容器，适用于临时任务或长期服务，但自身不保证任务成功，需配合控制器管理；<strong>Job</strong> 是专为<strong>一次性任务</strong>设计的控制器，确保 Pod 运行到任务成功完成（自动重试失败任务），适合批处理作业或需状态跟踪的场景，任务结束后保留记录供查询。</p>
+</blockquote>
+</li>
+</ol>
+<h4 id="2）服务与网络资源"><a href="#2）服务与网络资源" class="headerlink" title="2）服务与网络资源"></a>2）<strong>服务与网络资源</strong></h4><ol>
+<li><p><strong>Service</strong></p>
+<ul>
+<li>为 Pod 提供稳定的访问入口（ClusterIP、NodePort、LoadBalancer）。</li>
+<li>通过标签（Label）选择后端 Pod。</li>
+</ul>
+</li>
+<li><p><strong>Ingress</strong></p>
+<ul>
+<li>管理外部 HTTP/HTTPS 流量的路由规则（如域名、路径转发）。</li>
+<li>需配合 <code>Ingress Controller</code>（如 Nginx、Traefik）使用。</li>
+</ul>
+</li>
+<li><p><strong>EndpointSlice</strong></p>
+<ul>
+<li>记录 Service 后端 Pod 的 IP 地址和端口。</li>
+</ul>
+</li>
+<li><p><strong>NetworkPolicy</strong></p>
+<ul>
+<li>定义 Pod 之间的网络通信规则（白名单）。</li>
+</ul>
+<p>。。。</p>
+</li>
+</ol>
 <h2 id="4-4-k8s的攻击面"><a href="#4-4-k8s的攻击面" class="headerlink" title="4.4 k8s的攻击面"></a>4.4 k8s的攻击面</h2><img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/%E6%88%AA%E5%B1%8F2025-03-28%2015.36.39.png" style="zoom:80%;">
 
 <ul>
@@ -1355,7 +1418,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">368.7k</span>
+                        class="white-color">375.5k</span>
             
             
             
