@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-05-22T07:24:22.360Z</updated>
+  <updated>2025-06-12T07:50:16.141Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,89 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Dataease JWT认证绕过漏洞-CVE-2025-49001</title>
+    <link href="http://sxksec.cn/2025/06/12/lou-dong-zhi-shi-ku/dataeasejwt-ren-zheng-rao-guo-lou-dong-cve-2025-49001/"/>
+    <id>http://sxksec.cn/2025/06/12/lou-dong-zhi-shi-ku/dataeasejwt-ren-zheng-rao-guo-lou-dong-cve-2025-49001/</id>
+    <published>2025-06-12T03:02:43.000Z</published>
+    <updated>2025-06-12T07:50:16.141Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Dataease简介&quot;&gt;&lt;a href=&quot;#一、Dataease简介&quot; class=&quot;headerlink&quot; title=&quot;一、Dataease简介&quot;&gt;&lt;/a&gt;一、Dataease简介&lt;/h1&gt;&lt;p&gt;DataEase</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="Dataease认证绕过" scheme="http://sxksec.cn/tags/Dataease%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>XWiki-Platform系统远程代码执行漏洞(CVE-2025-24893)</title>
+    <link href="http://sxksec.cn/2025/06/05/lou-dong-zhi-shi-ku/xwiki-platform-xi-tong-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2025-24893/"/>
+    <id>http://sxksec.cn/2025/06/05/lou-dong-zhi-shi-ku/xwiki-platform-xi-tong-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2025-24893/</id>
+    <published>2025-06-05T01:42:43.000Z</published>
+    <updated>2025-06-06T03:27:49.065Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、XWiki-Platform介绍&quot;&gt;&lt;a href=&quot;#一、XWiki-Platform介绍&quot; class=&quot;headerlink&quot; title=&quot;一、XWiki Platform介绍&quot;&gt;&lt;/a&gt;一、XWiki Platform介绍&lt;/h1&gt;&lt;p&gt;Xwiki</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="XWiki-RCE" scheme="http://sxksec.cn/tags/XWiki-RCE/"/>
+    
+    <category term="CVE-2025-24893" scheme="http://sxksec.cn/tags/CVE-2025-24893/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Netmizer流量管理系统troubleip.php远程代码执行</title>
+    <link href="http://sxksec.cn/2025/05/28/lou-dong-zhi-shi-ku/netmizer-liu-liang-guan-li-xi-tong-troubleip-php-yuan-cheng-dai-ma-zhi-xing/"/>
+    <id>http://sxksec.cn/2025/05/28/lou-dong-zhi-shi-ku/netmizer-liu-liang-guan-li-xi-tong-troubleip-php-yuan-cheng-dai-ma-zhi-xing/</id>
+    <published>2025-05-28T05:47:31.000Z</published>
+    <updated>2025-05-28T07:48:05.593Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、NetMizer简介&quot;&gt;&lt;a href=&quot;#一、NetMizer简介&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="Netmizer-troubleip.php-RCE" scheme="http://sxksec.cn/tags/Netmizer-troubleip-php-RCE/"/>
+    
+  </entry>
   
   <entry>
     <title>Apache-ActiveMQ-远程代码执行漏洞(CVE-2023-46604)</title>
@@ -223,7 +306,7 @@
     <link href="http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/"/>
     <id>http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/</id>
     <published>2025-04-28T03:56:05.000Z</published>
-    <updated>2025-05-15T08:22:43.778Z</updated>
+    <updated>2025-05-29T06:42:03.904Z</updated>
     
     
       
@@ -415,7 +498,7 @@
     <link href="http://sxksec.cn/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/"/>
     <id>http://sxksec.cn/2025/03/21/yun-an-quan-gong-fang/yun-an-quan-gong-fang-ru-men/</id>
     <published>2025-03-21T09:59:27.000Z</published>
-    <updated>2025-05-23T09:40:05.463Z</updated>
+    <updated>2025-06-09T01:29:34.972Z</updated>
     
     
       
@@ -492,97 +575,6 @@
     <category term="泛微OA" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA/"/>
     
     <category term="泛微OA-SQL注入" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA-SQL%E6%B3%A8%E5%85%A5/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>fastjson反序列化漏洞复现(vulhub)</title>
-    <link href="http://sxksec.cn/2025/03/11/lou-dong-zhi-shi-ku/fastjson-fan-xu-lie-hua-lou-dong-vulhub/"/>
-    <id>http://sxksec.cn/2025/03/11/lou-dong-zhi-shi-ku/fastjson-fan-xu-lie-hua-lou-dong-vulhub/</id>
-    <published>2025-03-11T10:11:45.000Z</published>
-    <updated>2025-03-11T10:18:45.428Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;ul&gt;
-&lt;li&gt;参考&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="反序列化漏洞" scheme="http://sxksec.cn/tags/%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
-    
-    <category term="Fastjson RCE" scheme="http://sxksec.cn/tags/Fastjson-RCE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>内存马初探</title>
-    <link href="http://sxksec.cn/2025/03/04/web-an-quan/nei-cun-ma/"/>
-    <id>http://sxksec.cn/2025/03/04/web-an-quan/nei-cun-ma/</id>
-    <published>2025-03-04T02:24:50.000Z</published>
-    <updated>2025-03-05T08:38:01.463Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;内存马（Memory Shell/Webshell）是一种无文件、驻留内存的恶意程序 ，通过直接注入应用进程（如Web中间件、Java应用）的内存空间执行恶意操作，规避传统文件扫描检测。&lt;/p&gt;
-&lt;h1 id=&quot;一、内存马简介&quot;&gt;&lt;a href=&quot;#一、内存马简介&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="内存马" scheme="http://sxksec.cn/tags/%E5%86%85%E5%AD%98%E9%A9%AC/"/>
-    
-    <category term="java内存马" scheme="http://sxksec.cn/tags/java%E5%86%85%E5%AD%98%E9%A9%AC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>泛微OA环境搭建与漏洞测试</title>
-    <link href="http://sxksec.cn/2025/03/04/lou-dong-zhi-shi-ku/fan-wei-oa-huan-jing-da-jian-yu-lou-dong-ce-shi/"/>
-    <id>http://sxksec.cn/2025/03/04/lou-dong-zhi-shi-ku/fan-wei-oa-huan-jing-da-jian-yu-lou-dong-ce-shi/</id>
-    <published>2025-03-04T01:42:59.000Z</published>
-    <updated>2025-03-04T02:23:58.701Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、泛微OA环境搭建&quot;&gt;&lt;a href=&quot;#一、泛微OA环境搭建&quot; class=&quot;headerlink&quot; title=&quot;一、泛微OA环境搭建&quot;&gt;&lt;/a&gt;一、泛微OA环境搭建&lt;/h1&gt;&lt;h2 id=&quot;1-1-环境准备&quot;&gt;&lt;a href=&quot;#1-1-环境准备&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="泛微OA" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA/"/>
     
   </entry>
   
