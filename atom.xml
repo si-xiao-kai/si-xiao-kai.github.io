@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-06-12T07:50:16.141Z</updated>
+  <updated>2025-06-19T08:59:53.381Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>vbulletin代码执行漏洞-CVE-2025-48827</title>
+    <link href="http://sxksec.cn/2025/06/19/lou-dong-zhi-shi-ku/vbulletin-dai-ma-zhi-xing-lou-dong-cve-2025-48827/"/>
+    <id>http://sxksec.cn/2025/06/19/lou-dong-zhi-shi-ku/vbulletin-dai-ma-zhi-xing-lou-dong-cve-2025-48827/</id>
+    <published>2025-06-19T01:48:16.000Z</published>
+    <updated>2025-06-19T08:59:53.381Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、vbulletin简介&quot;&gt;&lt;a href=&quot;#一、vbulletin简介&quot; class=&quot;headerlink&quot; title=&quot;一、vbulletin简介&quot;&gt;&lt;/a&gt;一、vbulletin简介&lt;/h1&gt;&lt;p&gt;vBulletin 是一款基于PHP +</summary>
+        
+      
+    
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    
+    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
+    
+    <category term="vbulletin-RCE" scheme="http://sxksec.cn/tags/vbulletin-RCE/"/>
+    
+    <category term="CVE-2025-48827" scheme="http://sxksec.cn/tags/CVE-2025-48827/"/>
+    
+  </entry>
   
   <entry>
     <title>Dataease JWT认证绕过漏洞-CVE-2025-49001</title>
@@ -233,9 +262,9 @@
     
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
-    <category term="RCE" scheme="http://sxksec.cn/tags/RCE/"/>
-    
     <category term="NetMizer" scheme="http://sxksec.cn/tags/NetMizer/"/>
+    
+    <category term="RCE" scheme="http://sxksec.cn/tags/RCE/"/>
     
   </entry>
   
@@ -546,35 +575,6 @@
     <category term="Ollama" scheme="http://sxksec.cn/tags/Ollama/"/>
     
     <category term="Ollama代码执行" scheme="http://sxksec.cn/tags/Ollama%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>泛微OA v9 E-Cology browser.jsp SQL注入漏洞</title>
-    <link href="http://sxksec.cn/2025/03/21/lou-dong-zhi-shi-ku/fan-wei-oa-v9-e-cology-browser.jsp-sql-zhu-ru-lou-dong/"/>
-    <id>http://sxksec.cn/2025/03/21/lou-dong-zhi-shi-ku/fan-wei-oa-v9-e-cology-browser.jsp-sql-zhu-ru-lou-dong/</id>
-    <published>2025-03-21T01:50:24.000Z</published>
-    <updated>2025-03-21T05:16:59.546Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、漏洞描述&quot;&gt;&lt;a href=&quot;#一、漏洞描述&quot; class=&quot;headerlink&quot; title=&quot;一、漏洞描述&quot;&gt;&lt;/a&gt;一、漏洞描述&lt;/h1&gt;&lt;p&gt;泛微OA E-Cology browser.jsp</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="泛微OA" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA/"/>
-    
-    <category term="泛微OA-SQL注入" scheme="http://sxksec.cn/tags/%E6%B3%9B%E5%BE%AEOA-SQL%E6%B3%A8%E5%85%A5/"/>
     
   </entry>
   
