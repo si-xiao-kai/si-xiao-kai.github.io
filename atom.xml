@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-19T08:36:45.760Z</updated>
+  <updated>2025-07-21T03:10:28.462Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,35 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java-JNI安全基础</title>
+    <link href="http://sxksec.cn/2025/07/19/dai-ma-shen-ji/java-jni-an-quan-ji-chu/"/>
+    <id>http://sxksec.cn/2025/07/19/dai-ma-shen-ji/java-jni-an-quan-ji-chu/</id>
+    <published>2025-07-19T09:02:44.000Z</published>
+    <updated>2025-07-21T03:10:28.462Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;strong&gt;Java JNI (Java Native Interface)&lt;/strong&gt; 是 Java 提供的一套关键编程接口，它的核心作用就是让 &lt;strong&gt;Java 代码和用其他语言（主要是</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
+    
+  </entry>
   
   <entry>
     <title>Java-URLConnection</title>
@@ -548,33 +577,6 @@
     <category term="k8s攻防" scheme="http://sxksec.cn/tags/k8s%E6%94%BB%E9%98%B2/"/>
     
     <category term="KubernetesGoat靶场" scheme="http://sxksec.cn/tags/KubernetesGoat%E9%9D%B6%E5%9C%BA/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>他山之石-经验学习</title>
-    <link href="http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/"/>
-    <id>http://sxksec.cn/2025/04/28/web-an-quan/ta-shan-zhi-shi-jing-yan-xue-xi/</id>
-    <published>2025-04-28T03:56:05.000Z</published>
-    <updated>2025-05-29T06:42:03.904Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、js分析&quot;&gt;&lt;a href=&quot;#一、js分析&quot; class=&quot;headerlink&quot; title=&quot;一、js分析&quot;&gt;&lt;/a&gt;一、js分析&lt;/h1&gt;&lt;h2 id=&quot;1-1-《渗透测试JS接口Fuzz场景研究》&quot;&gt;&lt;a</summary>
-        
-      
-    
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/categories/web%E5%AE%89%E5%85%A8/"/>
-    
-    
-    <category term="web安全" scheme="http://sxksec.cn/tags/web%E5%AE%89%E5%85%A8/"/>
-    
-    <category term="他山之石" scheme="http://sxksec.cn/tags/%E4%BB%96%E5%B1%B1%E4%B9%8B%E7%9F%B3/"/>
     
   </entry>
   
