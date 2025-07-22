@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-21T13:35:19.316Z</updated>
+  <updated>2025-07-22T08:21:17.557Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,61 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java-JNDI及恶意利用</title>
+    <link href="http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-jndi-ji-e-yi-li-yong/"/>
+    <id>http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-jndi-ji-e-yi-li-yong/</id>
+    <published>2025-07-22T03:18:02.000Z</published>
+    <updated>2025-07-22T08:21:17.557Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、JNDI简介&quot;&gt;&lt;a href=&quot;#一、JNDI简介&quot; class=&quot;headerlink&quot; title=&quot;一、JNDI简介&quot;&gt;&lt;/a&gt;一、JNDI简介&lt;/h1&gt;&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;JNDI（Java 命名和目录接口）是 Java</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JDNI" scheme="http://sxksec.cn/tags/JDNI/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java-RMI及反序列化漏洞</title>
+    <link href="http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-rmi-ji-fan-xu-lie-hua-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-rmi-ji-fan-xu-lie-hua-lou-dong/</id>
+    <published>2025-07-22T01:21:21.000Z</published>
+    <updated>2025-07-22T03:03:45.624Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、RMI简介&quot;&gt;&lt;a href=&quot;#一、RMI简介&quot; class=&quot;headerlink&quot; title=&quot;一、RMI简介&quot;&gt;&lt;/a&gt;一、RMI简介&lt;/h1&gt;&lt;p&gt;&lt;code&gt;RMI(Remote Method</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="Java-RMI" scheme="http://sxksec.cn/tags/Java-RMI/"/>
+    
+  </entry>
   
   <entry>
     <title>Java-类序列化</title>
@@ -91,9 +146,9 @@
     <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
     <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
     
@@ -510,65 +565,6 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="NUUO-Camera-RCE" scheme="http://sxksec.cn/tags/NUUO-Camera-RCE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>运维经验积累</title>
-    <link href="http://sxksec.cn/2025/05/12/xi-tong-yun-wei/yun-wei-jing-yan-ji-lei/"/>
-    <id>http://sxksec.cn/2025/05/12/xi-tong-yun-wei/yun-wei-jing-yan-ji-lei/</id>
-    <published>2025-05-12T03:13:25.000Z</published>
-    <updated>2025-05-15T01:01:57.987Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、查看本机的互联网ip&quot;&gt;&lt;a href=&quot;#一、查看本机的互联网ip&quot; class=&quot;headerlink&quot; title=&quot;一、查看本机的互联网ip&quot;&gt;&lt;/a&gt;一、查看本机的互联网ip&lt;/h1&gt;&lt;ul&gt;
-&lt;li&gt;curl&lt;/li&gt;
-&lt;/ul&gt;
-&lt;pre</summary>
-        
-      
-    
-    
-    
-    <category term="系统运维" scheme="http://sxksec.cn/categories/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
-    
-    <category term="系统运维" scheme="http://sxksec.cn/tags/%E7%B3%BB%E7%BB%9F%E8%BF%90%E7%BB%B4/"/>
-    
-    <category term="经验积累" scheme="http://sxksec.cn/tags/%E7%BB%8F%E9%AA%8C%E7%A7%AF%E7%B4%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NetMizer日志管理系统cmd存在命令执漏洞</title>
-    <link href="http://sxksec.cn/2025/05/08/lou-dong-zhi-shi-ku/netmizer-ri-zhi-guan-li-xi-tong-cmd-cun-zai-ming-ling-zhi-lou-dong/"/>
-    <id>http://sxksec.cn/2025/05/08/lou-dong-zhi-shi-ku/netmizer-ri-zhi-guan-li-xi-tong-cmd-cun-zai-ming-ling-zhi-lou-dong/</id>
-    <published>2025-05-08T03:27:50.000Z</published>
-    <updated>2025-05-15T01:03:16.158Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、NetMizer简介&quot;&gt;&lt;a href=&quot;#一、NetMizer简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="RCE" scheme="http://sxksec.cn/tags/RCE/"/>
-    
-    <category term="NetMizer" scheme="http://sxksec.cn/tags/NetMizer/"/>
     
   </entry>
   
