@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-23T09:29:53.926Z</updated>
+  <updated>2025-07-23T14:08:49.610Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Java-Agent机制</title>
+    <link href="http://sxksec.cn/2025/07/23/dai-ma-shen-ji/java-agent-ji-zhi/"/>
+    <id>http://sxksec.cn/2025/07/23/dai-ma-shen-ji/java-agent-ji-zhi/</id>
+    <published>2025-07-23T09:59:23.000Z</published>
+    <updated>2025-07-23T14:08:49.610Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Java-Agent机制简介&quot;&gt;&lt;a href=&quot;#一、Java-Agent机制简介&quot; class=&quot;headerlink&quot; title=&quot;一、Java Agent机制简介&quot;&gt;&lt;/a&gt;一、Java Agent机制简介&lt;/h1&gt;&lt;p&gt;Java Agent</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="Java Agent" scheme="http://sxksec.cn/tags/Java-Agent/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java-Java字节码</title>
     <link href="http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-java-zi-jie-ma/"/>
     <id>http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-java-zi-jie-ma/</id>
     <published>2025-07-22T09:24:41.000Z</published>
-    <updated>2025-07-23T09:29:53.926Z</updated>
+    <updated>2025-07-23T09:33:25.181Z</updated>
     
     
       
@@ -227,9 +254,9 @@
     <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
     <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
     
@@ -538,33 +565,6 @@
     <category term="XWiki-RCE" scheme="http://sxksec.cn/tags/XWiki-RCE/"/>
     
     <category term="CVE-2025-24893" scheme="http://sxksec.cn/tags/CVE-2025-24893/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Netmizer流量管理系统troubleip.php远程代码执行</title>
-    <link href="http://sxksec.cn/2025/05/28/lou-dong-zhi-shi-ku/netmizer-liu-liang-guan-li-xi-tong-troubleip-php-yuan-cheng-dai-ma-zhi-xing/"/>
-    <id>http://sxksec.cn/2025/05/28/lou-dong-zhi-shi-ku/netmizer-liu-liang-guan-li-xi-tong-troubleip-php-yuan-cheng-dai-ma-zhi-xing/</id>
-    <published>2025-05-28T05:47:31.000Z</published>
-    <updated>2025-05-28T07:48:05.593Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、NetMizer简介&quot;&gt;&lt;a href=&quot;#一、NetMizer简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="Netmizer-troubleip.php-RCE" scheme="http://sxksec.cn/tags/Netmizer-troubleip-php-RCE/"/>
     
   </entry>
   
