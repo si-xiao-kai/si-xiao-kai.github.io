@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-22T08:21:17.557Z</updated>
+  <updated>2025-07-23T09:29:53.926Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Java-Java字节码</title>
+    <link href="http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-java-zi-jie-ma/"/>
+    <id>http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-java-zi-jie-ma/</id>
+    <published>2025-07-22T09:24:41.000Z</published>
+    <updated>2025-07-23T09:29:53.926Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Java字节码概述&quot;&gt;&lt;a href=&quot;#一、Java字节码概述&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="Java字节码" scheme="http://sxksec.cn/tags/Java%E5%AD%97%E8%8A%82%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java-JDWP攻击</title>
+    <link href="http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-jdwp-gong-ji/"/>
+    <id>http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-jdwp-gong-ji/</id>
+    <published>2025-07-22T08:59:41.000Z</published>
+    <updated>2025-07-22T09:08:32.575Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Java-JDWP简介&quot;&gt;&lt;a href=&quot;#一、Java-JDWP简介&quot; class=&quot;headerlink&quot; title=&quot;一、Java JDWP简介&quot;&gt;&lt;/a&gt;一、Java JDWP简介&lt;/h1&gt;&lt;p&gt;Java 的 JDWP（Java Debug</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JDWP攻击" scheme="http://sxksec.cn/tags/JDWP%E6%94%BB%E5%87%BB/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Java-JShell</title>
+    <link href="http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-jshell/"/>
+    <id>http://sxksec.cn/2025/07/22/dai-ma-shen-ji/java-jshell/</id>
+    <published>2025-07-22T08:28:49.000Z</published>
+    <updated>2025-07-22T08:32:12.008Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、什么是JShell&quot;&gt;&lt;a href=&quot;#一、什么是JShell&quot; class=&quot;headerlink&quot; title=&quot;一、什么是JShell&quot;&gt;&lt;/a&gt;一、什么是JShell&lt;/h1&gt;&lt;p&gt;从&lt;code&gt;Java</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JShell" scheme="http://sxksec.cn/tags/JShell/"/>
+    
+  </entry>
   
   <entry>
     <title>Java-JNDI及恶意利用</title>
@@ -146,9 +227,9 @@
     <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
     <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
     
@@ -484,87 +565,6 @@
     <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
     
     <category term="Netmizer-troubleip.php-RCE" scheme="http://sxksec.cn/tags/Netmizer-troubleip-php-RCE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Apache-ActiveMQ-远程代码执行漏洞(CVE-2023-46604)</title>
-    <link href="http://sxksec.cn/2025/05/21/lou-dong-zhi-shi-ku/apache-activemq-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2023-46604/"/>
-    <id>http://sxksec.cn/2025/05/21/lou-dong-zhi-shi-ku/apache-activemq-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2023-46604/</id>
-    <published>2025-05-21T08:41:46.000Z</published>
-    <updated>2025-05-22T07:24:22.360Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Apache-ActiveMQ-简介&quot;&gt;&lt;a href=&quot;#一、Apache-ActiveMQ-简介&quot; class=&quot;headerlink&quot; title=&quot;一、Apache ActiveMQ 简介&quot;&gt;&lt;/a&gt;一、Apache ActiveMQ</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="Apache-ActiveMQ-RCE-CVE-2023-46604" scheme="http://sxksec.cn/tags/Apache-ActiveMQ-RCE-CVE-2023-46604/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>geoserver-CVE-2024-36401-远程代码执行</title>
-    <link href="http://sxksec.cn/2025/05/19/lou-dong-zhi-shi-ku/geoserver-cve-2024-36401-yuan-cheng-dai-ma-zhi-xing/"/>
-    <id>http://sxksec.cn/2025/05/19/lou-dong-zhi-shi-ku/geoserver-cve-2024-36401-yuan-cheng-dai-ma-zhi-xing/</id>
-    <published>2025-05-19T10:20:59.000Z</published>
-    <updated>2025-05-22T01:30:40.546Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、geoserver简介&quot;&gt;&lt;a href=&quot;#一、geoserver简介&quot; class=&quot;headerlink&quot; title=&quot;一、geoserver简介&quot;&gt;&lt;/a&gt;一、geoserver简介&lt;/h1&gt;&lt;p&gt;GeoServer是一款由</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="geoserver-RCE" scheme="http://sxksec.cn/tags/geoserver-RCE/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>NUUO-Camera远程命令执行漏洞CVE-2025-1338</title>
-    <link href="http://sxksec.cn/2025/05/15/lou-dong-zhi-shi-ku/nuuo-camera-yuan-cheng-ming-ling-zhi-xing-lou-dong-cve-2025-1338/"/>
-    <id>http://sxksec.cn/2025/05/15/lou-dong-zhi-shi-ku/nuuo-camera-yuan-cheng-ming-ling-zhi-xing-lou-dong-cve-2025-1338/</id>
-    <published>2025-05-15T01:39:14.000Z</published>
-    <updated>2025-05-15T03:34:10.634Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、NUUO-Camera简介&quot;&gt;&lt;a href=&quot;#一、NUUO-Camera简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="NUUO-Camera-RCE" scheme="http://sxksec.cn/tags/NUUO-Camera-RCE/"/>
     
   </entry>
   
