@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-23T14:08:49.610Z</updated>
+  <updated>2025-07-24T14:36:50.522Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,119 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaWeb-Cookie和Session</title>
+    <link href="http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-cookie-he-session/"/>
+    <id>http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-cookie-he-session/</id>
+    <published>2025-07-24T14:08:22.000Z</published>
+    <updated>2025-07-24T14:36:50.522Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;Cookie&lt;/code&gt;</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="Cookie和Session" scheme="http://sxksec.cn/tags/Cookie%E5%92%8CSession/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb-Filter基础</title>
+    <link href="http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-filter-ji-chu/"/>
+    <id>http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-filter-ji-chu/</id>
+    <published>2025-07-24T12:18:54.000Z</published>
+    <updated>2025-07-24T14:07:43.329Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、Filter基本概念&quot;&gt;&lt;a href=&quot;#一、Filter基本概念&quot; class=&quot;headerlink&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-Filter" scheme="http://sxksec.cn/tags/JavaWeb-Filter/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb-JSP基础</title>
+    <link href="http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-jsp-ji-chu/"/>
+    <id>http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-jsp-ji-chu/</id>
+    <published>2025-07-24T09:49:02.000Z</published>
+    <updated>2025-07-24T12:17:49.161Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、JSP简介&quot;&gt;&lt;a href=&quot;#一、JSP简介&quot; class=&quot;headerlink&quot; title=&quot;一、JSP简介&quot;&gt;&lt;/a&gt;一、JSP简介&lt;/h1&gt;&lt;p&gt;&lt;code&gt;JSP&lt;/code&gt;(&lt;code&gt;JavaServer Pages&lt;/code&gt;)</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JSP基础" scheme="http://sxksec.cn/tags/JSP%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb-Servlet基础</title>
+    <link href="http://sxksec.cn/2025/07/23/dai-ma-shen-ji/javaweb-servlet-ji-chu/"/>
+    <id>http://sxksec.cn/2025/07/23/dai-ma-shen-ji/javaweb-servlet-ji-chu/</id>
+    <published>2025-07-23T14:55:34.000Z</published>
+    <updated>2025-07-24T09:37:50.948Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h1 id=&quot;一、JAVA-SE-和Java-EE&quot;&gt;&lt;a href=&quot;#一、JAVA-SE-和Java-EE&quot; class=&quot;headerlink&quot; title=&quot;一、JAVA SE 和Java EE&quot;&gt;&lt;/a&gt;一、JAVA SE 和Java</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-Servlet" scheme="http://sxksec.cn/tags/JavaWeb-Servlet/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Java-Agent机制</title>
     <link href="http://sxksec.cn/2025/07/23/dai-ma-shen-ji/java-agent-ji-zhi/"/>
     <id>http://sxksec.cn/2025/07/23/dai-ma-shen-ji/java-agent-ji-zhi/</id>
     <published>2025-07-23T09:59:23.000Z</published>
-    <updated>2025-07-23T14:08:49.610Z</updated>
+    <updated>2025-07-24T09:37:56.468Z</updated>
     
     
       
@@ -451,120 +559,6 @@
     <category term="java类加载" scheme="http://sxksec.cn/tags/java%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
     
     <category term="ClassLoader" scheme="http://sxksec.cn/tags/ClassLoader/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java代码审计前置基础</title>
-    <link href="http://sxksec.cn/2025/06/30/dai-ma-shen-ji/java-dai-ma-shen-ji-qian-zhi-ji-chu/"/>
-    <id>http://sxksec.cn/2025/06/30/dai-ma-shen-ji/java-dai-ma-shen-ji-qian-zhi-ji-chu/</id>
-    <published>2025-06-30T03:30:35.000Z</published>
-    <updated>2025-07-18T02:06:25.131Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;零、前置知识&quot;&gt;&lt;a href=&quot;#零、前置知识&quot; class=&quot;headerlink&quot; title=&quot;零、前置知识&quot;&gt;&lt;/a&gt;零、前置知识&lt;/h1&gt;&lt;h2 id=&quot;0-1-maven&quot;&gt;&lt;a href=&quot;#0-1-maven&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="java基础" scheme="http://sxksec.cn/tags/java%E5%9F%BA%E7%A1%80/"/>
-    
-    <category term="前置知识" scheme="http://sxksec.cn/tags/%E5%89%8D%E7%BD%AE%E7%9F%A5%E8%AF%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>vbulletin代码执行漏洞-CVE-2025-48827</title>
-    <link href="http://sxksec.cn/2025/06/19/lou-dong-zhi-shi-ku/vbulletin-dai-ma-zhi-xing-lou-dong-cve-2025-48827/"/>
-    <id>http://sxksec.cn/2025/06/19/lou-dong-zhi-shi-ku/vbulletin-dai-ma-zhi-xing-lou-dong-cve-2025-48827/</id>
-    <published>2025-06-19T01:48:16.000Z</published>
-    <updated>2025-06-26T05:52:34.863Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、vbulletin简介&quot;&gt;&lt;a href=&quot;#一、vbulletin简介&quot; class=&quot;headerlink&quot; title=&quot;一、vbulletin简介&quot;&gt;&lt;/a&gt;一、vbulletin简介&lt;/h1&gt;&lt;p&gt;vBulletin 是一款基于PHP +</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="vbulletin-RCE" scheme="http://sxksec.cn/tags/vbulletin-RCE/"/>
-    
-    <category term="CVE-2025-48827" scheme="http://sxksec.cn/tags/CVE-2025-48827/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dataease JWT认证绕过漏洞-CVE-2025-49001</title>
-    <link href="http://sxksec.cn/2025/06/12/lou-dong-zhi-shi-ku/dataeasejwt-ren-zheng-rao-guo-lou-dong-cve-2025-49001/"/>
-    <id>http://sxksec.cn/2025/06/12/lou-dong-zhi-shi-ku/dataeasejwt-ren-zheng-rao-guo-lou-dong-cve-2025-49001/</id>
-    <published>2025-06-12T03:02:43.000Z</published>
-    <updated>2025-06-12T07:50:16.141Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Dataease简介&quot;&gt;&lt;a href=&quot;#一、Dataease简介&quot; class=&quot;headerlink&quot; title=&quot;一、Dataease简介&quot;&gt;&lt;/a&gt;一、Dataease简介&lt;/h1&gt;&lt;p&gt;DataEase</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="Dataease认证绕过" scheme="http://sxksec.cn/tags/Dataease%E8%AE%A4%E8%AF%81%E7%BB%95%E8%BF%87/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>XWiki-Platform系统远程代码执行漏洞(CVE-2025-24893)</title>
-    <link href="http://sxksec.cn/2025/06/05/lou-dong-zhi-shi-ku/xwiki-platform-xi-tong-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2025-24893/"/>
-    <id>http://sxksec.cn/2025/06/05/lou-dong-zhi-shi-ku/xwiki-platform-xi-tong-yuan-cheng-dai-ma-zhi-xing-lou-dong-cve-2025-24893/</id>
-    <published>2025-06-05T01:42:43.000Z</published>
-    <updated>2025-06-06T03:27:49.065Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、XWiki-Platform介绍&quot;&gt;&lt;a href=&quot;#一、XWiki-Platform介绍&quot; class=&quot;headerlink&quot; title=&quot;一、XWiki Platform介绍&quot;&gt;&lt;/a&gt;一、XWiki Platform介绍&lt;/h1&gt;&lt;p&gt;Xwiki</summary>
-        
-      
-    
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/categories/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    
-    <category term="漏洞知识库" scheme="http://sxksec.cn/tags/%E6%BC%8F%E6%B4%9E%E7%9F%A5%E8%AF%86%E5%BA%93/"/>
-    
-    <category term="XWiki-RCE" scheme="http://sxksec.cn/tags/XWiki-RCE/"/>
-    
-    <category term="CVE-2025-24893" scheme="http://sxksec.cn/tags/CVE-2025-24893/"/>
     
   </entry>
   
