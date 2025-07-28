@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-28T08:23:14.670Z</updated>
+  <updated>2025-07-28T13:16:20.503Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaWeb常见漏洞-任意文件上传漏洞</title>
+    <link href="http://sxksec.cn/2025/07/28/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-ren-yi-wen-jian-shang-chuan-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/28/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-ren-yi-wen-jian-shang-chuan-lou-dong/</id>
+    <published>2025-07-28T08:26:44.000Z</published>
+    <updated>2025-07-28T13:16:20.503Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;Web应用通常都会包含文件上传功能，用户可以将其本地的文件上传到Web服务器上。如果服务器端没有能够正确的检测用户上传的文件类型是否合法(例如上传了&lt;code&gt;jsp&lt;/code&gt;后缀的&lt;code&gt;WebShell&lt;/code&gt;)就将文件写入到服务器中就可能会导致服务器被非</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb任意文件上传漏洞" scheme="http://sxksec.cn/tags/JavaWeb%E4%BB%BB%E6%84%8F%E6%96%87%E4%BB%B6%E4%B8%8A%E4%BC%A0%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaWeb常见漏洞-文件访问类漏洞</title>
@@ -450,9 +477,9 @@
     <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
     <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
     
@@ -537,33 +564,6 @@
     <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="Java命令执行" scheme="http://sxksec.cn/tags/Java%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java文件系统安全</title>
-    <link href="http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-wen-jian-xi-tong-an-quan/"/>
-    <id>http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-wen-jian-xi-tong-an-quan/</id>
-    <published>2025-07-18T03:19:37.000Z</published>
-    <updated>2025-07-18T07:14:49.542Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、Java文件系统&quot;&gt;&lt;a href=&quot;#一、Java文件系统&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="Java文件系统安全" scheme="http://sxksec.cn/tags/Java%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/"/>
     
   </entry>
   
