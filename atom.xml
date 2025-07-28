@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-24T14:36:50.522Z</updated>
+  <updated>2025-07-28T08:23:14.670Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,94 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaWeb常见漏洞-文件访问类漏洞</title>
+    <link href="http://sxksec.cn/2025/07/25/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-wen-jian-fang-wen-lei-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/25/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-wen-jian-fang-wen-lei-lou-dong/</id>
+    <published>2025-07-25T09:23:52.000Z</published>
+    <updated>2025-07-28T08:23:14.670Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本章节将讲解与Java文件或目录访问安全性问题，常见的Java文件操作相关的漏洞大致有如下类型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;任意目录遍历&lt;/li&gt;
+&lt;li&gt;任意文件、目录复制&lt;/li&gt;
+&lt;li&gt;任意文件读取/下载&lt;/li&gt;
+&lt;li&gt;任意文件、目录修改/重命名&lt;/li&gt;
+&lt;l</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-文件访问类漏洞" scheme="http://sxksec.cn/tags/JavaWeb-%E6%96%87%E4%BB%B6%E8%AE%BF%E9%97%AE%E7%B1%BB%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb-JSON解析特性分析</title>
+    <link href="http://sxksec.cn/2025/07/25/dai-ma-shen-ji/javaweb-json-jie-xi-te-xing-fen-xi/"/>
+    <id>http://sxksec.cn/2025/07/25/dai-ma-shen-ji/javaweb-json-jie-xi-te-xing-fen-xi/</id>
+    <published>2025-07-25T07:02:23.000Z</published>
+    <updated>2025-07-25T08:27:02.228Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;JSON是一种轻量级资料交换格式，其内容由属性和值所组成，因此也有易于阅读和处理的优势，JSON也是目前最为流行的C/S通讯方式。JavaEE的规范中制定了Java API for JSON Processing (JSON-P，JavaEE7+)和Java API</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="Java-JSON解析特性" scheme="http://sxksec.cn/tags/Java-JSON%E8%A7%A3%E6%9E%90%E7%89%B9%E6%80%A7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb-内存马基础</title>
+    <link href="http://sxksec.cn/2025/07/25/dai-ma-shen-ji/javaweb-nei-cun-ma-ji-chu/"/>
+    <id>http://sxksec.cn/2025/07/25/dai-ma-shen-ji/javaweb-nei-cun-ma-ji-chu/</id>
+    <published>2025-07-25T01:25:51.000Z</published>
+    <updated>2025-07-25T06:45:01.667Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;本文的部分实现已上传至 Github：&lt;a href=&quot;https://github.com/su18/MemoryShell&quot;&gt;https://github.com/su18/MemoryShell&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&quot;一、内存马前世今生&quot;&gt;&lt;a</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="内存马基础" scheme="http://sxksec.cn/tags/%E5%86%85%E5%AD%98%E9%A9%AC%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaWeb-Cookie和Session</title>
@@ -75,7 +163,7 @@
     <link href="http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-jsp-ji-chu/"/>
     <id>http://sxksec.cn/2025/07/24/dai-ma-shen-ji/javaweb-jsp-ji-chu/</id>
     <published>2025-07-24T09:49:02.000Z</published>
-    <updated>2025-07-24T12:17:49.161Z</updated>
+    <updated>2025-07-28T02:26:33.443Z</updated>
     
     
       
@@ -362,9 +450,9 @@
     <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
     <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
     
@@ -476,89 +564,6 @@
     <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="Java文件系统安全" scheme="http://sxksec.cn/tags/Java%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E5%AE%89%E5%85%A8/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>sun-misc-Unsafe类</title>
-    <link href="http://sxksec.cn/2025/07/18/dai-ma-shen-ji/sun-misc-unsafe-lei/"/>
-    <id>http://sxksec.cn/2025/07/18/dai-ma-shen-ji/sun-misc-unsafe-lei/</id>
-    <published>2025-07-18T02:42:07.000Z</published>
-    <updated>2025-07-18T07:14:47.561Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;code&gt;sun.misc.Unsafe&lt;/code&gt;是Java底层API(&lt;code&gt;仅限Java内部使用,反射可调用&lt;/code&gt;)提供的一个神奇的Java类，&lt;code&gt;Unsafe&lt;/code&gt;提供了非常底层的&lt;code&gt;内存、CAS、线程调度、类、对象&lt;/cod</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="sun.misc.Unsafe类" scheme="http://sxksec.cn/tags/sun-misc-Unsafe%E7%B1%BB/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java的反射机制</title>
-    <link href="http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-de-fan-she-ji-zhi/"/>
-    <id>http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-de-fan-she-ji-zhi/</id>
-    <published>2025-07-18T02:04:03.000Z</published>
-    <updated>2025-07-18T02:23:48.004Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Java反射(&lt;code&gt;Reflection&lt;/code&gt;)是Java非常重要的动态特性，通过使用反射我们不仅可以获取到任何类的成员方法(&lt;code&gt;Methods&lt;/code&gt;)、成员变量(&lt;code&gt;Fields&lt;/code&gt;)、构造方法(&lt;code&gt;Construc</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="java反射机制" scheme="http://sxksec.cn/tags/java%E5%8F%8D%E5%B0%84%E6%9C%BA%E5%88%B6/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>java类加载机制-ClassLoader</title>
-    <link href="http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-lei-jia-zai-ji-zhi-classloader/"/>
-    <id>http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-lei-jia-zai-ji-zhi-classloader/</id>
-    <published>2025-07-18T01:53:49.000Z</published>
-    <updated>2025-07-18T02:12:12.845Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Java是一个依赖于&lt;code&gt;JVM&lt;/code&gt;（Java虚拟机）实现的跨平台的开发语言。Java程序在运行前需要先编译成&lt;code&gt;class文件&lt;/code&gt;，Java类初始化的时候会调用&lt;code&gt;java.lang.ClassLoader&lt;/code&gt;加载类字节</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="java类加载" scheme="http://sxksec.cn/tags/java%E7%B1%BB%E5%8A%A0%E8%BD%BD/"/>
-    
-    <category term="ClassLoader" scheme="http://sxksec.cn/tags/ClassLoader/"/>
     
   </entry>
   

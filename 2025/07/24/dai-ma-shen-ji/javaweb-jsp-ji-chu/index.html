@@ -402,21 +402,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2025-07-24
+                    2025-07-28
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    915
+                    2.2k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    3 分
+                    8 分
                 </div>
                 
 
@@ -442,11 +442,107 @@
                 <h1 id="一、JSP简介"><a href="#一、JSP简介" class="headerlink" title="一、JSP简介"></a>一、JSP简介</h1><p><code>JSP</code>(<code>JavaServer Pages</code>) 是与 <code>PHP</code>、<code>ASP</code>、<code>ASP.NET</code> 等类似的脚本语言，<code>JSP</code>是为了简化<code>Servlet</code>的处理流程而出现的替代品，早期的<code>Java EE</code>因为只能使用<code>Servlet</code>来处理客户端请求而显得非常的繁琐和不便，使用JSP可以快速的完成后端逻辑请求。</p>
 <p>正因为在<code>JSP</code>中可以直接调用Java代码来实现后端逻辑的这一特性，黑客通常会编写带有恶意攻击的JSP文件(俗称<code>WebShell</code>)来实现对服务器资源的恶意请求和控制。</p>
 <p>现代的MVC框架(如：<code>Spring MVC 5.x</code>)已经完全抛弃了<code>JSP</code>技术，采用了<code>模板引擎(如：Freemark)</code>或者<code>RESTful</code>的方式来实现与客户端的交互工作,或许某一天<code>JSP</code>技术也将会随着产品研发的迭代而彻底消失。</p>
-<h2 id="1-1-JSP-三大指令"><a href="#1-1-JSP-三大指令" class="headerlink" title="1.1 JSP 三大指令"></a>1.1 JSP 三大指令</h2><ol>
-<li><code>&lt;%@ page ... %&gt;</code> 定义网页依赖属性，比如脚本语言、error页面、缓存需求等等</li>
-<li><code>&lt;%@ include ... %&gt;</code> 包含其他文件（静态包含）</li>
-<li><code>&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;</code> 引入标签库的定义</li>
-</ol>
+<h2 id="1-1-JSP-语法基础"><a href="#1-1-JSP-语法基础" class="headerlink" title="1.1 JSP 语法基础"></a>1.1 JSP 语法基础</h2><p>JSP (JavaServer Pages) 的基础语法主要是在 HTML (或 XML) 页面中嵌入 Java 代码片段和特定的 JSP 标签，以实现动态内容生成。</p>
+<blockquote>
+<ul>
+<li>一、<strong>JSP 指令 (<code>&lt;%@ ... %&gt;</code>)</strong></li>
+</ul>
+<p>作用：为整个 JSP 页面提供全局信息和设置，影响页面的整体结构和行为。它们在 JSP 被编译成 Servlet 时生效。</p>
+<p>常用指令：</p>
+<p>1）<code>page</code>：定义页面属性。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %&gt;
+&lt;%@ page import="java.util.Date, com.example.MyClass" %&gt; &lt;!-- 导入Java包 --&gt;
+&lt;%@ page session="true" %&gt; &lt;!-- 是否启用session对象 --&gt;
+&lt;%@ page errorPage="error.jsp" %&gt; &lt;!-- 指定错误处理页面 --&gt;
+&lt;%@ page isErrorPage="true" %&gt; &lt;!-- 声明当前页为错误处理页 --&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>2）<code>include</code>:在 JSP 页面被编译时（编译时包含），静态地包含另一个文件（如另一个 JSP、HTML 或文本文件）的内容。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ include file="header.jsp" %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<p>3）<code>taglib</code>：声明页面中使用的标签库（如 JSTL）。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<ul>
+<li>二、JSP 声明 (<code>&lt;%! ... %&gt;</code>)**</li>
+</ul>
+<p>作用：在 JSP 页面中声明<strong>成员变量</strong>和<strong>方法</strong>。这些变量和方法会成为生成的 Servlet 类的成员变量和方法。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%!
+    // 成员变量
+    private int counter = 0;
+
+    // 成员方法
+    public String greetUser(String name) {
+        return "Hello, " + name + "!";
+    }
+%&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>三、<strong>JSP 脚本片段 (<code>&lt;% ... %&gt;</code>)</strong></li>
+</ul>
+<p>作用：包含一段 Java 代码片段。这段代码会被插入到生成的 Servlet 的 <code>_jspService()</code> 方法中（相当于 Servlet 的 <code>service()</code> 方法）。这是处理请求逻辑的主要地方。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%
+    // Java 代码
+    String username = request.getParameter("username");
+    if (username != null &amp;&amp; !username.isEmpty()) {
+        out.println("Welcome, " + username);
+    } else {
+        out.println("Please enter your name.");
+    }
+%&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>四、<strong>JSP 表达式 (<code>&lt;%= ... %&gt;</code>)</strong></li>
+</ul>
+<p>作用：计算一个 Java 表达式，并将结果<strong>转换为字符串</strong>后直接输出到页面上。表达式结尾**不需要分号 (<code>;</code>)**。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;p&gt;The current time is: &lt;%= new java.util.Date() %&gt;&lt;/p&gt;
+&lt;p&gt;Your username is: &lt;%= request.getParameter("username") %&gt;&lt;/p&gt;
+&lt;p&gt;Counter value: &lt;%= counter %&gt;&lt;/p&gt; &lt;!-- 使用声明中定义的counter --&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>五、<strong>JSP 注释 (<code>&lt;%-- ... --%&gt;</code>)</strong></li>
+</ul>
+<p>作用：添加注释，这些注释<strong>不会</strong>出现在最终发送给浏览器的 HTML 源代码中。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%-- This is a JSP comment. It won't be visible in the browser. --%&gt;
+&lt;!-- This is an HTML comment. It WILL be visible in the browser source. --&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<ul>
+<li>六、<strong>隐含对象 (Implicit Objects)</strong></li>
+</ul>
+<p>作用：JSP 容器（如 Tomcat）在将 JSP 转换为 Servlet 时，会自动声明和初始化一些对象，供你在脚本片段和表达式中直接使用。这些对象代表与请求、响应、会话等相关的信息。</p>
+<p>常用隐含对象：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">request：HttpServletRequest 对象，代表客户端的 HTTP 请求。
+response：HttpServletResponse 对象，代表发送给客户端的 HTTP 响应。
+out：JspWriter 对象，用于向客户端输出内容（类似于 PrintWriter，但有缓冲区）。
+session：HttpSession 对象，代表与用户关联的会话（如果 page 指令的 <span class="token assign-left variable">session</span><span class="token operator">=</span><span class="token string">"true"</span>）。
+application：ServletContext 对象，代表整个 Web 应用程序。
+pageContext：PageContext 对象，提供对页面所有作用域（page, request, session, application）和隐含对象的访问。
+config：ServletConfig 对象，包含 Servlet 初始化参数。
+page：相当于 Java 中的 this，指当前 JSP 页面实例（很少直接使用）。
+exception：Throwable 对象，仅在错误处理页面（isErrorPage<span class="token operator">=</span><span class="token string">"true"</span>）中可用，代表抛出的异常。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>七、<strong>EL (Expression Language)</strong></li>
+</ul>
+<p>作用：虽然严格来说不是原始 JSP 语法的一部分，但它是现代 JSP 开发中<strong>极其重要且推荐</strong>的补充，用于简化对隐含对象、JavaBean 属性、集合等的访问。语法：<code>${expression}</code></p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token generics"><span class="token punctuation">&lt;</span>p<span class="token punctuation">&gt;</span></span><span class="token class-name">Welcome</span><span class="token punctuation">,</span> $<span class="token punctuation">{</span>param<span class="token punctuation">.</span>username<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 相当于 <span class="token operator">&lt;</span><span class="token operator">%=</span> request<span class="token punctuation">.</span><span class="token function">getParameter</span><span class="token punctuation">(</span><span class="token string">"username"</span><span class="token punctuation">)</span> <span class="token operator">%</span><span class="token operator">&gt;</span> <span class="token operator">--</span><span class="token operator">&gt;</span>
+<span class="token generics"><span class="token punctuation">&lt;</span>p<span class="token punctuation">&gt;</span></span><span class="token class-name">User</span> <span class="token class-name">Agent</span><span class="token operator">:</span> $<span class="token punctuation">{</span>header<span class="token punctuation">[</span>'<span class="token class-name">User</span><span class="token operator">-</span><span class="token class-name">Agent</span>'<span class="token punctuation">]</span><span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token generics"><span class="token punctuation">&lt;</span>p<span class="token punctuation">&gt;</span></span><span class="token class-name">Session</span> <span class="token constant">ID</span><span class="token operator">:</span> $<span class="token punctuation">{</span>sessionScope<span class="token punctuation">.</span>sessionId<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span>
+<span class="token generics"><span class="token punctuation">&lt;</span>p<span class="token punctuation">&gt;</span></span><span class="token class-name">Customer</span> <span class="token class-name">Name</span><span class="token operator">:</span> $<span class="token punctuation">{</span>customer<span class="token punctuation">.</span>name<span class="token punctuation">}</span><span class="token operator">&lt;</span><span class="token operator">/</span>p<span class="token operator">&gt;</span> <span class="token operator">&lt;</span><span class="token operator">!</span><span class="token operator">--</span> 访问<span class="token class-name">JavaBean</span>属性 <span class="token operator">--</span><span class="token operator">&gt;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li>八、<strong>JSTL (JSP Standard Tag Library)</strong></li>
+</ul>
+<p>作用：同样不是基础语法，但强烈推荐使用。它提供了一组标准标签（如循环、条件判断、格式化、数据库访问等），用于替换 JSP 脚本片段 (<code>&lt;% ... %&gt;</code>)，使页面更易读、易维护。需要先使用 <code>taglib</code> 指令引入。</p>
+<pre class="line-numbers language-jsp" data-language="jsp"><code class="language-jsp">&lt;%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %&gt;
+&lt;c:if test="${not empty param.username}"&gt;
+    &lt;p&gt;Welcome, &lt;c:out value="${param.username}"/&gt;&lt;/p&gt;
+&lt;/c:if&gt;
+&lt;c:forEach var="item" items="${shoppingCart.items}"&gt;
+    &lt;li&gt;&lt;c:out value="${item.name}"/&gt; - $&lt;c:out value="${item.price}"/&gt;&lt;/li&gt;
+&lt;/c:forEach&gt;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+</blockquote>
 <h2 id="1-2-JSP-表达式-EL"><a href="#1-2-JSP-表达式-EL" class="headerlink" title="1.2 JSP 表达式(EL)"></a>1.2 JSP 表达式(EL)</h2><p><code>EL表达式</code>(<code>Expression Language</code>)语言,常用于在jsp页面中获取请求中的值，如获取在Servlet中设置的<code>Attribute</code>:<code>${名称}</code>。使用EL表达式可以实现命令执行，我们将会在后续EL表达式章节中详细讲解。</p>
 <h2 id="1-3-JSP-标准标签库-JSTL"><a href="#1-3-JSP-标准标签库-JSTL" class="headerlink" title="1.3 JSP 标准标签库(JSTL)"></a>1.3 JSP 标准标签库(JSTL)</h2><p>JSP标准标签库（JSTL）是一个JSP标签集合，它封装了JSP应用的通用核心功能。</p>
 <p>JSTL支持通用的、结构化的任务，比如迭代，条件判断，XML文档操作，国际化标签，SQL标签。 除了这些，它还提供了一个框架来使用集成JSTL的自定义标签。</p>
@@ -506,10 +602,18 @@
 <td>异常对象</td>
 </tr>
 </tbody></table>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><ul>
+<li><strong>基础核心：</strong> <code>&lt;%@ %&gt;</code> (指令), <code>&lt;%! %&gt;</code> (声明), <code>&lt;% %&gt;</code> (脚本片段), <code>&lt;%= %&gt;</code> (表达式), <code>&lt;%-- --%&gt;</code> (注释) 以及隐含对象构成了 JSP 最原始的基础。</li>
+<li><strong>现代开发：</strong> <strong>强烈建议</strong>优先使用 <strong>EL (<code>${}</code>)</strong> 和 <strong>JSTL 标签</strong> 来访问数据和实现逻辑控制。它们使 JSP 页面更清晰、更接近纯 HTML/XML，更易于维护，并有助于分离表示层逻辑（视图）和业务逻辑（通常在 Servlet 或 JavaBean 中）。</li>
+<li><strong>避免过度使用脚本片段：</strong> 直接在 JSP 中嵌入大量 Java 代码 (<code>&lt;% %&gt;</code>) 会使页面难以阅读和维护（通常称为“Spaghetti Code”）。应遵循 MVC 模式，将业务逻辑放在 Servlet 或 JavaBean 中，JSP 主要负责显示。</li>
+<li><strong>JSP 生命周期：</strong> 理解 JSP 页面会被容器（如 Tomcat）翻译成一个 Servlet 类（<code>.java</code> 文件），然后编译成 <code>.class</code>文件并加载执行，有助于理解其工作原理。</li>
+</ul>
 <h1 id="二、JSP和Servlet之间的关系"><a href="#二、JSP和Servlet之间的关系" class="headerlink" title="二、JSP和Servlet之间的关系"></a>二、JSP和Servlet之间的关系</h1><p>JSP、JSPX 文件是可以直接被 Java 容器直接解析的动态脚本， jsp 和其他脚本语言无异，不但可以用于页面数据展示，也可以用来处理后端业务逻辑。</p>
 <p>从本质上说 JSP 就是一个<code>Servlet</code> ，因为 jsp 文件最终会被编译成 class 文件，而这个 class 文件实际上就是一个特殊的<code>Servlet</code> 。</p>
 <p>JSP文件会被编译成一个java类文件，如<code>index.jsp</code>在Tomcat中<code>Jasper</code>编译后会生成<code>index_jsp.java</code>和<code>index_jsp.class</code>两个文件。而<code>index_jsp.java</code> 继承于<code>HttpJspBase</code>类，<code>HttpJspBase</code>是一个实现了<code>HttpJspPage</code>接口并继承了<code>HttpServlet</code>的标准的<code>Servlet</code>，<code>__jspService</code>方法其实是<code>HttpJspPage</code>接口方法，类似于<code>Servlet</code>中的<code>service</code>方法，这里的<code>__jspService</code>方法其实就是<code>HttpJspBase</code>的<code>service</code>方法调用。</p>
 <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI0OCIgaGVpZ2h0PSI0OCIgdmlld0JveD0iMCAwIDI0IDI0Ij48Y2lyY2xlIGN4PSI0IiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgaWQ9InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAiIGF0dHJpYnV0ZU5hbWU9InIiIGJlZ2luPSIwO3N2Z1NwaW5uZXJzM0RvdHNTY2FsZTEuZW5kLTAuMjVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjxjaXJjbGUgY3g9IjEyIiBjeT0iMTIiIHI9IjMiIGZpbGw9ImN1cnJlbnRDb2xvciI+PGFuaW1hdGUgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNnMiIGR1cj0iMC43NXMiIHZhbHVlcz0iMzsuMjszIi8+PC9jaXJjbGU+PGNpcmNsZSBjeD0iMjAiIGN5PSIxMiIgcj0iMyIgZmlsbD0iY3VycmVudENvbG9yIj48YW5pbWF0ZSBpZD0ic3ZnU3Bpbm5lcnMzRG90c1NjYWxlMSIgYXR0cmlidXRlTmFtZT0iciIgYmVnaW49InN2Z1NwaW5uZXJzM0RvdHNTY2FsZTAuZW5kLTAuNDVzIiBkdXI9IjAuNzVzIiB2YWx1ZXM9IjM7LjI7MyIvPjwvY2lyY2xlPjwvc3ZnPg==" data-original="/2025/07/24/dai-ma-shen-ji/javaweb-jsp-ji-chu/17.png" style="zoom:50%;">
+
+
 
 <h1 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h1><ul>
 <li><a target="_blank" rel="noopener" href="https://www.javasec.org/">https://www.javasec.org/</a> 【java安全】</li>
@@ -902,7 +1006,7 @@
             <br>
             
                 &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                        class="white-color">472.6k</span>
+                        class="white-color">487.8k</span>
             
             
             
