@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-28T13:16:20.503Z</updated>
+  <updated>2025-07-29T06:29:24.947Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -17,11 +17,38 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>JavaWeb常见漏洞-SQL注入漏洞</title>
+    <link href="http://sxksec.cn/2025/07/28/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-sql-zhu-ru-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/28/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-sql-zhu-ru-lou-dong/</id>
+    <published>2025-07-28T13:58:36.000Z</published>
+    <updated>2025-07-29T06:29:24.947Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;SQL注入是网络攻击中最为常见的攻击方式，通过向服务器端发送恶意的SQL语句或SQL语句片段注入到服务器端的数据库查询逻辑中，改变原有的查询逻辑，从而实现类恶意读取服务器数据库数据，攻击者甚至可以利用数据库内部函数或缺陷&lt;code&gt;提升权限&lt;/code&gt;，从而获取服务器权限</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-SQL注入" scheme="http://sxksec.cn/tags/JavaWeb-SQL%E6%B3%A8%E5%85%A5/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaWeb常见漏洞-任意文件上传漏洞</title>
     <link href="http://sxksec.cn/2025/07/28/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-ren-yi-wen-jian-shang-chuan-lou-dong/"/>
     <id>http://sxksec.cn/2025/07/28/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-ren-yi-wen-jian-shang-chuan-lou-dong/</id>
     <published>2025-07-28T08:26:44.000Z</published>
-    <updated>2025-07-28T13:16:20.503Z</updated>
+    <updated>2025-07-29T03:38:43.265Z</updated>
     
     
       
@@ -536,34 +563,6 @@
     <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="JDBC" scheme="http://sxksec.cn/tags/JDBC/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java本地命令执行</title>
-    <link href="http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-ben-di-ming-ling-zhi-xing/"/>
-    <id>http://sxksec.cn/2025/07/18/dai-ma-shen-ji/java-ben-di-ming-ling-zhi-xing/</id>
-    <published>2025-07-18T07:23:34.000Z</published>
-    <updated>2025-07-18T09:14:18.953Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;Java原生提供了对本地系统命令执行的支持，黑客通常会通过&lt;code&gt;RCE漏洞&lt;/code&gt;或者&lt;code&gt;WebShell&lt;/code&gt;来执行系统终端命令控制服务器的目的。&lt;/p&gt;
-&lt;p&gt;对于开发者来说执行本地命令来实现某些程序功能(如:ps</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="Java命令执行" scheme="http://sxksec.cn/tags/Java%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
     
   </entry>
   
