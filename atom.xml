@@ -6,7 +6,7 @@
   <link href="http://sxksec.cn/atom.xml" rel="self"/>
   
   <link href="http://sxksec.cn/"/>
-  <updated>2025-07-29T06:29:24.947Z</updated>
+  <updated>2025-07-30T03:11:25.645Z</updated>
   <id>http://sxksec.cn/</id>
   
   <author>
@@ -15,6 +15,87 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaWeb常见漏洞-本地命令执行漏洞</title>
+    <link href="http://sxksec.cn/2025/07/30/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-ben-di-ming-ling-zhi-xing-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/30/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-ben-di-ming-ling-zhi-xing-lou-dong/</id>
+    <published>2025-07-30T02:11:39.000Z</published>
+    <updated>2025-07-30T03:11:25.645Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;攻击者一旦可以在服务器中执行任意本地系统命令就意味着服务器已被非法控制，在Java中可用于执行系统命令的方式有API有：&lt;code&gt;java.lang.Runtime&lt;/code&gt;、&lt;code&gt;java.lang.ProcessBuilder&lt;/code&gt;、&lt;code&gt;ja</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-本地命令执行" scheme="http://sxksec.cn/tags/JavaWeb-%E6%9C%AC%E5%9C%B0%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb常见漏洞-反序列化漏洞</title>
+    <link href="http://sxksec.cn/2025/07/29/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-fan-xu-lie-hua-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/29/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-fan-xu-lie-hua-lou-dong/</id>
+    <published>2025-07-29T08:08:44.000Z</published>
+    <updated>2025-07-30T02:07:30.497Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;&lt;code&gt;Apache Commons&lt;/code&gt;是&lt;code&gt;Apache&lt;/code&gt;开源的Java通用类项目在Java中项目中被广泛的使用，&lt;code&gt;Apache Commons&lt;/code&gt;当中有一个组件叫做&lt;code&gt;Apache Commons</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-反序列化漏洞" scheme="http://sxksec.cn/tags/JavaWeb-%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96%E6%BC%8F%E6%B4%9E/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>JavaWeb常见漏洞-XSS漏洞</title>
+    <link href="http://sxksec.cn/2025/07/29/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-xss-lou-dong/"/>
+    <id>http://sxksec.cn/2025/07/29/dai-ma-shen-ji/javaweb-chang-jian-lou-dong-xss-lou-dong/</id>
+    <published>2025-07-29T07:00:23.000Z</published>
+    <updated>2025-07-29T08:07:28.647Z</updated>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;攻击者利用XSS(&lt;code&gt;Cross-site</summary>
+        
+      
+    
+    
+    
+    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    
+    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
+    
+    <category term="JavaWeb-XSS" scheme="http://sxksec.cn/tags/JavaWeb-XSS/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaWeb常见漏洞-SQL注入漏洞</title>
@@ -480,89 +561,6 @@
     <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
     
     <category term="Java动态代理" scheme="http://sxksec.cn/tags/Java%E5%8A%A8%E6%80%81%E4%BB%A3%E7%90%86/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java-JNI安全基础</title>
-    <link href="http://sxksec.cn/2025/07/19/dai-ma-shen-ji/java-jni-an-quan-ji-chu/"/>
-    <id>http://sxksec.cn/2025/07/19/dai-ma-shen-ji/java-jni-an-quan-ji-chu/</id>
-    <published>2025-07-19T09:02:44.000Z</published>
-    <updated>2025-07-21T03:10:28.462Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;strong&gt;Java JNI (Java Native Interface)&lt;/strong&gt; 是 Java 提供的一套关键编程接口，它的核心作用就是让 &lt;strong&gt;Java 代码和用其他语言（主要是</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="java代码审计" scheme="http://sxksec.cn/tags/java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="代码审计" scheme="http://sxksec.cn/tags/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="JNI" scheme="http://sxksec.cn/tags/JNI/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Java-URLConnection</title>
-    <link href="http://sxksec.cn/2025/07/19/dai-ma-shen-ji/java-urlconnection/"/>
-    <id>http://sxksec.cn/2025/07/19/dai-ma-shen-ji/java-urlconnection/</id>
-    <published>2025-07-19T07:38:31.000Z</published>
-    <updated>2025-07-19T08:36:45.760Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;h1 id=&quot;一、URLConnection简介&quot;&gt;&lt;a href=&quot;#一、URLConnection简介&quot; class=&quot;headerlink&quot;</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="URLConnection" scheme="http://sxksec.cn/tags/URLConnection/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>JDBC</title>
-    <link href="http://sxksec.cn/2025/07/18/dai-ma-shen-ji/jdbc/"/>
-    <id>http://sxksec.cn/2025/07/18/dai-ma-shen-ji/jdbc/</id>
-    <published>2025-07-18T09:43:07.000Z</published>
-    <updated>2025-07-19T07:13:01.350Z</updated>
-    
-    
-      
-      
-        
-        
-    <summary type="html">&lt;p&gt;&lt;code&gt;JDBC(Java Database</summary>
-        
-      
-    
-    
-    
-    <category term="代码审计" scheme="http://sxksec.cn/categories/%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    
-    <category term="Java代码审计" scheme="http://sxksec.cn/tags/Java%E4%BB%A3%E7%A0%81%E5%AE%A1%E8%AE%A1/"/>
-    
-    <category term="JDBC" scheme="http://sxksec.cn/tags/JDBC/"/>
     
   </entry>
   
